@@ -7,6 +7,7 @@ ARG NODE_VERSION=20.11.0
 FROM node:${NODE_VERSION}-alpine as base
 
 # Set working directory for all build stages.
+ENTRYPOINT [ " ls -la ./" ]
 WORKDIR /usr/src/app
 
 
