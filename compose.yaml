@@ -1,20 +1,32 @@
 services:
   app:
     build:
-      context: .
+      context: ./
     ports:
       - "7008:7008"
     restart: unless-stopped
     init: true
     depends_on:
-      - database
-  database:
+      - db
+    networks:
+      - app_network
+  scripts:
+    build:
+      context: ./scripts
+    restart: unless-stopped
+    init: true
+    networks:
+      - app_network
+  db:
     image: postgres:latest
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     volumes:
       - db_data:/var/lib/postgresql/data
-    restart: unless-stopped
+    networks:
+      - app_network
 volumes:
   db_data:
+networks:
+  app_network:

@@ -1,19 +1,37 @@
-# Use a specific Node.js version that matches your requirements
-FROM node:18.18-alpine AS base
+# syntax=docker/dockerfile:1
 
-# Set the working directory
-WORKDIR /client
+# Build stage
+FROM node:18.18-alpine AS builder
+
+# Set working directory
+WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package*.json ./
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
 
-# Install Python and other build dependencies
-RUN apk add --no-cache python3 make g++ \
-    && npm ci \
-    && apk del python3 make g++
-
-# Copy the rest of your application code
+# Copy application files
 COPY . .
 
-# Command to run your application
-CMD ["node", "app.js"]
+# Build the application
+RUN npm run build
+
+# Production stage
+FROM node:18.18-alpine AS production
+
+# Set working directory
+WORKDIR /app
+
+# Copy only necessary files from builder
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package*.json ./
+
+# Set environment variables
+ENV NODE_ENV=production
+
+# Expose the application port
+EXPOSE 7008
+
+# Command to run the application
+CMD ["npm", "start"]

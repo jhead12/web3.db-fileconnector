@@ -7,8 +7,18 @@ ARG NODE_VERSION=20.11.0
 FROM node:${NODE_VERSION}-alpine as base
 
 # Set working directory for all build stages.
-ENTRYPOINT [ " ls -la ./" ]
+
+
 WORKDIR /usr/src/app
+
+ENTRYPOINT [ " ls -la ./" ]
+
+# Copy package files and install dependencies
+COPY package*.json ./
+# Install Python and other build dependencies
+RUN apk add --no-cache python3 make g++ \
+    && npm ci \
+    && apk del python3 make g++
 
 
 ################################################################################
