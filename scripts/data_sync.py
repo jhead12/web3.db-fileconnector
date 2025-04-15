@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import psycopg2
-from orbisdb_client import OrbisDBClient
+from scripts.orbisdb_client import OrbisDBClient
 
 class DataSynchronizer:
     def __init__(self):
