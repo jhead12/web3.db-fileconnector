@@ -1,0 +1,6 @@
+
+#!/usr/bin/env sh
+export DID_PRIVATE_KEY=e846efaca573e91e3682b2e721a695739d0cecf60cc2ceedaeec30564fd145a9
+export CERAMIC_URL=http://127.0.0.1:7007
+
+node /Users/jeldonmusic/Documents/matrixblend_com/Datbase/orbisdb/server/ceramic-app/node_modules/.bin/composedb "$@"

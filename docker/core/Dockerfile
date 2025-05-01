@@ -16,10 +16,10 @@ FROM base AS deps
 # Install pnpm globally
 RUN npm install -g pnpm
 
-COPY ../../package*.json ./
+COPY package*.json ./
 
 # Bundle app source inside Docker image
-COPY ../.. .
+COPY . .
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.pnpm-store to speed up subsequent builds.
@@ -44,8 +44,9 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 # Copy the rest of the source files into the image.
 COPY . .
 
-# Run the build script.
-RUN pnpm run build
+# Set working directory to client and run the build script using exec form.
+WORKDIR /usr/src/app/client
+CMD ["pnpm", "run", "build"]
 
 ################################################################################
 # Create a new stage to run the application with minimal runtime dependencies
@@ -59,7 +60,7 @@ ENV NODE_ENV=production
 USER node
 
 # Set working directory.
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/client
 
 # Copy the production dependencies from the deps stage and also
 # the built application from the build stage into the image.
