@@ -5,7 +5,8 @@
     "port": 7007,
     "admin-dids": [
       "did:key:z6MkhmLkENpop72dxyiEikiNEAm3Fo6uwhosYVDT92bixV69",
-      "did:key:z6Mkpgjz7gsNTfcMdHJgRL5CNkRfXV2QM8eraqsYcZfdtZzp"
+      "did:key:z6Mkpgjz7gsNTfcMdHJgRL5CNkRfXV2QM8eraqsYcZfdtZzp",
+      "did:key:z6Mkjp8j25WoFkQs6CVBofCNq4wqULsNUadTxZwsdwWWXtms"
     ]
   },
   "ipfs": {

@@ -1,10 +1,11 @@
 # Orbirsbd Middleware
-The Orbisdb connects you to the Graphql system that mnages your Web3 data.
 
+The Orbisdb connects you to the Graphql system that mnages your Web3 data.
 
 ### Base Command Explanation
 
 1. Set up Ceramic DB
+
 ```bash
 
 cd server
@@ -53,7 +54,7 @@ The script installs dependencies using npm:
 
 ```bash
 + Installing dependencies for @ceramicnetwork/cli
-When you would like to run ceramic please run 
+When you would like to run ceramic please run
 ./ceramic daemon --config /Users/jeldonmusic/Documents/matrixblend_com/Datbase/orbisdb/server/ceramic-app/daemon_config.json
 from the directory /Users/jeldonmusic/Documents/matrixblend_com/Datbase/orbisdb/server/ceramic-app. For more information on the Ceramic http api see https://developers.ceramic.network/build/http/api/
 ```
@@ -69,6 +70,7 @@ This command installs the necessary dependencies for the `@ceramicnetwork/cli` p
 - **Ceramic Setup**: The script sets up a Ceramic network and initializes the ComposeDB application.
 
 This process ensures that the Ceramic setup is correctly configured for your Ceramic-based application.
+
 ## Prerequisites
 
 Ensure you have the following installed:

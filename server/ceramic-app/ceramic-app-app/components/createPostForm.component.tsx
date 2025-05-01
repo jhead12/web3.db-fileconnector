@@ -40,7 +40,9 @@ export const CreatePostForm = ({ refreshPosts }) => {
       setTag("");
       alert("Created post.");
     } else {
-      alert("Failed to fetch profile for authenticated user. Please register a profile.");
+      alert(
+        "Failed to fetch profile for authenticated user. Please register a profile."
+      );
     }
     // After creating the post, refresh the posts
     await refreshPosts();
@@ -69,7 +71,7 @@ export const CreatePostForm = ({ refreshPosts }) => {
       <textarea
         value={newPost}
         maxLength={200}
-        placeholder='What are you thinking about?'
+        placeholder="What are you thinking about?"
         className={styles.postInput}
         onChange={(e) => {
           setNewPost(e.target.value);
@@ -78,7 +80,7 @@ export const CreatePostForm = ({ refreshPosts }) => {
       <textarea
         value={tag}
         maxLength={50}
-        placeholder='Enter a Category Tag'
+        placeholder="Enter a Category Tag"
         className={styles.postInput}
         onChange={(e) => {
           setTag(e.target.value);

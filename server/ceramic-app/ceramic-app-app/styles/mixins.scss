@@ -1,10 +1,10 @@
 @mixin scrollbar {
-  // This is causing weird padding issues 
+  // This is causing weird padding issues
   overflow-y: scroll;
   &::-webkit-scrollbar {
     background-color: transparent;
 
-    width:5px;
+    width: 5px;
   }
   &::-webkit-scrollbar-thumb {
     border: 1px solid $borders;

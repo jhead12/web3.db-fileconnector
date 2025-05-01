@@ -22,3 +22,16 @@ else
   fi
 fi
 
+# Generate different ports based on the provided information
+if [ "$PORT" = "12345" ]; then
+    PORTS=(12346 12347 12348)
+elif [ "$PORT" = "67890" ]; then
+    PORTS=(67891 67892 67893)
+else
+    echo "Invalid port number provided."
+    exit 1
+fi
+
+for PORT in "${PORTS[@]}"; do
+    ./clear_ports.sh $PORT
+done

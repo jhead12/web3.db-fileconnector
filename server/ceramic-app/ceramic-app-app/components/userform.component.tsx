@@ -111,54 +111,54 @@ export const Userform = () => {
   }, []);
 
   return (
-    <div className='content'>
+    <div className="content">
       <div className={styles.formGroup}>
         <h1>Profile</h1>
-        <div className=''>
-          <label className=''>Name</label>
+        <div className="">
+          <label className="">Name</label>
           <input
-            className=''
-            type='text'
+            className=""
+            type="text"
             defaultValue={profile?.name || ""}
             onChange={(e) => {
               setProfile({ ...profile, name: e.target.value });
             }}
           />
         </div>
-        <div className=''>
+        <div className="">
           <label>Username</label>
           <input
-            type='text'
+            type="text"
             defaultValue={profile?.username || ""}
             onChange={(e) => {
               setProfile({ ...profile, username: e.target.value });
             }}
           />
         </div>
-        <div className=''>
+        <div className="">
           <label>Description</label>
           <input
-            type='text'
+            type="text"
             defaultValue={profile?.description || ""}
             onChange={(e) => {
               setProfile({ ...profile, description: e.target.value });
             }}
           />
         </div>
-        <div className=''>
+        <div className="">
           <label>Gender</label>
           <input
-            type='text'
+            type="text"
             defaultValue={profile?.gender || ""}
             onChange={(e) => {
               setProfile({ ...profile, gender: e.target.value });
             }}
           />
         </div>
-        <div className=''>
+        <div className="">
           <label>Emoji</label>
           <input
-            type='text'
+            type="text"
             defaultValue={profile?.emoji || ""}
             onChange={(e) => {
               setProfile({ ...profile, emoji: e.target.value });
@@ -166,7 +166,7 @@ export const Userform = () => {
             maxLength={2}
           />
         </div>
-        <div className=''>
+        <div className="">
           <button
             onClick={() => {
               updateProfile();

@@ -60,10 +60,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <div>
       <AuthPrompt />
-      <div className='container'>
+      <div className="container">
         <CeramicWrapper>
-          <Sidebar name={profile?.name} username={profile?.username} id={profile?.id} />
-          <div className='body'>
+          <Sidebar
+            name={profile?.name}
+            username={profile?.username}
+            id={profile?.id}
+          />
+          <div className="body">
             <Component {...pageProps} ceramic />
             <Footer />
           </div>

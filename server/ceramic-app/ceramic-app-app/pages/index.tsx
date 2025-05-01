@@ -50,7 +50,10 @@ const Home: NextPage = () => {
       `);
       localStorage.setItem("viewer", profile?.data?.viewer?.id);
 
-      console.log("Profile in getProfile: ", profile?.data?.viewer?.basicProfile);
+      console.log(
+        "Profile in getProfile: ",
+        profile?.data?.viewer?.basicProfile
+      );
       setProfile(profile?.data?.viewer?.basicProfile);
       setIsLoading(false);
     } else {
@@ -184,9 +187,9 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Ceramic Social</title>
-        <link rel='icon' href='/ceramic-favicon.svg' />
+        <link rel="icon" href="/ceramic-favicon.svg" />
       </Head>
-      <div className='content'>
+      <div className="content">
         {profile ? (
           <>
             <CreatePostForm refreshPosts={refreshPosts} />

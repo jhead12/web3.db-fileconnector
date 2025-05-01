@@ -24,7 +24,10 @@ declare global {
  * Checks localStorage for a stored DID Session. If one is found we authenticate it, otherwise we create a new one.
  * @returns Promise<DID-Session> - The User's authenticated sesion.
  */
-export const authenticateCeramic = async (ceramic: CeramicApi, compose: ComposeClient) => {
+export const authenticateCeramic = async (
+  ceramic: CeramicApi,
+  compose: ComposeClient
+) => {
   let logged_in = localStorage.getItem("logged_in");
   const popup = document.querySelector(".popup");
   console.log("logged_in in localStorage: ", logged_in);
@@ -43,7 +46,10 @@ export const authenticateCeramic = async (ceramic: CeramicApi, compose: ComposeC
   localStorage.setItem("logged_in", "true");
 };
 
-const authenticateKeyDID = async (ceramic: CeramicApi, compose: ComposeClient) => {
+const authenticateKeyDID = async (
+  ceramic: CeramicApi,
+  compose: ComposeClient
+) => {
   let seed_array: Uint8Array;
   if (localStorage.getItem(DID_SEED_KEY) === null) {
     // for production you will want a better place than localStorage for your sessions.
@@ -72,7 +78,10 @@ const authenticateKeyDID = async (ceramic: CeramicApi, compose: ComposeClient) =
   return;
 };
 
-const authenticateEthPKH = async (ceramic: CeramicApi, compose: ComposeClient) => {
+const authenticateEthPKH = async (
+  ceramic: CeramicApi,
+  compose: ComposeClient
+) => {
   const sessionStr = localStorage.getItem("ceramic:eth_did"); // for production you will want a better place than localStorage for your sessions.
   let session;
 
@@ -92,7 +101,10 @@ const authenticateEthPKH = async (ceramic: CeramicApi, compose: ComposeClient) =
       method: "eth_requestAccounts",
     });
     const accountId = await getAccountId(ethProvider, addresses[0]);
-    const authMethod = await EthereumWebAuth.getAuthMethod(ethProvider, accountId);
+    const authMethod = await EthereumWebAuth.getAuthMethod(
+      ethProvider,
+      accountId
+    );
 
     /**
      * Create DIDSession & provide capabilities for resources that we want to access.
@@ -100,7 +112,9 @@ const authenticateEthPKH = async (ceramic: CeramicApi, compose: ComposeClient) =
      * "compose.resources" below.
      */
 
-    session = await DIDSession.authorize(authMethod, { resources: compose.resources });
+    session = await DIDSession.authorize(authMethod, {
+      resources: compose.resources,
+    });
     // Set the session in localStorage.
     localStorage.setItem("ceramic:eth_did", session.serialize());
   }

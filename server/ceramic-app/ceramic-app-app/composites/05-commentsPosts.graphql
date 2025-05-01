@@ -1,7 +1,7 @@
 type Comments @loadModel(id: "$COMMENTS_ID") {
-    id: ID!
+  id: ID!
 }
 
 type Posts @loadModel(id: "$POSTS_ID") {
-    responses: [Comments] @relationFrom(model: "Comments", property: "postId")
+  responses: [Comments] @relationFrom(model: "Comments", property: "postId")
 }
