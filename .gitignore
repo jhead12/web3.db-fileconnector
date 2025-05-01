@@ -24,6 +24,7 @@ Dockerfile
 docker-compose*.yml
 # Ignore Docker Compose override files
 docker-compose.override.yml
+**.bak
 # Ignore Docker Compose environment files
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
