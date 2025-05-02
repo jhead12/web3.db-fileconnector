@@ -1,4 +1,4 @@
-# OrbisDB Middleware
+# web3.db-fileconnector
 
 OrbisDB connects you to the GraphQL system that manages your Web3 data using the Ceramic network.
 
@@ -429,3 +429,5 @@ docker-compose exec -it ceramic-one /bin/bash
    ```
 
 4. **Docker Connection Issues**: Ensure Docker Desktop is running with WSL2 integration enabled in settings.
+
+
