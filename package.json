@@ -1,5 +1,5 @@
 {
-  "name": "orbisdb",
+  "name": "web3db-fileconnector",
   "version": "1.0.0",
   "description": "OrbisDB is an open database built on top of Ceramic allowing you to index and query your Ceramic data while extanding Ceramic capabilities with plugins. ",
   "keywords": [
@@ -10,15 +10,15 @@
     "orbis"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/OrbisWeb3/orbisdb#readme",
+  "homepage": "https://github.com/jhead12/web3db-fileconnector/orbisdb#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OrbisWeb3/orbisdb.git"
+    "url": "https://github.com/jhead12/web3db-fileconnector/orbisdb.git"
   },
-  "bugs": "https://github.com/OrbisWeb3/orbisdb/issues",
+  "bugs": "https://github.com/jhead12/web3db-fileconnector/orbisdb/issues",
   "author": {
-    "name": "Orbis",
-    "url": "https://github.com/OrbisWeb3"
+    "name": "Joshua Head",
+    "url": "https://github.com/jhead12/jhead12/web3db-fileconnector"
   },
   "scripts": {
     "build": "cd client && next build",
