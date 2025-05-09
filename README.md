@@ -1,4 +1,4 @@
-# web3.db-fileconnector
+# web3.db-fileconnector (Macos Only)
 
 OrbisDB connects you to the GraphQL system that manages your Web3 data using the Ceramic network.
 
