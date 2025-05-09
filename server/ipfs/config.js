@@ -1,4 +1,4 @@
-import { create } from "ipfs-http-client";
+import { create } from "helia";
 
 let ipfs;
 

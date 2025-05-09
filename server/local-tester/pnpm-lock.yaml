@@ -1,0 +1,68 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      ceramic:
+        specifier: ^0.4.5
+        version: 0.4.5
+      cjs:
+        specifier: ^0.0.11
+        version: 0.0.11
+
+packages:
+
+  ceramic@0.4.5:
+    resolution: {integrity: sha512-As+kmyGzZ2ooL9DJrPFG8TDAX4LPJiYurtGKBpYHBgUdEkNJYDMIBn4Z9V5OyJRbRqsPsIc2XI/w8WENwHLLvg==}
+    engines: {node: '>= 0.11.9'}
+
+  cjs@0.0.11:
+    resolution: {integrity: sha512-aLndk8BnpIOy/ZxmLGCNTSFoLm0+OyZDtxNCV6jUBHBkLICanUAlkIGtnaQrCBMYTebOmWHNg8+vxtaYZ8LSfA==}
+
+  co@4.6.0:
+    resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
+    engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
+
+  jayschema@0.3.2:
+    resolution: {integrity: sha512-UHLk2ya7ItaLjmMVJWGE9b5t7jD3DZfmURdmz+rOVSiSYnrCtgcxvNXuQavcK7bhUBlXFmrXwRAPXkCMDxxANg==}
+    engines: {node: '>=0.6.6'}
+    deprecated: this project is no longer maintained
+    hasBin: true
+
+  nodefunc-generatorify@0.3.0:
+    resolution: {integrity: sha512-Vb5z2Wx3WGGPyqIpBUL/X7bNGW8ocHQ6t8HzrxaqyYfgSpjhvXzmQ2VxcSDKPl7wfhT8aW5kiQu5H1oyADTrUA==}
+
+  sync-channel@0.0.6:
+    resolution: {integrity: sha512-rjHHukZeQW3hGgwMuOkrITv1e87nxuAKRGgwPNtCmS3Az+YdO826hBy1IDjRsTXKGc2WDWUaDU5Zx8uodXWwgg==}
+
+  when@3.4.6:
+    resolution: {integrity: sha512-TzS0kHjRk5dX+3VlU4ZxAppq1JxybVd7dvLVw1YtItkIuAnijwKV4NL8omnicsAd+CPl9sceLmAFbGdNYPgm9w==}
+
+snapshots:
+
+  ceramic@0.4.5:
+    dependencies:
+      co: 4.6.0
+      jayschema: 0.3.2
+      nodefunc-generatorify: 0.3.0
+
+  cjs@0.0.11:
+    dependencies:
+      sync-channel: 0.0.6
+
+  co@4.6.0: {}
+
+  jayschema@0.3.2:
+    dependencies:
+      when: 3.4.6
+
+  nodefunc-generatorify@0.3.0: {}
+
+  sync-channel@0.0.6: {}
+
+  when@3.4.6: {}

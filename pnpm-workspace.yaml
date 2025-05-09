@@ -1,0 +1,7 @@
+ignoredBuiltDependencies:
+  - aws-sdk
+  - classic-level
+  - go-ipfs
+  - secp256k1
+  - sqlite3
+  - tiny-secp256k1
