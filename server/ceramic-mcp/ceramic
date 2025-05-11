@@ -1,0 +1,4 @@
+
+#!/usr/bin/env sh
+
+node /Users/jeldonmusic/Documents/matrixblend_com/web3db-connector/server/ceramic-mcp/node_modules/.bin/ceramic "$@"

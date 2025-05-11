@@ -1,0 +1,70 @@
+networks:
+  appnet:
+    driver: bridge
+
+services:
+  js-client:
+    build:
+      context: ./client
+      dockerfile: ../clientDockerfile
+    container_name: js-client
+    restart: unless-stopped
+    networks:
+      - appnet
+    ports:
+      - "3000:3000"  # Next.js client
+    # env_file: ./client/.env  # Uncomment if .env file exists
+    # If you need to connect to the server, ensure the network is shared
+
+  js-server:
+    build:
+      context: ./server
+      dockerfile: ../serverDockerfile
+    container_name: js-server
+    restart: unless-stopped
+    init: true
+    networks:
+      - appnet
+    ports:
+      - "7008:7008"  # Main server port as per README and Dockerfile
+    depends_on:
+      - postgres
+    # env_file: ./server/.env  # Uncomment if .env file exists
+    # If you need to connect to the database, ensure the network is shared
+
+  ts-ceramic-app-app:
+    build:
+      context: ./server/ceramic-app/ceramic-app-app
+      dockerfile: ../../ceramic-app/ceramic-app-appDockerfile
+    container_name: ts-ceramic-app-app
+    restart: unless-stopped
+    init: true
+    networks:
+      - appnet
+    ports:
+      - "3001:3000"  # Expose on 3001 to avoid conflict with client
+    # env_file: ./server/ceramic-app/ceramic-app-app/.env  # Uncomment if .env file exists
+    # This is a Next.js app for Ceramic ComposeDB
+
+  postgres:
+    image: pgvector/pgvector:latest
+    container_name: postgres
+    restart: unless-stopped
+    networks:
+      - appnet
+    ports:
+      - "5432:5432"  # Expose if you want to connect externally
+    environment:
+      POSTGRES_USER: user  # Set as needed, see README
+      POSTGRES_PASSWORD: password  # Set as needed, see README
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+    driver: local

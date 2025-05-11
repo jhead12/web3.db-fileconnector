@@ -1,72 +1,94 @@
-# .dockerignore file for optimal Docker builds
+# 1. Version control
+.git/
+.gitignore
+.svn/
+.hg/
 
-# Node.js dependencies
+# 2. Node.js
 node_modules/
+**/node_modules/
 npm-debug.log
 yarn-debug.log
+yarn-error.log
+pnpm-debug.log
 
-# Python artifacts
+# 3. Python
 __pycache__/
+**/__pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
 .coverage
 
-# IDE and editor files
+# 4. Build outputs
+build/
+dist/
+out/
+.next/
+**/.next/
+coverage/
+
+# 5. IDE/editor files
 .idea/
 .vscode/
 *.swp
 *.swo
+*.sublime*
 
-# Build outputs
-dist/
-build/
-out/
-
-# Test files
-test/
-tests/
-*_test.go
-
-# Debug files
-debug/
-*.log
-
-# Version control
-.git/
-.gitignore
-
-# Environment and secrets
-.env*
+# 6. Environment and secrets
+.env
+.env.*
 *.env
+config.env
+composedb.env
 *.pem
 *.key
 *.crt
 
-# Documentation
-docs/
-*.md
-README*
-
-# Docker files
-Dockerfile*
-docker-compose*
-
-# Temporary files
+# 7. Temporary and local files
 tmp/
 temp/
 *.tmp
-
-# Local development
 .local/
 local/
-
-# Project-specific patterns
 .DS_Store
-.next/
-public/uploads/
-server/logs/
+**/.DS_Store
 
-# Exclude Dockerfile and .dockerignore
-!Dockerfile
-!.dockerignore
+# 8. Documentation and markdown
+docs/
+*.md
+README*
+Contribute.md
+
+# 9. Test and debug
+*.log
+debug/
+test/
+tests/
+
+# 10. Project-specific
+wheel
+
+# 11. Docker files (do not ignore Dockerfile or docker-compose.yml)
+# (Do not ignore Dockerfile or docker-compose.yml as per best practice)
+
+# 12. Miscellaneous
+*.sk
+
+# 13. Ignore backup and duplicate shell scripts
+*.sh~
+* copy.sh
+
+# 14. Ignore public dev artifacts
+public/**/*.DS_Store
+uploads/**/*.DS_Store
+
+# 15. Ignore empty log/indexing folders
+log/
+logs/
+**/log/
+**/logs/
+ceramic-indexing/
+**/ceramic-indexing/
+
+# End of .dockerignore

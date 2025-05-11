@@ -1,0 +1,1121 @@
+lrwxr-xr-x@ 1 root  wheel  11 May  7  2024 /etc -> private/etc
+lrwxr-xr-x  1 root  wheel  25 May  8 21:12 /home -> /System/Volumes/Data/home
+lrwxr-xr-x@ 1 root  wheel  11 May  7  2024 /tmp -> private/tmp
+lrwxr-xr-x@ 1 root  wheel  11 May  7  2024 /var -> private/var
+
+/Applications:
+total 128
+drwxrwxr-x  230 root         admin      7360 May  9 13:51 .
+drwxr-xr-x   20 root         wheel       640 May  7  2024 ..
+-rw-r--r--@   1 jeldonmusic  admin     61444 Apr 23 23:23 .DS_Store
+-rw-r--r--    1 root         wheel         0 May  7  2024 .localized
+drwxrwxrwx@  42 jeldonmusic  everyone   1344 Apr 18 02:12 AIR Music Technology
+drwxr-xr-x@   3 jeldonmusic  staff        96 Jun 10  2024 AIVA.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Oct 26  2024 Ableton Live 11 Suite.app
+drwxr-xr-x@   3 root         wheel        96 Feb 18 09:33 Acellus.app
+drwxrwxr-x@   6 root         wheel       192 May  5 00:54 Adobe Acrobat DC
+drwxr-xr-x@   6 root         wheel       192 Apr 14 00:19 Adobe Creative Cloud
+drwxr-xr-x@  10 root         wheel       320 Jul 19  2021 Adobe Illustrator 2021
+drwxrwxr-x@   5 root         wheel       160 May  8 21:58 Adobe Lightroom CC
+drwxrwxr-x@   4 root         wheel       128 Jun  4  2022 Adobe Premiere Pro 2022
+drwxr-xr-x@   3 root         wheel        96 May 11  2023 Akai Professional Network MIDI.app
+drwxr-xr-x@   3 root         wheel        96 Mar 31  2021 Alfred.app
+drwxrwxrwx   10 jeldonmusic  wheel       320 Apr 24  2024 Ample Sound
+drwxr-xr-x    3 root         wheel        96 Nov 24  2023 AmpliTube 5.app
+lrwxr-xr-x    1 root         admin        55 Apr  9 01:36 Anaconda-Navigator.app -> /Volumes/PRO-BLADE/opt/anaconda3/Anaconda-Navigator.app
+drwxr-xr-x@   3 root         admin        96 May  6 12:07 AnalogMatrix.app
+drwxrwxr-x    7 root         admin       224 Dec 20 00:34 Antares Audio Technologies
+drwxr-xr-x@   3 jeldonmusic  admin        96 Dec 11 23:20 Aquarius.app
+drwxr-xr-x@  54 root         wheel      1728 Apr  6 20:13 Arturia
+drwxr-xr-x    3 root         admin        96 Dec  6  2022 Audacity.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Apr 19 13:04 Audio Hijack.app
+drwxr-xr-x    3 root         wheel        96 Oct 28  2023 Authorization Manager.app
+drwxr-xr-x    3 502          staff        96 Aug 28  2023 Authorizer.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 May 15  2024 Authy Desktop.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Dec 20 01:36 Auto-Tune Central.app
+drwxr-xr-x    8 root         wheel       256 Apr 18 03:51 Avid
+drwxr-xr-x    7 root         wheel       224 Apr 18 04:02 Avid_Uninstallers
+drwxrwxrwx@   3 jeldonmusic  admin        96 Jun 25  2023 BFD License Manager.app
+drwxrwxrwx@   3 jeldonmusic  admin        96 Jun 25  2023 BFD3.app
+drwxr-xr-x@   4 root         wheel       128 Jan 31  2023 BMI Mobile.app
+drwxr-xr-x@   3 root         wheel        96 Mar 23 08:49 Be Focused Pro.app
+drwxr-xr-x    5 root         wheel       160 Oct 13  2022 BigSky
+drwxr-xr-x@   3 root         wheel        96 Jan 23 15:55 Blue Cat's PatchWork.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Oct 31  2021 Burn.app
+drwxrwxr-x@   5 root         wheel       160 Sep 27  2021 Canon Utilities
+drwxr-xr-x@   3 jeldonmusic  staff        96 Jan 10  2024 Canva.app
+drwxrwxrwx@   4 jeldonmusic  admin       128 Jan 20  2018 Chicken Systems
+drwxr-xr-x@   3 jeldonmusic  admin        96 Oct 21  2021 Citrix Files.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Apr  9 18:47 Claude.app
+drwxr-xr-x@   3 root         wheel        96 Apr 30  2024 CodeMeter.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Mar  4  2024 Components.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Dec 14  2019 Constructor.app
+drwxr-xr-x@   3 root         wheel        96 Feb 19  2023 Cradle Hub.app
+drwxr-xr-x@   3 root         wheel        96 Jan 14  2022 Custom Shop.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Feb 19 23:25 Dart.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Jan 27 20:47 Descript.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 May  5 10:02 Discord.app
+drwxr-xr-x@   3 root         wheel        96 Sep 16  2022 Disk Cleaner.app
+drwxr-xr-x@   3 root         wheel        96 Oct  2  2024 DisplayLink Manager.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jan 29 12:52 Docker.app
+drwxrwxrwx    7 jeldonmusic  wheel       224 Jun 28  2023 Dolby
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jul 24  2022 DropPoint.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Apr 23  2024 Dropbox Replay.app
+drwxrwxrwx@   5 root         wheel       160 Nov 19  2020 Drumagog 5
+drwxrwxr-x    4 root         admin       128 Apr 20 08:29 Eiosis
+drwxr-xr-x@   3 root         wheel        96 Aug 29  2024 Elgato Camera Hub.app
+drwxr-xr-x@   3 root         wheel        96 May  9  2021 Empirical Labs
+drwxr-xr-x@   3 jeldonmusic  admin        96 Sep  9  2022 Epic Games Launcher.app
+drwxrwxr-x@   3 root         wheel        96 Jul  9  2023 EuControl.app
+drwxr-xr-x    3 root         admin        96 Oct 22  2022 Eventide
+drwxr-xr-x@   3 root         wheel        96 Apr 29 04:32 Evernote.app
+drwxr-xr-x@   3 root         wheel        96 Jan 25  2022 Expose.app
+drwxr-xr-x@   4 root         wheel       128 Sep 16  2022 FB360 Spatial Workstation
+drwxrwxrwx@   3 jeldonmusic  admin        96 Oct 28  2022 FL Studio 20.app
+drwxrwxrwx    3 root         everyone     96 Mar 31  2024 FL Studio 21.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 May  5  2024 FMOD Studio.app
+drwxr-xr-x@  22 jeldonmusic  admin       704 Jan 28 20:21 FSO - Music Lessons
+drwxr-xr-x@   3 root         wheel        96 Mar 25 08:03 FYI.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Dec 14  2022 Farrago.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 May 15  2024 Fission (2.3.0).app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Nov 13 23:44 Fission.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Apr  8 11:38 ForkLift.app
+drwxr-xr-x@   3 root         wheel        96 Apr 13  2021 GigPerformer3.app
+drwxrwxr-x@   3 jeldonmusic  admin        96 Dec 17 14:37 Google Chrome.app
+drwxr-xr-x@   3 root         wheel        96 Mar 14  2024 Google Earth Pro.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 May  8 14:59 Grammarly Desktop.app
+drwxr-xr-x@   3 root         wheel        96 May  1 04:35 Grammarly for Safari.app
+drwxr-xr-x@   3 root         wheel        96 Apr 20 14:13 HP Smart.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jan 10  2022 HandBrake.app
+drwxr-xr-x@   3 root         wheel        96 Mar  8  2023 Harmony Desktop.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Sep 28  2020 Horae.app
+drwxr-xr-x@   3 root         wheel        96 Nov  5  2023 IK Product Manager.app
+drwxr-xr-x    3 root         wheel        96 Sep 25  2022 Immerse Virtual Studio Alan Meyerson.app
+drwxr-xr-x    3 root         wheel        96 Jul  7  2023 Immerse Virtual Studio Signature Edition.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Oct 20  2023 Keybase.app
+drwxr-xr-x@   3 root         wheel        96 Apr  4 02:54 Keynote.app
+drwxrwxrwx    9 root         wheel       288 Nov  8  2023 Kilohearts
+drwxr-xr-x@   3 jeldonmusic  admin        96 May  8  2024 Klevgrand Helper.app
+drwxr-xr-x@   3 root         wheel        96 Dec 26 13:34 Lifeline Dirt Module.app
+drwxr-xr-x    3 root         wheel        96 Dec 26 13:34 Lifeline Expanse.app
+drwxr-xr-x    3 root         wheel        96 Dec 26 13:34 Lifeline Format Module.app
+drwxr-xr-x    3 root         wheel        96 Dec 26 13:34 Lifeline Re-Amp Module.app
+drwxr-xr-x    3 root         wheel        96 Dec 26 13:34 Lifeline Space Module.app
+drwxr-xr-x    3 root         wheel        96 Dec 26 13:34 Lifeline Width Module.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Mar 24 15:34 Local.app
+drwxrwxr-x@   3 root         admin        96 Jan  6 15:40 Logic Pro.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Dec  3 12:00 Loopback.app
+drwxr-xr-x@   3 root         wheel        96 May 15  2024 Lounge Lizard Session 4.app
+drwxrwxrwx@   3 root         wheel        96 Oct 28  2022 Lurssen Mastering Console.app
+lrwxr-xr-x    1 root         staff        58 May 24  2023 M4 -> /Library/Audio/Presets/AcusticaAudio/Nebula4/Client/M4.app
+drwxrwxr-x@   3 root         wheel        96 Jul  9  2023 MC_Client.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jun 15  2023 MEGAsync.app
+drwxr-xr-x@   3 root         wheel        96 Oct 28  2022 MODO BASS 2.app
+drwxr-xr-x@   3 root         admin        96 Jan 22 17:18 MPC.app
+drwxr-xr-x@   3 root         wheel        96 Apr 14  2021 MasteringTheMix
+drwxrwxr-x   28 root         wheel       896 Jun  8  2023 McDSP
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jan 16 00:37 Melodics.app
+drwxr-xr-x    4 root         admin       128 Dec  2 07:55 Melodyne 5
+drwxr-xr-x@   3 root         wheel        96 Apr 30 00:18 Microsoft Defender.app
+drwxrwxr-x@   3 root         wheel        96 Apr 22 16:55 Microsoft Excel.app
+drwxrwxr-x@   3 root         wheel        96 May  1 04:50 Microsoft Outlook.app
+drwxrwxr-x@   3 root         wheel        96 Apr 22 16:56 Microsoft PowerPoint.app
+drwxr-xr-x@   3 root         wheel        96 May  8 11:51 Microsoft Teams.app
+drwxrwxr-x@   3 root         wheel        96 Apr 30 15:28 Microsoft Word.app
+drwxr-xr-x    3 root         wheel        96 Oct 22  2023 MixBox.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Oct 25  2024 Mixed In Key 10.app
+drwxr-xr-x@   3 root         wheel        96 Nov 19 18:11 Mixed In Key Live.app
+drwxr-xr-x@   3 root         staff        96 Jan  6  2023 Muse Hub.app
+drwxr-xr-x    3 jeldonmusic  admin        96 May 28  2024 MuseScore 4.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jan 25  2024 MusicBrainz Picard.app
+drwxrwxr-x    3 root         admin        96 May  8 21:32 Musik Hack
+drwxr-xr-x@   4 root         wheel       128 Apr 16 18:36 MyArtist.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jul 13  2023 MySQLWorkbench.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5  2024 NDI Access Manager.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5  2024 NDI Launcher.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5  2024 NDI Router.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5  2024 NDI Scan Converter.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5  2024 NDI Test Patterns.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5  2024 NDI Video Monitor.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5  2024 NDI Virtual Input.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Nov  7  2024 Native Access.app
+drwxrwxr-x   13 root         wheel       416 Nov 20 12:17 Native Instruments
+drwxr-xr-x    2 jeldonmusic  admin        64 Jan 23 16:04 New Folder With Items
+drwxr-xr-x@   3 root         wheel        96 Apr  1 02:47 Norton.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5  2024 OBS Link.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jun 11  2021 OBS.app
+drwxrwxr-x    3 root         admin        96 Sep 10  2023 OCTANE
+drwxr-xr-x@   3 root         wheel        96 Mar 18 14:29 OX Drive.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 May  4 22:08 Ollama.app
+drwxr-xr-x@   4 root         wheel       128 May  5 13:56 Omi.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Oct 26  2021 Output Hub.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Mar  1  2022 PA-InstallationManager.app
+drwxr-xr-x@ 169 root         wheel      5408 Jan 26 09:49 Plugin Alliance
+drwxr-xr-x@   3 jeldonmusic  admin        96 May  9 13:51 Postgres.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Feb 27 15:42 Postman.app
+drwxr-xr-x@   3 root         wheel        96 May 27  2023 Private Internet Access.app
+drwxr-xr-x@   3 root         admin        96 Apr 17 10:54 Pro Tools.app
+drwxr-xr-x    3 root         wheel        96 Sep 14  2023 Pulsar
+drwxr-xr-x@  10 root         wheel       320 May 28  2024 Python 3.12
+drwxr-xr-x@   3 root         wheel        96 May 26  2023 Quick Translate Pro.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Aug 23  2023 REAPER.app
+drwxr-xr-x@   3 root         wheel        96 Apr  2 20:33 ReCycle.app
+drwxr-xr-x@   3 502          admin        96 Apr 26 15:56 Reason 12.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Apr 28 06:55 Reason Companion.app
+drwxrwxrwx    5 jeldonmusic  staff       160 Apr  8 00:11 Rob Papen
+drwxrwxr-x    3 root         admin        96 Feb  9  2024 SSL
+drwxr-xr-x@   3 root         admin        96 Apr 30  2024 SSL 360.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Feb 28  2024 SSL Download Manager.app
+drwxr-xr-x@   3 root         admin        96 May 16  2024 SYLO.app
+lrwxr-xr-x@   1 root         wheel        54 May  7  2024 Safari.app -> ../System/Cryptexes/App/System/Applications/Safari.app
+drwxr-xr-x@   3 root         wheel        96 Oct 28  2023 SampleTank 4.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Aug  2  2023 Samply.app
+drwxr-xr-x@   4 root         wheel       128 Mar 13 01:31 Screen Mirroring 2.app
+drwxr-xr-x@   4 root         wheel       128 Oct 25  2023 Screen Mirroring.app
+drwxr-xr-x    3 root         wheel        96 Apr 25  2024 Sibelius.app
+drwxr-xr-x@   3 root         wheel        96 Apr 17 16:08 Slack.app
+drwxr-xr-x   24 root         wheel       768 Apr 20 08:40 Slate Digital
+drwxr-xr-x@   3 jeldonmusic  staff        96 Apr 16 14:34 Slate Digital Connect.app
+drwxr-xr-x@   3 root         wheel        96 Apr  1 13:08 Softube Central.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Jun 14  2023 Songstats.app
+drwxrwxrwx@   5 root         admin       160 Nov  8  2023 Sonic Academy
+drwxr-xr-x    3 root         admin        96 May  6 12:33 SonoBus.app
+drwxr-xr-x@   3 root         wheel        96 Apr  4  2022 Sound Credit Portal.app
+drwxr-xr-x@   3 root         admin        96 Apr 29 16:40 SoundID Reference Measure.app
+drwxr-xr-x@   3 root         admin        96 Apr 29 16:40 SoundID Reference.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Sep 20  2024 SoundSource.app
+drwxr-xr-x    5 root         admin       160 May 24  2023 Soundtoys
+drwxr-xr-x@   3 root         wheel        96 Nov 19 19:37 SpectraLayers 11.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Jan 29 09:54 Splice.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Mar  3  2023 Steven Slate Audio Center.app
+drwxr-xr-x    3 root         wheel        96 May 30  2023 String Studio VS-2.app
+drwxr-xr-x    3 root         wheel        96 May 15  2024 Strum Session 2.app
+drwxrwxrwx@   3 root         admin        96 May 21  2023 SubLab.app
+drwxr-xr-x@   3 root         wheel        96 Oct 22  2023 Syntronik 2.app
+drwxrwxrwx@   3 root         wheel        96 Oct 28  2023 Syntronik.app
+drwxr-xr-x    3 root         wheel        96 Oct 22  2023 T-RackS 5.app
+drwxr-xr-x    3 root         admin        96 Apr 20 08:30 TH-U Slate.app
+drwxrwxr-x    4 root         admin       128 Dec 10  2021 TIZE
+drwxr-xr-x@   3 root         wheel        96 May  1 19:33 Telegram.app
+drwxr-xr-x@   3 root         wheel        96 Mar 19 08:44 The Unarchiver.app
+drwxrwxr-x    3 root         admin        96 Jul 30  2012 Tone2
+drwxr-xr-x@   4 jeldonmusic  staff       128 May  9 15:14 Tower.app
+drwxr-xr-x    3 root         wheel        96 Aug 12  2022 Tracktion Download Manager.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Jun  5  2024 TradingView.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Dec 23  2023 Translator 7.app
+drwxr-xr-x    3 root         wheel        96 Aug 10  2022 Trigger Instrument Editor.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Apr  8 00:04 UA Connect.app
+drwxr-xr-x    3 root         wheel        96 May 15  2024 Ultra Analog Session 2.app
+drwxr-xr-x@   8 jeldonmusic  staff       256 Feb 29  2024 Universal Audio
+drwxr-xr-x   13 root         wheel       416 Apr 18 03:51 Utilities
+drwxrwxr-x    3 jeldonmusic  admin        96 Dec 27  2022 VIP
+drwxr-xr-x@   3 jeldonmusic  admin        96 Nov 14  2023 VLC.app
+drwxr-xr-x    3 root         wheel        96 Nov 19 21:28 Velvet.app
+drwxr-xr-x@   3 root         admin        96 Apr 22 22:16 VirtualBox.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 May  7 06:08 Visual Studio Code.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Aug 21  2023 VitalSource Bookshelf.app
+drwxr-xr-x@   3 root         wheel        96 Nov 19 19:29 WaveLab Go.app
+drwxrwxrwx@  14 jeldonmusic  staff       448 Jan 30 00:47 Waves
+drwxr-xr-x@   3 jeldonmusic  staff        96 Mar 19 11:21 Waves Central.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Jan  9  2024 WinX DVD Ripper for Mac.app
+drwxr-xr-x@   3 root         wheel        96 Oct 15  2024 Windows App.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Apr  6 14:06 Wireshark.app
+drwxr-xr-x    5 root         admin       160 Apr 25  2024 XLN Audio
+drwxr-xr-x@   3 jeldonmusic  staff        96 Mar 18  2024 XLN Online Installer.app
+drwxr-xr-x@   3 root         wheel        96 Jan 21 10:51 Xmind.app
+drwxr-xr-x@   3 jeldonmusic  admin        96 Mar 27  2023 YellowDuck.app
+drwxr-xr-x@   3 root         wheel        96 May 31  2021 Youlean Loudness Meter 2.app
+drwxr-xr-x@   4 root         wheel       128 Apr 26 00:51 ZipRecruiter.app
+drwxr-xr-x    3 root         wheel        96 Apr  1 02:47 com.norton.av.uninstaller.app
+drwxrwxr-x@   3 root         wheel        96 Sep 27  2021 hdalbum EZ.app
+drwxr-xr-x@   3 root         wheel        96 Apr  5 22:10 iLok License Manager.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Apr 13 14:05 iTerm.app
+drwxr-xr-x@   3 root         admin        96 Jun 16  2023 iZotope Ozone 9.app
+drwxr-xr-x@   3 root         admin        96 Oct 28  2023 iZotope Product Portal.app
+drwxr-xr-x@   3 jeldonmusic  staff        96 Nov 29 16:14 inMusic Software Center.app
+drwxr-xr-x@   3 root         wheel        96 Mar 26 14:57 zoom.us.app
+drwxr-xr-x    3 root         wheel        96 Feb 15  2022 zplane
+
+/Library:
+total 0
+drwxr-xr-x   74 root  wheel             2368 Nov 19 18:10 .
+drwxr-xr-x   20 root  wheel              640 May  7  2024 ..
+-rw-r--r--    1 root  wheel                0 May  7  2024 .localized
+drwxr-xr-x@   5 root  wheel              160 May 14  2024 Apple
+drwxr-xr-x  108 root  admin             3456 Apr 25 14:48 Application Support
+drwxrwxrwx   88 root  wheel             2816 Apr  6 20:13 Arturia
+drwxr-xr-x    3 root  wheel               96 Nov 15  2022 ArturiaSC
+drwxr-xr-x   13 root  wheel              416 Apr  8 03:35 Audio
+drwxr-xr-x    3 root  wheel               96 Nov 19 18:10 Automator
+drwxr-xr-x    9 root  wheel              288 Oct 21  2022 Bluetooth
+drwxrwxrwt   12 root  admin              384 May  4 21:21 Caches
+drwxr-xr-x    3 root  wheel               96 Oct 22  2022 Catacomb
+drwxr-xr-x    2 root  wheel               64 May  7  2024 ColorPickers
+drwxr-xr-x    3 root  wheel               96 May  7  2024 ColorSync
+drwxr-xr-x    2 root  wheel               64 May  7  2024 Components
+drwxr-xr-x    3 root  wheel               96 May  7  2024 Compositions
+drwxr-xr-x    2 root  wheel               64 May  7  2024 Contextual Menu Items
+drwxrwx---@   3 root  _analyticsusers     96 May  8 21:17 CoreAnalytics
+drwxr-xr-x    3 root  wheel               96 May  7  2024 CoreMediaIO
+drwxr-xr-x@   8 root  wheel              256 Feb 17 19:00 Developer
+drwxr-xr-x    3 root  wheel               96 May  7  2024 DirectoryServices
+drwxr-xr-x   13 root  wheel              416 May 14  2024 Documentation
+drwxr-xr-x    2 root  wheel               64 May  7  2024 DriverExtensions
+drwxr-xr-x   13 root  wheel              416 Apr 18 03:51 Extensions
+drwxr-xr-x    5 root  wheel              160 May 14  2024 Filesystems
+drwxrwxr-t   78 root  admin             2496 Apr 20 08:27 Fonts
+drwxr-xr-x   17 root  wheel              544 May 14  2024 Frameworks
+drwxr-xr-x@   2 root  wheel               64 May  7  2024 GPUBundles
+drwxr-xr-x    5 root  wheel              160 Oct 26  2024 Google
+drwxr-xr-x    3 root  wheel               96 May  7  2024 Graphics
+drwxr-xr-x    8 root  wheel              256 May 14  2024 Image Capture
+drwxr-xr-x    2 root  wheel               64 May  7  2024 Input Methods
+drwxr-xr-x    4 root  wheel              128 May 14  2024 InstallerSandboxes
+drwxr-xr-x    4 root  wheel              128 Apr 16 12:44 Internet Plug-Ins
+drwxr-xr-x    4 root  wheel              128 May  7  2024 Java
+drwxr-xr-x@   3 root  wheel               96 May  7  2024 KernelCollections
+drwxr-xr-x    2 root  wheel               64 May  7  2024 Keyboard Layouts
+drwxr-xr-x    9 root  wheel              288 May  8 21:12 Keychains
+drwxr-xr-x   35 root  wheel             1120 Apr 30 00:18 LaunchAgents
+drwxr-xr-x   60 root  wheel             1920 Apr 30 00:18 LaunchDaemons
+drwxr-xr-x   15 root  wheel              480 May  8 11:09 Logs
+drwxr-xr-x   36 root  wheel             1152 May  7  2024 Modem Scripts
+drwxrwx---    5 root  _analyticsusers    160 Apr  5  2024 OSAnalytics
+drwxr-xr-x    5 root  wheel              160 May  7  2024 OpenDirectory
+drwxr-xr-x    3 root  wheel               96 Nov 19 18:10 PDF Services
+drwxr-xr-x    4 root  wheel              128 May  7  2024 Perl
+drwxr-xr-x    9 root  wheel              288 Apr 16 12:44 PreferencePanes
+drwxr-xr-x  391 root  wheel            12512 May  9 22:00 Preferences
+dr-xr-xr-x    7 root  wheel              224 May  9 16:30 Printers
+drwxr-xr-t@  29 root  wheel              928 Apr 22 20:17 PrivilegedHelperTools
+drwxrwxr-x    5 root  wheel              160 Apr 22 22:16 Python
+drwxr-xr-x    2 root  wheel               64 May  7  2024 QuickLook
+drwxr-xr-x   14 root  wheel              448 Jul  9  2023 QuickTime
+drwxrwxr-x    4 root  admin              128 May  8 21:32 Receipts
+drwxr-xr-x    4 root  wheel              128 May  7  2024 Ruby
+drwxr-xr-x    3 root  wheel               96 May  7  2024 Sandbox
+drwxr-xr-x    2 root  wheel               64 May  7  2024 Screen Savers
+drwxr-xr-x    2 root  wheel               64 May  7  2024 ScriptingAdditions
+drwxr-xr-x   10 root  wheel              320 May 14  2024 Scripts
+drwxr-xr-x    4 root  wheel              128 May  7  2024 Security
+drwxr-xr-x    3 root  wheel               96 May  7  2024 Speech
+drwxr-xr-x    3 root  wheel               96 May  7  2024 Spotlight
+drwxr-xr-x@   2 root  wheel               64 May  7  2024 StagedDriverExtensions
+drwxr-xr-x@   3 root  wheel               96 Nov 14 10:01 StagedExtensions
+drwxr-xr-x    2 root  wheel               64 May  7  2024 StartupItems
+drwxr-xr-x    8 root  wheel              256 May  8 21:12 SystemExtensions
+drwxr-xr-x    4 root  wheel              128 May  7  2024 SystemMigration
+drwxr-xr-x    2 root  wheel               64 May  7  2024 SystemProfiler
+drwxr-xr-x@   5 root  wheel              160 May 15  2024 Trial
+drwxr-xr-x@   6 root  wheel              192 Apr 24 05:10 Updates
+drwxr-xr-x    8 root  wheel              256 May  7  2024 User Pictures
+drwxr-xr-x   43 root  wheel             1376 May  7  2024 User Template
+drwxr-xr-x    4 root  wheel              128 May  7  2024 Video
+drwxr-xr-x    5 root  wheel              160 May  7  2024 WebServer
+
+/System:
+total 0
+drwxr-xr-x@  10 root  wheel   320 May  7  2024 .
+drwxr-xr-x   20 root  wheel   640 May  7  2024 ..
+-rw-r--r--   15 root  wheel     0 May  7  2024 .localized
+drwxr-xr-x   43 root  wheel  1376 May  7  2024 Applications
+drwxr-xr-x    4 root  wheel   128 May  7  2024 Cryptexes
+drwxr-xr-x@   2 root  wheel    64 May  7  2024 Developer
+drwxr-xr-x    5 root  wheel   160 May  7  2024 DriverKit
+drwxr-xr-x  150 root  wheel  4800 May  7  2024 Library
+drwxr-xr-x   14 root  wheel   448 May  7  2024 Volumes
+drwxr-xr-x    5 root  wheel   160 May  7  2024 iOSSupport
+
+/Users:
+total 0
+drwxr-xr-x    8 root         admin    256 Apr 29 16:40 .
+drwxr-xr-x   20 root         wheel    640 May  7  2024 ..
+-rw-r--r--    1 root         wheel      0 May  7  2024 .localized
+drwxr-x---+  12 201          _guest   384 Oct 22  2022 Guest
+drwxrwxrwt   35 root         wheel   1120 Apr 17 10:56 Shared
+drwxrwxrwx  114 jeldonmusic  wheel   3648 May  9 21:30 jeldonmusic
+drwxr-xr-x    3 root         admin     96 Mar 21  2023 root
+drwxrwxr-x    2 jeldonmusic  admin     64 Apr 29 16:40 untitled folder
+
+/Volumes:
+total 0
+drwxr-xr-x   6 root         wheel   192 May  9 21:47 .
+drwxr-xr-x  20 root         wheel   640 May  7  2024 ..
+lrwxr-xr-x   1 root         wheel     1 May  8 21:12 Macintosh HD -> /
+drwxrwxr-x@ 53 jeldonmusic  staff  1696 May  4 19:51 PRO-BLADE
+drwxrwxr-x   3 root         wheel    96 Oct 23  2022 Recon-12
+drwxr-xr-x  48 jeldonmusic  staff  1700 Apr 21 21:26 Recon-12 1
+
+/bin:
+total 9536
+drwxr-xr-x@ 39 root  wheel     1248 May  7  2024 .
+drwxr-xr-x  20 root  wheel      640 May  7  2024 ..
+-rwxr-xr-x   2 root  wheel   101456 May  7  2024 [
+-r-xr-xr-x   1 root  wheel  1310352 May  7  2024 bash
+-rwxr-xr-x   1 root  wheel   119008 May  7  2024 cat
+-rwxr-xr-x   1 root  wheel   120576 May  7  2024 chmod
+-rwxr-xr-x   1 root  wheel   136704 May  7  2024 cp
+-rwxr-xr-x   2 root  wheel  1136896 May  7  2024 csh
+-rwxr-xr-x   1 root  wheel   274480 May  7  2024 dash
+-rwxr-xr-x   1 root  wheel   135264 May  7  2024 date
+-rwxr-xr-x   1 root  wheel   152416 May  7  2024 dd
+-rwxr-xr-x   1 root  wheel   118992 May  7  2024 df
+-rwxr-xr-x   1 root  wheel   101184 May  7  2024 echo
+-rwxr-xr-x   1 root  wheel   202528 May  7  2024 ed
+-rwxr-xr-x   1 root  wheel   102032 May  7  2024 expr
+-rwxr-xr-x   1 root  wheel   101184 May  7  2024 hostname
+-rwxr-xr-x   1 root  wheel   101584 May  7  2024 kill
+-r-xr-xr-x   1 root  wheel  2582512 May  7  2024 ksh
+-rwxr-xr-x   1 root  wheel   361712 May  7  2024 launchctl
+-rwxr-xr-x   2 root  wheel   101968 May  7  2024 link
+-rwxr-xr-x   2 root  wheel   101968 May  7  2024 ln
+-rwxr-xr-x   1 root  wheel   154352 May  7  2024 ls
+-rwxr-xr-x   1 root  wheel   101360 May  7  2024 mkdir
+-rwxr-xr-x   1 root  wheel   119168 May  7  2024 mv
+-rwxr-xr-x   1 root  wheel   304240 May  7  2024 pax
+-rwsr-xr-x   1 root  wheel   170816 May  7  2024 ps
+-rwxr-xr-x   1 root  wheel   101296 May  7  2024 pwd
+-rwxr-xr-x   1 root  wheel   101072 May  7  2024 realpath
+-rwxr-xr-x   2 root  wheel   119040 May  7  2024 rm
+-rwxr-xr-x   1 root  wheel   101040 May  7  2024 rmdir
+-rwxr-xr-x   1 root  wheel   101232 May  7  2024 sh
+-rwxr-xr-x   1 root  wheel   101136 May  7  2024 sleep
+-rwxr-xr-x   1 root  wheel   135504 May  7  2024 stty
+-rwxr-xr-x   1 root  wheel   100784 May  7  2024 sync
+-rwxr-xr-x   2 root  wheel  1136896 May  7  2024 tcsh
+-rwxr-xr-x   2 root  wheel   101456 May  7  2024 test
+-rwxr-xr-x   2 root  wheel   119040 May  7  2024 unlink
+-rwxr-xr-x   1 root  wheel   101056 May  7  2024 wait4path
+-rwxr-xr-x   1 root  wheel  1361200 May  7  2024 zsh
+
+/cores:
+total 0
+drwxr-xr-x   2 root  wheel   64 Aug 24  2022 .
+drwxr-xr-x  20 root  wheel  640 May  7  2024 ..
+
+/dev:
+total 18
+dr-xr-xr-x   4 root         wheel             8602 May  8 21:12 .
+drwxr-xr-x  20 root         wheel              640 May  7  2024 ..
+crw-rw-rw-   1 root         wheel       0x16000000 May  8 21:12 aes_0
+crw-------   1 root         wheel       0x15000001 May  8 21:12 afsc_type5
+brw-------   1 root         operator     0x2000000 May  9 21:39 apfs-raw-device.2.0
+crw-------   1 root         wheel        0xb000000 May  8 21:12 auditpipe
+crw-r--r--   1 root         wheel        0xa000003 May  8 21:12 auditsessions
+crw-------   1 root         wheel       0x1d000000 May  8 21:12 autofs
+crw-------   1 root         wheel       0x21000000 May  8 21:12 autofs_control
+crw-rw-rw-   1 root         wheel       0x200003f4 May  8 21:12 autofs_homedirmounter
+crw-rw-rw-   1 root         wheel       0x1f0003f4 May  8 21:12 autofs_notrigger
+crw-rw-rw-   1 root         wheel       0x1e009328 May  8 21:12 autofs_nowait
+crw-rw----   1 root         access_bpf  0x17000000 May  9 13:19 bpf0
+crw-rw----   1 root         access_bpf  0x17000001 May  9 13:19 bpf1
+crw-rw----   1 root         access_bpf  0x1700000a May  8 21:12 bpf10
+crw-rw----   1 root         access_bpf  0x17000064 May  8 21:12 bpf100
+crw-rw----   1 root         access_bpf  0x17000065 May  8 21:12 bpf101
+crw-rw----   1 root         access_bpf  0x17000066 May  8 21:12 bpf102
+crw-rw----   1 root         access_bpf  0x17000067 May  8 21:12 bpf103
+crw-rw----   1 root         access_bpf  0x17000068 May  8 21:12 bpf104
+crw-rw----   1 root         access_bpf  0x17000069 May  8 21:12 bpf105
+crw-rw----   1 root         access_bpf  0x1700006a May  8 21:12 bpf106
+crw-rw----   1 root         access_bpf  0x1700006b May  8 21:12 bpf107
+crw-rw----   1 root         access_bpf  0x1700006c May  8 21:12 bpf108
+crw-rw----   1 root         access_bpf  0x1700006d May  8 21:12 bpf109
+crw-rw----   1 root         access_bpf  0x1700000b May  8 21:12 bpf11
+crw-rw----   1 root         access_bpf  0x1700006e May  8 21:12 bpf110
+crw-rw----   1 root         access_bpf  0x1700006f May  8 21:12 bpf111
+crw-rw----   1 root         access_bpf  0x17000070 May  8 21:12 bpf112
+crw-rw----   1 root         access_bpf  0x17000071 May  8 21:12 bpf113
+crw-rw----   1 root         access_bpf  0x17000072 May  8 21:12 bpf114
+crw-rw----   1 root         access_bpf  0x17000073 May  8 21:12 bpf115
+crw-rw----   1 root         access_bpf  0x17000074 May  8 21:12 bpf116
+crw-rw----   1 root         access_bpf  0x17000075 May  8 21:12 bpf117
+crw-rw----   1 root         access_bpf  0x17000076 May  8 21:12 bpf118
+crw-rw----   1 root         access_bpf  0x17000077 May  8 21:12 bpf119
+crw-rw----   1 root         access_bpf  0x1700000c May  8 21:12 bpf12
+crw-rw----   1 root         access_bpf  0x17000078 May  8 21:12 bpf120
+crw-rw----   1 root         access_bpf  0x17000079 May  8 21:12 bpf121
+crw-rw----   1 root         access_bpf  0x1700007a May  8 21:12 bpf122
+crw-rw----   1 root         access_bpf  0x1700007b May  8 21:12 bpf123
+crw-rw----   1 root         access_bpf  0x1700007c May  8 21:12 bpf124
+crw-rw----   1 root         access_bpf  0x1700007d May  8 21:12 bpf125
+crw-rw----   1 root         access_bpf  0x1700007e May  8 21:12 bpf126
+crw-rw----   1 root         access_bpf  0x1700007f May  8 21:12 bpf127
+crw-rw----   1 root         access_bpf  0x17000080 May  8 21:12 bpf128
+crw-rw----   1 root         access_bpf  0x17000081 May  8 21:12 bpf129
+crw-rw----   1 root         access_bpf  0x1700000d May  8 21:12 bpf13
+crw-rw----   1 root         access_bpf  0x17000082 May  8 21:12 bpf130
+crw-rw----   1 root         access_bpf  0x17000083 May  8 21:12 bpf131
+crw-rw----   1 root         access_bpf  0x17000084 May  8 21:12 bpf132
+crw-rw----   1 root         access_bpf  0x17000085 May  8 21:12 bpf133
+crw-rw----   1 root         access_bpf  0x17000086 May  8 21:12 bpf134
+crw-rw----   1 root         access_bpf  0x17000087 May  8 21:12 bpf135
+crw-rw----   1 root         access_bpf  0x17000088 May  8 21:12 bpf136
+crw-rw----   1 root         access_bpf  0x17000089 May  8 21:12 bpf137
+crw-rw----   1 root         access_bpf  0x1700008a May  8 21:12 bpf138
+crw-rw----   1 root         access_bpf  0x1700008b May  8 21:12 bpf139
+crw-rw----   1 root         access_bpf  0x1700000e May  8 21:12 bpf14
+crw-rw----   1 root         access_bpf  0x1700008c May  8 21:12 bpf140
+crw-rw----   1 root         access_bpf  0x1700008d May  8 21:12 bpf141
+crw-rw----   1 root         access_bpf  0x1700008e May  8 21:12 bpf142
+crw-rw----   1 root         access_bpf  0x1700008f May  8 21:12 bpf143
+crw-rw----   1 root         access_bpf  0x17000090 May  8 21:12 bpf144
+crw-rw----   1 root         access_bpf  0x17000091 May  8 21:12 bpf145
+crw-rw----   1 root         access_bpf  0x17000092 May  8 21:12 bpf146
+crw-rw----   1 root         access_bpf  0x17000093 May  8 21:12 bpf147
+crw-rw----   1 root         access_bpf  0x17000094 May  8 21:12 bpf148
+crw-rw----   1 root         access_bpf  0x17000095 May  8 21:12 bpf149
+crw-rw----   1 root         access_bpf  0x1700000f May  8 21:12 bpf15
+crw-rw----   1 root         access_bpf  0x17000096 May  8 21:12 bpf150
+crw-rw----   1 root         access_bpf  0x17000097 May  8 21:12 bpf151
+crw-rw----   1 root         access_bpf  0x17000098 May  8 21:12 bpf152
+crw-rw----   1 root         access_bpf  0x17000099 May  8 21:12 bpf153
+crw-rw----   1 root         access_bpf  0x1700009a May  8 21:12 bpf154
+crw-rw----   1 root         access_bpf  0x1700009b May  8 21:12 bpf155
+crw-rw----   1 root         access_bpf  0x1700009c May  8 21:12 bpf156
+crw-rw----   1 root         access_bpf  0x1700009d May  8 21:12 bpf157
+crw-rw----   1 root         access_bpf  0x1700009e May  8 21:12 bpf158
+crw-rw----   1 root         access_bpf  0x1700009f May  8 21:12 bpf159
+crw-rw----   1 root         access_bpf  0x17000010 May  8 21:12 bpf16
+crw-rw----   1 root         access_bpf  0x170000a0 May  8 21:12 bpf160
+crw-rw----   1 root         access_bpf  0x170000a1 May  8 21:12 bpf161
+crw-rw----   1 root         access_bpf  0x170000a2 May  8 21:12 bpf162
+crw-rw----   1 root         access_bpf  0x170000a3 May  8 21:12 bpf163
+crw-rw----   1 root         access_bpf  0x170000a4 May  8 21:12 bpf164
+crw-rw----   1 root         access_bpf  0x170000a5 May  8 21:12 bpf165
+crw-rw----   1 root         access_bpf  0x170000a6 May  8 21:12 bpf166
+crw-rw----   1 root         access_bpf  0x170000a7 May  8 21:12 bpf167
+crw-rw----   1 root         access_bpf  0x170000a8 May  8 21:12 bpf168
+crw-rw----   1 root         access_bpf  0x170000a9 May  8 21:12 bpf169
+crw-rw----   1 root         access_bpf  0x17000011 May  8 21:12 bpf17
+crw-rw----   1 root         access_bpf  0x170000aa May  8 21:12 bpf170
+crw-rw----   1 root         access_bpf  0x170000ab May  8 21:12 bpf171
+crw-rw----   1 root         access_bpf  0x170000ac May  8 21:12 bpf172
+crw-rw----   1 root         access_bpf  0x170000ad May  8 21:12 bpf173
+crw-rw----   1 root         access_bpf  0x170000ae May  8 21:12 bpf174
+crw-rw----   1 root         access_bpf  0x170000af May  8 21:12 bpf175
+crw-rw----   1 root         access_bpf  0x170000b0 May  8 21:12 bpf176
+crw-rw----   1 root         access_bpf  0x170000b1 May  8 21:12 bpf177
+crw-rw----   1 root         access_bpf  0x170000b2 May  8 21:12 bpf178
+crw-rw----   1 root         access_bpf  0x170000b3 May  8 21:12 bpf179
+crw-rw----   1 root         access_bpf  0x17000012 May  8 21:12 bpf18
+crw-rw----   1 root         access_bpf  0x170000b4 May  8 21:12 bpf180
+crw-rw----   1 root         access_bpf  0x170000b5 May  8 21:12 bpf181
+crw-rw----   1 root         access_bpf  0x170000b6 May  8 21:12 bpf182
+crw-rw----   1 root         access_bpf  0x170000b7 May  8 21:12 bpf183
+crw-rw----   1 root         access_bpf  0x170000b8 May  8 21:12 bpf184
+crw-rw----   1 root         access_bpf  0x170000b9 May  8 21:12 bpf185
+crw-rw----   1 root         access_bpf  0x170000ba May  8 21:12 bpf186
+crw-rw----   1 root         access_bpf  0x170000bb May  8 21:12 bpf187
+crw-rw----   1 root         access_bpf  0x170000bc May  8 21:12 bpf188
+crw-rw----   1 root         access_bpf  0x170000bd May  8 21:12 bpf189
+crw-rw----   1 root         access_bpf  0x17000013 May  8 21:12 bpf19
+crw-rw----   1 root         access_bpf  0x170000be May  8 21:12 bpf190
+crw-rw----   1 root         access_bpf  0x170000bf May  8 21:12 bpf191
+crw-rw----   1 root         access_bpf  0x170000c0 May  8 21:12 bpf192
+crw-rw----   1 root         access_bpf  0x170000c1 May  8 21:12 bpf193
+crw-rw----   1 root         access_bpf  0x170000c2 May  8 21:12 bpf194
+crw-rw----   1 root         access_bpf  0x170000c3 May  8 21:12 bpf195
+crw-rw----   1 root         access_bpf  0x170000c4 May  8 21:12 bpf196
+crw-rw----   1 root         access_bpf  0x170000c5 May  8 21:12 bpf197
+crw-rw----   1 root         access_bpf  0x170000c6 May  8 21:12 bpf198
+crw-rw----   1 root         access_bpf  0x170000c7 May  8 21:12 bpf199
+crw-rw----   1 root         access_bpf  0x17000002 May  8 21:12 bpf2
+crw-rw----   1 root         access_bpf  0x17000014 May  8 21:12 bpf20
+crw-rw----   1 root         access_bpf  0x170000c8 May  8 21:12 bpf200
+crw-rw----   1 root         access_bpf  0x170000c9 May  8 21:12 bpf201
+crw-rw----   1 root         access_bpf  0x170000ca May  8 21:12 bpf202
+crw-rw----   1 root         access_bpf  0x170000cb May  8 21:12 bpf203
+crw-rw----   1 root         access_bpf  0x170000cc May  8 21:12 bpf204
+crw-rw----   1 root         access_bpf  0x170000cd May  8 21:12 bpf205
+crw-rw----   1 root         access_bpf  0x170000ce May  8 21:12 bpf206
+crw-rw----   1 root         access_bpf  0x170000cf May  8 21:12 bpf207
+crw-rw----   1 root         access_bpf  0x170000d0 May  8 21:12 bpf208
+crw-rw----   1 root         access_bpf  0x170000d1 May  8 21:12 bpf209
+crw-rw----   1 root         access_bpf  0x17000015 May  8 21:12 bpf21
+crw-rw----   1 root         access_bpf  0x170000d2 May  8 21:12 bpf210
+crw-rw----   1 root         access_bpf  0x170000d3 May  8 21:12 bpf211
+crw-rw----   1 root         access_bpf  0x170000d4 May  8 21:12 bpf212
+crw-rw----   1 root         access_bpf  0x170000d5 May  8 21:12 bpf213
+crw-rw----   1 root         access_bpf  0x170000d6 May  8 21:12 bpf214
+crw-rw----   1 root         access_bpf  0x170000d7 May  8 21:12 bpf215
+crw-rw----   1 root         access_bpf  0x170000d8 May  8 21:12 bpf216
+crw-rw----   1 root         access_bpf  0x170000d9 May  8 21:12 bpf217
+crw-rw----   1 root         access_bpf  0x170000da May  8 21:12 bpf218
+crw-rw----   1 root         access_bpf  0x170000db May  8 21:12 bpf219
+crw-rw----   1 root         access_bpf  0x17000016 May  8 21:12 bpf22
+crw-rw----   1 root         access_bpf  0x170000dc May  8 21:12 bpf220
+crw-rw----   1 root         access_bpf  0x170000dd May  8 21:12 bpf221
+crw-rw----   1 root         access_bpf  0x170000de May  8 21:12 bpf222
+crw-rw----   1 root         access_bpf  0x170000df May  8 21:12 bpf223
+crw-rw----   1 root         access_bpf  0x170000e0 May  8 21:12 bpf224
+crw-rw----   1 root         access_bpf  0x170000e1 May  8 21:12 bpf225
+crw-rw----   1 root         access_bpf  0x170000e2 May  8 21:12 bpf226
+crw-rw----   1 root         access_bpf  0x170000e3 May  8 21:12 bpf227
+crw-rw----   1 root         access_bpf  0x170000e4 May  8 21:12 bpf228
+crw-rw----   1 root         access_bpf  0x170000e5 May  8 21:12 bpf229
+crw-rw----   1 root         access_bpf  0x17000017 May  8 21:12 bpf23
+crw-rw----   1 root         access_bpf  0x170000e6 May  8 21:12 bpf230
+crw-rw----   1 root         access_bpf  0x170000e7 May  8 21:12 bpf231
+crw-rw----   1 root         access_bpf  0x170000e8 May  8 21:12 bpf232
+crw-rw----   1 root         access_bpf  0x170000e9 May  8 21:12 bpf233
+crw-rw----   1 root         access_bpf  0x170000ea May  8 21:12 bpf234
+crw-rw----   1 root         access_bpf  0x170000eb May  8 21:12 bpf235
+crw-rw----   1 root         access_bpf  0x170000ec May  8 21:12 bpf236
+crw-rw----   1 root         access_bpf  0x170000ed May  8 21:12 bpf237
+crw-rw----   1 root         access_bpf  0x170000ee May  8 21:12 bpf238
+crw-rw----   1 root         access_bpf  0x170000ef May  8 21:12 bpf239
+crw-rw----   1 root         access_bpf  0x17000018 May  8 21:12 bpf24
+crw-rw----   1 root         access_bpf  0x170000f0 May  8 21:12 bpf240
+crw-rw----   1 root         access_bpf  0x170000f1 May  8 21:12 bpf241
+crw-rw----   1 root         access_bpf  0x170000f2 May  8 21:12 bpf242
+crw-rw----   1 root         access_bpf  0x170000f3 May  8 21:12 bpf243
+crw-rw----   1 root         access_bpf  0x170000f4 May  8 21:12 bpf244
+crw-rw----   1 root         access_bpf  0x170000f5 May  8 21:12 bpf245
+crw-rw----   1 root         access_bpf  0x170000f6 May  8 21:12 bpf246
+crw-rw----   1 root         access_bpf  0x170000f7 May  8 21:12 bpf247
+crw-rw----   1 root         access_bpf  0x170000f8 May  8 21:12 bpf248
+crw-rw----   1 root         access_bpf  0x170000f9 May  8 21:12 bpf249
+crw-rw----   1 root         access_bpf  0x17000019 May  8 21:12 bpf25
+crw-rw----   1 root         access_bpf  0x170000fa May  8 21:12 bpf250
+crw-rw----   1 root         access_bpf  0x170000fb May  8 21:12 bpf251
+crw-rw----   1 root         access_bpf  0x170000fc May  8 21:12 bpf252
+crw-rw----   1 root         access_bpf  0x170000fd May  8 21:12 bpf253
+crw-rw----   1 root         access_bpf  0x170000fe May  8 21:12 bpf254
+crw-rw----   1 root         access_bpf  0x170000ff May  8 21:12 bpf255
+crw-rw----   1 root         access_bpf  0x1700001a May  8 21:12 bpf26
+crw-rw----   1 root         access_bpf  0x1700001b May  8 21:12 bpf27
+crw-rw----   1 root         access_bpf  0x1700001c May  8 21:12 bpf28
+crw-rw----   1 root         access_bpf  0x1700001d May  8 21:12 bpf29
+crw-rw----   1 root         access_bpf  0x17000003 May  8 21:12 bpf3
+crw-rw----   1 root         access_bpf  0x1700001e May  8 21:12 bpf30
+crw-rw----   1 root         access_bpf  0x1700001f May  8 21:12 bpf31
+crw-rw----   1 root         access_bpf  0x17000020 May  8 21:12 bpf32
+crw-rw----   1 root         access_bpf  0x17000021 May  8 21:12 bpf33
+crw-rw----   1 root         access_bpf  0x17000022 May  8 21:12 bpf34
+crw-rw----   1 root         access_bpf  0x17000023 May  8 21:12 bpf35
+crw-rw----   1 root         access_bpf  0x17000024 May  8 21:12 bpf36
+crw-rw----   1 root         access_bpf  0x17000025 May  8 21:12 bpf37
+crw-rw----   1 root         access_bpf  0x17000026 May  8 21:12 bpf38
+crw-rw----   1 root         access_bpf  0x17000027 May  8 21:12 bpf39
+crw-rw----   1 root         access_bpf  0x17000004 May  8 21:12 bpf4
+crw-rw----   1 root         access_bpf  0x17000028 May  8 21:12 bpf40
+crw-rw----   1 root         access_bpf  0x17000029 May  8 21:12 bpf41
+crw-rw----   1 root         access_bpf  0x1700002a May  8 21:12 bpf42
+crw-rw----   1 root         access_bpf  0x1700002b May  8 21:12 bpf43
+crw-rw----   1 root         access_bpf  0x1700002c May  8 21:12 bpf44
+crw-rw----   1 root         access_bpf  0x1700002d May  8 21:12 bpf45
+crw-rw----   1 root         access_bpf  0x1700002e May  8 21:12 bpf46
+crw-rw----   1 root         access_bpf  0x1700002f May  8 21:12 bpf47
+crw-rw----   1 root         access_bpf  0x17000030 May  8 21:12 bpf48
+crw-rw----   1 root         access_bpf  0x17000031 May  8 21:12 bpf49
+crw-rw----   1 root         access_bpf  0x17000005 May  8 21:12 bpf5
+crw-rw----   1 root         access_bpf  0x17000032 May  8 21:12 bpf50
+crw-rw----   1 root         access_bpf  0x17000033 May  8 21:12 bpf51
+crw-rw----   1 root         access_bpf  0x17000034 May  8 21:12 bpf52
+crw-rw----   1 root         access_bpf  0x17000035 May  8 21:12 bpf53
+crw-rw----   1 root         access_bpf  0x17000036 May  8 21:12 bpf54
+crw-rw----   1 root         access_bpf  0x17000037 May  8 21:12 bpf55
+crw-rw----   1 root         access_bpf  0x17000038 May  8 21:12 bpf56
+crw-rw----   1 root         access_bpf  0x17000039 May  8 21:12 bpf57
+crw-rw----   1 root         access_bpf  0x1700003a May  8 21:12 bpf58
+crw-rw----   1 root         access_bpf  0x1700003b May  8 21:12 bpf59
+crw-rw----   1 root         access_bpf  0x17000006 May  8 21:12 bpf6
+crw-rw----   1 root         access_bpf  0x1700003c May  8 21:12 bpf60
+crw-rw----   1 root         access_bpf  0x1700003d May  8 21:12 bpf61
+crw-rw----   1 root         access_bpf  0x1700003e May  8 21:12 bpf62
+crw-rw----   1 root         access_bpf  0x1700003f May  8 21:12 bpf63
+crw-rw----   1 root         access_bpf  0x17000040 May  8 21:12 bpf64
+crw-rw----   1 root         access_bpf  0x17000041 May  8 21:12 bpf65
+crw-rw----   1 root         access_bpf  0x17000042 May  8 21:12 bpf66
+crw-rw----   1 root         access_bpf  0x17000043 May  8 21:12 bpf67
+crw-rw----   1 root         access_bpf  0x17000044 May  8 21:12 bpf68
+crw-rw----   1 root         access_bpf  0x17000045 May  8 21:12 bpf69
+crw-rw----   1 root         access_bpf  0x17000007 May  8 21:12 bpf7
+crw-rw----   1 root         access_bpf  0x17000046 May  8 21:12 bpf70
+crw-rw----   1 root         access_bpf  0x17000047 May  8 21:12 bpf71
+crw-rw----   1 root         access_bpf  0x17000048 May  8 21:12 bpf72
+crw-rw----   1 root         access_bpf  0x17000049 May  8 21:12 bpf73
+crw-rw----   1 root         access_bpf  0x1700004a May  8 21:12 bpf74
+crw-rw----   1 root         access_bpf  0x1700004b May  8 21:12 bpf75
+crw-rw----   1 root         access_bpf  0x1700004c May  8 21:12 bpf76
+crw-rw----   1 root         access_bpf  0x1700004d May  8 21:12 bpf77
+crw-rw----   1 root         access_bpf  0x1700004e May  8 21:12 bpf78
+crw-rw----   1 root         access_bpf  0x1700004f May  8 21:12 bpf79
+crw-rw----   1 root         access_bpf  0x17000008 May  8 21:12 bpf8
+crw-rw----   1 root         access_bpf  0x17000050 May  8 21:12 bpf80
+crw-rw----   1 root         access_bpf  0x17000051 May  8 21:12 bpf81
+crw-rw----   1 root         access_bpf  0x17000052 May  8 21:12 bpf82
+crw-rw----   1 root         access_bpf  0x17000053 May  8 21:12 bpf83
+crw-rw----   1 root         access_bpf  0x17000054 May  8 21:12 bpf84
+crw-rw----   1 root         access_bpf  0x17000055 May  8 21:12 bpf85
+crw-rw----   1 root         access_bpf  0x17000056 May  8 21:12 bpf86
+crw-rw----   1 root         access_bpf  0x17000057 May  8 21:12 bpf87
+crw-rw----   1 root         access_bpf  0x17000058 May  8 21:12 bpf88
+crw-rw----   1 root         access_bpf  0x17000059 May  8 21:12 bpf89
+crw-rw----   1 root         access_bpf  0x17000009 May  8 21:12 bpf9
+crw-rw----   1 root         access_bpf  0x1700005a May  8 21:12 bpf90
+crw-rw----   1 root         access_bpf  0x1700005b May  8 21:12 bpf91
+crw-rw----   1 root         access_bpf  0x1700005c May  8 21:12 bpf92
+crw-rw----   1 root         access_bpf  0x1700005d May  8 21:12 bpf93
+crw-rw----   1 root         access_bpf  0x1700005e May  8 21:12 bpf94
+crw-rw----   1 root         access_bpf  0x1700005f May  8 21:12 bpf95
+crw-rw----   1 root         access_bpf  0x17000060 May  8 21:12 bpf96
+crw-rw----   1 root         access_bpf  0x17000061 May  8 21:12 bpf97
+crw-rw----   1 root         access_bpf  0x17000062 May  8 21:12 bpf98
+crw-rw----   1 root         access_bpf  0x17000063 May  8 21:12 bpf99
+crw-------   1 jeldonmusic  staff                0 May  9 12:26 console
+crw-rw-rw-   1 root         wheel        0x9000003 May  8 21:13 cu.AFStudio20308
+crw-rw-rw-   1 root         wheel        0x9000005 May  8 21:13 cu.Bluetooth-Incoming-Port
+crw-rw-rw-   1 root         wheel        0x9000001 May  8 21:13 cu.MungoStudio
+brw-r-----   1 root         operator     0x1000000 May  8 21:12 disk0
+brw-r-----   1 root         operator     0x1000001 May  8 21:12 disk0s1
+brw-r-----   1 root         operator     0x1000003 May  8 21:12 disk0s2
+brw-r-----   1 root         operator     0x1000002 May  8 21:12 disk0s3
+brw-r-----   1 root         operator     0x1000004 May  8 21:12 disk1
+brw-r-----   1 root         operator     0x1000006 May  8 21:12 disk1s1
+brw-r-----   1 root         operator     0x1000005 May  8 21:12 disk1s2
+brw-r-----   1 root         operator     0x1000008 May  8 21:12 disk1s3
+brw-r-----   1 root         operator     0x1000007 May  8 21:12 disk1s4
+brw-r-----   1 root         operator     0x1000009 May  8 21:12 disk2
+brw-r-----   1 root         operator     0x100000a May  8 21:12 disk2s1
+brw-r-----   1 root         operator     0x100000b May  8 21:12 disk2s2
+brw-r-----   1 root         operator     0x100000c May  8 21:12 disk3
+brw-r-----   1 root         operator     0x100000e May  8 21:12 disk3s1
+brw-r-----   1 root         operator     0x100000d May  8 21:12 disk3s2
+brw-r-----   1 root         operator     0x1000010 May  8 21:12 disk3s3
+br--r-----   1 root         operator     0x1000013 May  8 21:12 disk3s3s1
+brw-r-----   1 root         operator     0x1000011 May  8 21:12 disk3s4
+brw-r-----   1 root         operator     0x1000012 May  8 21:12 disk3s5
+brw-r-----   1 root         operator     0x100000f May  8 21:12 disk3s6
+brw-r-----   1 root         operator     0x1000014 May  9 21:47 disk4
+brw-r-----   1 root         operator     0x1000016 May  9 21:47 disk4s1
+brw-r-----   1 root         operator     0x1000015 May  9 21:47 disk4s2
+brw-r-----   1 root         operator     0x1000018 May  8 21:12 disk6
+brw-r-----   1 root         operator     0x1000019 May  8 21:12 disk6s1
+brw-r-----   1 root         operator     0x100001a May  8 21:12 disk6s2
+brw-r-----   1 root         operator     0x100001b May  8 21:12 disk7
+brw-r-----   1 root         operator     0x100001c May  8 21:12 disk7s1
+crw-rw-rw-   1 root         wheel       0x18000008 May  8 21:12 dtrace
+crw-rw-rw-   1 root         wheel       0x19000000 May  8 21:12 dtracehelper
+crw-rw-rw-   1 root         wheel                0 May  8 21:12 fbt
+dr-xr-xr-x   1 root         wheel                0 May  8 21:12 fd
+crw-r--r--   1 root         wheel        0xe000000 May  8 21:12 fsevents
+crw-------   1 root         wheel        0x6000000 May  8 21:12 klog
+crw-rw-rw-   1 root         wheel                0 May  8 21:12 lockstat
+dr-xr-xr-x   2 root         wheel               14 May  8 21:12 monotonic
+crw-rw-rw-   1 root         wheel       0x14000000 May  8 21:12 nfsclnt
+crw-rw-rw-   1 root         wheel        0x3000002 May  9 22:00 null
+crw-------   1 _logd        _logd        0x7000000 May  8 21:12 oslog
+crw-------   1 root         wheel        0x8000000 May  8 21:12 oslog_stream
+crw-------   1 root         wheel        0xd000000 May  8 21:12 pf
+crw-------   1 root         wheel        0xd000001 May  8 21:12 pfm
+crw-rw-rw-   1 root         wheel                0 May  8 21:12 profile
+crw-rw-rw-   1 root         tty          0xf000011 May  9 22:00 ptmx
+crw-rw-rw-   1 root         wheel        0x5000000 May  8 21:12 ptyp0
+crw-rw-rw-   1 root         wheel        0x5000001 May  8 21:12 ptyp1
+crw-rw-rw-   1 root         wheel        0x5000002 May  8 21:12 ptyp2
+crw-rw-rw-   1 root         wheel        0x5000003 May  8 21:12 ptyp3
+crw-rw-rw-   1 root         wheel        0x5000004 May  8 21:12 ptyp4
+crw-rw-rw-   1 root         wheel        0x5000005 May  8 21:12 ptyp5
+crw-rw-rw-   1 root         wheel        0x5000006 May  8 21:12 ptyp6
+crw-rw-rw-   1 root         wheel        0x5000007 May  8 21:12 ptyp7
+crw-rw-rw-   1 root         wheel        0x5000008 May  8 21:12 ptyp8
+crw-rw-rw-   1 root         wheel        0x5000009 May  8 21:12 ptyp9
+crw-rw-rw-   1 root         wheel        0x500000a May  8 21:12 ptypa
+crw-rw-rw-   1 root         wheel        0x500000b May  8 21:12 ptypb
+crw-rw-rw-   1 root         wheel        0x500000c May  8 21:12 ptypc
+crw-rw-rw-   1 root         wheel        0x500000d May  8 21:12 ptypd
+crw-rw-rw-   1 root         wheel        0x500000e May  8 21:12 ptype
+crw-rw-rw-   1 root         wheel        0x500000f May  8 21:12 ptypf
+crw-rw-rw-   1 root         wheel        0x5000010 May  8 21:12 ptyq0
+crw-rw-rw-   1 root         wheel        0x5000011 May  8 21:12 ptyq1
+crw-rw-rw-   1 root         wheel        0x5000012 May  8 21:12 ptyq2
+crw-rw-rw-   1 root         wheel        0x5000013 May  8 21:12 ptyq3
+crw-rw-rw-   1 root         wheel        0x5000014 May  8 21:12 ptyq4
+crw-rw-rw-   1 root         wheel        0x5000015 May  8 21:12 ptyq5
+crw-rw-rw-   1 root         wheel        0x5000016 May  8 21:12 ptyq6
+crw-rw-rw-   1 root         wheel        0x5000017 May  8 21:12 ptyq7
+crw-rw-rw-   1 root         wheel        0x5000018 May  8 21:12 ptyq8
+crw-rw-rw-   1 root         wheel        0x5000019 May  8 21:12 ptyq9
+crw-rw-rw-   1 root         wheel        0x500001a May  8 21:12 ptyqa
+crw-rw-rw-   1 root         wheel        0x500001b May  8 21:12 ptyqb
+crw-rw-rw-   1 root         wheel        0x500001c May  8 21:12 ptyqc
+crw-rw-rw-   1 root         wheel        0x500001d May  8 21:12 ptyqd
+crw-rw-rw-   1 root         wheel        0x500001e May  8 21:12 ptyqe
+crw-rw-rw-   1 root         wheel        0x500001f May  8 21:12 ptyqf
+crw-rw-rw-   1 root         wheel        0x5000020 May  8 21:12 ptyr0
+crw-rw-rw-   1 root         wheel        0x5000021 May  8 21:12 ptyr1
+crw-rw-rw-   1 root         wheel        0x5000022 May  8 21:12 ptyr2
+crw-rw-rw-   1 root         wheel        0x5000023 May  8 21:12 ptyr3
+crw-rw-rw-   1 root         wheel        0x5000024 May  8 21:12 ptyr4
+crw-rw-rw-   1 root         wheel        0x5000025 May  8 21:12 ptyr5
+crw-rw-rw-   1 root         wheel        0x5000026 May  8 21:12 ptyr6
+crw-rw-rw-   1 root         wheel        0x5000027 May  8 21:12 ptyr7
+crw-rw-rw-   1 root         wheel        0x5000028 May  8 21:12 ptyr8
+crw-rw-rw-   1 root         wheel        0x5000029 May  8 21:12 ptyr9
+crw-rw-rw-   1 root         wheel        0x500002a May  8 21:12 ptyra
+crw-rw-rw-   1 root         wheel        0x500002b May  8 21:12 ptyrb
+crw-rw-rw-   1 root         wheel        0x500002c May  8 21:12 ptyrc
+crw-rw-rw-   1 root         wheel        0x500002d May  8 21:12 ptyrd
+crw-rw-rw-   1 root         wheel        0x500002e May  8 21:12 ptyre
+crw-rw-rw-   1 root         wheel        0x500002f May  8 21:12 ptyrf
+crw-rw-rw-   1 root         wheel        0x5000030 May  8 21:12 ptys0
+crw-rw-rw-   1 root         wheel        0x5000031 May  8 21:12 ptys1
+crw-rw-rw-   1 root         wheel        0x5000032 May  8 21:12 ptys2
+crw-rw-rw-   1 root         wheel        0x5000033 May  8 21:12 ptys3
+crw-rw-rw-   1 root         wheel        0x5000034 May  8 21:12 ptys4
+crw-rw-rw-   1 root         wheel        0x5000035 May  8 21:12 ptys5
+crw-rw-rw-   1 root         wheel        0x5000036 May  8 21:12 ptys6
+crw-rw-rw-   1 root         wheel        0x5000037 May  8 21:12 ptys7
+crw-rw-rw-   1 root         wheel        0x5000038 May  8 21:12 ptys8
+crw-rw-rw-   1 root         wheel        0x5000039 May  8 21:12 ptys9
+crw-rw-rw-   1 root         wheel        0x500003a May  8 21:12 ptysa
+crw-rw-rw-   1 root         wheel        0x500003b May  8 21:12 ptysb
+crw-rw-rw-   1 root         wheel        0x500003c May  8 21:12 ptysc
+crw-rw-rw-   1 root         wheel        0x500003d May  8 21:12 ptysd
+crw-rw-rw-   1 root         wheel        0x500003e May  8 21:12 ptyse
+crw-rw-rw-   1 root         wheel        0x500003f May  8 21:12 ptysf
+crw-rw-rw-   1 root         wheel        0x5000040 May  8 21:12 ptyt0
+crw-rw-rw-   1 root         wheel        0x5000041 May  8 21:12 ptyt1
+crw-rw-rw-   1 root         wheel        0x5000042 May  8 21:12 ptyt2
+crw-rw-rw-   1 root         wheel        0x5000043 May  8 21:12 ptyt3
+crw-rw-rw-   1 root         wheel        0x5000044 May  8 21:12 ptyt4
+crw-rw-rw-   1 root         wheel        0x5000045 May  8 21:12 ptyt5
+crw-rw-rw-   1 root         wheel        0x5000046 May  8 21:12 ptyt6
+crw-rw-rw-   1 root         wheel        0x5000047 May  8 21:12 ptyt7
+crw-rw-rw-   1 root         wheel        0x5000048 May  8 21:12 ptyt8
+crw-rw-rw-   1 root         wheel        0x5000049 May  8 21:12 ptyt9
+crw-rw-rw-   1 root         wheel        0x500004a May  8 21:12 ptyta
+crw-rw-rw-   1 root         wheel        0x500004b May  8 21:12 ptytb
+crw-rw-rw-   1 root         wheel        0x500004c May  8 21:12 ptytc
+crw-rw-rw-   1 root         wheel        0x500004d May  8 21:12 ptytd
+crw-rw-rw-   1 root         wheel        0x500004e May  8 21:12 ptyte
+crw-rw-rw-   1 root         wheel        0x500004f May  8 21:12 ptytf
+crw-rw-rw-   1 root         wheel        0x5000050 May  8 21:12 ptyu0
+crw-rw-rw-   1 root         wheel        0x5000051 May  8 21:12 ptyu1
+crw-rw-rw-   1 root         wheel        0x5000052 May  8 21:12 ptyu2
+crw-rw-rw-   1 root         wheel        0x5000053 May  8 21:12 ptyu3
+crw-rw-rw-   1 root         wheel        0x5000054 May  8 21:12 ptyu4
+crw-rw-rw-   1 root         wheel        0x5000055 May  8 21:12 ptyu5
+crw-rw-rw-   1 root         wheel        0x5000056 May  8 21:12 ptyu6
+crw-rw-rw-   1 root         wheel        0x5000057 May  8 21:12 ptyu7
+crw-rw-rw-   1 root         wheel        0x5000058 May  8 21:12 ptyu8
+crw-rw-rw-   1 root         wheel        0x5000059 May  8 21:12 ptyu9
+crw-rw-rw-   1 root         wheel        0x500005a May  8 21:12 ptyua
+crw-rw-rw-   1 root         wheel        0x500005b May  8 21:12 ptyub
+crw-rw-rw-   1 root         wheel        0x500005c May  8 21:12 ptyuc
+crw-rw-rw-   1 root         wheel        0x500005d May  8 21:12 ptyud
+crw-rw-rw-   1 root         wheel        0x500005e May  8 21:12 ptyue
+crw-rw-rw-   1 root         wheel        0x500005f May  8 21:12 ptyuf
+crw-rw-rw-   1 root         wheel        0x5000060 May  8 21:12 ptyv0
+crw-rw-rw-   1 root         wheel        0x5000061 May  8 21:12 ptyv1
+crw-rw-rw-   1 root         wheel        0x5000062 May  8 21:12 ptyv2
+crw-rw-rw-   1 root         wheel        0x5000063 May  8 21:12 ptyv3
+crw-rw-rw-   1 root         wheel        0x5000064 May  8 21:12 ptyv4
+crw-rw-rw-   1 root         wheel        0x5000065 May  8 21:12 ptyv5
+crw-rw-rw-   1 root         wheel        0x5000066 May  8 21:12 ptyv6
+crw-rw-rw-   1 root         wheel        0x5000067 May  8 21:12 ptyv7
+crw-rw-rw-   1 root         wheel        0x5000068 May  8 21:12 ptyv8
+crw-rw-rw-   1 root         wheel        0x5000069 May  8 21:12 ptyv9
+crw-rw-rw-   1 root         wheel        0x500006a May  8 21:12 ptyva
+crw-rw-rw-   1 root         wheel        0x500006b May  8 21:12 ptyvb
+crw-rw-rw-   1 root         wheel        0x500006c May  8 21:12 ptyvc
+crw-rw-rw-   1 root         wheel        0x500006d May  8 21:12 ptyvd
+crw-rw-rw-   1 root         wheel        0x500006e May  8 21:12 ptyve
+crw-rw-rw-   1 root         wheel        0x500006f May  8 21:12 ptyvf
+crw-rw-rw-   1 root         wheel        0x5000070 May  8 21:12 ptyw0
+crw-rw-rw-   1 root         wheel        0x5000071 May  8 21:12 ptyw1
+crw-rw-rw-   1 root         wheel        0x5000072 May  8 21:12 ptyw2
+crw-rw-rw-   1 root         wheel        0x5000073 May  8 21:12 ptyw3
+crw-rw-rw-   1 root         wheel        0x5000074 May  8 21:12 ptyw4
+crw-rw-rw-   1 root         wheel        0x5000075 May  8 21:12 ptyw5
+crw-rw-rw-   1 root         wheel        0x5000076 May  8 21:12 ptyw6
+crw-rw-rw-   1 root         wheel        0x5000077 May  8 21:12 ptyw7
+crw-rw-rw-   1 root         wheel        0x5000078 May  8 21:12 ptyw8
+crw-rw-rw-   1 root         wheel        0x5000079 May  8 21:12 ptyw9
+crw-rw-rw-   1 root         wheel        0x500007a May  8 21:12 ptywa
+crw-rw-rw-   1 root         wheel        0x500007b May  8 21:12 ptywb
+crw-rw-rw-   1 root         wheel        0x500007c May  8 21:12 ptywc
+crw-rw-rw-   1 root         wheel        0x500007d May  8 21:12 ptywd
+crw-rw-rw-   1 root         wheel        0x500007e May  8 21:12 ptywe
+crw-rw-rw-   1 root         wheel        0x500007f May  8 21:12 ptywf
+crw-rw-rw-   1 root         wheel       0x11000000 May  9 21:30 random
+crw-r-----   1 root         operator     0x1000000 May  8 21:12 rdisk0
+crw-r-----   1 root         operator     0x1000001 May  8 21:12 rdisk0s1
+crw-r-----   1 root         operator     0x1000003 May  8 21:12 rdisk0s2
+crw-r-----   1 root         operator     0x1000002 May  8 21:12 rdisk0s3
+crw-r-----   1 root         operator     0x1000004 May  8 21:12 rdisk1
+crw-r-----   1 root         operator     0x1000006 May  8 21:12 rdisk1s1
+crw-r-----   1 root         operator     0x1000005 May  8 21:12 rdisk1s2
+crw-r-----   1 root         operator     0x1000008 May  8 21:12 rdisk1s3
+crw-r-----   1 root         operator     0x1000007 May  8 21:12 rdisk1s4
+crw-r-----   1 root         operator     0x1000009 May  8 21:12 rdisk2
+crw-r-----   1 root         operator     0x100000a May  8 21:12 rdisk2s1
+crw-r-----   1 root         operator     0x100000b May  8 21:12 rdisk2s2
+crw-r-----   1 root         operator     0x100000c May  8 21:12 rdisk3
+crw-r-----   1 root         operator     0x100000e May  8 21:12 rdisk3s1
+crw-r-----   1 root         operator     0x100000d May  8 21:12 rdisk3s2
+crw-r-----   1 root         operator     0x1000010 May  8 21:12 rdisk3s3
+cr--r-----   1 root         operator     0x1000013 May  8 21:12 rdisk3s3s1
+crw-r-----   1 root         operator     0x1000011 May  8 21:12 rdisk3s4
+crw-r-----   1 root         operator     0x1000012 May  8 21:12 rdisk3s5
+crw-r-----   1 root         operator     0x100000f May  8 21:12 rdisk3s6
+crw-r-----   1 root         operator     0x1000014 May  9 21:47 rdisk4
+crw-r-----   1 root         operator     0x1000016 May  9 21:47 rdisk4s1
+crw-r-----   1 root         operator     0x1000015 May  9 21:47 rdisk4s2
+crw-r-----   1 root         operator     0x1000018 May  8 21:12 rdisk6
+crw-r-----   1 root         operator     0x1000019 May  8 21:12 rdisk6s1
+crw-r-----   1 root         operator     0x100001a May  8 21:12 rdisk6s2
+crw-r-----   1 root         operator     0x100001b May  8 21:12 rdisk7
+crw-r-----   1 root         operator     0x100001c May  8 21:12 rdisk7s1
+lr-xr-xr-x   1 root         wheel                0 May  8 21:12 stderr -> fd/2
+lr-xr-xr-x   1 root         wheel                0 May  8 21:12 stdin -> fd/0
+lr-xr-xr-x   1 root         wheel                0 May  8 21:12 stdout -> fd/1
+crw-rw-rw-   1 root         wheel        0x2000000 May  8 21:12 tty
+crw-rw-rw-   1 root         wheel        0x9000002 May  8 21:13 tty.AFStudio20308
+crw-rw-rw-   1 root         wheel        0x9000004 May  8 21:13 tty.Bluetooth-Incoming-Port
+crw-rw-rw-   1 root         wheel        0x9000000 May  8 21:13 tty.MungoStudio
+crw-rw-rw-   1 root         wheel        0x4000000 May  8 21:12 ttyp0
+crw-rw-rw-   1 root         wheel        0x4000001 May  8 21:12 ttyp1
+crw-rw-rw-   1 root         wheel        0x4000002 May  8 21:12 ttyp2
+crw-rw-rw-   1 root         wheel        0x4000003 May  8 21:12 ttyp3
+crw-rw-rw-   1 root         wheel        0x4000004 May  8 21:12 ttyp4
+crw-rw-rw-   1 root         wheel        0x4000005 May  8 21:12 ttyp5
+crw-rw-rw-   1 root         wheel        0x4000006 May  8 21:12 ttyp6
+crw-rw-rw-   1 root         wheel        0x4000007 May  8 21:12 ttyp7
+crw-rw-rw-   1 root         wheel        0x4000008 May  8 21:12 ttyp8
+crw-rw-rw-   1 root         wheel        0x4000009 May  8 21:12 ttyp9
+crw-rw-rw-   1 root         wheel        0x400000a May  8 21:12 ttypa
+crw-rw-rw-   1 root         wheel        0x400000b May  8 21:12 ttypb
+crw-rw-rw-   1 root         wheel        0x400000c May  8 21:12 ttypc
+crw-rw-rw-   1 root         wheel        0x400000d May  8 21:12 ttypd
+crw-rw-rw-   1 root         wheel        0x400000e May  8 21:12 ttype
+crw-rw-rw-   1 root         wheel        0x400000f May  8 21:12 ttypf
+crw-rw-rw-   1 root         wheel        0x4000010 May  8 21:12 ttyq0
+crw-rw-rw-   1 root         wheel        0x4000011 May  8 21:12 ttyq1
+crw-rw-rw-   1 root         wheel        0x4000012 May  8 21:12 ttyq2
+crw-rw-rw-   1 root         wheel        0x4000013 May  8 21:12 ttyq3
+crw-rw-rw-   1 root         wheel        0x4000014 May  8 21:12 ttyq4
+crw-rw-rw-   1 root         wheel        0x4000015 May  8 21:12 ttyq5
+crw-rw-rw-   1 root         wheel        0x4000016 May  8 21:12 ttyq6
+crw-rw-rw-   1 root         wheel        0x4000017 May  8 21:12 ttyq7
+crw-rw-rw-   1 root         wheel        0x4000018 May  8 21:12 ttyq8
+crw-rw-rw-   1 root         wheel        0x4000019 May  8 21:12 ttyq9
+crw-rw-rw-   1 root         wheel        0x400001a May  8 21:12 ttyqa
+crw-rw-rw-   1 root         wheel        0x400001b May  8 21:12 ttyqb
+crw-rw-rw-   1 root         wheel        0x400001c May  8 21:12 ttyqc
+crw-rw-rw-   1 root         wheel        0x400001d May  8 21:12 ttyqd
+crw-rw-rw-   1 root         wheel        0x400001e May  8 21:12 ttyqe
+crw-rw-rw-   1 root         wheel        0x400001f May  8 21:12 ttyqf
+crw-rw-rw-   1 root         wheel        0x4000020 May  8 21:12 ttyr0
+crw-rw-rw-   1 root         wheel        0x4000021 May  8 21:12 ttyr1
+crw-rw-rw-   1 root         wheel        0x4000022 May  8 21:12 ttyr2
+crw-rw-rw-   1 root         wheel        0x4000023 May  8 21:12 ttyr3
+crw-rw-rw-   1 root         wheel        0x4000024 May  8 21:12 ttyr4
+crw-rw-rw-   1 root         wheel        0x4000025 May  8 21:12 ttyr5
+crw-rw-rw-   1 root         wheel        0x4000026 May  8 21:12 ttyr6
+crw-rw-rw-   1 root         wheel        0x4000027 May  8 21:12 ttyr7
+crw-rw-rw-   1 root         wheel        0x4000028 May  8 21:12 ttyr8
+crw-rw-rw-   1 root         wheel        0x4000029 May  8 21:12 ttyr9
+crw-rw-rw-   1 root         wheel        0x400002a May  8 21:12 ttyra
+crw-rw-rw-   1 root         wheel        0x400002b May  8 21:12 ttyrb
+crw-rw-rw-   1 root         wheel        0x400002c May  8 21:12 ttyrc
+crw-rw-rw-   1 root         wheel        0x400002d May  8 21:12 ttyrd
+crw-rw-rw-   1 root         wheel        0x400002e May  8 21:12 ttyre
+crw-rw-rw-   1 root         wheel        0x400002f May  8 21:12 ttyrf
+crw-rw-rw-   1 root         wheel        0x4000030 May  8 21:12 ttys0
+crw--w----   1 root         tty         0x10000000 May  9 21:18 ttys000
+crw--w----   1 jeldonmusic  tty         0x10000001 May  9 21:18 ttys001
+crw--w----   1 root         tty         0x10000002 May  9 21:18 ttys002
+crw--w----   1 jeldonmusic  tty         0x10000003 May  9 21:18 ttys003
+crw--w----   1 root         tty         0x10000004 May  9 21:18 ttys004
+crw--w----   1 jeldonmusic  tty         0x10000005 May  9 22:00 ttys005
+crw--w----   1 root         tty         0x10000006 May  9 21:18 ttys006
+crw--w----   1 jeldonmusic  tty         0x10000007 May  9 14:08 ttys007
+crw--w----   1 jeldonmusic  tty         0x10000008 May  9 14:08 ttys008
+crw--w----   1 jeldonmusic  tty         0x10000009 May  9 21:36 ttys009
+crw--w----   1 root         tty         0x1000000a May  9 21:18 ttys010
+crw--w----   1 jeldonmusic  tty         0x1000000b May  9 21:36 ttys011
+crw--w----   1 root         tty         0x1000000c May  9 21:18 ttys012
+crw--w----   1 jeldonmusic  tty         0x1000000d May  9 21:36 ttys013
+crw--w----   1 root         tty         0x1000000e May  9 21:29 ttys014
+crw--w----   1 jeldonmusic  tty         0x1000000f May  9 21:41 ttys015
+crw--w----   1 root         tty         0x10000010 May  9 21:37 ttys016
+crw-rw-rw-   1 root         wheel        0x4000031 May  8 21:12 ttys1
+crw-rw-rw-   1 root         wheel        0x4000032 May  8 21:12 ttys2
+crw-rw-rw-   1 root         wheel        0x4000033 May  8 21:12 ttys3
+crw-rw-rw-   1 root         wheel        0x4000034 May  8 21:12 ttys4
+crw-rw-rw-   1 root         wheel        0x4000035 May  8 21:12 ttys5
+crw-rw-rw-   1 root         wheel        0x4000036 May  8 21:12 ttys6
+crw-rw-rw-   1 root         wheel        0x4000037 May  8 21:12 ttys7
+crw-rw-rw-   1 root         wheel        0x4000038 May  8 21:12 ttys8
+crw-rw-rw-   1 root         wheel        0x4000039 May  8 21:12 ttys9
+crw-rw-rw-   1 root         wheel        0x400003a May  8 21:12 ttysa
+crw-rw-rw-   1 root         wheel        0x400003b May  8 21:12 ttysb
+crw-rw-rw-   1 root         wheel        0x400003c May  8 21:12 ttysc
+crw-rw-rw-   1 root         wheel        0x400003d May  8 21:12 ttysd
+crw-rw-rw-   1 root         wheel        0x400003e May  8 21:12 ttyse
+crw-rw-rw-   1 root         wheel        0x400003f May  8 21:12 ttysf
+crw-rw-rw-   1 root         wheel        0x4000040 May  8 21:12 ttyt0
+crw-rw-rw-   1 root         wheel        0x4000041 May  8 21:12 ttyt1
+crw-rw-rw-   1 root         wheel        0x4000042 May  8 21:12 ttyt2
+crw-rw-rw-   1 root         wheel        0x4000043 May  8 21:12 ttyt3
+crw-rw-rw-   1 root         wheel        0x4000044 May  8 21:12 ttyt4
+crw-rw-rw-   1 root         wheel        0x4000045 May  8 21:12 ttyt5
+crw-rw-rw-   1 root         wheel        0x4000046 May  8 21:12 ttyt6
+crw-rw-rw-   1 root         wheel        0x4000047 May  8 21:12 ttyt7
+crw-rw-rw-   1 root         wheel        0x4000048 May  8 21:12 ttyt8
+crw-rw-rw-   1 root         wheel        0x4000049 May  8 21:12 ttyt9
+crw-rw-rw-   1 root         wheel        0x400004a May  8 21:12 ttyta
+crw-rw-rw-   1 root         wheel        0x400004b May  8 21:12 ttytb
+crw-rw-rw-   1 root         wheel        0x400004c May  8 21:12 ttytc
+crw-rw-rw-   1 root         wheel        0x400004d May  8 21:12 ttytd
+crw-rw-rw-   1 root         wheel        0x400004e May  8 21:12 ttyte
+crw-rw-rw-   1 root         wheel        0x400004f May  8 21:12 ttytf
+crw-rw-rw-   1 root         wheel        0x4000050 May  8 21:12 ttyu0
+crw-rw-rw-   1 root         wheel        0x4000051 May  8 21:12 ttyu1
+crw-rw-rw-   1 root         wheel        0x4000052 May  8 21:12 ttyu2
+crw-rw-rw-   1 root         wheel        0x4000053 May  8 21:12 ttyu3
+crw-rw-rw-   1 root         wheel        0x4000054 May  8 21:12 ttyu4
+crw-rw-rw-   1 root         wheel        0x4000055 May  8 21:12 ttyu5
+crw-rw-rw-   1 root         wheel        0x4000056 May  8 21:12 ttyu6
+crw-rw-rw-   1 root         wheel        0x4000057 May  8 21:12 ttyu7
+crw-rw-rw-   1 root         wheel        0x4000058 May  8 21:12 ttyu8
+crw-rw-rw-   1 root         wheel        0x4000059 May  8 21:12 ttyu9
+crw-rw-rw-   1 root         wheel        0x400005a May  8 21:12 ttyua
+crw-rw-rw-   1 root         wheel        0x400005b May  8 21:12 ttyub
+crw-rw-rw-   1 root         wheel        0x400005c May  8 21:12 ttyuc
+crw-rw-rw-   1 root         wheel        0x400005d May  8 21:12 ttyud
+crw-rw-rw-   1 root         wheel        0x400005e May  8 21:12 ttyue
+crw-rw-rw-   1 root         wheel        0x400005f May  8 21:12 ttyuf
+crw-rw-rw-   1 root         wheel        0x4000060 May  8 21:12 ttyv0
+crw-rw-rw-   1 root         wheel        0x4000061 May  8 21:12 ttyv1
+crw-rw-rw-   1 root         wheel        0x4000062 May  8 21:12 ttyv2
+crw-rw-rw-   1 root         wheel        0x4000063 May  8 21:12 ttyv3
+crw-rw-rw-   1 root         wheel        0x4000064 May  8 21:12 ttyv4
+crw-rw-rw-   1 root         wheel        0x4000065 May  8 21:12 ttyv5
+crw-rw-rw-   1 root         wheel        0x4000066 May  8 21:12 ttyv6
+crw-rw-rw-   1 root         wheel        0x4000067 May  8 21:12 ttyv7
+crw-rw-rw-   1 root         wheel        0x4000068 May  8 21:12 ttyv8
+crw-rw-rw-   1 root         wheel        0x4000069 May  8 21:12 ttyv9
+crw-rw-rw-   1 root         wheel        0x400006a May  8 21:12 ttyva
+crw-rw-rw-   1 root         wheel        0x400006b May  8 21:12 ttyvb
+crw-rw-rw-   1 root         wheel        0x400006c May  8 21:12 ttyvc
+crw-rw-rw-   1 root         wheel        0x400006d May  8 21:12 ttyvd
+crw-rw-rw-   1 root         wheel        0x400006e May  8 21:12 ttyve
+crw-rw-rw-   1 root         wheel        0x400006f May  8 21:12 ttyvf
+crw-rw-rw-   1 root         wheel        0x4000070 May  8 21:12 ttyw0
+crw-rw-rw-   1 root         wheel        0x4000071 May  8 21:12 ttyw1
+crw-rw-rw-   1 root         wheel        0x4000072 May  8 21:12 ttyw2
+crw-rw-rw-   1 root         wheel        0x4000073 May  8 21:12 ttyw3
+crw-rw-rw-   1 root         wheel        0x4000074 May  8 21:12 ttyw4
+crw-rw-rw-   1 root         wheel        0x4000075 May  8 21:12 ttyw5
+crw-rw-rw-   1 root         wheel        0x4000076 May  8 21:12 ttyw6
+crw-rw-rw-   1 root         wheel        0x4000077 May  8 21:12 ttyw7
+crw-rw-rw-   1 root         wheel        0x4000078 May  8 21:12 ttyw8
+crw-rw-rw-   1 root         wheel        0x4000079 May  8 21:12 ttyw9
+crw-rw-rw-   1 root         wheel        0x400007a May  8 21:12 ttywa
+crw-rw-rw-   1 root         wheel        0x400007b May  8 21:12 ttywb
+crw-rw-rw-   1 root         wheel        0x400007c May  8 21:12 ttywc
+crw-rw-rw-   1 root         wheel        0x400007d May  8 21:12 ttywd
+crw-rw-rw-   1 root         wheel        0x400007e May  8 21:12 ttywe
+crw-rw-rw-   1 root         wheel        0x400007f May  8 21:12 ttywf
+crw-rw-rw-   1 root         wheel       0x11000001 May  8 21:12 urandom
+crw-rw-rw-   1 root         wheel        0x3000003 May  8 21:12 zero
+
+/opt:
+total 0
+drwxr-xr-x   4 root         wheel   128 Jul 26  2024 .
+drwxr-xr-x  20 root         wheel   640 May  7  2024 ..
+drwxr-xr-x  33 jeldonmusic  admin  1056 May  8 22:26 homebrew
+drwxr-xr-x   4 root         wheel   128 Jul 26  2024 vagrant
+
+/private:
+total 0
+drwxr-xr-x   6 root  wheel   192 May  8 21:12 .
+drwxr-xr-x  20 root  wheel   640 May  7  2024 ..
+drwxr-xr-x  82 root  wheel  2624 May  9 21:26 etc
+drwxr-xr-x   2 root  wheel    64 May  7  2024 tftpboot
+drwxrwxrwt  56 root  wheel  1792 May  9 22:00 tmp
+drwxr-xr-x@ 35 root  wheel  1120 May 14  2024 var
+
+/sbin:
+total 3912
+drwxr-xr-x@ 64 root  wheel     2048 May  7  2024 .
+drwxr-xr-x  20 root  wheel      640 May  7  2024 ..
+lrwxr-xr-x   1 root  wheel       68 May  7  2024 apfs_hfs_convert -> ../System/Library/Filesystems/apfs.fs/Contents/Resources/hfs_convert
+-rwxr-xr-x   1 root  wheel   154496 May  7  2024 apfs_unlockfv
+-rwxr-xr-x   1 root  wheel   137280 May  7  2024 disklabel
+-rwxr-xr-x   1 root  wheel   101168 May  7  2024 dmesg
+-rwxr-xr-x   1 root  wheel   102320 May  7  2024 dynamic_pager
+-rwxr-xr-x   1 root  wheel   172560 May  7  2024 fibreconfig
+-r-xr-xr-x   1 root  wheel   102544 May  7  2024 fsck
+lrwxr-xr-x   1 root  wheel       66 May  7  2024 fsck_apfs -> ../System/Library/Filesystems/apfs.fs/Contents/Resources/fsck_apfs
+-rwxr-xr-x   1 root  wheel   342016 May  7  2024 fsck_cs
+lrwxr-xr-x   1 root  wheel       66 May  7  2024 fsck_exfat -> /System/Library/Filesystems/exfat.fs/Contents/Resources/fsck_exfat
+lrwxr-xr-x   1 root  wheel       62 May  7  2024 fsck_hfs -> /System/Library/Filesystems/hfs.fs/Contents/Resources/fsck_hfs
+lrwxr-xr-x   1 root  wheel       66 May  7  2024 fsck_msdos -> /System/Library/Filesystems/msdos.fs/Contents/Resources/fsck_msdos
+lrwxr-xr-x   1 root  wheel       62 May  7  2024 fsck_udf -> /System/Library/Filesystems/udf.fs/Contents/Resources/fsck_udf
+-r-xr-xr-x   1 root  wheel   101344 May  7  2024 fstyp
+-r-xr-xr-x   1 root  wheel   101440 May  7  2024 fstyp_hfs
+-r-xr-xr-x   1 root  wheel   101552 May  7  2024 fstyp_msdos
+-r-xr-xr-x   1 root  wheel   101536 May  7  2024 fstyp_ntfs
+-r-xr-xr-x   1 root  wheel   101568 May  7  2024 fstyp_udf
+-rwxr-xr-x   1 root  wheel   120176 May  7  2024 halt
+-r-xr-xr-x   1 root  wheel   252912 May  7  2024 ifconfig
+-rwxr-xr-x   1 root  wheel   213168 May  7  2024 kextload
+-rwxr-xr-x   1 root  wheel   137808 May  7  2024 kextunload
+-rwxr-xr-x   1 root  wheel  1181472 May  7  2024 launchd
+-rwxr-xr-x   1 root  wheel   136240 May  7  2024 md5
+-rwxr-xr-x   1 root  wheel   118368 May  7  2024 mknod
+-r-xr-xr-x   1 root  wheel   119584 May  7  2024 mount
+-rwxr-xr-x   1 root  wheel   136640 May  7  2024 mount_9p
+lrwxr-xr-x   1 root  wheel       63 May  7  2024 mount_acfs -> /System/Library/Filesystems/acfs.fs/Contents/bin/redirection.sh
+-rwxr-xr-x   1 root  wheel   134960 May  7  2024 mount_afp
+lrwxr-xr-x   1 root  wheel       67 May  7  2024 mount_apfs -> ../System/Library/Filesystems/apfs.fs/Contents/Resources/mount_apfs
+lrwxr-xr-x   1 root  wheel       69 May  7  2024 mount_cd9660 -> /System/Library/Filesystems/cd9660.fs/Contents/Resources/mount_cd9660
+lrwxr-xr-x   1 root  wheel       69 May  7  2024 mount_cddafs -> /System/Library/Filesystems/cddafs.fs/Contents/Resources/mount_cddafs
+-r-xr-xr-x   1 root  wheel   117712 May  7  2024 mount_devfs
+lrwxr-xr-x   1 root  wheel       67 May  7  2024 mount_exfat -> /System/Library/Filesystems/exfat.fs/Contents/Resources/mount_exfat
+-r-xr-xr-x   1 root  wheel   117888 May  7  2024 mount_fdesc
+lrwxr-xr-x   1 root  wheel       63 May  7  2024 mount_ftp -> /System/Library/Filesystems/ftp.fs/Contents/Resources/mount_ftp
+lrwxr-xr-x   1 root  wheel       63 May  7  2024 mount_hfs -> /System/Library/Filesystems/hfs.fs/Contents/Resources/mount_hfs
+-rwxr-xr-x   1 root  wheel   135360 May  7  2024 mount_lifs
+lrwxr-xr-x   1 root  wheel       67 May  7  2024 mount_msdos -> /System/Library/Filesystems/msdos.fs/Contents/Resources/mount_msdos
+-rwxr-xr-x   1 root  wheel   204256 May  7  2024 mount_nfs
+-r-xr-xr-x   1 root  wheel   195200 May  7  2024 mount_smbfs
+lrwxr-xr-x   1 root  wheel       69 May  7  2024 mount_tmpfs -> ../System/Library/Filesystems/tmpfs.fs/Contents/Resources/mount_tmpfs
+lrwxr-xr-x   1 root  wheel       63 May  7  2024 mount_udf -> /System/Library/Filesystems/udf.fs/Contents/Resources/mount_udf
+lrwxr-xr-x   1 root  wheel       75 May  7  2024 mount_virtiofs -> ../System/Library/Filesystems/virtiofs.fs/Contents/Resources/mount_virtiofs
+-rwxr-xr-x   1 root  wheel   101344 May  7  2024 mount_webdav
+-rwxr-xr-x   1 root  wheel   323360 May  7  2024 mpioutil
+lrwxr-xr-x   1 root  wheel       67 May  7  2024 newfs_apfs -> ../System/Library/Filesystems/apfs.fs/Contents/Resources/newfs_apfs
+lrwxr-xr-x   1 root  wheel       67 May  7  2024 newfs_exfat -> /System/Library/Filesystems/exfat.fs/Contents/Resources/newfs_exfat
+lrwxr-xr-x   1 root  wheel       63 May  7  2024 newfs_hfs -> /System/Library/Filesystems/hfs.fs/Contents/Resources/newfs_hfs
+lrwxr-xr-x   1 root  wheel       67 May  7  2024 newfs_msdos -> /System/Library/Filesystems/msdos.fs/Contents/Resources/newfs_msdos
+lrwxr-xr-x   1 root  wheel       63 May  7  2024 newfs_udf -> /System/Library/Filesystems/udf.fs/Contents/Resources/newfs_udf
+-rwxr-xr-x   1 root  wheel   310256 May  7  2024 nfsd
+-rwxr-xr-x   1 root  wheel   101264 May  7  2024 nfsiod
+-rwxr-xr-x   1 root  wheel   100992 May  7  2024 nologin
+-r-xr-xr-x   1 root  wheel   484640 May  7  2024 pfctl
+-r-xr-xr-x   1 root  wheel   170480 May  7  2024 ping
+-r-xr-xr-x   1 root  wheel   220624 May  7  2024 ping6
+-r-xr-xr-x   1 root  wheel   135824 May  7  2024 quotacheck
+-rwxr-xr-x   1 root  wheel   120176 May  7  2024 reboot
+-r-xr-xr-x   1 root  wheel   153456 May  7  2024 route
+-rwxr-xr-x   1 root  wheel   137536 May  7  2024 shutdown
+-r-xr-xr-x   1 root  wheel   119440 May  7  2024 umount
+
+/usr:
+total 0
+drwxr-xr-x@  11 root  wheel    352 May  7  2024 .
+drwxr-xr-x   20 root  wheel    640 May  7  2024 ..
+lrwxr-xr-x    1 root  wheel     25 May  7  2024 X11 -> ../private/var/select/X11
+lrwxr-xr-x    1 root  wheel     25 May  7  2024 X11R6 -> ../private/var/select/X11
+drwxr-xr-x  985 root  wheel  31520 May  7  2024 bin
+drwxr-xr-x   32 root  wheel   1024 May  7  2024 lib
+drwxr-xr-x  363 root  wheel  11616 May  7  2024 libexec
+drwxr-xr-x   14 root  wheel    448 May  1 20:03 local
+drwxr-xr-x  230 root  wheel   7360 May  7  2024 sbin
+drwxr-xr-x   42 root  wheel   1344 May  7  2024 share
+drwxr-xr-x    5 root  wheel    160 May  7  2024 standalone
