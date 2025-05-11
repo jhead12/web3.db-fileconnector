@@ -201,15 +201,19 @@ The OrbisDB project uses Next.js for the client application and supports various
 ### Local Development
 
 1. **Standard development**:
+
    ```bash
    npm run dev
    ```
+
    This starts the server in development mode.
 
 2. **Development with auto-restart**:
+
    ```bash
    npm run dev:watch
    ```
+
    This uses nodemon to watch for file changes and restart the server automatically.
 
 3. **Debug mode**:
@@ -221,16 +225,19 @@ The OrbisDB project uses Next.js for the client application and supports various
 ### Building and Deployment
 
 1. **Build the client application**:
+
    ```bash
    npm run build
    ```
 
 2. **Start in production mode**:
+
    ```bash
    npm run start
    ```
 
 3. **Publish to npm**:
+
    ```bash
    npm run publish:npm
    ```
@@ -244,21 +251,25 @@ The OrbisDB project uses Next.js for the client application and supports various
 ### Maintenance Tasks
 
 1. **Clean Next.js build cache**:
+
    ```bash
    npm run clean
    ```
 
 2. **Clean all build artifacts and dependencies**:
+
    ```bash
    npm run clean:all
    ```
 
 3. **Format code**:
+
    ```bash
    npm run format
    ```
 
 4. **Lint code**:
+
    ```bash
    npm run lint
    ```
@@ -285,6 +296,7 @@ Ensure you have installed:
 - Node.js version 18.0.0 or later
 
 ### Windows-Specific Requirements
+
 - Windows 10/11 with WSL2 (Windows Subsystem for Linux) enabled
 - Docker Desktop for Windows with WSL2 backend
 - Git Bash or PowerShell for running commands
@@ -294,18 +306,21 @@ Ensure you have installed:
 1. Clone the repository and navigate to the project directory:
 
    **Linux/MacOS**:
+
    ```bash
    git clone https://github.com/your-repo/project.git
    cd project
    ```
-   
+
    **Windows (PowerShell)**:
+
    ```powershell
    git clone https://github.com/your-repo/project.git
    cd project
    ```
-   
+
    **Windows (Command Prompt)**:
+
    ```cmd
    git clone https://github.com/your-repo/project.git
    cd project
@@ -326,21 +341,25 @@ ceramic-one daemon --network in-memory
    Download and install from [Node.js official website](https://nodejs.org/) (version 18.0.0 or later)
 
 2. **Install Ceramic CLI**:
+
    ```bash
    npm install -g @ceramicnetwork/cli
    ```
 
 3. **Generate a DID (Decentralized Identifier)**:
+
    ```bash
    ceramic did:generate
    ```
 
 4. **Start the Ceramic daemon**:
+
    ```bash
    ceramic daemon --network inmemory
    ```
 
    For persistent storage, configure a state store:
+
    ```bash
    ceramic daemon --network mainnet --state-store=<path-to-state-store>
    ```
@@ -384,30 +403,35 @@ docker-compose exec -it ceramic-one /bin/bash
    Follow the [installation instructions](https://github.com/ceramicnetwork/cli)
 
 2. **Generate a Ceramic ID**:
-   
+
    **Linux/MacOS**:
+
    ```bash
    ceramic id
    ```
-   
+
    **Windows**:
+
    ```powershell
    ceramic id
    ```
 
 3. **Initialize OrbisDB**:
-   
+
    **Linux/MacOS**:
+
    ```bash
    pnpm run init --ceramic-id <ceramic-id>
    ```
-   
+
    **Windows**:
+
    ```powershell
    pnpm run init --ceramic-id <ceramic-id>
    ```
-   
+
    If you don't have pnpm installed, you can install it first:
+
    ```powershell
    npm install -g pnpm
    ```
@@ -422,6 +446,7 @@ docker-compose exec -it ceramic-one /bin/bash
 2. **Permission Errors**: Run PowerShell or Command Prompt as Administrator if you encounter permission issues.
 
 3. **WSL Integration**: For optimal performance on Windows, consider running Ceramic within WSL2:
+
    ```bash
    wsl
    cd /path/to/project
@@ -429,5 +454,3 @@ docker-compose exec -it ceramic-one /bin/bash
    ```
 
 4. **Docker Connection Issues**: Ensure Docker Desktop is running with WSL2 integration enabled in settings.
-
-

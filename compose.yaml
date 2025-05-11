@@ -12,7 +12,7 @@ services:
     networks:
       - appnet
     ports:
-      - "3000:3000"  # Next.js client
+      - "3000:3000" # Next.js client
     # env_file: ./client/.env  # Uncomment if .env file exists
     # If you need to connect to the server, ensure the network is shared
 
@@ -26,7 +26,7 @@ services:
     networks:
       - appnet
     ports:
-      - "7008:7008"  # Main server port as per README and Dockerfile
+      - "7008:7008" # Main server port as per README and Dockerfile
     depends_on:
       - postgres
     # env_file: ./server/.env  # Uncomment if .env file exists
@@ -42,7 +42,7 @@ services:
     networks:
       - appnet
     ports:
-      - "3001:3000"  # Expose on 3001 to avoid conflict with client
+      - "3001:3000" # Expose on 3001 to avoid conflict with client
     # env_file: ./server/ceramic-app/ceramic-app-app/.env  # Uncomment if .env file exists
     # This is a Next.js app for Ceramic ComposeDB
 
@@ -53,10 +53,10 @@ services:
     networks:
       - appnet
     ports:
-      - "5432:5432"  # Expose if you want to connect externally
+      - "5432:5432" # Expose if you want to connect externally
     environment:
-      POSTGRES_USER: user  # Set as needed, see README
-      POSTGRES_PASSWORD: password  # Set as needed, see README
+      POSTGRES_USER: user # Set as needed, see README
+      POSTGRES_PASSWORD: password # Set as needed, see README
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:

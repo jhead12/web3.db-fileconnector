@@ -1,5 +1,5 @@
 ignoredBuiltDependencies:
-  - '@scarf/scarf'
+  - "@scarf/scarf"
   - aws-sdk
   - better-sqlite3
   - bufferutil
@@ -12,4 +12,4 @@ ignoredBuiltDependencies:
   - tiny-secp256k1
   - utf-8-validate
 onlyBuiltDependencies:
-  - '@ipshipyard/node-datachannel'
+  - "@ipshipyard/node-datachannel"

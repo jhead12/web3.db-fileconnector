@@ -6,12 +6,8 @@
   "http_api": {
     "hostname": "127.0.0.1",
     "port": 7007,
-    "cors_allowed_origins": [
-      ".*"
-    ],
-    "admin_dids": [
-      "did:key:z6MkmvyTz5NGHSwNhyWfHgds9GDrcc5Rjd4rZD8swSQ9ne8K"
-    ]
+    "cors_allowed_origins": [".*"],
+    "admin_dids": ["did:key:z6MkmvyTz5NGHSwNhyWfHgds9GDrcc5Rjd4rZD8swSQ9ne8K"]
   },
   "network": {
     "id": "InMemory",

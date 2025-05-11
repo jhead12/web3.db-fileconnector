@@ -3,12 +3,8 @@
   "http-api": {
     "hostname": "127.0.0.1",
     "port": 7007,
-    "cors-allowed-origins": [
-      ".*"
-    ],
-    "admin-dids": [
-      "did:key:z6MkmvyTz5NGHSwNhyWfHgds9GDrcc5Rjd4rZD8swSQ9ne8K"
-    ]
+    "cors-allowed-origins": [".*"],
+    "admin-dids": ["did:key:z6MkmvyTz5NGHSwNhyWfHgds9GDrcc5Rjd4rZD8swSQ9ne8K"]
   },
   "ipfs": {
     "mode": "bundled"
