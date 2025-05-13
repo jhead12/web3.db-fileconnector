@@ -1,0 +1,82 @@
+# ceramic-one-config.yaml
+
+# General settings
+store-dir: ${CERAMIC_ONE_STORE_DIR:-/Users/jeldonmusic/.ceramic-one}
+db-cache-size: ${CERAMIC_ONE_DB_CACHE_SIZE:-20000}          # 20MB cache size
+db-mmap-size: ${CERAMIC_ONE_DB_MMAP_SIZE:-10737418240}       # 10GB memory mapped IO
+db-max-connections: ${CERAMIC_ONE_DB_MAX_CONNECTIONS:-8}
+db-temp-store: ${CERAMIC_ONE_DB_TEMP_STORE:-default}
+db-analysis-limit: ${CERAMIC_ONE_DB_ANALYSIS_LIMIT:-1000}
+db-optimize: ${CERAMIC_ONE_DB_OPTIMIZE:-true}
+cors-allow-origins: ${CERAMIC_ONE_CORS_ALLOW_ORIGINS:-"*"} 
+
+# Ceramic settings
+object-store-url: ${CERAMIC_ONE_OBJECT_STORE_URL:-"./ceramic-state"}
+p2p-key-dir: ${CERAMIC_ONE_P2P_KEY_DIR:-/Users/jeldonmusic/.ceramic-one}
+bind-address: ${CERAMIC_ONE_BIND_ADDRESS:-"127.0.0.1:5101"}
+swarm-addresses:
+  - ${CERAMIC_ONE_SWARM_ADDRESS_1:-"/ip4/192.168.1.1/tcp/4101"}
+  - ${CERAMIC_ONE_SWARM_ADDRESS_2:-"/ip4/192.168.1.1/udp/4101/quic-v1"}
+external-swarm-addresses:
+  - ${CERAMIC_ONE_EXTERNAL_SWARM_ADDRESS:-"https://your-external-swarm-address.com"}
+extra-ceramic-peer-addresses: ${CERAMIC_ONE_EXTRA_CERAMIC_PEER_ADDRS:-[]}
+metrics-bind-address: ${CERAMIC_ONE_METRICS_BIND_ADDRESS:-"127.0.0.1:9464"}
+metrics: ${CERAMIC_ONE_METRICS:-true}
+tracing: ${CERAMIC_ONE_TRACING:-false}
+event-validation: ${CERAMIC_ONE_EVENT_VALIDATION:-true}
+network: ${CERAMIC_ONE_NETWORK:-testnet-clay}
+authentication: ${CERAMIC_ONE_AUTHENTICATION:-true}
+p2p-transport: ${CERAMIC_ONE_P2P_TRANSPORT:-libp2p}
+local-network-id: ${CERAMIC_ONE_LOCAL_NETWORK_ID:-""}
+log-format: ${CERAMIC_ONE_LOG_FORMAT:-multi-line}
+max-conns-out: ${CERAMIC_ONE_MAX_CONNS_OUT:-2000}
+max-conns-in: ${CERAMIC_ONE_MAX_CONNS_IN:-2000}
+max-conns-pending-out: ${CERAMIC_ONE_MAX_CONNS_PENDING_OUT:-256}
+max-conns-pending-in: ${CERAMIC_ONE_MAX_CONNS_PENDING_IN:-256}
+max-conns-per-peer: ${CERAMIC_ONE_MAX_CONNS_PER_PEER:-8}
+idle-conns-timeout-ms: ${CERAMIC_ONE_IDLE_CONNS_TIMEOUT_MS:-30000}
+experimental-features: ${CERAMIC_ONE_EXPERIMENTAL_FEATURES:-true}
+deprecated-features: ${CERAMIC_ONE_DEPRECATED_FEATURES:-false}
+flight-sql-bind-address: ${CERAMIC_ONE_FLIGHT_SQL_BIND_ADDRESS:-""}
+remote-anchor-service-url: ${CERAMIC_ONE_REMOTE_ANCHOR_SERVICE_URL:-""}
+anchor-interval: ${CERAMIC_ONE_ANCHOR_INTERVAL:-3600}
+
+ethereum-rpc-urls:
+  - ${CERAMIC_ONE_ETH_RPC_URL_1:-"https://eth-mainnet.g.alchemy.com/v2/your-alchemy-key"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_2:-"https://eth-mainnet.public.blastapi.io/your-blast-api-key"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_3:-"https://rpc.ankr.com/eth"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_4:-"https://mainnet.infura.io/v3/your-infura-key"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_5:-"https://rpc.flashbots.net"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_6:-"https://rpc.ankr.com/eth"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_7:-"https://cloudflare-eth.com"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_8:-"https://eth-mainnet.g.alchemy.com/v2/your-alchemy-key"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_9:-"https://eth-mainnet.public.blastapi.io/your-blast-api-key"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_10:-"https://rpc.ankr.com/eth"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_11:-"https://mainnet.infura.io/v3/your-infura-key"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_12:-"https://rpc.flashbots.net"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_13:-"https://rpc.ankr.com/eth"}
+  - ${CERAMIC_ONE_ETH_RPC_URL_14:-"https://cloudflare-eth.com"}
+
+aggregator: ${CERAMIC_ONE_AGGREGATOR:-true}
+
+# Ceramic API Additional Configuration
+ceramic_api:
+  url: ${CERAMIC_URL:-"http://localhost:7007"}
+  instance: ${CERAMIC_INSTANCE:-"<YOUR_INSTANCE_URL>"}
+  apikey: ${CERAMIC_APIKey:-"<YOUR_API_KEY>"}
+
+# OrbisDB Configuration
+orbisdb:
+  api_url: ${ORBISDB_API_URL:-"https://rpc.ankr.com/eth_holesky/"}
+  api_key: ${ORBISDB_API_KEY:-"https://rpc.ankr.com/multichain/"}
+  chain_id: ${ORBISDB_CHAIN_ID:-17000}
+  contract_address: ${ORBISDB_CONTRACT_ADDRESS:-"0xYourOrbisDBContractAddress"}
+
+# IPFS Configuration
+ipfs:
+  bin_path: ${IPFS_PATH:-"/opt/homebrew/bin/ipfs"}
+  gateway: ${IPFS_GATEWAY:-"https://ipfs.io/ipfs/"}
+  api_url: ${IPFS_API_URL:-"https://ipfs.infura.io:5001/api/v0"}
+  api_key: ${IPFS_API_KEY:-"<YOUR_INFURA_IPFS_API_KEY>"}
+  api_secret: ${IPFS_API_SECRET:-"<YOUR_INFURA_IPFS_API_SECRET>"}
+  project_id: ${IPFS_PROJECT_ID:-"<YOUR_INFURA_IPFS_PROJECT_ID>"}

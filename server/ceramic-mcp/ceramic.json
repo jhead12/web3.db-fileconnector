@@ -1,7 +1,7 @@
 {
   "ipfs": "Bundled",
   "state_store": {
-    "LocalDirectory": "/Users/jeldonmusic/Documents/matrixblend_com/web3db-connector/server/ceramic-mcp/ceramic-state"
+    "LocalDirectory": ".server/ceramic-mcp/ceramic-state"
   },
   "http_api": {
     "hostname": "127.0.0.1",
@@ -10,7 +10,7 @@
     "admin_dids": ["did:key:z6MkmvyTz5NGHSwNhyWfHgds9GDrcc5Rjd4rZD8swSQ9ne8K"]
   },
   "network": {
-    "id": "clay",
+    "id": "testnet-clay",
     "pubsub_topic": null
   },
   "anchor": "None",
@@ -23,6 +23,8 @@
     "Ethr": {}
   },
   "node": {
+     "url": "http://127.0.0.1:7007/",
+    "network": "testnet-clay",
     "gateway": true,
     "sync_override": false,
     "stream_cache_limit": 100
