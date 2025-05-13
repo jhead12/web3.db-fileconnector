@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "ceramic daemon --network testnet-clay",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -10,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@ankr.com/ankr.js": "^0.6.0",
     "@ceramicnetwork/cli": "^6.11.0"
   }
 }

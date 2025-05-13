@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import ConfigurationSettings from "../components/ConfigurationSettings";
 import AceEditor from "react-ace";
 import "ace-builds/src-min-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-sqlserver";
-import "ace-builds/src-min-noconflict/ext-language_tools";
-import { useGlobal } from "../contexts/Global";
+import "ace-builds/src-noconflict/ext-language_tools";
 import Button from "../components/Button";
-import { STATUS, sleep } from "../utils";
+import { useGlobal } from "../contexts/Global";
 
-export default function Settings() {
+export function Settings() {
   const {
     settings,
     globalSettings,
@@ -113,4 +112,56 @@ export default function Settings() {
       )}
     </div>
   );
+}
+
+// client/pages/api/settings.js
+
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    console.log("Enter saveSettings() with:", jsonValue);
+    setStatus(STATUS.LOADING);
+    try {
+      // TODO: Check the value of this and security implications
+      const rawResponse = await fetch("/api/settings", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionJwt}`,
+        },
+        body: jsonValue,
+      });
+
+      const response = await rawResponse.json();
+      console.log("Configuration saved:", response);
+
+      if (rawResponse.status == 200) {
+        console.log(
+          "Success updating configutation with:",
+          response.updatedSettings
+        );
+        setStatus(STATUS.SUCCESS);
+        setSettings(response.updatedSettings);
+      } else {
+        alert("Error updating configuration.");
+        console.log("response:", response);
+        setStatus(STATUS.ERROR);
+        await sleep(1500);
+        setStatus(STATUS.ACTIVE);
+      }
+    } catch (e) {
+      setStatus(STATUS.ERROR);
+      await sleep(1500);
+      setStatus(STATUS.ACTIVE);
+      console.log("Error updating configuration: ", e);
+    }
+  }
+}
+async function updateConfig() {
+  try {
+    // ...your logic...
+    await sleep(1500);
+    setStatus(STATUS.ACTIVE);
+  } catch (e) {
+    console.log("Error updating configuration: ", e);
+  }
 }

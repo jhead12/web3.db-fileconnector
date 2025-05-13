@@ -4,46 +4,35 @@
 .svn/
 .hg/
 
-# 2. Node.js
+# 2. Node.js dependencies and artifacts
 node_modules/
-**/node_modules/
 npm-debug.log
 yarn-debug.log
-yarn-error.log
-pnpm-debug.log
 
-# 3. Python
+# 3. Python cache and artifacts
 __pycache__/
-**/__pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
 .coverage
 
-# 4. Build outputs
-build/
-dist/
-out/
-.next/
-**/.next/
-coverage/
-
-# 5. IDE/editor files
+# 4. IDE/editor files
 .idea/
 .vscode/
 *.swp
 *.swo
-*.sublime*
 
-# 6. Environment and secrets
-.env
-.env.*
-*.env
-config.env
-composedb.env
-*.pem
-*.key
-*.crt
+# 5. Build outputs and development artifacts
+dist/
+build/
+out/
+debug/
+*.log
+
+# 6. Test files and directories
+test/
+tests/
+*_test.go
 
 # 7. Temporary and local files
 tmp/
@@ -51,44 +40,50 @@ temp/
 *.tmp
 .local/
 local/
-.DS_Store
-**/.DS_Store
 
-# 8. Documentation and markdown
-docs/
+# 8. Environment and secret files
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.crt
+config.local.*
+*.local.yml
+
+# 9. Documentation and markdown
 *.md
 README*
-Contribute.md
+docs/
 
-# 9. Test and debug
-*.log
-debug/
-test/
-tests/
+# 10. Docker and compose files
+Dockerfile*
+docker-compose*
 
-# 10. Project-specific
-wheel
-
-# 11. Docker files (do not ignore Dockerfile or docker-compose.yml)
-# (Do not ignore Dockerfile or docker-compose.yml as per best practice)
+# 11. Project-specific and OS files
+.DS_Store
+*.bak
 
 # 12. Miscellaneous
-*.sk
+*.class
+*.test
+/vendor/
+*.cjs
 
-# 13. Ignore backup and duplicate shell scripts
-*.sh~
-* copy.sh
+# 13. Exclude backup dockerignore files
+.dockerignore.bak*
 
-# 14. Ignore public dev artifacts
-public/**/*.DS_Store
-uploads/**/*.DS_Store
+# 14. Exclude public uploads and build artifacts (if not needed in image)
+client/.next/
+client/public/uploads/
+server/logs/
+server/wheel
 
-# 15. Ignore empty log/indexing folders
-log/
-logs/
-**/log/
-**/logs/
-ceramic-indexing/
-**/ceramic-indexing/
+# 15. Exclude scripts not needed in image
+scripts/
 
-# End of .dockerignore
+# 16. Exclude bin and backup scripts
+.bin/
+
+# 17. Exclude other backup and temp files
+*~

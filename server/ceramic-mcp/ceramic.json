@@ -10,12 +10,12 @@
     "admin_dids": ["did:key:z6MkmvyTz5NGHSwNhyWfHgds9GDrcc5Rjd4rZD8swSQ9ne8K"]
   },
   "network": {
-    "id": "InMemory",
+    "id": "clay",
     "pubsub_topic": null
   },
   "anchor": "None",
   "indexing": {
-    "db": "sqlite:///Users/jeldonmusic/Documents/matrixblend_com/web3db-connector/server/ceramic-mcp/ceramic.db",
+    "db": "",
     "allow_queries_before_historical_sync": true,
     "enable_historical_sync": false
   },

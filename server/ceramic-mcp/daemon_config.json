@@ -1,5 +1,8 @@
+
 {
-  "anchor": {},
+ "anchor": {
+
+  },
   "http-api": {
     "hostname": "127.0.0.1",
     "port": 7007,
@@ -18,8 +21,11 @@
     "metrics-exporter-enabled": false
   },
   "network": {
-    "name": "inmemory"
-  },
+    "name": "testnet-clay",
+    "pubsub-topic": "ceramic-clay",
+    "bootstrap-peers": [
+      "/ipfs/12D3KooWK4JBtRGTspU3b9DGfDohNhEPmh3uEB1uhDJ2YxNVcXdmj"
+    ],
   "node": {
     "gateway": true
   },
@@ -33,3 +39,5 @@
     "enable-historical-sync": false
   }
 }
+}
+ 
