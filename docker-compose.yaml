@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  js-client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: js-client
+    restart: unless-stopped
+    networks:
+      - appnet
+    ports:
+      - "3000:3000" # Next.js client
+
+  js-server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: js-server
+    restart: unless-stopped
+    init: true
+    networks:
+      - appnet
+    ports:
+      - "7008:7008" # Main server port
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_USER: user # Set as needed
+      POSTGRES_PASSWORD: password # Set as needed
+
+  ts-ceramic-mcp-app:
+    build:
+      context: ./server/ceramic-mcp
+      dockerfile: ceramic-app-app.Dockerfile
+    container_name: ts-ceramic-mcp-app
+    restart: unless-stopped
+    init: true
+    networks:
+      - appnet
+    ports:
+      - "3001:3000" # Expose on 3001 to avoid conflict with client
+
+  postgres:
+    image: pgvector/pgvector:0.8.0-pg17
+    container_name: postgres
+    restart: unless-stopped
+    networks:
+      - appnet
+    ports:
+      - "5432:5432" # Expose if you want to connect externally
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  appnet:
+    driver: bridge
