@@ -29,7 +29,7 @@ export default class ERC721Interface {
         "ERC721 Token details - Name:",
         this.name,
         "Symbol:",
-        this.symbol
+        this.symbol,
       );
     } catch (error) {
       console.error("Error fetching token details:", error);

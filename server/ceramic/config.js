@@ -29,7 +29,7 @@ export default class Ceramic {
         cliColors.text.cyan,
         "📍 Initialized Ceramic client via dbsdk with node:",
         cliColors.reset,
-        this.node
+        this.node,
       );
 
       // Connect to Ceramic using seed
@@ -39,7 +39,7 @@ export default class Ceramic {
         cliColors.text.red,
         "Error connecting to Ceramic client:",
         cliColors.reset,
-        e
+        e,
       );
     }
   }
@@ -55,14 +55,14 @@ export default class Ceramic {
         cliColors.text.cyan,
         "📍 Connected to Ceramic via dbsdk with did:",
         cliColors.reset,
-        result.user.did
+        result.user.did,
       );
     } catch (e) {
       logger.error(
         cliColors.text.red,
         "Error connecting to OrbisDB:",
         cliColors.reset,
-        e
+        e,
       );
     }
   }

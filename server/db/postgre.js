@@ -102,7 +102,7 @@ export default class Postgre {
       cliColors.text.cyan,
       "🗄️  Initialized PostgreSQL DB with admin user:",
       cliColors.reset,
-      user
+      user,
     );
   }
 
@@ -123,7 +123,7 @@ export default class Postgre {
         host,
         port,
         slot,
-        supportsSSL
+        supportsSSL,
       );
 
       await postgre.checkReadOnlyUser(database, host, port);
@@ -133,7 +133,7 @@ export default class Postgre {
         cliColors.text.cyan,
         "🗄️  Initialized PostgreSQL DB with admin user:",
         cliColors.reset,
-        user
+        user,
       );
 
       return postgre;
@@ -144,7 +144,7 @@ export default class Postgre {
         cliColors.reset,
         user,
         ":",
-        err
+        err,
       );
 
       throw err;
@@ -166,20 +166,20 @@ export default class Postgre {
     if (!readOnlyUserExists) {
       try {
         await client.query(
-          `CREATE USER ${readOnlyUsername} WITH PASSWORD '${readOnlyPassword}';`
+          `CREATE USER ${readOnlyUsername} WITH PASSWORD '${readOnlyPassword}';`,
         );
         logger.debug(
           cliColors.text.cyan,
           "👁️  Read-only user created with:",
           cliColors.reset,
-          readOnlyUsername
+          readOnlyUsername,
         );
       } catch (e) {
         logger.error(
           cliColors.text.red,
           "👁️  Error creating read-only user:",
           cliColors.reset,
-          e.stack
+          e.stack,
         );
       }
     }
@@ -187,80 +187,80 @@ export default class Postgre {
     // Step 2: Grant connect permission on the database
     try {
       await client.query(
-        `GRANT CONNECT ON DATABASE ${database} TO ${readOnlyUsername};`
+        `GRANT CONNECT ON DATABASE ${database} TO ${readOnlyUsername};`,
       );
       logger.debug(
         cliColors.text.cyan,
         "👁️  Granting connect permission to read-only user:",
         cliColors.reset,
-        readOnlyUsername
+        readOnlyUsername,
       );
     } catch (e) {
       logger.error(
         cliColors.text.red,
         "👁️  Error granting connect to read-only user:",
         cliColors.reset,
-        e.stack
+        e.stack,
       );
     }
 
     // Step 3: Grant usage permission on the schema
     try {
       await client.query(
-        `GRANT USAGE ON SCHEMA public TO ${readOnlyUsername};`
+        `GRANT USAGE ON SCHEMA public TO ${readOnlyUsername};`,
       );
       logger.debug(
         cliColors.text.cyan,
         "👁️  Granting usage permission on schema to read-only user:",
         cliColors.reset,
-        readOnlyUsername
+        readOnlyUsername,
       );
     } catch (e) {
       logger.error(
         cliColors.text.red,
         "👁️  Error granting usage permission on schema to read-only user:",
         cliColors.reset,
-        e.stack
+        e.stack,
       );
     }
 
     // Step 4: Grant select permission on all tables in the schema
     try {
       await client.query(
-        `GRANT SELECT ON ALL TABLES IN SCHEMA public TO ${readOnlyUsername};`
+        `GRANT SELECT ON ALL TABLES IN SCHEMA public TO ${readOnlyUsername};`,
       );
       logger.debug(
         cliColors.text.cyan,
         "👁️  Granting select permission on all tables to read-only user:",
         cliColors.reset,
-        readOnlyUsername
+        readOnlyUsername,
       );
     } catch (e) {
       logger.error(
         cliColors.text.red,
         "👁️  Error granting select permission on all tables to read-only user:",
         cliColors.reset,
-        e.stack
+        e.stack,
       );
     }
 
     // Step 5: Make the privileges effective immediately for new tables
     try {
       await client.query(
-        `ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO ${readOnlyUsername};`
+        `ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO ${readOnlyUsername};`,
       );
       logger.debug(
         cliColors.text.cyan,
         "👁️  Applying privileges to read-only user:",
         cliColors.reset,
-        readOnlyUsername
+        readOnlyUsername,
       );
     } catch (e) {
       logger.error(
         cliColors.text.red,
         "👁️  Error applying privileges to read-only user:",
         cliColors.reset,
-        e.stack
+        e.stack,
       );
     }
 
@@ -280,7 +280,7 @@ export default class Postgre {
       cliColors.text.cyan,
       "🗄️  Initialized read-only db pool with: ",
       cliColors.reset,
-      readOnlyUsername
+      readOnlyUsername,
     );
   }
 
@@ -338,7 +338,7 @@ export default class Postgre {
     const client = await this.adminPool.connect();
     try {
       const result = await client.query(
-        `SELECT name, default_version as version, installed_version FROM pg_available_extensions;`
+        `SELECT name, default_version as version, installed_version FROM pg_available_extensions;`,
       );
 
       return result.rows.map(({ name, version, installed_version }) => {
@@ -501,11 +501,11 @@ export default class Postgre {
 
       inputTypeDefs[`${typeName}Filter`] = this.createFilterInputType(
         typeName,
-        fields
+        fields,
       );
       orderByTypeDefs[`${typeName}OrderBy`] = this.createOrderByInputType(
         typeName,
-        fields
+        fields,
       );
     }
 
@@ -574,7 +574,7 @@ export default class Postgre {
       dbSchema,
       finalTypeDefs,
       inputTypeDefs,
-      orderByTypeDefs
+      orderByTypeDefs,
     );
 
     // Return the fully constructed GraphQL schema
@@ -594,7 +594,7 @@ export default class Postgre {
     dbSchema,
     finalTypeDefs,
     inputTypeDefs,
-    orderByTypeDefs
+    orderByTypeDefs,
   ) {
     const queryFields = {};
     Object.entries(dbSchema).forEach(([modelId]) => {
@@ -622,17 +622,17 @@ export default class Postgre {
                     // Vector similarity query
                     const field_name = field.replace("_near", "");
                     variables.push(
-                      `${field_name} <=> $${index + 1} AS ${field_name}_simil`
+                      `${field_name} <=> $${index + 1} AS ${field_name}_simil`,
                     );
                     params.push(`[${value.join(",")}]`);
                   } else if (Array.isArray(value)) {
                     whereClauses.push(
-                      `${field} IN (${value.map((v, i) => `$${index + i + 1}`).join(", ")})`
+                      `${field} IN (${value.map((v, i) => `$${index + i + 1}`).join(", ")})`,
                     );
                     params.push(...value);
                   } else if (field.endsWith("_eq")) {
                     whereClauses.push(
-                      `${field.replace("_eq", "")} = $${index + 1}`
+                      `${field.replace("_eq", "")} = $${index + 1}`,
                     );
                     params.push(value);
                   } else if (typeof value === "string" && value.includes("%")) {
@@ -640,47 +640,47 @@ export default class Postgre {
                     params.push(value);
                   } else if (field.endsWith("_eq")) {
                     whereClauses.push(
-                      `${field.replace("_eq", "")} = $${index + 1}`
+                      `${field.replace("_eq", "")} = $${index + 1}`,
                     );
                     params.push(value);
                   } else if (field.endsWith("_ne")) {
                     whereClauses.push(
-                      `${field.replace("_ne", "")} != $${index + 1}`
+                      `${field.replace("_ne", "")} != $${index + 1}`,
                     );
                     params.push(value);
                   } else if (field.endsWith("_gt")) {
                     whereClauses.push(
-                      `${field.replace("_gt", "")} > $${index + 1}`
+                      `${field.replace("_gt", "")} > $${index + 1}`,
                     );
                     params.push(value);
                   } else if (field.endsWith("_lt")) {
                     whereClauses.push(
-                      `${field.replace("_lt", "")} < $${index + 1}`
+                      `${field.replace("_lt", "")} < $${index + 1}`,
                     );
                     params.push(value);
                   } else if (field.endsWith("_gte")) {
                     whereClauses.push(
-                      `${field.replace("_gte", "")} >= $${index + 1}`
+                      `${field.replace("_gte", "")} >= $${index + 1}`,
                     );
                     params.push(value);
                   } else if (field.endsWith("_lte")) {
                     whereClauses.push(
-                      `${field.replace("_lte", "")} <= $${index + 1}`
+                      `${field.replace("_lte", "")} <= $${index + 1}`,
                     );
                     params.push(value);
                   } else if (field.endsWith("_like")) {
                     whereClauses.push(
-                      `${field.replace("_like", "")} LIKE $${index + 1}`
+                      `${field.replace("_like", "")} LIKE $${index + 1}`,
                     );
                     params.push(value);
                   } else if (field.endsWith("_in")) {
                     whereClauses.push(
-                      `${field.replace("_in", "")} IN (${value.map((v, i) => `$${index + i + 1}`).join(", ")})`
+                      `${field.replace("_in", "")} IN (${value.map((v, i) => `$${index + i + 1}`).join(", ")})`,
                     );
                     params.push(...value);
                   } else if (field.endsWith("_nin")) {
                     whereClauses.push(
-                      `${field.replace("_nin", "")} NOT IN (${value.map((v, i) => `$${index + i + 1}`).join(", ")})`
+                      `${field.replace("_nin", "")} NOT IN (${value.map((v, i) => `$${index + i + 1}`).join(", ")})`,
                     );
                     params.push(...value);
                   } else {
@@ -723,7 +723,7 @@ export default class Postgre {
     const values = Object.values(variables).map((value) =>
       typeof value === "object" && value !== null
         ? JSON.stringify(value)
-        : value
+        : value,
     );
 
     const updateFields = fields.filter((field) => field !== "stream_id");
@@ -784,7 +784,7 @@ export default class Postgre {
         cliColors.text.cyan,
         " in ",
         cliColors.reset,
-        tableName
+        tableName,
       );
       return true;
     } catch (e) {
@@ -799,7 +799,7 @@ export default class Postgre {
           console.error(
             `Error inserting stream ${variables.stream_id}`,
             `Reason: Error indexing model: ${model}`,
-            err
+            err,
           );
           return false;
         }
@@ -811,7 +811,7 @@ export default class Postgre {
           `Error inserting stream ${variables.stream_id}`,
           cliColors.reset,
           ` : in ${tableName}`,
-          e.message
+          e.message,
         );
       }
     }
@@ -856,12 +856,12 @@ export default class Postgre {
         await this.createTable(
           table.model,
           table.fields,
-          table.uniqueFormattedTitle
+          table.uniqueFormattedTitle,
         );
       } catch (err) {
         console.error(
           `Error bootstrapping table ${table.title || table.uniqueFormattedTitle}: `,
-          err
+          err,
         );
       }
     }
@@ -881,7 +881,7 @@ export default class Postgre {
     if (!content?.schema?.properties) {
       logger.debug(
         "This stream is either not valid or not a supported model:",
-        content
+        content,
       );
 
       return false;
@@ -910,7 +910,7 @@ export default class Postgre {
       fields,
       uniqueFormattedTitle,
       callback,
-      postgresIndexes
+      postgresIndexes,
     );
 
     await this.upsertRaw("kh4q0ozorrgaq2mezktnrmdwleo1d", {
@@ -932,7 +932,7 @@ export default class Postgre {
     fields,
     uniqueFormattedTitle,
     callback,
-    indexes = []
+    indexes = [],
   ) {
     console.log("Enter createTable for model:", model);
     // Construct the columns part of the SQL statement
@@ -984,7 +984,7 @@ ${indexes
         cliColors.text.cyan,
         `🧩 Created table:`,
         cliColors.reset,
-        uniqueFormattedTitle
+        uniqueFormattedTitle,
       );
 
       return true;
@@ -999,7 +999,7 @@ ${indexes
         cliColors.text.red,
         "Error creating new table.",
         cliColors.reset,
-        err.stack
+        err.stack,
       );
 
       return false;
@@ -1045,7 +1045,7 @@ ${indexes
         cliColors.text.red,
         "❌ Error checking table existence:",
         cliColors.reset,
-        e
+        e,
       );
       return false;
     }
@@ -1112,7 +1112,7 @@ ${indexes
         cliColors.text.red,
         `❌ Error executing schema query:`,
         cliColors.reset,
-        e.message
+        e.message,
       );
       return false;
     } finally {
@@ -1140,7 +1140,7 @@ ${indexes
         cliColors.text.red,
         `❌ Error executing query:`,
         cliColors.reset,
-        e.message
+        e.message,
       );
       error = e.message;
     } finally {
@@ -1169,7 +1169,7 @@ ${indexes
         replacementValue = originalTableName;
       }
       logger.debug(
-        "Switching " + originalTableName + " with " + replacementValue
+        "Switching " + originalTableName + " with " + replacementValue,
       );
       const regex = new RegExp(`\\b${originalTableName}\\b`, "g");
       resultSql = resultSql.replace(regex, replacementValue);
@@ -1243,7 +1243,7 @@ ${indexes
 
       const customDefinition = await this.parseCustomFieldDefinition(
         key,
-        value
+        value,
       );
 
       if (customDefinition) {
@@ -1309,7 +1309,7 @@ ${indexes
 
     for (const ext of requiredExtensions) {
       const exists = availableExtensions.find(
-        (extension) => extension.name === ext
+        (extension) => extension.name === ext,
       );
 
       if (!exists) {
@@ -1322,7 +1322,7 @@ ${indexes
           console.log(
             "Enabled extension:",
             exists.name,
-            "| Refreshing extension list..."
+            "| Refreshing extension list...",
           );
           availableExtensions = await this.fetchExtensions();
         } catch (e) {
@@ -1341,7 +1341,7 @@ ${indexes
     }
 
     const customDefinitionObject = definition.examples.find(
-      (value) => typeof value === "object" && "x-orbisdb" in value
+      (value) => typeof value === "object" && "x-orbisdb" in value,
     );
     if (!customDefinitionObject) {
       return false;
@@ -1356,7 +1356,7 @@ ${indexes
     }
 
     const extensionSupport = await this.#checkExtensionsRequirement(
-      customDefinition.extensions || []
+      customDefinition.extensions || [],
     );
 
     let customIndex;

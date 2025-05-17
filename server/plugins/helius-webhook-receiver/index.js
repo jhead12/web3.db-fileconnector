@@ -74,7 +74,7 @@ export default class HeliusWebhookReceiver {
           const dataBuffer = Buffer.from(
             data.buffer,
             data.byteOffset,
-            data.byteLength
+            data.byteLength,
           );
 
           // Decode instruction using the idl
@@ -114,7 +114,7 @@ export default class HeliusWebhookReceiver {
             } catch (e) {
               logger.error(
                 "ix Error decoding data:" + instruction.data + ":",
-                e
+                e,
               );
             }
           }

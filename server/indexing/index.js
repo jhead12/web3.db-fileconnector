@@ -19,12 +19,12 @@ export default class IndexingService {
     databases,
     hookHandler,
     server,
-    is_shared
+    is_shared,
   ) {
     logger.info(
       cliColors.text.cyan,
       "🔗 Initialized indexing service.",
-      cliColors.reset
+      cliColors.reset,
     );
     this.ceramic = globalCeramic;
     this.database = globalDatabase;
@@ -59,13 +59,13 @@ export default class IndexingService {
         this.plugins.length,
         cliColors.text.green,
         " plugin(s).",
-        cliColors.reset
+        cliColors.reset,
       );
     } else {
       logger.info(
         cliColors.text.yellow,
         "🤖 There wasn't any plugin to initialize.",
-        cliColors.reset
+        cliColors.reset,
       );
     }
 
@@ -85,7 +85,7 @@ export default class IndexingService {
       cliColors.text.cyan,
       "for context: ",
       cliColors.reset,
-      plugin.context
+      plugin.context,
     );
 
     // Manage hooks declared by plugins
@@ -96,7 +96,7 @@ export default class IndexingService {
           plugin.id,
           plugin.uuid,
           plugin.context,
-          handler
+          handler,
         );
       }
     }
@@ -108,10 +108,10 @@ export default class IndexingService {
       cliColors.text.cyan,
       "👀 Subscribed to Ceramic node updates: ",
       cliColors.reset,
-      this.ceramic.node
+      this.ceramic.node,
     );
     this.eventSource = new EventSource(
-      this.ceramic.node + "api/v0/feed/aggregation/documents"
+      this.ceramic.node + "api/v0/feed/aggregation/documents",
     );
 
     this.eventSource.addEventListener("message", (event) => {
@@ -126,7 +126,7 @@ export default class IndexingService {
               cliColors.text.cyan,
               "👀 Discovered new stream:",
               cliColors.reset,
-              parsedData.commitId.baseID?.toString()
+              parsedData.commitId.baseID?.toString(),
             );
             this.indexStream({ stream: parsedData });
             break;
@@ -136,7 +136,7 @@ export default class IndexingService {
               cliColors.text.cyan,
               "👀 Update discovered for stream:",
               cliColors.reset,
-              parsedData.commitId.baseID?.toString()
+              parsedData.commitId.baseID?.toString(),
             );
             this.indexStream({ stream: parsedData });
             break;
@@ -146,7 +146,7 @@ export default class IndexingService {
               cliColors.text.cyan,
               "👀 Detected anchoring for stream:",
               cliColors.reset,
-              parsedData.commitId.baseID?.toString()
+              parsedData.commitId.baseID?.toString(),
             );
             break;
         }
@@ -155,7 +155,7 @@ export default class IndexingService {
           cliColors.text.red,
           "Error parsing the Ceramic event:",
           e,
-          cliColors.reset
+          cliColors.reset,
         );
       }
     });
@@ -165,7 +165,7 @@ export default class IndexingService {
         cliColors.text.red,
         "🛑 Error received from Ceramic node (double check your settings and that your Ceramic node is alive): ",
         cliColors.reset,
-        error
+        error,
       );
     });
   }
@@ -175,7 +175,7 @@ export default class IndexingService {
     logger.info(
       cliColors.text.cyan,
       "🤖 Resetting all plugins.",
-      cliColors.reset
+      cliColors.reset,
     );
 
     // Loop through all plugins instances and stop them
@@ -223,7 +223,7 @@ export default class IndexingService {
       logger.debug(
         cliColors.text.cyan,
         "🛑 Unsubscribed from Ceramic node updates.",
-        cliColors.reset
+        cliColors.reset,
       );
     }
 
@@ -231,14 +231,14 @@ export default class IndexingService {
     console.log(
       cliColors.text.green,
       "Indexing service stopped successfully.",
-      cliColors.reset
+      cliColors.reset,
     );
   }
 
   async requestStreamIndexing(stream_id, slots = []) {
     const stream = await ModelInstanceDocument.load(
       this.ceramic.client,
-      stream_id
+      stream_id,
     );
 
     return this.indexStream({ stream }, slots);
@@ -251,7 +251,7 @@ export default class IndexingService {
         cliColors.text.red,
         "Error indexing a new stream:",
         cliColors.reset,
-        " stream details are needed to index a stream."
+        " stream details are needed to index a stream.",
       );
       return;
     }
@@ -265,7 +265,7 @@ export default class IndexingService {
         cliColors.text.red,
         "Error retrieving the StreamID for this stream:",
         cliColors.reset,
-        e
+        e,
       );
     }
 
@@ -300,21 +300,21 @@ export default class IndexingService {
         const { isValid } = await this.hookHandler.executeHook(
           "validate",
           processedData,
-          context
+          context,
         );
         if (isValid == false) {
           return logger.debug(
             cliColors.text.red,
             "❌ Stream is not valid, don't index:",
             cliColors.reset,
-            streamId
+            streamId,
           );
         } else {
           // Will execute all of the "metadata" plugins and return a pluginsData object which will contain all of the metadata added by the different plugins
           const { pluginsData } = await this.hookHandler.executeHook(
             "add_metadata",
             processedData,
-            context
+            context,
           );
 
           // Add additional fields to the content which will be saved in the database
@@ -332,7 +332,7 @@ export default class IndexingService {
               new Set([
                 ...requestingSlots,
                 ...(findSlotsWithContext(context) || []),
-              ])
+              ]),
             );
 
             logger.debug("slots:", slots);
@@ -343,7 +343,7 @@ export default class IndexingService {
                 await this.databases[slot].upsert(
                   model,
                   insertedContent,
-                  pluginsData
+                  pluginsData,
                 );
               } else {
                 logger.error(`Upsert method not found for slot: ${slot}`);
@@ -361,7 +361,7 @@ export default class IndexingService {
               model,
               pluginsData,
             },
-            context
+            context,
           );
         }
       }
@@ -370,7 +370,7 @@ export default class IndexingService {
         cliColors.text.red,
         "Error indexing stream:",
         cliColors.reset,
-        e
+        e,
       );
     }
   }
@@ -386,7 +386,7 @@ export const JsonAsString = new Type(
       return context.failure();
     }
   },
-  (commitID) => JSON.stringify(commitID)
+  (commitID) => JSON.stringify(commitID),
 );
 
 export const AggregationDocument = type({

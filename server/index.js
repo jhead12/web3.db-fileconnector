@@ -61,7 +61,7 @@ async function startServer(databases) {
     !fs.existsSync(path.resolve(__dirname, "../client/.next/BUILD_ID"))
   ) {
     logger.warn(
-      "Running in production mode with no NextJS build. Running the build..."
+      "Running in production mode with no NextJS build. Running the build...",
     );
 
     try {
@@ -72,7 +72,7 @@ async function startServer(databases) {
     }
 
     logger.info(
-      "Successfully built the NextJS app and ready to serve in production."
+      "Successfully built the NextJS app and ready to serve in production.",
     );
   }
 
@@ -133,7 +133,7 @@ async function startServer(databases) {
     cliColors.text.cyan,
     "📞 OrbisDB UI ready on",
     cliColors.reset,
-    hostInformation
+    hostInformation,
   );
 }
 
@@ -157,7 +157,7 @@ export async function startIndexing() {
     globalCeramic = new Ceramic(
       globalCeramicConfig.node,
       serverUrl,
-      globalSeed
+      globalSeed,
     );
 
     /** Instantiate the global database to use which should be saved in the "orbisdb-settings.json" file */
@@ -167,11 +167,11 @@ export async function startIndexing() {
       globalDbConfig.password,
       globalDbConfig.host,
       globalDbConfig.port,
-      "global"
+      "global",
     );
   } else {
     logger.error(
-      "Couldn't init OrbisDB because configuration isn't setup yet."
+      "Couldn't init OrbisDB because configuration isn't setup yet.",
     );
     //return;
   }
@@ -203,9 +203,9 @@ export async function startIndexing() {
                 globalDbConfig.password,
                 globalDbConfig.host,
                 globalDbConfig.port,
-                key
-              )
-            )
+                key,
+              ),
+            ),
           );
 
           /** Instantiate the Ceramic object with node's url from config's slot */
@@ -217,7 +217,7 @@ export async function startIndexing() {
           logger.error(
             "Couldn't init IndexingService for " +
               key +
-              " because configuration isn't setup yet."
+              " because configuration isn't setup yet.",
           );
         }
       }
@@ -252,7 +252,7 @@ export async function startIndexing() {
       databases, // Database instance to use
       hookHandler, // Hookhandler
       global.server,
-      settings.is_shared ? settings.is_shared : false
+      settings.is_shared ? settings.is_shared : false,
     );
 
     /** Subscribe to streams created on Mainnet */

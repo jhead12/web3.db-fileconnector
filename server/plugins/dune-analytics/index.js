@@ -91,7 +91,7 @@ export default class DuneAnalyticsPlugin {
         FROM information_schema.columns
         WHERE table_schema = 'public' AND table_name = $1
       `,
-        [this.model_id]
+        [this.model_id],
       );
 
       this.schema = result?.data?.rows.map((row) => ({
@@ -160,7 +160,7 @@ export default class DuneAnalyticsPlugin {
         FROM ${this.model_id}
         WHERE indexed_at > $1 AND _metadata_context = $2
       `,
-        [latestExecTimestamp, this.context]
+        [latestExecTimestamp, this.context],
       );
     } catch (e) {
       console.log("Error loading results with orbisdb:", e);
@@ -171,7 +171,7 @@ export default class DuneAnalyticsPlugin {
     if (results?.data?.rows && results.data.rows.length > 0) {
       // Ensure the first row matches the schema structure
       const fittedRows = results.data.rows.map((row) =>
-        this.fitStreamToSchema(row, this.schema)
+        this.fitStreamToSchema(row, this.schema),
       );
 
       // Convert the JSON object to CSV
@@ -202,7 +202,7 @@ export default class DuneAnalyticsPlugin {
           fs.writeFileSync(
             timestampFilePath,
             JSON.stringify(timestamps, null, 2),
-            "utf8"
+            "utf8",
           );
         }
       } catch (err) {
@@ -218,7 +218,7 @@ export default class DuneAnalyticsPlugin {
       }
     } else {
       console.log(
-        `There wasn't any stream to upload to Dune (created after timestamp ${latestExecTimestamp}).`
+        `There wasn't any stream to upload to Dune (created after timestamp ${latestExecTimestamp}).`,
       );
       return {
         status: 300,

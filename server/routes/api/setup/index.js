@@ -74,7 +74,7 @@ export default async function (server, opts) {
         if (presets && presets.length > 0) {
           console.log("presets:", presets);
           await Promise.all(
-            presets.map((preset) => enablePreset(preset, adminDid))
+            presets.map((preset) => enablePreset(preset, adminDid)),
           );
           console.log("Presets enabled for shared instance:", presets);
         }

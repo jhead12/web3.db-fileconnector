@@ -35,14 +35,14 @@ export default async function (server, opts) {
       __dirname,
       "../plugins",
       pluginId,
-      "README.md"
+      "README.md",
     );
 
     fs.readFile(readmePath, "utf8", (err, data) => {
       if (err) {
         if (err.code === "ENOENT") {
           console.log(
-            "README file not found for " + pluginId + " / path:" + readmePath
+            "README file not found for " + pluginId + " / path:" + readmePath,
           );
           return res.status(404).send();
         } else {
@@ -76,7 +76,7 @@ export default async function (server, opts) {
       } catch (error) {
         logger.error(error);
         return res.internalServerError(
-          `Internal server error while loading plugin ${plugin_id}.`
+          `Internal server error while loading plugin ${plugin_id}.`,
         );
       }
     });
@@ -91,7 +91,7 @@ export default async function (server, opts) {
         // If no plugin matches the provided id, send an appropriate response
         if (!pluginDetails) {
           return res.notFound(
-            `Plugin instance with id "${plugin_uuid}" not found.`
+            `Plugin instance with id "${plugin_uuid}" not found.`,
           );
         }
 
@@ -108,7 +108,7 @@ export default async function (server, opts) {
       } catch (error) {
         logger.error(error);
         return res.internalServerError(
-          `Internal server error while loading plugin ${plugin_uuid}.`
+          `Internal server error while loading plugin ${plugin_uuid}.`,
         );
       }
     });
@@ -120,7 +120,7 @@ export default async function (server, opts) {
 
       const { updatedSettings, pluginMessage, error } = await installPlugin(
         plugin,
-        adminDid
+        adminDid,
       );
 
       if (error) {
@@ -151,7 +151,7 @@ export default async function (server, opts) {
 
         // Find the plugin by plugin_id
         const pluginIndex = settings.plugins?.findIndex(
-          (plugin) => plugin.plugin_id === plugin_id
+          (plugin) => plugin.plugin_id === plugin_id,
         );
 
         if (pluginIndex === -1) {
@@ -166,7 +166,7 @@ export default async function (server, opts) {
           settings.plugins[pluginIndex]?.contexts
         ) {
           contextIndex = settings.plugins[pluginIndex].contexts.findIndex(
-            (c) => c.uuid === uuid
+            (c) => c.uuid === uuid,
           );
         }
 
@@ -250,11 +250,11 @@ export default async function (server, opts) {
 
         // TODO: Find plugin in settings.plugins using the plugin_id and uuid and delete it
         const pluginIndex = settings.plugins.findIndex(
-          (plugin) => plugin.plugin_id === plugin_id
+          (plugin) => plugin.plugin_id === plugin_id,
         );
         if (pluginIndex !== -1) {
           const contextIndex = settings.plugins[pluginIndex].contexts.findIndex(
-            (context) => context.uuid === uuid
+            (context) => context.uuid === uuid,
           );
 
           if (contextIndex !== -1) {
@@ -283,7 +283,7 @@ export default async function (server, opts) {
       } catch (err) {
         logger.error(err);
         return res.internalServerError(
-          "Failed to remove plugin and update settings."
+          "Failed to remove plugin and update settings.",
         );
       }
     });
@@ -310,7 +310,7 @@ export default async function (server, opts) {
       }
 
       return res.notFound(
-        `Couldn't access route (${reqMethod}:${plugin_route}), make sure that the plugin (${plugin_uuid}) is properly installed and the route is exposed.`
+        `Couldn't access route (${reqMethod}:${plugin_route}), make sure that the plugin (${plugin_uuid}) is properly installed and the route is exposed.`,
       );
     },
   });

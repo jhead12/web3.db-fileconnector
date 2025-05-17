@@ -9,20 +9,20 @@ export async function enablePreset(type, slot) {
   if (slot) {
     console.log(
       "global.indexingService.databases[slot]:",
-      global.indexingService.databases[slot]
+      global.indexingService.databases[slot],
     );
     db = global.indexingService.databases[slot];
   } else {
     console.log(
       "global.indexingService.database:",
-      global.indexingService.database
+      global.indexingService.database,
     );
     db = global.indexingService.database;
   }
 
   // Load the preset JSON file
   const presetFilePath = path.resolve(
-    `./server/presets/definitions/${type}.json`
+    `./server/presets/definitions/${type}.json`,
   );
   const presetData = JSON.parse(fs.readFileSync(presetFilePath, "utf-8"));
 

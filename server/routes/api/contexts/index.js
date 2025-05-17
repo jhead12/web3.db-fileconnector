@@ -27,7 +27,7 @@ export default async function (server, opts) {
           // Find the parent context or the existing context
           let parentOrExistingContext = findContextById(
             context.context,
-            settings.contexts
+            settings.contexts,
           );
 
           if (parentOrExistingContext) {
@@ -42,13 +42,13 @@ export default async function (server, opts) {
               logger.debug("It's a sub-context, update it.");
               parentOrExistingContext.contexts = updateContext(
                 parentOrExistingContext.contexts,
-                context
+                context,
               );
             } else {
               // Update or add the sub-context
               parentOrExistingContext.contexts = updateContext(
                 parentOrExistingContext.contexts,
-                context
+                context,
               );
             }
           } else {

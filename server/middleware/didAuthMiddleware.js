@@ -7,14 +7,14 @@ export const didAuthMiddleware = async (req, res) => {
 
   if (!authHeader) {
     return res.unauthorized(
-      "You must be connected in order to access this endpoint."
+      "You must be connected in order to access this endpoint.",
     );
   }
 
   const token = authHeader.split(" ")[1]; // Split 'Bearer <token>'
   if (!token || token === "null") {
     return res.unauthorized(
-      "You must be connected in order to access this endpoint."
+      "You must be connected in order to access this endpoint.",
     );
   }
 
@@ -25,7 +25,7 @@ export const didAuthMiddleware = async (req, res) => {
     return;
   } catch (e) {
     return res.unauthorized(
-      `Invalid token format or an internal error. ${e.message}`
+      `Invalid token format or an internal error. ${e.message}`,
     );
   }
 };
@@ -36,14 +36,14 @@ export const adminDidAuthMiddleware = async (req, res) => {
 
   if (!authHeader) {
     return res.unauthorized(
-      "You must be connected in order to access this endpoint."
+      "You must be connected in order to access this endpoint.",
     );
   }
 
   const token = authHeader.split(" ")[1]; // Split 'Bearer <token>'
   if (!token || token === "null") {
     return res.unauthorized(
-      "You must be connected in order to access this endpoint."
+      "You must be connected in order to access this endpoint.",
     );
   }
 
@@ -69,7 +69,7 @@ export const adminDidAuthMiddleware = async (req, res) => {
       req.adminDid = didId;
       // Initial node setup is done by the "owner" (assumption)
       req.isNodeOwner = (globalSettings.configuration?.admins || []).includes(
-        didId
+        didId,
       );
       return;
     } else {

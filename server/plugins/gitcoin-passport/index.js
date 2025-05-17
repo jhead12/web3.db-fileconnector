@@ -47,7 +47,7 @@ export default class GitcoinPassportPlugin {
       }
     } else {
       logger.debug(
-        "Stream " + stream.stream_id + " rejected by Gitcoin Passport."
+        "Stream " + stream.stream_id + " rejected by Gitcoin Passport.",
       );
       return false;
     }
@@ -121,7 +121,7 @@ export default class GitcoinPassportPlugin {
             "Content-Type": "application/json",
             "X-API-Key": this.api_key,
           },
-        }
+        },
       );
       passport_details = await res.json();
     } catch (e) {
@@ -145,7 +145,7 @@ export default class GitcoinPassportPlugin {
             "Content-Type": "application/json",
             "X-API-Key": this.api_key,
           },
-        }
+        },
       );
       res_score_details = await res_score.json();
     } catch (e) {

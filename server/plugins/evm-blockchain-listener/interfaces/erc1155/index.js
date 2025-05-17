@@ -28,7 +28,7 @@ export default class ERC1155Interface {
         "ERC1155 Token details - Name:",
         this.name,
         "Symbol:",
-        this.symbol
+        this.symbol,
       );
     } catch (error) {
       console.error("Error fetching token details:", error);

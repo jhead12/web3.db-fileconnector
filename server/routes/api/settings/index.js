@@ -32,7 +32,7 @@ export default async function (server, opts) {
       logger.debug(
         cliColors.text.cyan,
         "⚰️ Restarting indexing service...",
-        cliColors.reset
+        cliColors.reset,
       );
 
       // Stop the current indexing service
@@ -50,14 +50,14 @@ export default async function (server, opts) {
     server.put("/", async (req, res) => {
       if (!req.isNodeOwner) {
         return res.unauthorized(
-          "Only the node's owner can modify the entire settings file."
+          "Only the node's owner can modify the entire settings file.",
         );
       }
 
       const newSettings = req.body;
       if (!newSettings.configuration) {
         return res.badRequest(
-          `New settings are missing a required field: "configuration"`
+          `New settings are missing a required field: "configuration"`,
         );
       }
 
@@ -93,7 +93,7 @@ export default async function (server, opts) {
 
       if (slot && slot !== req.adminDid) {
         return res.unauthorized(
-          `You're not authorized to make changes to slot ${slot}.`
+          `You're not authorized to make changes to slot ${slot}.`,
         );
       }
 
@@ -117,7 +117,7 @@ export default async function (server, opts) {
         // If user enabled some presets we run those
         if (presets && presets.length > 0) {
           await Promise.all(
-            presets.map((preset) => enablePreset(preset, slot))
+            presets.map((preset) => enablePreset(preset, slot)),
           );
           console.log("Presets enabled:", presets);
         }
