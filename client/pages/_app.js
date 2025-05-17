@@ -62,7 +62,9 @@ function AppContent({ Component, pageProps }) {
   if (adminLoading || settingsLoading) {
     return (
       <div className="h-full w-full flex flex-col">
-        <p className="text-base w-full text-center pt-12">Loading settings...</p>
+        <p className="text-base w-full text-center pt-12">
+          Loading settings...
+        </p>
       </div>
     );
   }
@@ -283,4 +285,3 @@ function ConfigurationSetup() {
     </div>
   );
 }
-

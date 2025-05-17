@@ -5,7 +5,7 @@
   },
   "http_api": {
     "hostname": "127.0.0.1",
-    "port": 7007,
+    "port": 7008,
     "cors_allowed_origins": [".*"],
     "admin_dids": ["did:key:z6MkmvyTz5NGHSwNhyWfHgds9GDrcc5Rjd4rZD8swSQ9ne8K"]
   },
@@ -23,7 +23,7 @@
     "Ethr": {}
   },
   "node": {
-     "url": "http://127.0.0.1:7007/",
+    "url": "http://127.0.0.1:7007/",
     "network": "testnet-clay",
     "gateway": true,
     "sync_override": false,

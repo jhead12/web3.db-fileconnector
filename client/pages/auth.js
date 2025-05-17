@@ -9,7 +9,13 @@ import Link from "next/link";
 import { OrbisDBLogo } from "../components/Icons";
 
 export default function Auth() {
-  const { settings, isAdmin, getAdmin, init, isShared } = useGlobal();
+  const {
+    settings,
+    isAdmin,
+    getAdmin,
+    init,
+    isShared,
+  } = useGlobal();
   const router = useRouter();
   const [status, setStatus] = useState(0);
 
@@ -59,12 +65,12 @@ export default function Auth() {
         "admins.includes(result.user.did)",
         admins?.includes(result.user.did)
       );
-      if (isShared || (result?.user && admins?.includes(result.user.did))) {
+      if (
+        isShared ||
+        (result?.user && admins?.includes(result.user.did))
+      ) {
         // Save admin session in localstorage
-        localStorage.setItem(
-          "orbisdb-admin-session",
-          result.auth.serializedSession
-        );
+        localStorage.setItem("orbisdb-admin-session", result.auth.serializedSession);
         init();
         //router.push('/');
       } else {
@@ -100,8 +106,8 @@ export default function Auth() {
             className="text-xs mb-4"
             title={
               <>
-                This is a shared OrbisDB instance, if you want to use a
-                dedicated one we recommend visiting our{" "}
+                This is a shared OrbisDB instance, if you want to
+                use a dedicated one we recommend visiting our{" "}
                 <Link
                   className="underline"
                   href="https://github.com/OrbisWeb3/orbisdb"

@@ -1,0 +1,10 @@
+// Edit: create .eslintrc.json with the appropriate rules
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    // Add your specific ESLint rules here
+  }
+}

@@ -1,11 +1,22 @@
-
 {
- "anchor": {
-
+  "plugins": {
+    "plugin": {
+      "name": "ceramic-plugin-filecoin",
+      "version": "0.1.0",
+      "config": {
+        "filecoin": {
+          "api-url": "https://api.node.glif.io/rpc/v1",
+          "chain-id": 314,
+          "gateway-url": "https://api.node.glif.io/rpc/v1"
+        }
+      }
+    }
   },
+  "anchor": {},
+  "readOnly": false,
   "http-api": {
     "hostname": "127.0.0.1",
-    "port": 7007,
+    "port": 7008,
     "cors-allowed-origins": [".*"],
     "admin-dids": ["did:key:z6MkmvyTz5NGHSwNhyWfHgds9GDrcc5Rjd4rZD8swSQ9ne8K"]
   },
@@ -26,18 +37,20 @@
     "bootstrap-peers": [
       "/ipfs/12D3KooWK4JBtRGTspU3b9DGfDohNhEPmh3uEB1uhDJ2YxNVcXdmj"
     ],
-  "node": {
-    "gateway": true
-  },
-  "state-store": {
-    "mode": "file",
-    "local-directory": "/Users/jeldonmusic/Documents/matrixblend_com/web3db-connector/server/ceramic-mcp/ceramic-state"
-  },
-  "indexing": {
-    "db": "sqlite:///Users/jeldonmusic/Documents/matrixblend_com/web3db-connector/server/ceramic-mcp/ceramic.db",
-    "allow-queries-before-historical-sync": true,
-    "enable-historical-sync": false
+    "node": {
+      "gateway": true
+    },
+    "ethereum": {
+      "rpc-url": "https://gnosis-chiado.publicnode.com"
+    },
+    "state-store": {
+      "mode": "file",
+      "local-directory": "/Users/jeldonmusic/Documents/matrixblend_com/web3.db-fileconnector/server/ceramic-mcp/ceramic-state"
+    },
+    "indexing": {
+      "db": "sqlite:///Users/jeldonmusic/Documents/matrixblend_com/web3.db-fileconnector/server/ceramic-mcp/ceramic.db",
+      "allow-queries-before-historical-sync": true,
+      "enable-historical-sync": false
+    }
   }
 }
-}
- 

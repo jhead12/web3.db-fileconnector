@@ -1,7 +1,7 @@
 # web3.db-fileconnector
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-1.5.0-blue)
+![Version](https://img.shields.io/badge/Version-1.6.0-blue)
 
 OrbisDB connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies, offering secure, efficient storage and query capabilities for your data.
 
@@ -32,14 +32,21 @@ npm install
 # 4. Start Ceramic network (in-memory mode for testing)
 npx ceramic-one daemon --network inmemory
 
+# 4a. To see available Ceramic options, run:
+ceramic daemon -h
+
+# Alternatively, you may use:
+npm run ceramic:start
+
 # 5. In a new terminal, start the development server
 npm run dev
 ```
 
 Your application is now running:
-- Client: http://localhost:3000
-- Server: http://localhost:7008
-- GraphQL Playground: http://localhost:7008/graphql
+
+- Client: [http://localhost:3000](http://localhost:3000)
+- Server: [http://localhost:7008](http://localhost:7008)
+- GraphQL Playground: [http://localhost:7008/graphql](http://localhost:7008/graphql)
 
 ### Option 2: Docker Setup (Recommended for Production)
 
@@ -60,10 +67,13 @@ docker-compose ps
 ```
 
 Your containerized application is now running:
-- Client: http://localhost:3000
-- Server: http://localhost:7008
-- Ceramic: http://localhost:3001
+
+- Client: [http://localhost:3000](http://localhost:3000)
+- Server: [http://localhost:7008](http://localhost:7008)
+- Ceramic: [http://localhost:3001](http://localhost:3001)
 - PostgreSQL: localhost:5432
+
+---
 
 ## Table of Contents
 
@@ -74,6 +84,7 @@ Your containerized application is now running:
   - [OrbisDB Configuration](#orbisdb-configuration)
 - [Docker Integration](#docker-integration)
 - [Environment Variables](#environment-variables)
+- [Integrating PostgreSQL with Airtable](#integrating-postgresql-with-airtable)
 - [Troubleshooting](#troubleshooting)
 - [License & Contact](#license--contact)
 
@@ -83,46 +94,46 @@ Your containerized application is now running:
 
 ### Core Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start the development server |
-| `npm run build` | Build the Next.js client application |
-| `npm run start` | Run the application in production mode |
+| Script               | Description                                  |
+| -------------------- | -------------------------------------------- |
+| `npm run dev`        | Start the development server                 |
+| `npm run build`      | Build the Next.js client application         |
+| `npm run start`      | Run the application in production mode       |
 | `npm run dev:docker` | Start with Docker and run development server |
-| `npm run dev:watch` | Start with auto-restart on file changes |
-| `npm run dev:debug` | Start with debug logging enabled |
+| `npm run dev:watch`  | Start with auto-restart on file changes      |
+| `npm run dev:debug`  | Start with debug logging enabled             |
 
 ### Setup & Maintenance
 
-| Script | Description |
-|--------|-------------|
-| `npm run create-env` | Create a `.env` file from template |
-| `npm run ceramic:build` | Set up and manage Ceramic DB |
-| `npm run system:check` | Verify server dependencies and configuration |
-| `npm run clean` | Remove build cache and dependencies |
-| `npm run clean:all` | Remove all build artifacts for a fresh start |
-| `npm run format` | Format code using Prettier |
-| `npm run lint` | Check code quality with ESLint |
+| Script                  | Description                                          |
+| ----------------------- | ---------------------------------------------------- |
+| `npm run create-env`    | Create a `.env` file from template                   |
+| `npm run ceramic:build` | Set up and manage Ceramic DB (runs the wheel script) |
+| `npm run system:check`  | Verify server dependencies and configuration         |
+| `npm run clean`         | Remove build cache and dependencies                  |
+| `npm run clean:all`     | Remove all build artifacts for a fresh start         |
+| `npm run format`        | Format code using Prettier                           |
+| `npm run lint`          | Check code quality with ESLint                       |
 
 ### Docker Management
 
-| Script | Description |
-|--------|-------------|
-| `npm run docker:build` | Build the Docker image |
-| `npm run docker:start` | Start the Docker container |
-| `npm run docker:stop` | Stop the Docker container |
+| Script                   | Description                  |
+| ------------------------ | ---------------------------- |
+| `npm run docker:build`   | Build the Docker image       |
+| `npm run docker:start`   | Start the Docker container   |
+| `npm run docker:stop`    | Stop the Docker container    |
 | `npm run docker:restart` | Restart the Docker container |
-| `npm run docker:remove` | Remove the Docker container |
-| `npm run docker:status` | Show Docker container status |
+| `npm run docker:remove`  | Remove the Docker container  |
+| `npm run docker:status`  | Show Docker container status |
 
 ### Publishing
 
-| Script | Description |
-|--------|-------------|
-| `npm run publish:npm` | Publish to npm with public access |
-| `npm run publish:docker` | Build and push Docker image |
-| `npm run publish:github` | Publish to npm and Docker |
-| `npm run publish` | Build and restart Docker container |
+| Script                   | Description                        |
+| ------------------------ | ---------------------------------- |
+| `npm run publish:npm`    | Publish to npm with public access  |
+| `npm run publish:docker` | Build and push Docker image        |
+| `npm run publish:github` | Publish to npm and Docker          |
+| `npm run publish`        | Build and restart Docker container |
 
 ---
 
@@ -177,6 +188,7 @@ npm run lint
 Our project includes an automated setup script to quickly configure and manage your Ceramic DB.
 
 **Prerequisites**:
+
 - Operating system: Linux, Mac, or Windows (with WSL2)
 - Node.js v20 (use nvm to install if needed)
 - npm v10 (installed automatically with Node.js v20)
@@ -187,10 +199,16 @@ Our project includes an automated setup script to quickly configure and manage y
 ```bash
 # MacOS (using Homebrew)
 brew install ceramicnetwork/tap/ceramic-one
-ceramic-one daemon --network in-memory
+ceramic-one daemon --network inmemory
 
 # For other networks:
 # ceramic-one daemon --network testnet-clay
+```
+
+_Note: To view all available options and flags for the Ceramic daemon, run:_
+
+```bash
+ceramic daemon -h
 ```
 
 **Running the Wheel Script**:
@@ -201,6 +219,7 @@ cd server
 ```
 
 During execution, you'll configure:
+
 - Project name and directory
 - Network selection (choose `inmemory` for local testing)
 - Ceramic & ComposeDB integration options
@@ -216,12 +235,14 @@ After configuration, start Ceramic:
 #### Manual Ceramic CLI Installation
 
 **On MacOS**:
+
 ```bash
 brew install ceramicnetwork/tap/ceramic-one
 ceramic-one daemon --network inmemory
 ```
 
 **On Windows** (with Node.js v18+):
+
 ```bash
 npm install -g @ceramicnetwork/cli
 ceramic did:generate  # Optional: initialize your Ceramic identity
@@ -246,13 +267,14 @@ pnpm run init --ceramic-id <ceramic-id>
 
 ### Prerequisites
 
-- Docker v20.10+ 
+- Docker v20.10+
 - Docker Compose v1.29+
 - Windows users: WSL2 enabled with Docker Desktop
 
 ### Container Structure
 
 The project uses multiple containers:
+
 - **js-client**: Next.js frontend (port 3000)
 - **js-server**: Main application server (port 7008)
 - **ts-ceramic-mcp-app**: Ceramic integration (port 3001)
@@ -318,14 +340,57 @@ IPFS_PROJECT_ID='<YOUR_INFURA_IPFS_PROJECT_ID>'
 
 ---
 
+## Integrating PostgreSQL with Airtable
+
+While Airtable doesn’t support direct PostgreSQL connections, you can set up a data integration between the two using third-party tools. One robust method is to use **Airbyte**, an open-source data integration platform that supports both PostgreSQL and Airtable.
+
+### Using Airbyte for Real-Time Sync
+
+1. **Install Airbyte on Your Server**  
+   Download and install Airbyte from [Airbyte's website](https://airbyte.com/) or run it via Docker:
+
+   ```bash
+   docker run -d --name airbyte_server -p 8000:8000 airbyte/airbyte:latest
+   ```
+
+   This command starts the Airbyte server, typically accessible at [http://localhost:8000](http://localhost:8000).
+
+2. **Configure PostgreSQL as the Source Connector**
+
+   - Open the Airbyte UI.
+   - Add a new source and select **PostgreSQL**.
+   - Provide the necessary connection details (host, port, database name, username, and password).
+   - Test the connection to verify access.
+
+3. **Set Up Airtable as the Destination Connector**
+
+   - In the Airbyte UI, add a new destination.
+   - Choose **Airtable** and enter the required details: API key, Base ID, and the target table.
+   - Test this connection as well.
+
+4. **Schedule Automatic Sync**
+
+   - Create a new connection in Airbyte linking your PostgreSQL source to your Airtable destination.
+   - Configure the synchronization schedule (e.g., every 15 minutes, hourly, or daily) based on your needs.
+   - Save your connection to enable automated data transfers.
+
+5. **Monitor Operation**
+   - Use the Airbyte UI to view sync logs and ensure the data flows smoothly.
+   - Address any errors promptly based on the log feedback.
+
+Other integration options (like Zapier or manual CSV export/import) are available, but Airbyte provides a robust, automated solution for real-time sync between PostgreSQL and Airtable.
+
+---
+
 ## Troubleshooting
 
 ### Common Issues
 
 #### Ceramic Connection Issues
 
-**Problem**: Cannot connect to Ceramic network
-**Solution**: 
+**Problem**: Cannot connect to Ceramic network  
+**Solution**:
+
 ```bash
 # Check if Ceramic is running
 ceramic-one status
@@ -336,8 +401,9 @@ ceramic-one daemon --network inmemory
 
 #### Docker Issues
 
-**Problem**: Container fails to start
+**Problem**: Container fails to start  
 **Solution**:
+
 ```bash
 # Check logs
 docker-compose logs
@@ -350,14 +416,14 @@ docker-compose up -d
 
 #### Port Conflicts
 
-**Problem**: Port already in use
+**Problem**: Port already in use  
 **Solution**:
+
 ```bash
 # Clear ports
 npm run clear-port
 
-# Or manually kill the process using the port
-# For example, to free port 7008:
+# Or manually kill the process using the port (e.g., for port 7008):
 lsof -i :7008
 kill -9 <PID>
 ```
@@ -366,15 +432,15 @@ kill -9 <PID>
 
 #### Windows Troubleshooting
 
-- **Path Issues**: Ensure Node.js, Ceramic CLI, and other tools are in your system PATH
-- **Permission Errors**: Run PowerShell or Command Prompt as Administrator
+- **Path Issues**: Ensure Node.js, Ceramic CLI, and other tools are in your system PATH.
+- **Permission Errors**: Run PowerShell or Command Prompt as Administrator.
 - **WSL Integration**: For optimal performance, run Ceramic within WSL2:
   ```bash
   wsl
   cd /path/to/your/project
   ceramic daemon --network inmemory
   ```
-- **Docker Connection**: Verify Docker Desktop is active with WSL2 integration enabled
+- **Docker Connection**: Verify that Docker Desktop is active with WSL2 integration enabled.
 
 #### MacOS Troubleshooting
 
@@ -393,9 +459,6 @@ kill -9 <PID>
 ## License & Contact
 
 This project is licensed under the MIT License.
-
-**Author**:  
-Joshua Head ([https://www.joshuahead.com](https://www.joshuahead.com))
 
 **Repository**:  
 [https://github.com/jhead12/web3db-fileconnector/orbisdb](https://github.com/jhead12/web3db-fileconnector/orbisdb)

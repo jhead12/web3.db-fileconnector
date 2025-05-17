@@ -20,7 +20,7 @@ config();
 // ceramicUrl: The URL of the Ceramic network.
 
 module.exports = {
-  ceramicUrl: process.env.CERAMIC_URL || "https://ceramic-clay.3boxlabs.com",
+  ceramicUrl: process.env.CERAMIC_URL || "mem",
   instance: process.env.INSTANCE || "https://ceramic-clay.3boxlabs.com",
   apiKey: process.env.API_KEY || "ceramic-clay.3boxlabs.com",
 };

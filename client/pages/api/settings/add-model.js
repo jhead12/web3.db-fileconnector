@@ -1,3 +1,4 @@
+// client/pages/api/settings/add-model.js
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import fs from "fs";
 import path from "path";
@@ -45,4 +46,3 @@ export default async function handler(req, res) {
     res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
   }
 }
-

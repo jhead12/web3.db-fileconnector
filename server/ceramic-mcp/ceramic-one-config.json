@@ -1,0 +1,67 @@
+{
+  "store-dir": "${CERAMIC_ONE_STORE_DIR:-/Users/jeldonmusic/.ceramic-one}",
+  "db-cache-size": "${CERAMIC_ONE_DB_CACHE_SIZE:-20000}",
+  "db-mmap-size": "${CERAMIC_ONE_DB_MMAP_SIZE:-10737418240}",
+  "db-max-connections": "${CERAMIC_ONE_DB_MAX_CONNECTIONS:-8}",
+  "db-temp-store": "${CERAMIC_ONE_DB_TEMP_STORE:-default}",
+  "db-analysis-limit": "${CERAMIC_ONE_DB_ANALYSIS_LIMIT:-1000}",
+  "db-optimize": "${CERAMIC_ONE_DB_OPTIMIZE:-true}",
+  "cors-allow-origins": "${CERAMIC_ONE_CORS_ALLOW_ORIGINS:-*}",
+  "object-store-url": "${CERAMIC_ONE_OBJECT_STORE_URL:-./ceramic-state}",
+  "p2p-key-dir": "${CERAMIC_ONE_P2P_KEY_DIR:-/Users/jeldonmusic/.ceramic-one}",
+  "bind-address": "${CERAMIC_ONE_BIND_ADDRESS:-127.0.0.1:5101}",
+  "swarm-addresses": [
+    "${CERAMIC_ONE_SWARM_ADDRESS_1:-/ip4/192.168.1.1/tcp/4101}",
+    "${CERAMIC_ONE_SWARM_ADDRESS_2:-/ip4/192.168.1.1/udp/4101/quic-v1}"
+  ],
+  "external-swarm-addresses": [
+    "${CERAMIC_ONE_EXTERNAL_SWARM_ADDRESS:-https://your-external-swarm-address.com}"
+  ],
+  "extra-ceramic-peer-addresses": "${CERAMIC_ONE_EXTRA_CERAMIC_PEER_ADDRS:-[]}",
+
+  "tracing": "${CERAMIC_ONE_TRACING:-false}",
+  "event-validation": "${CERAMIC_ONE_EVENT_VALIDATION:-true}",
+  "network": {
+    "name": "${CERAMIC_ONE_NETWORK:-in-memory}",
+    "pubsub-topic": "ceramic-${CERAMIC_ONE_NETWORK:-in-memory}"
+  },
+  "authentication": "${CERAMIC_ONE_AUTHENTICATION:-true}",
+  "p2p-transport": "${CERAMIC_ONE_P2P_TRANSPORT:-libp2p}",
+  "local-network-id": "${CERAMIC_ONE_LOCAL_NETWORK_ID:-my-local-node}",
+  "log-format": "${CERAMIC_ONE_LOG_FORMAT:-multi-line}",
+  "max-conns-out": "${CERAMIC_ONE_MAX_CONNS_OUT:-2000}",
+  "max-conns-in": "${CERAMIC_ONE_MAX_CONNS_IN:-2000}",
+  "max-conns-pending-out": "${CERAMIC_ONE_MAX_CONNS_PENDING_OUT:-256}",
+  "max-conns-pending-in": "${CERAMIC_ONE_MAX_CONNS_PENDING_IN:-256}",
+  "max-conns-per-peer": "${CERAMIC_ONE_MAX_CONNS_PER_PEER:-8}",
+  "idle-conns-timeout-ms": "${CERAMIC_ONE_IDLE_CONNS_TIMEOUT_MS:-30000}",
+  "experimental-features": "${CERAMIC_ONE_EXPERIMENTAL_FEATURES:-true}",
+  "flight-sql-bind-address": "${CERAMIC_ONE_FLIGHT_SQL_BIND_ADDRESS:-}",
+  "remote-anchor-service-url": "${CERAMIC_ONE_REMOTE_ANCHOR_SERVICE_URL:-}",
+  "anchor-interval": "${CERAMIC_ONE_ANCHOR_INTERVAL:-3600}",
+
+  "ethereum-rpc-urls": [
+    "https://gnosis-chiado.publicnode.com",
+    "https://rpc.chiadochain.net",
+    "https://gnosis-chiado-rpc.publicnode.com"
+  ],
+  "ceramic_api": {
+    "ceramic_one_url": "${CERAMIC_ONE_URL:-http://localhost:5101}",
+    "instance": "${CERAMIC_ONE_INSTANCE:-}",
+    "apikey": "${CERAMIC_ONE_APIKey:-}"
+  },
+  "orbisdb": {
+    "api_url": "${ORBISDB_API_URL:-https://rpc.ankr.com/eth_holesky/}",
+    "api_key": "${ORBISDB_API_KEY:-}",
+    "chain_id": "${ORBISDB_CHAIN_ID:-17000}",
+    "contract_address": "${ORBISDB_CONTRACT_ADDRESS:-0xYourOrbisDBContractAddress}"
+  },
+  "ipfs": {
+    "bin_path": "${IPFS_PATH:-/jhead12/.ipfs}",
+    "gateway": "${IPFS_GATEWAY:-/ip4/127.0.0.1/tcp/8080}",
+    "api_url": "${IPFS_API_URL:-/ip4/127.0.0.1/tcp/5001}",
+    "api_key": "${IPFS_API_KEY:-}",
+    "api_secret": "${IPFS_API_SECRET:-}",
+    "project_id": "${IPFS_PROJECT_ID:-}"
+  }
+}

@@ -3,6 +3,7 @@ import { useGlobal } from "../../contexts/Global.js";
 import Button from "../../components/Button.js";
 import ReactTimeAgo from "react-time-ago";
 
+
 export default function Logs() {
   const [logs, setLogs] = useState(false);
   const [currentLog, viewLog] = useState("");

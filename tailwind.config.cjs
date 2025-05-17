@@ -1,11 +1,13 @@
+// tailwind.config.cjs (in project root)
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = { // Assuming .cjs means CommonJS
   content: [
-    "./client/pages/**/*.{js,ts,jsx,tsx}",
-    "./client/components/**/*.{js,ts,jsx,tsx}",
+    "./client/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./client/components/**/*.{js,ts,jsx,tsx,mdx}",
+    // Add any other paths within client/ that use Tailwind classes
   ],
   theme: {
-    extends: {},
+    extend: {},
   },
   plugins: [],
 };

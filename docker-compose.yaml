@@ -1,4 +1,3 @@
-
 services:
   js-client:
     build:
@@ -21,10 +20,12 @@ services:
     networks:
       - appnet
     ports:
-      - "7008:7008" # Main server port
+      - "${PORT:-7008}:${PORT:-7008}" # Main server port
     depends_on:
       - postgres
     environment:
+      PORT: ${PORT:-7008}
+      HOST: ${HOST:-0.0.0.0} # Use 0.0.0.0 in Docker to make it accessible from outside
       POSTGRES_USER: admin # Set as needed
       POSTGRES_PASSWORD: password # Set as needed
 
@@ -38,7 +39,7 @@ services:
     networks:
       - appnet
     ports:
-      - "3001:3002" # Expose on 3001 to avoid conflict with client
+      - "3002:3002" # Expose on 3001 to avoid conflict with client
 
   postgres:
     image: pgvector/pgvector:0.8.0-pg17

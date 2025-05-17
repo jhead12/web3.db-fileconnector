@@ -64,11 +64,13 @@ psql -U postgres -d ceramic -f fix-permissions.sql
 After applying these permissions, you can verify them by:
 
 1. Connecting as the admin user:
+
 ```bash
 psql -U admin -d ceramic
 ```
 
 2. Trying to create a test table:
+
 ```sql
 CREATE TABLE test_permissions (id SERIAL PRIMARY KEY, name TEXT);
 DROP TABLE test_permissions; -- Clean up after testing

@@ -13,22 +13,22 @@ The error "permission denied for schema public" indicates that your 'admin' user
    ```sql
    -- Connect to PostgreSQL as superuser (usually 'postgres')
    psql -U postgres
-   
+
    -- Connect to the ceramic database
    \c ceramic
-   
+
    -- Grant usage on schema
    GRANT USAGE ON SCHEMA public TO admin;
-   
+
    -- Grant create on schema
    GRANT CREATE ON SCHEMA public TO admin;
-   
+
    -- Grant all privileges on all tables
    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin;
-   
+
    -- Make privileges apply to future tables
    ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO admin;
-   
+
    -- Make admin the owner of the database (optional but recommended)
    ALTER DATABASE ceramic OWNER TO admin;
    ```
@@ -42,16 +42,19 @@ The application is trying to connect to `https://localhost:7007/` but your Ceram
 1. **Update the Ceramic node URL in orbisdb-settings.json**:
 
    Change this line in orbisdb-settings.json:
+
    ```json
    "node": "https://localhost:7007/"
    ```
-   
+
    To:
+
    ```json
    "node": "http://127.0.0.1:7007/"
    ```
 
    This change addresses two issues:
+
    - Changes from HTTPS to HTTP (your Ceramic node is using HTTP)
    - Changes from localhost to 127.0.0.1 (for consistency with your Ceramic configuration)
 
@@ -60,6 +63,7 @@ The application is trying to connect to `https://localhost:7007/` but your Ceram
 1. **Fix PostgreSQL permissions** using the SQL commands above
 
 2. **Update the Ceramic node URL** in orbisdb-settings.json:
+
    ```json
    {
      "configuration": {
@@ -85,6 +89,7 @@ The application is trying to connect to `https://localhost:7007/` but your Ceram
    ```
 
 3. **Ensure the Ceramic node is running**:
+
    - Check if the Ceramic daemon is running with: `ps aux | grep ceramic`
    - If not running, start it with: `cd server/ceramic-mcp && npx @ceramicnetwork/cli daemon`
 
@@ -99,18 +104,18 @@ The application is trying to connect to `https://localhost:7007/` but your Ceram
 flowchart TD
     A[Start] --> B1[Fix PostgreSQL Permissions]
     A --> B2[Fix Ceramic Connection]
-    
+
     B1 --> C1[Connect as PostgreSQL superuser]
     C1 --> D1[Grant schema permissions to admin user]
     D1 --> E1[Set default privileges]
-    
+
     B2 --> C2[Update orbisdb-settings.json]
     C2 --> D2[Change https to http]
     D2 --> E2[Change localhost to 127.0.0.1]
-    
+
     E1 --> F[Ensure Ceramic node is running]
     E2 --> F
-    
+
     F --> G[Restart application]
     G --> H{Issues resolved?}
     H -->|Yes| I[Done]

@@ -124,8 +124,8 @@ async function startServer(databases) {
   });
 
   const hostInformation = await server.listen({
-    // TODO: make it exposable
-    host: "127.0.0.1",
+    // Using 0.0.0.0 to make it accessible from outside the container
+    host: process.env.HOST || "127.0.0.1",
     port: PORT,
   });
 
@@ -153,9 +153,10 @@ export async function startIndexing() {
   // Initiate global Ceramic
   if (settings?.configuration) {
     let globalSeed = globalCeramicConfig.seed;
+    const serverUrl = `http://${process.env.HOST || "localhost"}:${PORT}`;
     globalCeramic = new Ceramic(
       globalCeramicConfig.node,
-      "http://localhost:" + PORT,
+      serverUrl,
       globalSeed
     );
 
@@ -209,11 +210,8 @@ export async function startIndexing() {
 
           /** Instantiate the Ceramic object with node's url from config's slot */
           let seed = slot.configuration.ceramic.seed;
-          let ceramic = new Ceramic(
-            globalCeramicConfig.node,
-            "http://localhost:" + PORT,
-            seed
-          );
+          const serverUrl = `http://${process.env.HOST || "localhost"}:${PORT}`;
+          let ceramic = new Ceramic(globalCeramicConfig.node, serverUrl, seed);
           ceramics[key] = ceramic;
         } else {
           logger.error(

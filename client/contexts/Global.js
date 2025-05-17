@@ -77,7 +77,7 @@ export const GlobalProvider = ({ children }) => {
           },
           nodes: [
             {
-              gateway: "http://localhost:3000",
+              gateway: baseUrl || window.location.origin,
             },
           ],
         });
