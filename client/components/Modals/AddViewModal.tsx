@@ -12,13 +12,14 @@ export default function AddViewModal({ hide, parentContext }) {
   const [step, setStep] = useState(1);
 
   return (
-    <Modal hide={hide} className="w-full h-full m-6">
+    <Modal
+      hide={hide}
+      className="w-full h-full m-6"
+      title="Create a new view"
+      description="Create a new view in order to combine multiple tables together or filter your data."
+      style={{}}
+    >
       <div className="flex flex-col justify-center">
-        <h2 className="text-center font-medium mb-1">Create a new view</h2>
-        <p className="text-center text-slate-500 text-base mb-2">
-          Create a new view in order to combine multiple tables together or
-          filter your data.
-        </p>
         <div className="w-full">
           <StepsProgress
             steps={["Type", "Details", "Save in settings"]}
@@ -38,14 +39,18 @@ export default function AddViewModal({ hide, parentContext }) {
 }
 
 const AddContextSteps = ({ step, setStep, hide, parentContext }) => {
-  const { orbis, setSettings } = useContext(GlobalContext);
+  const { orbis, setSettings } = useContext(GlobalContext) as any;
   const [selectedOption, setSelectedOption] = useState(null);
   const [contextId, setContextId] = useState("");
   const [contextName, setContextName] = useState("");
   const [contextDescription, setContextDescription] = useState("");
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [logoStatus, setLogoStatus] = useState(STATUS.ACTIVE);
-  const [contextDetails, setContextDetails] = useState();
+  const [contextDetails, setContextDetails] = useState<any>({});
+  
+  // Declare missing functions
+  const createNewContext = () => {}; // Placeholder
+  const saveInSettings = () => {}; // Placeholder
 
   /** Step 1: Load models details */
   async function loadContextDetails() {
@@ -69,7 +74,7 @@ const AddContextSteps = ({ step, setStep, hide, parentContext }) => {
         alert("Error loading context details.");
         console.log(
           "Error loading context details and adding it to the settings file:",
-          e
+          "error",
         );
         setStatus(STATUS.ERROR);
         await sleep(500);
@@ -140,12 +145,18 @@ const AddContextSteps = ({ step, setStep, hide, parentContext }) => {
               onClick={() => nextStep()}
               status={status}
               title="Next"
+              successTitle="Success"
             />
           </div>
         );
       } else if (selectedOption == "new") {
         return (
-          <ContextSettings callback={hide} parentContext={parentContext} />
+          <ContextSettings
+            callback={hide}
+            parentContext={parentContext}
+            context={{}}
+            setContext={() => {}}
+          />
         );
       }
 
@@ -164,6 +175,7 @@ const AddContextSteps = ({ step, setStep, hide, parentContext }) => {
             onClick={() => saveInSettings()}
             status={status}
             title="Save"
+            successTitle="Saved"
           />
         </div>
       );

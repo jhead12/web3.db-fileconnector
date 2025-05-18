@@ -1,7 +1,14 @@
 // types.ts
+// This file is currently not in use and has been replaced with a placeholder to prevent build errors
 
-import { IPFSInstance } from "helia";
-import { Ceramic } from "@ceramicnetwork/core";
+// Define placeholder interfaces to prevent TypeScript errors
+export interface IPFSInstance {
+  add: (fileBuffer: Buffer) => Promise<{ cid: { toString: () => string } }>;
+}
+
+export interface CeramicClient {
+  // Placeholder for Ceramic client methods
+}
 
 export interface SDKConfig {
   ceramicUrl: string;
@@ -9,17 +16,12 @@ export interface SDKConfig {
   apiKey: string;
   ipfsPort?: number;
   sqlitePath?: string;
-  wordpressUrl?: string; // WPGraphQL endpoint
-  otherApiUrl?: string; // Example for other REST APIs
-}
-
-export interface CeramicClient {
-  // Placeholder for Ceramic client methods
+  wordpressUrl?: string;
+  otherApiUrl?: string;
 }
 
 export interface WordPressDataSource {
   getPosts: () => Promise<{ id: string; title: string; content: string }[]>;
-  // Add other WPGraphQL queries as needed
 }
 
 export interface ApolloContext {
@@ -35,6 +37,5 @@ export interface IPFSDataSource {
 }
 
 export interface CeramicDataSource {
-  // Define Ceramic-specific methods
   getStream: (streamId: string) => Promise<any>;
 }

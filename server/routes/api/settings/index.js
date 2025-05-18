@@ -101,6 +101,25 @@ export default async function (server, opts) {
       logger.debug("Trying to enable presets:", presets);
 
       try {
+        // Validate configuration
+        if (!configuration) {
+          return res.badRequest("Configuration is required");
+        }
+
+        if (!configuration.db) {
+          return res.badRequest("Database configuration is required");
+        }
+
+        if (!configuration.ceramic) {
+          return res.badRequest("Ceramic configuration is required");
+        }
+
+        // Ensure host doesn't have http:// prefix
+        if (configuration.db.host && configuration.db.host.startsWith('http')) {
+          configuration.db.host = configuration.db.host.replace(/^https?:\/\//, '');
+          logger.debug("Removed http prefix from host:", configuration.db.host);
+        }
+
         // Retrieve current settings
         const settings = getOrbisDBSettings(slot);
         logger.debug("settings:", settings);
@@ -111,15 +130,25 @@ export default async function (server, opts) {
         // Rewrite the settings file
         updateOrbisDBSettings(settings, slot);
 
-        // Restart indexing service
-        await restartIndexingService();
+        try {
+          // Restart indexing service
+          await restartIndexingService();
+        } catch (restartError) {
+          logger.error("Error restarting indexing service:", restartError);
+          // Continue anyway, as the settings have been saved
+        }
 
         // If user enabled some presets we run those
         if (presets && presets.length > 0) {
-          await Promise.all(
-            presets.map((preset) => enablePreset(preset, slot)),
-          );
-          console.log("Presets enabled:", presets);
+          try {
+            await Promise.all(
+              presets.map((preset) => enablePreset(preset, slot)),
+            );
+            logger.debug("Presets enabled:", presets);
+          } catch (presetError) {
+            logger.error("Error enabling presets:", presetError);
+            // Continue anyway, as the settings have been saved
+          }
         }
 
         // Send the response
@@ -128,9 +157,8 @@ export default async function (server, opts) {
           result: "New configuration saved.",
         };
       } catch (err) {
-        logger.error(err);
-
-        return res.internalServerError("Failed to update settings.");
+        logger.error("Failed to update settings:", err);
+        return res.internalServerError(`Failed to update settings: ${err.message}`);
       }
     });
   });

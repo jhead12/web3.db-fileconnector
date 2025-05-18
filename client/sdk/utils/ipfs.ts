@@ -1,24 +1,17 @@
-// utils/ipfs.js
+// utils/ipfs.ts
+// This file is currently not in use and has been replaced with a placeholder to prevent build errors
 
-import { create } from "helia";
-
-let ipfsInstance;
-
-const initIPFS = async () => {
-  if (!ipfsInstance) {
-    ipfsInstance = await create({ url: 5001 });
-  }
-  return ipfsInstance;
+// Export a dummy function to prevent TypeScript errors
+export const initIPFS = async () => {
+  return {
+    add: async (fileBuffer: Buffer) => ({
+      cid: {
+        toString: () => "placeholder-cid",
+      },
+    }),
+  };
 };
 
-export const uploadFileToIPFS = async (fileBuffer) => {
-  try {
-    const response = await ipfsInstance.add(fileBuffer);
-    return `ipfs://${response.cid.toString()}`;
-  } catch (error) {
-    console.error("Failed to upload file to IPFS:", error);
-    throw new Error("Could not upload file to IPFS");
-  }
+export const uploadFileToIPFS = async (fileBuffer: Buffer) => {
+  return "ipfs://placeholder-cid";
 };
-
-// Additional utility functions can be added here

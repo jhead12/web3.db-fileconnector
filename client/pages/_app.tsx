@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CryptoLibCheck from "../components/CryptoLibCheck.js";
+import Head from "next/head";
+import CryptoLibCheck from "../components/CryptoLibCheck";
 import Header from "../components/Header";
 import Alert from "../components/Alert";
 import ConfigurationSettings from "../components/ConfigurationSettings";
@@ -29,6 +30,11 @@ TimeAgo.addLocale(en);
 export default function App({ Component, pageProps }) {
   return (
     <GlobalProvider>
+      <Head>
+        <title>OrbisDB Studio | Your Decentralized Database</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="OrbisDB is an advanced decentralized database built on the Ceramic Data Network. It comes with a set of plugins allowing unlimited customization options." />
+      </Head>
       <CryptoLibCheck />
       <AppContent Component={Component} pageProps={pageProps} />
     </GlobalProvider>
@@ -44,7 +50,7 @@ function AppContent({ Component, pageProps }) {
     isConnected,
     isConfigured,
     isShared,
-  } = useGlobal();
+  } = useGlobal() as any;
 
   useEffect(() => {
     console.log("settings:", settings);
@@ -153,7 +159,7 @@ function AppContent({ Component, pageProps }) {
 }
 
 function PickSlot() {
-  const { slots } = useGlobal();
+  const { slots } = useGlobal() as any;
   return (
     <div className="px-16 py-12 w-2/3">
       <h1 className="text-3xl font-bold text-slate-900">Slots</h1>
@@ -198,7 +204,7 @@ const LoopSlots = ({ slots }) => {
 };
 
 const ConfigurationSharedSetup = () => {
-  const { isShared, adminSession, sessionJwt, setSettings } = useGlobal();
+  const { isShared, adminSession, sessionJwt, setSettings } = useGlobal() as any;
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [presets, setPresets] = useState([]);
 
@@ -265,6 +271,7 @@ const ConfigurationSharedSetup = () => {
           onClick={() => configure()}
           title="Configure instance"
           status={status}
+          successTitle="Configured"
         />
       </div>
     </div>
@@ -272,7 +279,7 @@ const ConfigurationSharedSetup = () => {
 };
 
 function ConfigurationSetup() {
-  const { isShared, adminSession } = useGlobal();
+  const { isShared, adminSession } = useGlobal() as any;
   return (
     <div className="flex justify-center">
       <div className="w-1/3 flex flex-col mt-12 bg-white border border-slate-200 p-6 rounded-md">

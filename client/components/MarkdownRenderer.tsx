@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const MarkdownRenderer = ({ filePath, fallback }) => {
-  const [content, setContent] = useState();
+  const [content, setContent] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     fetch(filePath)

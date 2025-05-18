@@ -7,7 +7,7 @@ import { createModelTable } from "../../../sdk/utils/data-utils"; // Adjust the 
 // Use environment variable for settings file path
 const settingsFilePath = path.resolve(
   process.env.SETTINGS_FILE_PATH ||
-    path.join(process.cwd(), "orbisdb-settings.json")
+    path.join(process.cwd(), "orbisdb-settings.json"),
 );
 
 // Status constants
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
 
     // Find and update model
     const modelIndex = settings.models.findIndex(
-      (model) => model.stream_id === modelId
+      (model) => model.stream_id === modelId,
     );
 
     if (modelIndex === -1) {

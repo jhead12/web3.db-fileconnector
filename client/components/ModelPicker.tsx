@@ -88,7 +88,7 @@ export const ModelBuilder = ({
   showBack = true,
   createColor = "secondary",
 }) => {
-  const { orbisdb } = useGlobal();
+  const { orbisdb } = useGlobal() as any;
   const [modelTitle, setModelTitle] = useState(``);
   const [modelDemoDefinition, setModelDemoDefinition] = useState(``);
   const [status, setStatus] = useState(0);
@@ -127,7 +127,7 @@ export const ModelBuilder = ({
         },
       },
       null,
-      2
+      2,
     );
 
     // Update the state or whatever is necessary with the new schema
@@ -140,7 +140,7 @@ export const ModelBuilder = ({
       try {
         setStatus(1);
         let model_stream = await orbisdb.ceramic.createModel(
-          JSON.parse(modelDemoDefinition)
+          JSON.parse(modelDemoDefinition),
         );
         let model_id = model_stream?.id?.toString();
         console.log("model_stream:", model_id);
@@ -212,14 +212,14 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
 
   const handleTextChange = (index, value) => {
     const updatedInputGroups = inputGroups.map((group, i) =>
-      i === index ? { ...group, textValue: value } : group
+      i === index ? { ...group, textValue: value } : group,
     );
     setInputGroups(updatedInputGroups);
   };
 
   const handleSelectChange = (index, value) => {
     const updatedInputGroups = inputGroups.map((group, i) =>
-      i === index ? { ...group, selectValue: value } : group
+      i === index ? { ...group, selectValue: value } : group,
     );
     setInputGroups(updatedInputGroups);
   };
@@ -236,7 +236,6 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
             className="flex-1 bg-white border border-slate-200 rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900 mr-2"
           />
           <select
-            placeholder="Field type"
             value={group.selectValue}
             onChange={(e) => handleSelectChange(index, e.target.value)}
             className="bg-white border border-slate-200 rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900"

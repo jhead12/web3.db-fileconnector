@@ -7,24 +7,52 @@ import { OrbisKeyDidAuth } from "@useorbis/db-sdk/auth";
 import { DIDSession } from "did-session";
 import { parseDidSeed } from "../utils/index.js";
 
-export const GlobalContext = React.createContext();
+interface GlobalContextType {
+  settings?: any;
+  setSettings?: (settings: any) => void;
+  settingsLoading?: boolean;
+  loadSettings?: (jwt?: string) => Promise<any>;
+  globalSettings?: any;
+  isGlobalAdmin?: boolean;
+  isAdmin?: boolean;
+  setIsAdmin?: (isAdmin: boolean) => void;
+  user?: any;
+  setUser?: (user: any) => void;
+  orbisdb?: any;
+  setOrbisdb?: (orbisdb: any) => void;
+  sessionJwt?: string;
+  setSessionJwt?: (sessionJwt: string) => void;
+  adminLoading?: boolean;
+  setAdminLoading?: (adminLoading: boolean) => void;
+  isConnected?: boolean;
+  setIsConnected?: (isConnected: boolean) => void;
+  init?: () => Promise<void>;
+  getAdmin?: (adminSession?: string) => Promise<any>;
+  isConfigured?: boolean | null;
+  setIsConfigured?: (isConfigured: boolean) => void;
+  isShared?: boolean | null;
+  adminSession?: string;
+  baseUrl?: string;
+}
+
+export const GlobalContext = React.createContext<GlobalContextType>({});
 
 export const GlobalProvider = ({ children }) => {
   const router = useRouter();
-  const [isConfigured, setIsConfigured] = useState(null);
-  const [isShared, setIsShared] = useState(null);
-  const [settings, setSettings] = useState();
-  const [settingsLoading, setSettingsLoading] = useState();
-  const [adminLoading, setAdminLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isGlobalAdmin, setIsGlobalAdmin] = useState(false);
-  const [globalSettings, setGlobalSettings] = useState(null);
-  const [isConnected, setIsConnected] = useState(false);
-  const [sessionJwt, setSessionJwt] = useState();
-  const [user, setUser] = useState();
-  const [adminSession, setAdminSession] = useState();
-  const [orbisdb, setOrbisdb] = useState();
-  const [baseUrl, setBaseUrl] = useState();
+  const [isConfigured, setIsConfigured] = useState<boolean | null>(null);
+  const [isShared, setIsShared] = useState<boolean | null>(null);
+  const [settings, setSettings] = useState<any>({});
+  const [settingsLoading, setSettingsLoading] = useState<boolean>(false);
+  const [adminLoading, setAdminLoading] = useState<boolean>(true);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [isGlobalAdmin, setIsGlobalAdmin] = useState<boolean>(false);
+  const [globalSettings, setGlobalSettings] = useState<any>(null);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [sessionJwt, setSessionJwt] = useState<string>("");
+  const [user, setUser] = useState<any>(null);
+  const [adminSession, setAdminSession] = useState<string>("");
+  const [orbisdb, setOrbisdb] = useState<any>(null);
+  const [baseUrl, setBaseUrl] = useState<string>("");
 
   useEffect(() => {
     setSettingsLoading(true);
@@ -91,10 +119,8 @@ export const GlobalProvider = ({ children }) => {
           console.log("Connected to OrbisDB SDK with did:", result.user.did);
         } catch (e) {
           console.log(
-            cliColors.text.red,
             "Error connecting to OrbisDB:",
-            cliColors.reset,
-            e
+            e,
           );
         }
       } catch (e) {
@@ -120,7 +146,7 @@ export const GlobalProvider = ({ children }) => {
     } catch (e) {
       setAdminLoading(false);
       console.log(
-        "Error retrieving local settings, loading default one instead."
+        "Error retrieving local settings, loading default one instead.",
       );
     }
   }
@@ -135,7 +161,6 @@ export const GlobalProvider = ({ children }) => {
       try {
         let resAdminSession = await DIDSession.fromSession(
           adminSessionJwt,
-          null
         );
         let didId = resAdminSession.did.parent;
         setAdminSession(didId);
@@ -177,7 +202,7 @@ export const GlobalProvider = ({ children }) => {
     };
   }
 
-  async function loadSettings(_jwt) {
+  async function loadSettings(_jwt?: string) {
     let adminSession = _jwt
       ? _jwt
       : localStorage.getItem("orbisdb-admin-session");

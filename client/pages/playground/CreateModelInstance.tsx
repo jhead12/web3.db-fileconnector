@@ -17,7 +17,7 @@ const CreateModelInstance = ({
   const initialFields = modelDefinition.schema.properties
     ? Object.keys(modelDefinition.schema.properties).map((key) => {
         const type = modelDefinition.schema.properties[key].type;
-        let defaultValue = ""; // Default to empty string for basic types
+        let defaultValue: any = ""; // Default to empty string for basic types
 
         if (type == "array" || type?.includes("array")) {
           defaultValue = []; // Default to empty array for array types
@@ -34,7 +34,7 @@ const CreateModelInstance = ({
     : [];
 
   const [fields, setFields] = useState(initialFields);
-  const [propertiesData, setPropertiesData] = useState();
+  const [propertiesData, setPropertiesData] = useState<any>({});
 
   useEffect(() => {
     let _propertiesData = fields.reduce((obj, field) => {
@@ -83,6 +83,8 @@ const CreateModelInstance = ({
       {/** Instructions */}
       <div className="flex w-full md:w-5/12 pb-6 md:pb-0 items-center flex-col">
         <Instructions
+          showBack={true}
+          backAction={() => setStep(3.1)}
           title="Step 4:"
           description={
             <>
@@ -90,6 +92,7 @@ const CreateModelInstance = ({
               specified.
             </>
           }
+          buttons={[]}
         />
 
         {/** Context ID */}
@@ -125,7 +128,7 @@ const CreateModelInstance = ({
 const PropertiesInput = ({ fields, setFields }) => {
   const handleInputChange = (index, value) => {
     const updatedFields = fields.map((field, i) =>
-      i === index ? { ...field, value } : field
+      i === index ? { ...field, value } : field,
     );
     console.log("updatedFields", updatedFields);
     setFields(updatedFields);
@@ -156,8 +159,8 @@ const PropertiesInput = ({ fields, setFields }) => {
           className="bg-white border border-slate-200 w-full rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900 mr-2"
         >
           <option value="">Select value</option>
-          <option value={true}>True</option>
-          <option value={false}>False</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
         </select>
       );
     }

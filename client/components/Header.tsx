@@ -5,7 +5,7 @@ import { useGlobal } from "../contexts/Global";
 import { copyToClipboard, getAddress, shortAddress } from "../utils";
 
 export default function Header({ showItems }) {
-  const { sessionJwt, adminSession, isShared, isGlobalAdmin } = useGlobal();
+  const { sessionJwt, adminSession, isShared, isGlobalAdmin } = useGlobal() as any;
 
   // Define navigation items and their paths
   const navItems = [
@@ -55,7 +55,7 @@ export default function Header({ showItems }) {
                 title: (
                   <>
                     <span>SDK Documentation</span>
-                    <ExternalLinkIcon />
+                    <ExternalLinkIcon className="ml-1" />
                   </>
                 ),
                 path: "https://github.com/OrbisWeb3/db-sdk",
@@ -88,7 +88,7 @@ export default function Header({ showItems }) {
   );
 }
 
-const NavItem = ({ item, href }) => {
+const NavItem = ({ item, href = undefined }) => {
   const router = useRouter();
 
   // Determine whether the current route matches the item's link

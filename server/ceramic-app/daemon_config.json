@@ -1,0 +1,41 @@
+{
+  "anchor": {},
+  "http-api": {
+    "hostname": "127.0.0.1",
+    "port": 7007,
+    "admin-dids": [
+      "did:key:z6MkgrQ9ZzuqgzK1AAKKWdU7UiYbGPaVkGHdGcqEJE3X47BK",
+      "did:key:z6MkgDiQYjGVg5maQs1GQzphHh2HEFk4Y1esowmUegLJTG6f",
+      "did:key:z6MkroMgYd5GNxzE3HD9874irXYjiDxZtWpP4ZwFvbCFs7gT"
+    ]
+  },
+  "ipfs": {
+    "mode": "local",
+    "host": "http://localhost",
+    "port": 5001,
+    "local-directory": "/etc/ceramic/data"
+  },
+  "logger": {
+    "log-directory": "./log/ceramic",
+    "log-level": 2,
+    "log-to-files": true
+  },
+  "metrics": {
+    "metrics-exporter-enabled": false
+  },
+  "network": {
+    "name": "local"
+  },
+  "node": {
+    "gateway": false
+  },
+  "state-store": {
+    "mode": "file",
+    "local-directory": "/etc/ceramic/data"
+  },
+  "indexing": {
+    "db": "sqlite:///Users/jeldonmusic/Documents/matrixblend_com/web3.db-fileconnector/server/ceramic-app/ceramic-indexing/ceramic.db",
+    "allow-queries-before-historical-sync": true,
+    "enable-historical-sync": false
+  }
+}

@@ -13,7 +13,7 @@ const ManageDataRelations = ({
   selectedTable,
   selectedTableName,
 }) => {
-  const { settings, setSettings, sessionJwt } = useGlobal();
+  const { settings, setSettings, sessionJwt } = useGlobal() as any;
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [relations, setRelations] = useState([]);
@@ -43,7 +43,7 @@ const ManageDataRelations = ({
         setRelations(
           settings.relations[selectedTable.id]
             ? settings.relations[selectedTable.id]
-            : []
+            : [],
         );
       } else {
         setRelations([]);
@@ -175,7 +175,7 @@ const ManageDataRelations = ({
     setReferencedTable(relation.referencedTable);
     setSelectedReferencedColumn(relation.referencedColumn);
     setReferencedType(
-      relation.referencedType ? relation.referencedType : "single"
+      relation.referencedType ? relation.referencedType : "single",
     );
     setStep(2);
   };
@@ -188,13 +188,18 @@ const ManageDataRelations = ({
     setStep(2);
   }
 
+  // Only render the Modal when isOpen is true
+  if (!isOpen) {
+    return null;
+  }
+  
   return (
     <Modal
-      isOpen={isOpen}
       hide={onClose}
       title="Manage Relations"
       description="Those relations can then be used in your GraphQL queries."
       className="w-[500px]"
+      style={{}}
     >
       <div className="space-y-4 text-base">
         {step === 1 && (
@@ -220,6 +225,7 @@ const ManageDataRelations = ({
               <Button
                 title="Add New Relation"
                 onClick={() => goStepAddRelation()}
+                successTitle="Added"
               />
             </div>
           </div>
@@ -343,32 +349,23 @@ const ManageDataRelations = ({
                   type="secondary"
                   title="Back"
                   onClick={() => setStep(1)}
+                  successTitle="Back"
                 />
               </div>
 
               {selectedRelationIndex !== null ? (
                 <Button
-                  status={status}
+                  status={!selectedTable || !selectedColumn || !referencedTable || !selectedReferencedColumn ? 4 : status}
                   title="Update relation"
                   onClick={updateExistingForeignKey}
-                  disabled={
-                    !selectedTable ||
-                    !selectedColumn ||
-                    !referencedTable ||
-                    !selectedReferencedColumn
-                  }
+                  successTitle="Updated"
                 />
               ) : (
                 <Button
-                  status={status}
+                  status={!selectedTable || !selectedColumn || !referencedTable || !selectedReferencedColumn ? 4 : status}
                   title="Add relation"
                   onClick={saveNewForeignKey}
-                  disabled={
-                    !selectedTable ||
-                    !selectedColumn ||
-                    !referencedTable ||
-                    !selectedReferencedColumn
-                  }
+                  successTitle="Added"
                 />
               )}
             </div>
@@ -380,11 +377,11 @@ const ManageDataRelations = ({
 };
 
 const ExistingRelation = ({ index, relation, handleEditRelation }) => {
-  const { settings } = useGlobal();
+  const { settings } = useGlobal() as any;
   let cleanRelTableName = getCleanTableName(settings, relation.table);
   let cleanRelRefTableName = getCleanTableName(
     settings,
-    relation.referencedTable
+    relation.referencedTable,
   );
   console.log("relation:", relation);
   return (
@@ -414,13 +411,14 @@ const ExistingRelation = ({ index, relation, handleEditRelation }) => {
         type="secondary"
         title="Edit"
         onClick={() => handleEditRelation(index)}
+        successTitle="Edited"
       />
     </li>
   );
 };
 
 const TableOption = ({ id }) => {
-  const { settings } = useGlobal();
+  const { settings } = useGlobal() as any;
   let tableName = getCleanTableName(settings, id);
 
   return <option value={id}>{tableName ? tableName : id}</option>;

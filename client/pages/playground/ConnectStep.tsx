@@ -19,6 +19,8 @@ const ConnectStep = ({ setStep, orbisdb }) => {
       <div className="w-full md:w-5/12 pb-6 md:pb-0">
         {/** Instructions */}
         <Instructions
+          showBack={true}
+          backAction={() => setStep(0)}
           title="Step 1:"
           description="Now you can connect your wallet."
           buttons={[

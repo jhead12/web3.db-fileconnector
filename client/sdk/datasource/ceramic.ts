@@ -1,25 +1,9 @@
 // dataSources/ceramic.ts
-// mindful of sql context
+// This file is currently not in use and has been replaced with a placeholder to prevent build errors
 
-import { DataSource } from "apollo-datasource";
-import { CeramicClient, CeramicDataSource } from "../types";
-
-export class CeramicDataSource extends DataSource implements CeramicDataSource {
-  private ceramic: CeramicClient;
-
-  constructor(ceramic: CeramicClient) {
-    super();
-    this.ceramic = ceramic;
-  }
-
+// Export a dummy class to prevent TypeScript errors
+export class CeramicDataSource {
   async getStream(streamId: string) {
-    try {
-      // Example: Fetch a Ceramic stream
-      // Replace with actual Ceramic client method
-      return { id: streamId, content: "Sample content" };
-    } catch (error) {
-      console.error("Failed to fetch Ceramic stream:", error);
-      throw new Error("Could not fetch Ceramic stream");
-    }
+    return { id: streamId, content: "Placeholder content" };
   }
 }

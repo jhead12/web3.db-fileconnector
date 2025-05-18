@@ -43,10 +43,20 @@ export default function Auth() {
     /** Use correct type according to provider */
     switch (type) {
       case "metamask":
+        if (!window.ethereum) {
+          alert("Metamask not detected. Please install Metamask extension and refresh the page.");
+          setStatus(3);
+          return;
+        }
         auth = new OrbisEVMAuth(window.ethereum);
         break;
       case "phantom":
-        auth = new OrbisSolanaAuth(window.phantom?.solana);
+        if (!window.phantom?.solana) {
+          alert("Phantom wallet not detected. Please install Phantom extension and refresh the page.");
+          setStatus(3);
+          return;
+        }
+        auth = new OrbisSolanaAuth(window.phantom.solana as any);
         break;
     }
 
@@ -63,7 +73,7 @@ export default function Auth() {
       console.log("admins:", admins);
       console.log(
         "admins.includes(result.user.did)",
-        admins?.includes(result.user.did)
+        admins?.includes(result.user.did),
       );
       if (
         isShared ||
@@ -79,7 +89,7 @@ export default function Auth() {
           alert("Error connecting to the wallet.");
         } else {
           alert(
-            "User isn't one of the admins of the OrbisDB instance. Please connect with a different wallet."
+            "User isn't one of the admins of the OrbisDB instance. Please connect with a different wallet.",
           );
         }
       }

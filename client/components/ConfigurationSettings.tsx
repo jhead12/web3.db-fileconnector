@@ -1,4 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
+
+// Add type declaration for window.ethereum
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
 import { STATUS, sleep } from "../utils";
 import StepsProgress from "./StepsProgress";
 import { useGlobal } from "../contexts/Global";
@@ -23,27 +30,27 @@ export function ConfigurationSetup({ showPresets }) {
     setIsConfigured,
     adminSession,
     setIsConnected,
-  } = useGlobal();
+  } = useGlobal() as any; // Type assertion to bypass TypeScript errors
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [statusConnect, setStatusConnect] = useState(STATUS.ACTIVE);
   const [hasLocalNode, setHasLocalNode] = useState(false);
   const [ceramicNode, setCeramicNode] = useState(
-    settings?.configuration?.ceramic?.node
+    settings?.configuration?.ceramic?.node,
   );
   const [ceramicSeed, setCeramicSeed] = useState(
-    settings?.configuration?.ceramic?.seed
+    settings?.configuration?.ceramic?.seed,
   );
   const [dbUser, setDbUser] = useState(settings?.configuration?.db?.user);
   const [dbDatabase, setDbDatabase] = useState(
-    settings?.configuration?.db?.database
+    settings?.configuration?.db?.database,
   );
   const [dbPassword, setDbPassword] = useState(
-    settings?.configuration?.db?.password
+    settings?.configuration?.db?.password,
   );
   const [dbHost, setDbHost] = useState(settings?.configuration?.db?.host);
   const [dbPort, setDbPort] = useState(settings?.configuration?.db?.port);
   const [adminAccount, setAdminAccount] = useState(
-    settings?.configuration?.admins?.[0] || null
+    settings?.configuration?.admins?.[0] || null,
   );
   const [step, setStep] = useState(1);
   const [presets, setPresets] = useState([]);
@@ -156,7 +163,7 @@ export function ConfigurationSetup({ showPresets }) {
               user: dbUser,
               database: dbDatabase,
               password: dbPassword,
-              host: dbHost,
+              host: dbHost.replace(/^https?:\/\//, ''),
               port: parseInt(dbPort),
             },
           },
@@ -170,7 +177,7 @@ export function ConfigurationSetup({ showPresets }) {
       if (response.result) {
         console.log(
           "Success updating configutation with:",
-          response.updatedSettings
+          response.updatedSettings,
         );
         setStatus(STATUS.SUCCESS);
         setSettings(response.updatedSettings);
@@ -208,8 +215,7 @@ export function ConfigurationSetup({ showPresets }) {
       },
       nodes: [
         {
-          gateway: "http://localhost:7008",
-          key: "<YOUR_API_KEY>",
+          gateway: window.location.origin,
         },
       ],
     });
@@ -222,7 +228,7 @@ export function ConfigurationSetup({ showPresets }) {
       });
       localStorage.setItem(
         "orbisdb-admin-session",
-        result.auth.serializedSession
+        result.auth.serializedSession,
       );
       if (result?.user) {
         setAdminAccount(result.user.did);
@@ -254,8 +260,8 @@ export function ConfigurationSetup({ showPresets }) {
       {/** Step 1: Ceramic node */}
       {step == 1 && (
         <>
-          <div className="mt-2">
-            <label className="text-base font-medium mb-2">
+          <div className="mt-4">
+            <label className="text-base font-medium mb-2 block">
               Ceramic node URL:
             </label>
             <input
@@ -273,8 +279,8 @@ export function ConfigurationSetup({ showPresets }) {
             )}
           </div>
 
-          <div className="mt-3">
-            <label className="text-base font-medium mb-2">Ceramic Seed:</label>
+          <div className="mt-4">
+            <label className="text-base font-medium mb-2 block">Ceramic Seed:</label>
             <p className="text-sm mb-2 text-slate-500">
               This seed will be used to create streams from the OrbisDB UI as
               well as by plugins creating streams. You can also{" "}
@@ -287,7 +293,6 @@ export function ConfigurationSetup({ showPresets }) {
               . Make sure to back it up somewhere.
             </p>
             <textarea
-              type="text"
               placeholder="Your Ceramic admin seed"
               className="bg-white w-full px-2 py-1 rounded-md border border-slate-300 text-base text-slate-900 mb-1.5"
               onChange={(e) => setCeramicSeed(e.target.value)}
@@ -296,8 +301,8 @@ export function ConfigurationSetup({ showPresets }) {
           </div>
 
           {/** CTA to save updated context */}
-          <div className="flex w-full justify-center mt-2">
-            <Button title="Next" onClick={() => goStep2()} />
+          <div className="flex w-full justify-center mt-4">
+            <Button title="Next" successTitle="Next" onClick={() => goStep2()} />
           </div>
         </>
       )}
@@ -305,8 +310,8 @@ export function ConfigurationSetup({ showPresets }) {
       {/** Step 2: Database configuration */}
       {step == 2 && (
         <>
-          <div className="mt-2">
-            <label className="text-base font-medium text-center">
+          <div className="mt-4">
+            <label className="text-base font-medium text-center block">
               Database configuration:
             </label>
             <p className="text-sm text-slate-500 mb-2">
@@ -351,8 +356,8 @@ export function ConfigurationSetup({ showPresets }) {
           </div>
 
           {/** CTA to save updated context */}
-          <div className="flex w-full justify-center mt-2">
-            <Button title="Next" status={status} onClick={() => goStep3()} />
+          <div className="flex w-full justify-center mt-4">
+            <Button title="Next" successTitle="Next" status={status} onClick={() => goStep3()} />
           </div>
         </>
       )}
@@ -360,8 +365,8 @@ export function ConfigurationSetup({ showPresets }) {
       {/** Step 3: Presets configuration */}
       {step == 3 && (
         <>
-          <div className="mt-2">
-            <label className="text-base font-medium text-center">
+          <div className="mt-4">
+            <label className="text-base font-medium text-center block">
               Database configuration:
             </label>
             <p className="text-sm text-slate-500 mb-2">
@@ -373,8 +378,8 @@ export function ConfigurationSetup({ showPresets }) {
           </div>
 
           {/** CTA to save updated context */}
-          <div className="flex w-full justify-center mt-2">
-            <Button title="Next" status={status} onClick={() => goStep4()} />
+          <div className="flex w-full justify-center mt-4">
+            <Button title="Next" successTitle="Next" status={status} onClick={() => goStep4()} />
           </div>
         </>
       )}
@@ -382,8 +387,8 @@ export function ConfigurationSetup({ showPresets }) {
       {/** Step 3: Add admins */}
       {step == 4 && (
         <>
-          <div className="mt-2">
-            <label className="text-base font-medium text-center">
+          <div className="mt-4">
+            <label className="text-base font-medium text-center block">
               Add your OrbisDB admin:
             </label>
             <p className="text-sm text-slate-500 mb-2">
@@ -409,7 +414,8 @@ export function ConfigurationSetup({ showPresets }) {
           {/** CTA to save updated context */}
           <div className="flex w-full justify-center mt-4">
             <Button
-              title={settings.configuration ? "Save" : "Get started"}
+              title={settings?.configuration ? "Save" : "Get started"}
+              successTitle={settings?.configuration ? "Saved" : "Started"}
               status={adminAccount ? status : STATUS.DISABLED}
               onClick={() => saveSettings()}
             />

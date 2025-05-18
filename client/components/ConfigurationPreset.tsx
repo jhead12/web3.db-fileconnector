@@ -1,21 +1,30 @@
+import React from "react";
 import Button from "./Button";
 import { GovernanceIcon, SocialIcon } from "./Icons";
 
-const ConfigurationPreset = ({ presets, setPresets, status, save }) => {
-  /** Will enable or disable a prest on click */
-  function enablePreset(type, enabled) {
+// Define a type for the preset values
+type PresetType = "social" | "governance";
+
+interface ConfigurationPresetProps {
+  presets: PresetType[];
+  setPresets: React.Dispatch<React.SetStateAction<PresetType[]>>;
+  status?: number;
+  onNextClick?: () => void; // More descriptive prop name
+}
+
+const ConfigurationPreset: React.FC<ConfigurationPresetProps> = ({
+  presets,
+  setPresets,
+  status,
+  onNextClick,
+}) => {
+  function enablePreset(type: PresetType, enabled: boolean) {
     if (enabled) {
-      // Add the new type if it's not already in the array to avoid duplicates
-      setPresets((prevPresets) => {
-        return prevPresets.includes(type)
-          ? prevPresets
-          : [...prevPresets, type];
-      });
+      setPresets((prevPresets) =>
+        prevPresets.includes(type) ? prevPresets : [...prevPresets, type],
+      );
     } else {
-      // Delete preset "type" from presets array
-      setPresets((prevPresets) => {
-        return prevPresets.filter((p) => p !== type);
-      });
+      setPresets((prevPresets) => prevPresets.filter((p) => p !== type));
     }
   }
 
@@ -26,35 +35,44 @@ const ConfigurationPreset = ({ presets, setPresets, status, save }) => {
           Enable some presets:
         </label>
         <p className="text-sm text-slate-500 mb-2">
-          Click on the presets you want to use in order to configure your
-          instance to cover specific use cases immediately.
+          Click on the presets you want to use...
         </p>
         <div className="flex flex-row items-center space-x-2 mb-3">
           {/** Social preset */}
-          <div
-            className={`select-none rounded-xl border-2 h-24 w-24 items-center justify-center uppercase text-xxs font-medium flex flex-col cursor-pointer ${presets.includes("social") ? "border-[#4483FD] text-[#1e58f2]" : "border-slate-200 text-slate-600 hover:border-dashed hover:border-[#5a9eff]"}`}
+          <button
+            aria-label="Enable Social preset"
+            className={`preset-button ${
+              presets.includes("social") ? "preset-button-active" : ""
+            }`}
             onClick={() => enablePreset("social", !presets.includes("social"))}
           >
             <SocialIcon />
             <span className="mt-1">Social</span>
-          </div>
+          </button>
           {/** Governance preset */}
-          <div
-            className={`select-none rounded-xl border-2 h-24 w-24 items-center justify-center uppercase text-xxs font-medium flex flex-col cursor-pointer ${presets.includes("governance") ? "border-[#4483FD] text-[#1e58f2]" : "border-slate-200 text-slate-600 hover:border-dashed hover:border-[#5a9eff]"}`}
+          <button
+            aria-label="Enable Governance preset"
+            className={`preset-button ${
+              presets.includes("governance") ? "preset-button-active" : ""
+            }`}
             onClick={() =>
               enablePreset("governance", !presets.includes("governance"))
             }
           >
             <GovernanceIcon />
             <span className="mt-1">Governance</span>
-          </div>
+          </button>
         </div>
       </div>
 
-      {/** Go to next step */}
-      {save && (
+      {onNextClick && (
         <div className="flex w-full justify-center">
-          <Button title="Next" status={status} onClick={save} />
+          <Button
+            title="Next"
+            status={status}
+            onClick={onNextClick}
+            successTitle="Success"
+          />
         </div>
       )}
     </>

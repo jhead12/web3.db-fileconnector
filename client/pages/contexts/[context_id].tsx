@@ -30,8 +30,8 @@ import RightSideContainer from "../../components/RightSideContainer";
 
 export default function ContextDetails() {
   const { settings } = useGlobal();
-  const [context, setContext] = useState();
-  const [plugins, setPlugins] = useState([]);
+  const [context, setContext] = useState<any>(null);
+  const [plugins, setPlugins] = useState({ direct: [], parent: [] });
   const [parentContext, setParentContext] = useState();
   const [addModalVis, setAddModalVis] = useState(false);
   const [selectedPlugin, setSelectedPlugin] = useState(null);
@@ -48,7 +48,7 @@ export default function ContextDetails() {
       loadContextPlugins();
       let result = findParentContextId(
         context_id,
-        settings.contexts ? settings.contexts : null
+        settings.contexts ? settings.contexts : null,
       );
       setParentContext(result);
     }
@@ -228,7 +228,7 @@ export default function ContextDetails() {
               {/** CTA to add a plugin */}
               <div className="flex w-full justify-center mt-2">
                 <Link href="/plugins">
-                  <Button title="+ Add plugin" />
+                  <Button title="+ Add plugin" onClick={() => {}} />
                 </Link>
               </div>
             </div>
@@ -241,7 +241,12 @@ export default function ContextDetails() {
               <p className="text-base text-slate-600 mb-1">
                 Update your context settings here.
               </p>
-              <ContextSettings context={context} setContext={setContext} />
+              <ContextSettings
+                context={context}
+                setContext={setContext}
+                callback={() => {}}
+                parentContext={parentContext}
+              />
             </div>
           )}
         </div>
@@ -255,6 +260,7 @@ export default function ContextDetails() {
         <AddContextModal
           parentContext={context_id}
           hide={() => setAddModalVis(false)}
+          callback={() => {}}
         />
       )}
 
@@ -319,10 +325,10 @@ const OnePlugin = ({
 }) => {
   console.log("plugin:", plugin);
   const { settings, sessionJwt } = useGlobal();
-  const [pluginDetails, setPluginDetails] = useState();
+  const [pluginDetails, setPluginDetails] = useState<any>(null);
 
   const existingPluginIndex = settings.plugins.findIndex(
-    (p) => p.plugin_id === plugin.plugin_id
+    (p) => p.plugin_id === plugin.plugin_id,
   );
   const existingContextIndex = settings.plugins[
     existingPluginIndex
@@ -388,9 +394,9 @@ const OnePlugin = ({
             ([key, value]) => (
               <div className="font-mono text-xxs truncate" key={key}>
                 <span className="font-bold text-slate-900">{key}:</span>{" "}
-                <span className="truncate">{value}</span>
+                <span className="truncate">{String(value)}</span>
               </div>
-            )
+            ),
           )}
         </div>
       )}
@@ -407,7 +413,7 @@ const OnePlugin = ({
                 className="bg-white border border-slate-200 hover:border-[#4483FD]  rounded-md px-3 py-2 text-xs font-medium text-slate-800 space-x-1 flex flex-row items-center"
                 key={index}
               >
-                <ExternalLinkIcon />
+                <ExternalLinkIcon className="w-4 h-4" />
                 <span className="font-mono">/{route}</span>
               </Link>
             ))}

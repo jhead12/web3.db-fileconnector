@@ -5,10 +5,11 @@ export default function Button({
   status = 0,
   onClick,
   title,
-  successTitle,
+  successTitle = "",
+  className = "",
 }) {
   let classes =
-    "text-sm px-2.5 py-1.5 rounded-md font-medium flex flex-row items-center justify-center";
+    "text-sm px-2.5 py-1.5 rounded-md font-medium flex flex-row items-center justify-center cursor-pointer";
   switch (type) {
     /** Primary blue button */
     case "primary":
@@ -18,7 +19,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-[#4483FD] hover:bg-[#1e58f2] text-white pointer " + classes
+                "bg-[#4483FD] hover:bg-[#1e58f2] text-white cursor-pointer " + classes
               }
               onClick={onClick}
             >
@@ -62,7 +63,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-[#8fc1ff] text-white cursor-not-allowed " + +classes
+                "bg-[#8fc1ff] text-white cursor-not-allowed " + classes
               }
             >
               {title}
@@ -80,7 +81,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-white hover:bg-slate-50 border border-color-[#4483FD] text-[#4483FD] " +
+                "bg-white hover:bg-slate-50 border border-[#4483FD] text-[#4483FD] cursor-pointer " +
                 classes
               }
               onClick={onClick}
@@ -94,7 +95,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-slate-50 border border-color-[#4483FD] text-[#4483FD] " +
+                "bg-slate-50 border border-[#4483FD] text-[#4483FD] " +
                 classes
               }
             >
@@ -138,7 +139,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-[#FF7E00] hover:bg-[#F27800] text-[#402000] pointer " +
+                "bg-[#FF7E00] hover:bg-[#F27800] text-[#402000] cursor-pointer " +
                 classes
               }
               onClick={onClick}
@@ -183,7 +184,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-[#FFB266] text-[#B25800] cursor-not-allowed " + +classes
+                "bg-[#FFB266] text-[#B25800] cursor-not-allowed " + classes
               }
             >
               {title}
@@ -200,7 +201,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-[#AB9FF3] hover:bg-[#A297E7] text-[#2B283D] pointer " +
+                "bg-[#AB9FF3] hover:bg-[#A297E7] text-[#2B283D] cursor-pointer " +
                 classes
               }
               onClick={onClick}
@@ -245,7 +246,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-[#CDC5F8] text-[#897FC2] cursor-not-allowed " + +classes
+                "bg-[#CDC5F8] text-[#897FC2] cursor-not-allowed " + classes
               }
             >
               {title}

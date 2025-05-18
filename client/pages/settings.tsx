@@ -7,20 +7,21 @@ export default function Settings() {
   const router = useRouter();
   const [settings, setSettings] = useState({
     ipfs: {
-      enabled: false,
-      nodeUrl: ''
+      enabled: process.env.NEXT_PUBLIC_IPFS_ENABLED === 'true',
+      nodeUrl: process.env.IPFS_API_URL || '',
     },
     ceramic: {
-      enabled: false,
-      nodeUrl: '',
-      adminSeed: '',
-      settingsStreamId: ''
+      enabled: process.env.NEXT_PUBLIC_CERAMIC_ENABLED === 'true',
+      nodeUrl: process.env.NEXT_PUBLIC_CERAMIC_NODE_URL || '',
+      adminSeed: process.env.NEXT_PUBLIC_CERAMIC_ADMIN_SEED || '',
+      settingsStreamId: process.env.NEXT_PUBLIC_CERAMIC_SETTINGS_STREAM_ID || '',
     },
     composeDb: {
-      enabled: false,
-      schemaId: '',
-      modelDefinition: null
-    }
+      enabled: process.env.NEXT_PUBLIC_COMPOSEDB_ENABLED === 'true',
+      schemaId: process.env.NEXT_PUBLIC_COMPOSEDB_SCHEMA_ID || '',
+      modelDefinition: null,
+      modelId: process.env.NEXT_PUBLIC_COMPOSEDB_MODEL_ID || '',
+    },
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -43,13 +44,32 @@ export default function Settings() {
     try {
       const response = await fetch('/api/settings', {
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          'Authorization': `Bearer ${token}`,
+        },
       });
       
       if (response.ok) {
         const data = await response.json();
-        setSettings(data.settings || settings);
+        // Ensure the settings object has the expected structure
+        const newSettings = {
+          ipfs: {
+            enabled: data.settings?.ipfs?.enabled || false,
+            nodeUrl: data.settings?.ipfs?.nodeUrl || '',
+          },
+          ceramic: {
+            enabled: data.settings?.ceramic?.enabled || false,
+            nodeUrl: data.settings?.ceramic?.nodeUrl || '',
+            adminSeed: data.settings?.ceramic?.adminSeed || '',
+            settingsStreamId: data.settings?.ceramic?.settingsStreamId || '',
+          },
+          composeDb: {
+            enabled: data.settings?.composeDb?.enabled || false,
+            schemaId: data.settings?.composeDb?.schemaId || '',
+            modelDefinition: data.settings?.composeDb?.modelDefinition || null,
+            modelId: data.settings?.composeDb?.modelId || '',
+          },
+        };
+        setSettings(newSettings);
       } else {
         console.error('Failed to fetch settings');
       }
@@ -67,24 +87,80 @@ export default function Settings() {
 
   // Handle form input changes
   const handleChange = (section, field, value) => {
-    setSettings(prev => ({
-      ...prev,
-      [section]: {
-        ...prev[section],
-        [field]: value
+    setSettings(prev => {
+      // Create default objects with all required properties if they don't exist
+      let sectionData;
+      
+      if (section === 'ipfs') {
+        sectionData = prev.ipfs || {
+          enabled: false,
+          nodeUrl: '',
+        };
+      } else if (section === 'ceramic') {
+        sectionData = prev.ceramic || {
+          enabled: false,
+          nodeUrl: '',
+          adminSeed: '',
+          settingsStreamId: '',
+        };
+      } else if (section === 'composeDb') {
+        sectionData = prev.composeDb || {
+          enabled: false,
+          schemaId: '',
+          modelDefinition: null,
+          modelId: '',
+        };
+      } else {
+        sectionData = prev[section] || {};
       }
-    }));
+      
+      return {
+        ...prev,
+        [section]: {
+          ...sectionData,
+          [field]: value,
+        },
+      };
+    });
   };
 
   // Handle checkbox changes
   const handleCheckboxChange = (section, field) => {
-    setSettings(prev => ({
-      ...prev,
-      [section]: {
-        ...prev[section],
-        [field]: !prev[section][field]
+    setSettings(prev => {
+      // Create default objects with all required properties if they don't exist
+      let sectionData;
+      
+      if (section === 'ipfs') {
+        sectionData = prev.ipfs || {
+          enabled: false,
+          nodeUrl: '',
+        };
+      } else if (section === 'ceramic') {
+        sectionData = prev.ceramic || {
+          enabled: false,
+          nodeUrl: '',
+          adminSeed: '',
+          settingsStreamId: '',
+        };
+      } else if (section === 'composeDb') {
+        sectionData = prev.composeDb || {
+          enabled: false,
+          schemaId: '',
+          modelDefinition: null,
+          modelId: '',
+        };
+      } else {
+        sectionData = prev[section] || {};
       }
-    }));
+      
+      return {
+        ...prev,
+        [section]: {
+          ...sectionData,
+          [field]: !sectionData[field],
+        },
+      };
+    });
   };
 
   // Handle form submission
@@ -99,24 +175,41 @@ export default function Settings() {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify(settings)
+        body: JSON.stringify(settings),
       });
 
       if (response.ok) {
         const data = await response.json();
-        setSettings(prev => ({
-          ...prev,
-          ceramic: {
-            ...prev.ceramic,
-            settingsStreamId: data.settingsStreamId || prev.ceramic.settingsStreamId
-          },
-          composeDb: {
-            ...prev.composeDb,
-            modelId: data.updatedSettings?.composeDb?.modelId || prev.composeDb.modelId
-          }
-        }));
+        setSettings(prev => {
+          // Create default objects with all required properties if they don't exist
+          const ceramicData = prev.ceramic || {
+            enabled: false,
+            nodeUrl: '',
+            adminSeed: '',
+            settingsStreamId: '',
+          };
+          
+          const composeDbData = prev.composeDb || {
+            enabled: false,
+            schemaId: '',
+            modelDefinition: null,
+            modelId: '',
+          };
+          
+          return {
+            ...prev,
+            ceramic: {
+              ...ceramicData,
+              settingsStreamId: data.settingsStreamId || ceramicData.settingsStreamId,
+            },
+            composeDb: {
+              ...composeDbData,
+              modelId: data.updatedSettings?.composeDb?.modelId || composeDbData.modelId,
+            },
+          };
+        });
         setSuccess(true);
       } else {
         const errorData = await response.json();
@@ -158,7 +251,7 @@ export default function Settings() {
             <label className="flex items-center">
               <input
                 type="checkbox"
-                checked={settings.ipfs.enabled}
+                checked={settings.ipfs?.enabled || false}
                 onChange={() => handleCheckboxChange('ipfs', 'enabled')}
                 className="mr-2"
               />
@@ -166,12 +259,12 @@ export default function Settings() {
             </label>
           </div>
           
-          {settings.ipfs.enabled && (
+          {settings.ipfs?.enabled && (
             <div className="mb-4">
               <label className="block mb-2">IPFS Node URL</label>
               <input
                 type="text"
-                value={settings.ipfs.nodeUrl}
+                value={settings.ipfs?.nodeUrl || ''}
                 onChange={(e) => handleChange('ipfs', 'nodeUrl', e.target.value)}
                 className="w-full p-2 border rounded"
                 placeholder="http://localhost:5001"
@@ -188,7 +281,7 @@ export default function Settings() {
             <label className="flex items-center">
               <input
                 type="checkbox"
-                checked={settings.ceramic.enabled}
+                checked={settings.ceramic?.enabled || false}
                 onChange={() => handleCheckboxChange('ceramic', 'enabled')}
                 className="mr-2"
               />
@@ -196,13 +289,13 @@ export default function Settings() {
             </label>
           </div>
           
-          {settings.ceramic.enabled && (
+          {settings.ceramic?.enabled && (
             <>
               <div className="mb-4">
                 <label className="block mb-2">Ceramic Node URL</label>
                 <input
                   type="text"
-                  value={settings.ceramic.nodeUrl}
+                  value={settings.ceramic?.nodeUrl || ''}
                   onChange={(e) => handleChange('ceramic', 'nodeUrl', e.target.value)}
                   className="w-full p-2 border rounded"
                   placeholder="http://localhost:7007"
@@ -213,7 +306,7 @@ export default function Settings() {
                 <label className="block mb-2">Admin Seed (hex)</label>
                 <input
                   type="password"
-                  value={settings.ceramic.adminSeed}
+                  value={settings.ceramic?.adminSeed || ''}
                   onChange={(e) => handleChange('ceramic', 'adminSeed', e.target.value)}
                   className="w-full p-2 border rounded"
                   placeholder="Admin seed in hex format"
@@ -223,12 +316,12 @@ export default function Settings() {
                 </p>
               </div>
               
-              {settings.ceramic.settingsStreamId && (
+              {settings.ceramic?.settingsStreamId && (
                 <div className="mb-4">
                   <label className="block mb-2">Settings Stream ID</label>
                   <input
                     type="text"
-                    value={settings.ceramic.settingsStreamId}
+                    value={settings.ceramic?.settingsStreamId || ''}
                     readOnly
                     className="w-full p-2 border rounded bg-gray-50"
                   />
@@ -246,7 +339,7 @@ export default function Settings() {
             <label className="flex items-center">
               <input
                 type="checkbox"
-                checked={settings.composeDb.enabled}
+                checked={settings.composeDb?.enabled || false}
                 onChange={() => handleCheckboxChange('composeDb', 'enabled')}
                 className="mr-2"
               />
@@ -254,13 +347,13 @@ export default function Settings() {
             </label>
           </div>
           
-          {settings.composeDb.enabled && (
+          {settings.composeDb?.enabled && (
             <>
               <div className="mb-4">
                 <label className="block mb-2">Schema ID</label>
                 <input
                   type="text"
-                  value={settings.composeDb.schemaId}
+                  value={settings.composeDb?.schemaId || ''}
                   onChange={(e) => handleChange('composeDb', 'schemaId', e.target.value)}
                   className="w-full p-2 border rounded"
                   placeholder="Schema ID"
@@ -270,7 +363,7 @@ export default function Settings() {
               <div className="mb-4">
                 <label className="block mb-2">Model Definition (JSON)</label>
                 <textarea
-                  value={settings.composeDb.modelDefinition ? JSON.stringify(settings.composeDb.modelDefinition, null, 2) : ''}
+                  value={settings.composeDb?.modelDefinition ? JSON.stringify(settings.composeDb.modelDefinition, null, 2) : ''}
                   onChange={(e) => {
                     try {
                       const parsed = e.target.value ? JSON.parse(e.target.value) : null;
@@ -285,12 +378,12 @@ export default function Settings() {
                 />
               </div>
               
-              {settings.composeDb.modelId && (
+              {settings.composeDb?.modelId && (
                 <div className="mb-4">
                   <label className="block mb-2">Model ID</label>
                   <input
                     type="text"
-                    value={settings.composeDb.modelId}
+                    value={settings.composeDb?.modelId || ''}
                     readOnly
                     className="w-full p-2 border rounded bg-gray-50"
                   />

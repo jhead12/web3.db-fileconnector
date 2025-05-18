@@ -36,10 +36,10 @@ export default function Data() {
     id: "kh4q0ozorrgaq2mezktnrmdwleo1d",
   });
   const [selectedTableName, setSelectedTableName] = useState("models_indexed");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ data: [], columns: [] });
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [countTotalResults, setCountTotalResults] = useState();
+  const [countTotalResults, setCountTotalResults] = useState<number>(0);
   const [title, setTitle] = useState();
   const [schemaLoading, setSchemaLoading] = useState(false);
   const [tables, setTables] = useState([]);
@@ -277,7 +277,7 @@ export default function Data() {
             selectedTableName={selectedTableName}
             refresh={loadData}
             title={title}
-            countResults={data ? data.length : 0}
+            countResults={data?.data ? data.data.length : 0}
             countTotalResults={countTotalResults}
             page={page}
             setPage={setPage}
@@ -292,7 +292,7 @@ export default function Data() {
       </div>
 
       {/** Will display the add context modal */}
-      {addModalVis && <AddViewModal hide={() => setAddModalVis(false)} />}
+      {addModalVis && <AddViewModal hide={() => setAddModalVis(false)} parentContext="global" />}
 
       {/** Will display the modal to add a new foreign key */}
       {isFKModalOpen && (
@@ -352,7 +352,7 @@ const Editor = (props) => {
         className="bg-slate-100 rounded-md hover:bg-slate-200 px-2.5 py-0.5 space-x-1 flex flex-row items-center space-x-1.5"
         onClick={() => copyToClipboard(url)}
       >
-        <span>{url}</span> <CopyIcon />
+        <span>{url}</span> <CopyIcon className="w-4 h-4" />
       </button>
     );
   };
@@ -385,7 +385,7 @@ const Editor = (props) => {
 
 const GraphiQLContent = ({ endpoint }) => {
   const fetcher = createGraphiQLFetcher({ url: endpoint });
-  return <GraphiQL fetcher={fetcher} />;
+  return <GraphiQL fetcher={fetcher as any} />;
 };
 const TableCTAs = ({
   selectedTableName,
@@ -444,11 +444,11 @@ const TableCTAs = ({
                   onClick={() =>
                     viewDefinition(
                       selectedTable.id,
-                      selectedTable.view_definition
+                      selectedTable.view_definition,
                     )
                   }
                 >
-                  <EyeIcon /> <span>View definition</span>
+                  <EyeIcon className="w-4 h-4" /> <span>View definition</span>
                 </button>
               )}
 
@@ -481,7 +481,7 @@ const TableCTAs = ({
                 onClick={nextPage}
               >
                 <span>Next</span>
-                <ArrowRight />
+                <ArrowRight className="w-4 h-4" />
               </button>
               <span className="ml-2">{countTotalResults} records</span>
             </div>
@@ -493,7 +493,7 @@ const TableCTAs = ({
 };
 
 /** Top rows for SQL Editor */
-const SqlEditorCTAs = ({ runQuery, loading, type, setType }) => {
+const SqlEditorCTAs = ({ runQuery, loading, type, setType, selectedTableName }) => {
   return (
     <div className="w-full text-[12px] table-data -mt-px -ml-px font-mono px-2 p-2 justify-start flex flex-row space-x-2 items-center border-b border-slate-200">
       <Toggle type={type} setType={setType} />
@@ -516,7 +516,7 @@ const SqlEditorCTAs = ({ runQuery, loading, type, setType }) => {
               className="bg-[#4483FD] rounded-md opacity-90 hover:opacity-100 text-white px-3 py-0.5 space-x-2 flex flex-row items-center"
               onClick={() => runQuery()}
             >
-              <PlayIcon /> <span>Run query</span>
+              <PlayIcon className="w-4 h-4" /> <span>Run query</span>
             </button>
           )}
         </div>
@@ -570,8 +570,7 @@ const SqlEditor = (props) => {
       />
       <div className="flex flex-col w-full h-full font-mono text-[12px]">
         <div className="flex flex-1 w-full overflow-y-scroll sql_editor">
-          <AceEditor.default
-            id="editor"
+          <AceEditor
             aria-label="editor"
             mode="sql"
             theme="sqlserver"
@@ -591,7 +590,6 @@ const SqlEditor = (props) => {
             }}
             value={props.sqlValue}
             onChange={(value) => props.setSqlValue(value)}
-            showLineNumbers
           />
         </div>
         <div className="flex flex-1 w-full table-data -ml-px font-mono overflow-y-scroll border-t-4 border-slate-200">
@@ -707,7 +705,7 @@ const TableData = ({ sqlResult, showSuccessIfEmpty }) => {
             ))
           ) : (
             <tr>
-              <td colspan={headers.length} className="border-transparent">
+              <td colSpan={headers.length} className="border-transparent">
                 <div className="py-6 px-24 max-w-lg">
                   <Alert
                     title={"There isn't any data in this table."}

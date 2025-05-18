@@ -1,4 +1,0 @@
-
-#!/usr/bin/env sh
-
-node /Users/jeldonmusic/.nvm/versions/node/v23.11.0/bin/ceramic "$@"

@@ -42,11 +42,11 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
     // Check if DID or DateTime types are used
     const usesDID = fields.some((group) => group.selectValue === "did");
     const usesDateTime = fields.some(
-      (group) => group.selectValue === "datetime"
+      (group) => group.selectValue === "datetime",
     );
 
     // Build the $defs object
-    const $defs = {};
+    const $defs: Record<string, any> = {};
     if (usesDID) {
       $defs.DID = {
         type: "string",
@@ -87,7 +87,7 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
         },
       },
       null,
-      2
+      2,
     );
 
     // Update the state or whatever is necessary with the new schema
@@ -102,7 +102,7 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
         console.log("orbisdb.session:", orbisdb.session);
 
         let model_stream = await orbisdb.ceramic.createModel(
-          JSON.parse(modelDemoDefinition)
+          JSON.parse(modelDemoDefinition),
         );
         console.log("model_stream:", model_stream);
 
@@ -130,6 +130,8 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
       <div className="flex w-full md:w-5/12 pb-6 md:pb-0 items-center flex-col">
         {/** Instructions */}
         <Instructions
+          showBack={true}
+          backAction={() => setStep(2)}
           title="Step 3:"
           description={
             <>
@@ -137,6 +139,7 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
               structure your database.
             </>
           }
+          buttons={[]}
         />
 
         <div className="flex flex-col space-y-2 mt-2 pr-2">
@@ -156,7 +159,6 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
           <div className="flex flex-col items-start mb-2">
             <div className="text-slate-600 text-sm mb-1">Account relation:</div>
             <select
-              placeholder="Account relation"
               value={accountRelation}
               onChange={(e) => setAccountRelation(e.target.value)}
               className="bg-white border border-slate-200 rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900"
@@ -204,14 +206,14 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
 
   const handleTextChange = (index, value) => {
     const updatedInputGroups = inputGroups.map((group, i) =>
-      i === index ? { ...group, textValue: value } : group
+      i === index ? { ...group, textValue: value } : group,
     );
     setInputGroups(updatedInputGroups);
   };
 
   const handleSelectChange = (index, value) => {
     const updatedInputGroups = inputGroups.map((group, i) =>
-      i === index ? { ...group, selectValue: value } : group
+      i === index ? { ...group, selectValue: value } : group,
     );
     setInputGroups(updatedInputGroups);
   };
@@ -228,7 +230,6 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
             className="flex-1 bg-white border border-slate-200 rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900 mr-2"
           />
           <select
-            placeholder="Field type"
             value={group.selectValue}
             onChange={(e) => handleSelectChange(index, e.target.value)}
             className="bg-white border border-slate-200 rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900 w-full"

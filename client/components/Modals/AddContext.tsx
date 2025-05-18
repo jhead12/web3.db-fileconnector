@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../../contexts/Global";
+import { GlobalContext, useGlobal } from "../../contexts/Global";
 import Modal from "../Modals";
 import Button from "../Button";
 import ContextSettings from "../ContextSettings";
@@ -12,14 +12,14 @@ export default function AddContextModal({ hide, parentContext, callback }) {
   const [step, setStep] = useState(2);
 
   return (
-    <Modal hide={hide}>
+    <Modal
+      hide={hide}
+      title={parentContext ? "Add a new sub-context" : "Use a new context"}
+      description="You can either create or use an existing context."
+      style={{}}
+      className=""
+    >
       <div className="flex flex-col justify-center">
-        <h2 className="text-center font-medium mb-1">
-          {parentContext ? "Add a new sub-context" : "Use a new context"}
-        </h2>
-        <p className="text-center text-slate-500 text-base mb-2">
-          You can either create or use an existing context.
-        </p>
         <div className="w-full">
           <StepsProgress
             steps={["Type", "Details", "Save in settings"]}
@@ -43,7 +43,76 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
   const [selectedOption, setSelectedOption] = useState("new");
   const [contextId, setContextId] = useState("");
   const [status, setStatus] = useState(STATUS.ACTIVE);
-  const [contextDetails, setContextDetails] = useState();
+  const [contextDetails, setContextDetails] = useState<any>();
+  const { settings, setSettings } = useGlobal() as any;
+  
+  // Implement ceramic client
+  const orbis = {
+    ceramic: {
+      loadStream: async (id: string) => {
+        try {
+          // Attempt to fetch context from API
+          const response = await fetch(`/api/contexts/${id}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          if (response.ok) {
+            return await response.json();
+          } else {
+            console.error("Error loading context:", await response.text());
+            return {};
+          }
+        } catch (error) {
+          console.error("Error loading context:", error);
+          return {};
+        }
+      }
+    }
+  };
+  
+  // Implement createNewContext function
+  const createNewContext = () => {
+    setStep(3);
+  };
+  
+  // Implement saveInSettings function
+  const saveInSettings = async () => {
+    setStatus(STATUS.LOADING);
+    try {
+      // Add context to settings
+      const updatedContexts = [...(settings.contexts || []), contextDetails];
+      const updatedSettings = { ...settings, contexts: updatedContexts };
+      
+      // Save to API
+      const response = await fetch('/api/settings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ settings: updatedSettings })
+      });
+      
+      if (response.ok) {
+        setSettings(updatedSettings);
+        setStatus(STATUS.SUCCESS);
+        await sleep(500);
+        _callback(contextDetails);
+      } else {
+        console.error("Error saving context:", await response.text());
+        setStatus(STATUS.ERROR);
+        await sleep(500);
+        setStatus(STATUS.ACTIVE);
+      }
+    } catch (error) {
+      console.error("Error saving context:", error);
+      setStatus(STATUS.ERROR);
+      await sleep(500);
+      setStatus(STATUS.ACTIVE);
+    }
+  };
 
   /** Step 1: Load models details */
   async function loadContextDetails() {
@@ -67,7 +136,7 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
         alert("Error loading context details.");
         console.log(
           "Error loading context details and adding it to the settings file:",
-          e
+          "error",
         );
         setStatus(STATUS.ERROR);
         await sleep(500);
@@ -159,12 +228,18 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
               onClick={() => nextStep()}
               status={status}
               title="Next"
+              successTitle="Success"
             />
           </div>
         );
       } else if (selectedOption == "new") {
         return (
-          <ContextSettings callback={_callback} parentContext={parentContext} />
+          <ContextSettings
+            callback={_callback}
+            parentContext={parentContext}
+            context={{}}
+            setContext={() => {}}
+          />
         );
       }
 
@@ -183,6 +258,7 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
             onClick={() => saveInSettings()}
             status={status}
             title="Save"
+            successTitle="Saved"
           />
         </div>
       );

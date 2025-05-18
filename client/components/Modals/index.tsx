@@ -16,13 +16,13 @@ export default function Modal({
 
   return (
     <div
-      className={"relative z-10"}
+      className={"fixed inset-0 z-50"}
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
       style={style}
     >
-      <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity blur-md backdrop-blur-sm cursor-pointer"></div>
+      <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity backdrop-blur-sm cursor-pointer"></div>
       <div className="fixed inset-0 z-10 overflow-y-auto">
         <div
           className={

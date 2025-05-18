@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-min-noconflict/mode-mysql";
 import "ace-builds/src-noconflict/theme-sqlserver";
@@ -144,9 +144,7 @@ const VariableInput = ({
     case "query":
       input = (
         <div className="sql_editor bg-white overflow-hidden rounded-md border border-slate-300 text-base text-slate-900 mt-1">
-          <AceEditor.default
-            id="editor"
-            aria-label="editor"
+          <AceEditor
             mode="mysql"
             theme="sqlserver"
             name={variable.id}
@@ -165,7 +163,6 @@ const VariableInput = ({
             }}
             value={val}
             onChange={(value) => setVal(value)}
-            showLineNumbers
           />
         </div>
       );

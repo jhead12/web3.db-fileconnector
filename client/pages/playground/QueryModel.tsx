@@ -2,6 +2,14 @@ import { CodeEditor, Instructions } from ".";
 import React, { useState, useEffect } from "react";
 import Button from "../../components/Button";
 
+/** Utility to shorten addresses for display */
+function shortAddress(address: string): string {
+  if (!address) return "";
+  return address.length > 10
+    ? `${address.slice(0, 6)}...${address.slice(-4)}`
+    : address;
+}
+
 /** Step 5: Query streams inserted in new model table */
 const QueryModel = ({ modelId, tableName, setStep, orbisdb }) => {
   const [status, setStatus] = useState(0);
@@ -46,6 +54,7 @@ const QueryModel = ({ modelId, tableName, setStep, orbisdb }) => {
           showBack={true}
           backAction={() => setStep(4.1)}
           description="Let's query the streams we just created with our model. "
+          buttons={[]}
         />
 
         {!tableName && (

@@ -1,7 +1,7 @@
-async function createModelTable(db: any): Promise<void> {
+export async function createModelTable(db: any): Promise<void> {
     try {
         await db.transaction(async (tx: any) => {
-            const model_store = tx.store("model_table");
+            // Removed unused variable 'model_store'
 
             await tx.executeSql(`
                 CREATE TABLE IF NOT EXISTS model_table (

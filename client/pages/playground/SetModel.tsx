@@ -1,7 +1,7 @@
 import { Instructions } from ".";
 
 /** Step 2: Getting users to create their own model */
-const SetModel = ({ setStep }) => {
+const SetModel = ({ setStep, setModelId }) => {
   const createModel = async () => {
     setStep(3.1);
   };
@@ -15,6 +15,8 @@ const SetModel = ({ setStep }) => {
       {/** Instructions */}
       <div className="w-full pb-6 md:pb-0">
         <Instructions
+          showBack={true}
+          backAction={() => setStep(1)}
           title="Step 2:"
           description={
             <>

@@ -23,7 +23,7 @@ export default function Playground() {
   useEffect(() => {
     console.log(
       "settings.configuration.ceramic.node:",
-      settings.configuration.ceramic.node
+      settings.configuration.ceramic.node,
     );
     if (isShared) {
       orbisdb = new OrbisDB({
@@ -216,11 +216,9 @@ export const CodeEditor = ({ code, className = "w-7/12" }) => {
     <div
       className={`text-white flex overflow-y-scroll sql_editor rounded-md py-3 bg-[#2e3440] ${className}`}
     >
-      <AceEditor.default
-        id="editor"
+      <AceEditor
         aria-label="editor"
         mode="javascript"
-        disabled={true}
         theme="nord_dark"
         name="editor"
         width="100%"
@@ -238,7 +236,6 @@ export const CodeEditor = ({ code, className = "w-7/12" }) => {
           enableSnippets: true,
         }}
         value={code}
-        showLineNumbers
       />
     </div>
   );

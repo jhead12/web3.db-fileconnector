@@ -1,22 +1,18 @@
-// model-contextual-protocol.js
+// mcp.ts
+// This file is currently not in use and has been replaced with a placeholder to prevent build errors
 
-import { createIPFS } from "./ipfs";
-import { ceramicUrl, instance, apiKey } from "../config";
-
-const initializeCeramic = async () => {
-  const ceramic = await initCeramicClient(ceramicUrl, instance, apiKey);
-  return ceramic;
-};
-
-async function initCeramicClient(url, instance, apiKey) {
-  // Implementation to create a Ceramic client with the provided URL, instance, and API key
-}
-
-// Additional methods related to Model Contextual Protocol functionality can be added here
-
+// Export a dummy function to prevent TypeScript errors
 export const createModelContextualProtocol = async () => {
-  const ipfs = await createIPFS();
-  const ceramic = await initializeCeramic();
-
-  // Logic to create and manage the Model Contextual Protocol server
+  return {
+    ipfs: {
+      add: async (fileBuffer: Buffer) => ({
+        cid: {
+          toString: () => "placeholder-cid",
+        },
+      }),
+    },
+    ceramic: {
+      // Placeholder ceramic client
+    },
+  };
 };

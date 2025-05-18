@@ -24,7 +24,7 @@ export default function RightSideContainer({
 }
 
 const SetupDetails = () => {
-  const { isShared, adminSession, baseUrl, settings } = useGlobal();
+  const { isShared, adminSession, baseUrl, settings } = useGlobal() as any;
 
   return (
     <div className="rounded-md bg-white border border-slate-200 px-5 py-4 flex flex-col">
@@ -56,7 +56,7 @@ const SetupDetails = () => {
           }
         >
           <span>{settings?.configuration?.ceramic?.node}</span>
-          <CopyIcon />
+          <CopyIcon className="ml-1" />
         </button>
       </p>
 
@@ -68,7 +68,7 @@ const SetupDetails = () => {
           onClick={() => copyToClipboard(baseUrl)}
         >
           <span>{baseUrl}</span>
-          <CopyIcon />
+          <CopyIcon className="ml-1" />
         </button>
       </p>
 
@@ -86,7 +86,7 @@ const SetupDetails = () => {
             onClick={() => copyToClipboard(adminSession)}
           >
             <span>{adminSession}</span>
-            <CopyIcon />
+            <CopyIcon className="ml-1" />
           </button>
         </p>
       )}
@@ -142,28 +142,31 @@ const PluginsDetails = () => {
 };
 
 const ContextDetails = () => {
-  const { isShared } = useGlobal();
+  const { isShared } = useGlobal() as any;
   return (
     <div className="rounded-md bg-white border border-slate-200 px-5 py-4">
       <span className="font-medium text-base">What are contexts?</span>
-      <p className="text-slate-600 text-xs">
-        Contexts allow you to organize your data across different applications
-        or projects. Within each context, you can create sub-contexts for a more
-        detailed and granular approach.
-        <br /> <br />
-        Plugins are enabled per context, allowing each context to have its own
-        set of rules and automation.
-        <br />
-        <br />
-        Here's how you can use contexts when creating streams with{" "}
-        <Link
-          className="hover:underline text-[#4483FD]"
-          href="https://github.com/OrbisWeb3/db-sdk"
-          target="_blank"
-        >
-          our SDK
-        </Link>
-        :{/** Display additional alert for shared instances */}
+      <div className="text-slate-600 text-xs">
+        <p>
+          Contexts allow you to organize your data across different applications
+          or projects. Within each context, you can create sub-contexts for a more
+          detailed and granular approach.
+          <br /> <br />
+          Plugins are enabled per context, allowing each context to have its own
+          set of rules and automation.
+          <br />
+          <br />
+          Here's how you can use contexts when creating streams with{" "}
+          <Link
+            className="hover:underline text-[#4483FD]"
+            href="https://github.com/OrbisWeb3/db-sdk"
+            target="_blank"
+          >
+            our SDK
+          </Link>
+          :
+        </p>
+        {/** Display additional alert for shared instances */}
         {isShared && (
           <Alert
             className="text-xs mt-1 mb-3"
@@ -196,7 +199,7 @@ const ContextDetails = () => {
     .run();`}
           </code>
         </pre>
-      </p>
+      </div>
     </div>
   );
 };

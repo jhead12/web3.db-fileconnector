@@ -23,9 +23,10 @@ export default function Models() {
           </p>
           <div className="flex flex-col mt-4 space-y-1.5">
             <CreateModel
-              showBack={false}
               modelId={modelId}
               setModelId={setModelId}
+              setModelDefinition={() => {}}
+              setStep={() => {}}
             />
           </div>
         </div>
@@ -121,11 +122,11 @@ const CreateModel = ({ modelId, setModelId, setModelDefinition, setStep }) => {
     // Check if DID or DateTime types are used
     const usesDID = fields.some((group) => group.selectValue === "did");
     const usesDateTime = fields.some(
-      (group) => group.selectValue === "datetime"
+      (group) => group.selectValue === "datetime",
     );
 
     // Build the $defs object
-    const $defs = {};
+    const $defs: Record<string, any> = {};
     if (usesDID) {
       $defs.DID = {
         type: "string",
@@ -172,7 +173,7 @@ const CreateModel = ({ modelId, setModelId, setModelDefinition, setStep }) => {
         },
       },
       null,
-      2
+      2,
     );
 
     // Update the state or whatever is necessary with the new schema
@@ -255,7 +256,6 @@ const CreateModel = ({ modelId, setModelId, setModelDefinition, setStep }) => {
               Account relation:
             </div>
             <select
-              placeholder="Account relation"
               value={accountRelation}
               onChange={(e) => setAccountRelation(e.target.value)}
               className="bg-white border border-slate-200 rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900"
@@ -347,7 +347,7 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
     // Check if the value matches the regex
     if (regex.test(value)) {
       const updatedInputGroups = inputGroups.map((group, i) =>
-        i === index ? { ...group, textValue: value } : group
+        i === index ? { ...group, textValue: value } : group,
       );
       setInputGroups(updatedInputGroups);
     } else {
@@ -358,7 +358,7 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
 
   const handleSelectChange = (index, value) => {
     const updatedInputGroups = inputGroups.map((group, i) =>
-      i === index ? { ...group, selectValue: value } : group
+      i === index ? { ...group, selectValue: value } : group,
     );
     setInputGroups(updatedInputGroups);
   };
@@ -375,7 +375,6 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
             className="flex-1 bg-white border border-slate-200 rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900 mr-2"
           />
           <select
-            placeholder="Field type"
             value={group.selectValue}
             onChange={(e) => handleSelectChange(index, e.target.value)}
             className="bg-white border border-slate-200 rounded-md shadow-sm px-3 py-1.5 text-sm font-medium text-slate-900"

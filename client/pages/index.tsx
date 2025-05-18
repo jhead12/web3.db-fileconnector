@@ -81,6 +81,7 @@ export default function Contexts() {
         <AddContextModal
           hide={() => setAddModalVis(false)}
           callback={callback}
+          parentContext="global"
         />
       )}
     </>

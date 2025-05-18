@@ -11,6 +11,8 @@ const ConfigurationStep = ({ setStep }) => {
       <div className="w-full md:w-5/12 pb-6 md:pb-0">
         {/** Instructions */}
         <Instructions
+          showBack={false}
+          backAction={() => {}}
           title="Configuration:"
           description="First of all you will have to import the OrbisDB libraries in your app and configure the OrbisDB and Ceramic settings."
           buttons={[

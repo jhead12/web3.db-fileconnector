@@ -32,10 +32,13 @@ const UseExistingModel = ({
       <div className="w-1/2 flex flex-col">
         {/** Instructions */}
         <Instructions
+          showBack={true}
+          backAction={() => setStep(2)}
           title="Step 3:"
           description={
             <>Load an existing model to start creating data with it.</>
           }
+          buttons={[]}
         />
 
         {/** Model ID */}

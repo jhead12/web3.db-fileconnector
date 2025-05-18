@@ -13,13 +13,13 @@ export default function AssignContextModal({
   plugin_id,
   selectedContext,
 }) {
-  const { setSettings, sessionJwt } = useGlobal();
+  const { setSettings, sessionJwt } = useGlobal() as any;
   const [status, setStatus] = useState(STATUS.ACTIVE);
-  const [pluginDetails, setPluginDetails] = useState();
+  const [pluginDetails, setPluginDetails] = useState<any>({variables: []});
   const [selectedContextIds, setSelectedContextIds] = useState([]);
   const [step, setStep] = useState(selectedContext ? 2 : 1);
   const [variableValues, setVariableValues] = useState(
-    selectedContext ? selectedContext.variables : null
+    selectedContext ? selectedContext.variables : null,
   );
 
   useEffect(() => {
@@ -85,6 +85,9 @@ export default function AssignContextModal({
     let requestBody = {
       plugin_id: plugin_id,
       variables: variableValues,
+      context_id: "",
+      uuid: "",
+      path: [],
     };
     console.log("Submitting:", requestBody);
 
@@ -133,6 +136,7 @@ export default function AssignContextModal({
           : "Assign this plugin to a new context."
       }
       className="w-[500px]"
+      style={{}}
     >
       {/** Show stepper only if user is assigning a plugin to a new context (not updating it) */}
       {!selectedContext && (
@@ -157,6 +161,7 @@ export default function AssignContextModal({
                   selectedContext={context}
                   selectedContextIds={selectedContextIds}
                   setSelectedContextIds={setSelectedContextIds}
+                  size="md"
                 />
               ))}
             </>
@@ -165,23 +170,26 @@ export default function AssignContextModal({
               selectedContextIds={selectedContextIds}
               plugin_id={plugin_id}
               setSelectedContextIds={setSelectedContextIds}
+              selectedContext={{}}
+              index={0}
+              size="md"
             />
           )}
 
           {/** Save button */}
           <div className="flex flex-row justify-center mt-4">
             {!selectedContextIds || selectedContextIds.length == 0 ? (
-              <Button title="Next" status={STATUS.DISABLED} />
+              <Button title="Next" status={STATUS.DISABLED} onClick={() => {}} successTitle="Next" />
             ) : (
               <>
                 {isContextUsed(plugin_id, getLastContext()) &&
                 status != STATUS.SUCCESS ? (
                   <>
                     {/**<Button title="Context already used" status={STATUS.DISABLED} />*/}
-                    <Button title="Next" onClick={() => nextStep()} />
+                    <Button title="Next" onClick={() => nextStep()} successTitle="Next" />
                   </>
                 ) : (
-                  <Button title="Next" onClick={() => nextStep()} />
+                  <Button title="Next" onClick={() => nextStep()} successTitle="Next" />
                 )}
               </>
             )}
@@ -212,9 +220,9 @@ export default function AssignContextModal({
           <div className="flex flex-row justify-center">
             {(selectedContextIds && selectedContextIds.length > 0) ||
             selectedContext.context ? (
-              <Button title="Save" status={status} successTitle="Saved" />
+              <Button title="Save" status={status} successTitle="Saved" onClick={saveOrUpdateContext} />
             ) : (
-              <Button title="Context already used" status={STATUS.DISABLED} />
+              <Button title="Context already used" status={STATUS.DISABLED} onClick={() => {}} successTitle="Disabled" />
             )}
           </div>
         </form>
@@ -230,15 +238,16 @@ export const ContextDropdown = ({
   index,
   showGlobal = false,
   size,
+  plugin_id,
 }) => {
-  const { settings, isShared } = useGlobal();
+  const { settings, isShared } = useGlobal() as any;
   const [listVis, setListVis] = useState(false);
 
   // Get the current context based on the last ID in selectedContextIds
   const parentContextId = selectedContextIds[index];
   const parentContext = findContextById(
     settings.contexts,
-    selectedContextIds[index - 1]
+    selectedContextIds[index - 1],
   );
   const _contexts = parentContext?.contexts
     ? parentContext.contexts
@@ -306,7 +315,7 @@ export const ContextDropdown = ({
         <>
           <ul
             className={`absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm  ${size == "xs" ? "text-xs" : "text-base"}`}
-            tabIndex="-1"
+            tabIndex={-1}
             role="listbox"
             aria-labelledby="listbox-label"
           >
@@ -376,9 +385,9 @@ export const SmContextDetails = ({ context }) => {
 };
 
 function isContextUsed(plugin_id, targetContext) {
-  const { settings } = useGlobal();
+  const { settings } = useGlobal() as any;
   const pluginSettings = settings.plugins?.find(
-    (plugin) => plugin.plugin_id === plugin_id
+    (plugin) => plugin.plugin_id === plugin_id,
   );
   if (!pluginSettings) return false;
 

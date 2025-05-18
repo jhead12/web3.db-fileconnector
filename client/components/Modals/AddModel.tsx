@@ -10,15 +10,14 @@ export default function AddModelModal({ setAddModalVis }) {
   const [step, setStep] = useState(1);
 
   return (
-    <Modal hide={() => setAddModalVis(false)}>
+    <Modal
+      hide={() => setAddModalVis(false)}
+      title="Start indexing a new model"
+      description="This will archive the model's streams in your Ceramic node as well as start indexing those in your database."
+      style={{}}
+      className=""
+    >
       <div className="flex flex-col justify-center">
-        <h2 className="text-center font-medium mb-1">
-          Start indexing a new model
-        </h2>
-        <p className="text-center text-slate-500 text-base mb-2">
-          This will archive the model's streams in your Ceramic node as well as
-          start indexing those in your database.
-        </p>
         <div className="w-full">
           <StepsProgress
             steps={["Add your model", "Get model details", "Setup indexing"]}
@@ -37,13 +36,13 @@ export default function AddModelModal({ setAddModalVis }) {
 }
 
 const AddModelSteps = ({ step, setStep, setAddModalVis }) => {
-  const { orbis, setSettings } = useContext(GlobalContext);
+  const { orbis, setSettings } = useContext(GlobalContext) as any;
   const [modelId, setModelId] = useState("");
   const [status, setStatus] = useState(STATUS.ACTIVE);
-  const [modelDetails, setModelDetails] = useState();
+  const [modelDetails, setModelDetails] = useState<any>({});
 
   /** Step 1: Load models details */
-  async function loadModelDetails() {
+  async function loadModelDetails(_unused = false) {
     setStatus(STATUS.LOADING);
     try {
       // Load model details from ceramic
@@ -144,6 +143,7 @@ const AddModelSteps = ({ step, setStep, setAddModalVis }) => {
             onClick={() => loadModelDetails(true)}
             status={status}
             title="Load details"
+            successTitle="Loaded"
           />
         </>
       );
@@ -161,6 +161,7 @@ const AddModelSteps = ({ step, setStep, setAddModalVis }) => {
             onClick={() => saveInSettings()}
             status={status}
             title="Save"
+            successTitle="Saved"
           />
         </>
       );
@@ -188,6 +189,7 @@ const AddModelSteps = ({ step, setStep, setAddModalVis }) => {
             onClick={() => startIndexing()}
             status={status}
             title="Start indexing"
+            successTitle="Indexing started"
           />
         </>
       );

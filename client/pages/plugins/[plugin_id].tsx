@@ -13,6 +13,7 @@ import PluginSettingsModal from "../../components/Modals/PluginSettings";
 import AssignContextModal from "../../components/Modals/AssignContext";
 import Button from "../../components/Button";
 import InternalNavigation from "../../components/InternalNavigation";
+import LoopPluginVariables from "../../components/PluginVariables";
 import { useRouter } from "next/router";
 import { STATUS, sleep, findContextById } from "../../utils";
 import useContextDetails from "../../hooks/useContextDetails";
@@ -20,7 +21,7 @@ import MarkdownRenderer from "../../components/MarkdownRenderer";
 
 export default function PluginDetails() {
   const { settings, setSettings, sessionJwt } = useGlobal();
-  const [pluginDetails, setPluginDetails] = useState();
+  const [pluginDetails, setPluginDetails] = useState<any>(null);
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [defaultVariables, setDefaultVariables] = useState();
   const [isInstalled, setIsInstalled] = useState(false);
@@ -29,7 +30,7 @@ export default function PluginDetails() {
   const [assignContextModalVis, setAssignContextModalVis] = useState(false);
   const [selectedContext, setSelectedContext] = useState(null);
   const [variableValues, setVariableValues] = useState(
-    selectedContext ? selectedContext.variables : null
+    selectedContext ? selectedContext.variables : null,
   );
 
   /** Use Next router to get conversation_id */
@@ -79,7 +80,7 @@ export default function PluginDetails() {
     let _existingPluginIndex = -1;
     if (settings.plugins && settings.plugins.length > 0) {
       _existingPluginIndex = settings.plugins.findIndex(
-        (p) => p.plugin_id === plugin_id
+        (p) => p.plugin_id === plugin_id,
       );
     }
     console.log("_existingPluginIndex:", _existingPluginIndex);
@@ -191,7 +192,7 @@ export default function PluginDetails() {
                             setSelectedContext={setSelectedContext}
                             pluginDetails={pluginDetails}
                           />
-                        )
+                        ),
                       )}
                     </div>
                   </>
@@ -217,12 +218,13 @@ export default function PluginDetails() {
                   {pluginDetails.variables && (
                     <LoopPluginVariables
                       variables={pluginDetails.variables}
-                      defaultVariables={defaultVariables}
+                      variableValues={variableValues}
                       handleVariableChange={handleVariableChange}
+                      per_context={false}
                     />
                   )}
                   <div className="flex flex-row justify-center">
-                    <Button title="Save" status={status} successTitle="Saved" />
+                    <Button title="Save" status={status} successTitle="Saved" onClick={savePlugin} />
                   </div>
                 </form>
               </div>
@@ -303,6 +305,7 @@ export default function PluginDetails() {
         <AssignContextModal
           hide={() => setAssignContextModalVis(false)}
           plugin_id={plugin_id}
+          selectedContext={null}
         />
       )}
 
@@ -326,7 +329,7 @@ const OneContext = ({
 }) => {
   console.log("pluginDetails context:", context);
   const { settings, setSettings, sessionJwt } = useGlobal();
-  const [dynamicVariables, setDynamicVariables] = useState(0);
+  const [dynamicVariables, setDynamicVariables] = useState<any[]>([]);
 
   useEffect(() => {
     async function loadDynamicVariables() {
@@ -339,7 +342,7 @@ const OneContext = ({
               "Content-Type": "application/json",
               Authorization: `Bearer ${sessionJwt}`,
             },
-          }
+          },
         );
         const result = await rawResponse.json();
         console.log("Plugin dynamic variables:", result);
@@ -410,10 +413,24 @@ const OneContext = ({
           const reader = new FileReader();
 
           reader.onload = async (event) => {
-            // Parse CSV data using PapaParse
-            const csvData = Papa.parse(event.target.result, {
-              header: true,
-            }).data;
+            // Simple CSV parsing without PapaParse
+            const text = event.target.result as string;
+            const lines = text.split('\n');
+            const headers = lines[0].split(',');
+            
+            const csvData = [];
+            for (let i = 1; i < lines.length; i++) {
+              if (lines[i].trim() === '') continue;
+              
+              const values = lines[i].split(',');
+              const entry = {};
+              
+              for (let j = 0; j < headers.length; j++) {
+                entry[headers[j].trim()] = values[j] ? values[j].trim() : '';
+              }
+              
+              csvData.push(entry);
+            }
 
             // Send parsed CSV data to server
             try {
@@ -426,7 +443,7 @@ const OneContext = ({
                     data: csvData,
                     sessionId: context.uuid,
                   }),
-                }
+                },
               );
               const result = await response.json();
               console.log("Upload result:", result);
@@ -469,7 +486,7 @@ const OneContext = ({
     window.open(
       routeUrl,
       "_blank", // Target: open in a new window
-      `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars`
+      `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars`,
     );
   };
 
@@ -506,7 +523,7 @@ const OneContext = ({
           {Object.entries(context.variables).map(([key, value]) => (
             <div className="font-mono text-xxs truncate" key={key}>
               <span className="font-bold text-slate-900">{key}:</span>{" "}
-              <span className="truncate">{value}</span>
+              <span className="truncate">{String(value)}</span>
             </div>
           ))}
         </div>
@@ -583,7 +600,7 @@ const OneContext = ({
                 className="bg-white border border-slate-200 hover:border-[#4483FD]  rounded-md px-3 py-2 text-xs font-medium text-slate-800 space-x-1 flex flex-row items-center"
                 key={index}
               >
-                <ExternalLinkIcon />
+                <ExternalLinkIcon className="mr-1" />
                 <span className="font-mono">/{route}</span>
               </Link>
             ))}
@@ -603,7 +620,7 @@ const OneContext = ({
                   <button
                     onClick={() =>
                       openRouteInPopup(
-                        `/api/plugins/${context.uuid}/routes/${action.route}`
+                        `/api/plugins/${context.uuid}/routes/${action.route}`,
                       )
                     }
                     className="bg-white border border-slate-200 hover:border-[#4483FD] rounded-md px-3 py-2 text-xs font-medium text-slate-800 space-x-1 flex flex-row items-center"
@@ -611,7 +628,7 @@ const OneContext = ({
                   >
                     <span>{action.label}</span>
                   </button>
-                )
+                ),
             )}
           </>
         </div>
@@ -661,7 +678,7 @@ const ProgressBarVariable = ({ dynamic_variable }) => {
       </span>
       <div className="w-full bg-slate-100 rounded-full h-2 rounded-full">
         <div
-          className={`${getBarColor(dynamic_variable.progress)} h-2 rounded-full`}
+          className={`${getBarColor()} h-2 rounded-full`}
           style={{ width: `${dynamic_variable.progress}%` }}
         ></div>
       </div>

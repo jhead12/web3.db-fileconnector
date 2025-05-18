@@ -18,6 +18,7 @@ export default function PluginSettingsModal({
       title="Plugin settings"
       description="Those private settings are required for the plugin to work and will never be exposed to external actors."
       style={{ overflowY: "scroll", maxHeight: "90%" }}
+      className="w-[500px]"
     >
       <form onSubmit={savePlugin}>
         {/** If this plugin is requiring variables we show those here */}
@@ -26,7 +27,6 @@ export default function PluginSettingsModal({
             variables={pluginDetails.variables}
             variableValues={variableValues}
             handleVariableChange={handleVariableChange}
-            defaultVariables={defaultVariables}
             per_context={false}
           />
         )}
@@ -35,6 +35,7 @@ export default function PluginSettingsModal({
             title={defaultVariables ? "Save" : "Save"}
             status={status}
             successTitle="Saved"
+            onClick={savePlugin}
           />
         </div>
       </form>
