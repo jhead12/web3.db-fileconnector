@@ -36,11 +36,15 @@ export default function PluginDetails() {
   /** Use Next router to get conversation_id */
   const router = useRouter();
   const { plugin_id } = router.query;
+  const VALID_PLUGIN_IDS = ["plugin1", "plugin2", "plugin3"]; // Example allow-list
   const existingPluginIndex = getPluginIndex();
 
   useEffect(() => {
-    if (plugin_id) {
+    if (plugin_id && VALID_PLUGIN_IDS.includes(plugin_id)) {
       loadPluginDetails();
+    } else {
+      console.log("Invalid plugin_id:", plugin_id);
+      return;
     }
 
     async function loadPluginDetails() {
