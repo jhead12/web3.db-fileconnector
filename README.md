@@ -1,15 +1,76 @@
 # web3.db-fileconnector
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-1.6.0-blue)
+![Version](https://img.shields.io/badge/Version-1.8.0-blue)
+![npm](https://img.shields.io/npm/v/web3.db-fileconnector)
+![Security](https://img.shields.io/badge/Security-Audited-green)
 
-OrbisDB connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies, offering secure, efficient storage and query capabilities for your data.
+OrbisDB connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies with Helia IPFS integration, offering secure, efficient storage and query capabilities for your data.
 
-## ⏱️ 5-Minute Local Stack Setup (IPFS + Ceramic + ComposeDB + API)
+## 📦 NPM Package Installation
+
+Use web3.db-fileconnector as an NPM package in your existing application:
+
+```bash
+# Install via npm
+npm install web3.db-fileconnector
+
+# Install via pnpm  
+pnpm add web3.db-fileconnector
+
+# Install via yarn
+yarn add web3.db-fileconnector
+```
+
+### Quick Integration Example
+
+```javascript
+import { initIPFS } from 'web3.db-fileconnector/server/ipfs/config.js';
+import { GlobalContext } from 'web3.db-fileconnector/client/contexts/Global';
+
+// Initialize IPFS with Helia (new in v1.8.0)
+const ipfs = await initIPFS();
+const cid = await ipfs.add("Hello from your app!");
+console.log('Content stored with CID:', cid);
+
+// Use GraphQL API
+import { OrbisDB } from 'web3.db-fileconnector/server/orbisdb';
+const orbis = new OrbisDB({
+  ceramic: 'http://localhost:7007',
+  node: 'http://localhost:7008'
+});
+
+// Use in React components
+import { Button } from 'web3.db-fileconnector/client/components/Button';
+
+function MyApp() {
+  return (
+    <GlobalContext.Provider>
+      <div>
+        <Button>My Web3 App</Button>
+        {/* Your app content */}
+      </div>
+    </GlobalContext.Provider>
+  );
+}
+```
+
+### NPM Package Features
+
+- **🔐 Secure IPFS Integration**: Helia-powered decentralized storage (migrated from ipfs-http-client)
+- **📊 GraphQL API**: Ready-to-use data management system with Ceramic Network
+- **🎨 UI Components**: Pre-built React components for Web3 apps
+- **🔧 Utilities**: Helper functions for DID authentication, data syncing
+- **📱 Responsive**: Mobile-friendly components and layouts
+- **⚡ Production Ready**: Optimized for enterprise applications with security auditing
+- **🛡️ Security Focused**: v1.8.0 removes eval() usage and updates vulnerable dependencies
+- **🔄 Modern Dependencies**: Uses latest Helia, multiformats, and blockstore technologies
+
+## ⏱️ 5-Minute Local Development Setup
 
 ### Option 1: Automatic Setup Script (Recommended)
 
-We've created an automated setup script that will install all dependencies and start all services for you:
+Get a complete Web3 stack running in under 5 minutes:
 
 ```bash
 # 1. Clone the repository
@@ -17,23 +78,32 @@ git clone https://github.com/jhead12/web3db-fileconnector.git
 cd web3db-fileconnector
 
 # 2. Run the automatic setup script
-yarn setup
+npm run setup
 # OR
 ./setup.sh
 ```
 
-The setup script will:
-1. Install yarn if not available
-2. Install project dependencies
-3. Install IPFS if not already installed
-4. Install Ceramic if not already installed
-5. Set up environment variables
-6. Start all services (IPFS, Ceramic, ComposeDB, API server, and sample app)
+**What the setup script does:**
+1. ✅ Installs yarn if not available
+2. ✅ Installs project dependencies (including Helia IPFS)
+3. ✅ Installs IPFS daemon if not already installed
+4. ✅ Installs Ceramic CLI if not already installed
+5. ✅ Creates environment variables (.env file)
+6. ✅ Starts IPFS daemon in background
+7. ✅ Starts Ceramic network with ComposeDB
+8. ✅ Initializes API server and sample app
+9. ✅ Opens your browser to the running application
 
-When you're done, you can shut down all services with:
+**Stack URLs after setup:**
+- 🌐 **Main App**: http://localhost:3001
+- 🔧 **API Server**: http://localhost:7008  
+- 📊 **GraphQL Playground**: http://localhost:7008/graphql
+- 🗄️ **IPFS Web UI**: http://localhost:5001/webui
+- 🏺 **Ceramic Node**: http://localhost:7007
 
+**Shutdown all services:**
 ```bash
-yarn shutdown
+npm run shutdown
 # OR
 ./shutdown.sh
 ```
@@ -170,48 +240,96 @@ Your containerized application is now running:
 
 ## Available Scripts
 
-### Core Scripts
+### Core Development Scripts
 
 | Script               | Description                                  |
 | -------------------- | -------------------------------------------- |
-| `yarn dev`        | Start the development server                 |
-| `yarn build`      | Build the Next.js client application         |
-| `yarn start`      | Run the application in production mode       |
-| `yarn dev:docker` | Start with Docker and run development server |
-| `yarn dev:watch`  | Start with auto-restart on file changes      |
-| `yarn dev:debug`  | Start with debug logging enabled             |
+| `npm run dev`        | Start the development server                 |
+| `npm run build`      | Build the Next.js client application        |
+| `npm run start`      | Run the application in production mode       |
+| `npm run dev:docker` | Start with Docker and run development server |
+| `npm run dev:watch`  | Start with auto-restart on file changes     |
+| `npm run dev:debug`  | Start with debug logging enabled            |
 
 ### Setup & Maintenance
 
-| Script                  | Description                                          |
-| ----------------------- | ---------------------------------------------------- |
-| `yarn create-env`    | Create a `.env` file from template                   |
-| `yarn ceramic:build` | Set up and manage Ceramic DB (runs the wheel script) |
-| `yarn system:check`  | Verify server dependencies and configuration         |
-| `yarn clean`         | Remove build cache and dependencies                  |
-| `yarn clean:all`     | Remove all build artifacts for a fresh start         |
-| `yarn format`        | Format code using Prettier                           |
-| `yarn lint`          | Check code quality with ESLint                       |
+| Script                    | Description                                          |
+| ------------------------- | ---------------------------------------------------- |
+| `npm run setup`           | Complete automated setup (IPFS + Ceramic + app)     |
+| `npm run shutdown`        | Stop all running services                           |
+| `npm run create-env`      | Create a `.env` file from template                  |
+| `npm run system:check`    | Verify server dependencies and configuration        |
+| `npm run helia:test`      | Test IPFS/Helia configuration                       |
+| `npm run clean`           | Remove build cache and dependencies                 |
+| `npm run clean:all`       | Remove all build artifacts for a fresh start        |
+| `npm run format`          | Format code using Prettier                          |
+| `npm run lint`            | Check code quality with ESLint                      |
+| `npm run permissions`     | Fix shell script permissions                        |
+
+### Ceramic & Database
+
+| Script                      | Description                                      |
+| --------------------------- | ------------------------------------------------ |
+| `npm run ceramic:build`     | Set up and manage Ceramic DB                    |
+| `npm run ceramic:start`     | Start Ceramic daemon (local network)            |
+| `npm run ceramic:start:dev` | Start Ceramic with dev environment              |
+| `npm run wheel:build`       | Build Ceramic configuration                     |
+| `npm run wheel:build:watch` | Build Ceramic config with file watching         |
 
 ### Docker Management
 
-| Script                   | Description                  |
-| ------------------------ | ---------------------------- |
-| `yarn docker:build`   | Build the Docker image       |
-| `yarn docker:start`   | Start the Docker container   |
-| `yarn docker:stop`    | Stop the Docker container    |
-| `yarn docker:restart` | Restart the Docker container |
-| `yarn docker:remove`  | Remove the Docker container  |
-| `yarn docker:status`  | Show Docker container status |
+| Script                     | Description                  |
+| -------------------------- | ---------------------------- |
+| `npm run docker:build`     | Build the Docker image       |
+| `npm run docker:start`     | Start the Docker container   |
+| `npm run docker:stop`      | Stop the Docker container    |
+| `npm run docker:restart`   | Restart the Docker container |
+| `npm run docker:remove`    | Remove the Docker container  |
+| `npm run docker:status`    | Show Docker container status |
 
-### Publishing
+### Security & Testing
 
-| Script                   | Description                        |
-| ------------------------ | ---------------------------------- |
-| `yarn publish:npm`    | Publish to npm with public access  |
-| `yarn publish:docker` | Build and push Docker image        |
-| `yarn publish:github` | Publish to npm and Docker          |
-| `yarn publish`        | Build and restart Docker container |
+| Script                    | Description                                    |
+| ------------------------- | ---------------------------------------------- |
+| `npm run test:security`   | Run security audit on production dependencies |
+| `npm run validate`        | Run security audit + linting                  |
+| `npm run permissions`     | Fix shell script permissions                  |
+
+> **🛡️ Security Note**: Version 1.8.0 includes major security improvements including removal of eval() usage and migration from deprecated ipfs-http-client to secure Helia implementation.
+
+### Release Management
+
+| Script                      | Description                                        |
+| --------------------------- | -------------------------------------------------- |
+| `npm run changelog`         | Generate changelog from conventional commits       |
+| `npm run sync-versions`     | Sync version across all package.json files        |
+| `npm run prepare-release`   | Prepare release (run validation + setup)          |
+| `npm run version:major`     | Bump major version and create release             |
+| `npm run version:minor`     | Bump minor version and create release             |
+| `npm run version:patch`     | Bump patch version and create release             |
+| `npm run release:major`     | Full major release workflow                       |
+| `npm run release:minor`     | Full minor release workflow                       |
+| `npm run release:patch`     | Full patch release workflow                       |
+
+> **📦 Release Workflow**: Our automated release system includes security validation, version bumping, changelog generation, and npm publishing with conventional commit standards.
+
+### Publishing & Distribution
+
+| Script                     | Description                               |
+| -------------------------- | ----------------------------------------- |
+| `npm run publish:npm`      | Publish to npm with public access        |
+| `npm run publish:docker`   | Build and push Docker image              |
+| `npm run publish:github`   | Publish to npm and Docker                |
+| `npm run publish:release`  | Full release: validate + build + publish |
+
+### Git Branch Management
+
+| Script                       | Description                                  |
+| ---------------------------- | -------------------------------------------- |
+| `npm run release:prepare`    | Checkout main, pull, and merge develop      |
+| `npm run branch:feature`     | Create new feature branch from develop      |
+| `npm run branch:hotfix`      | Create new hotfix branch from main          |
+| `npm run branch:cleanup`     | Delete merged branches                      |
 
 ---
 
