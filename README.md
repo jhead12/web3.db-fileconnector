@@ -5,6 +5,84 @@
 
 OrbisDB connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies, offering secure, efficient storage and query capabilities for your data.
 
+## ⏱️ 5-Minute Local Stack Setup (IPFS + Ceramic + ComposeDB + API)
+
+### Option 1: Automatic Setup Script (Recommended)
+
+We've created an automated setup script that will install all dependencies and start all services for you:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/jhead12/web3db-fileconnector.git
+cd web3db-fileconnector
+
+# 2. Run the automatic setup script
+yarn setup
+# OR
+./setup.sh
+```
+
+The setup script will:
+1. Install yarn if not available
+2. Install project dependencies
+3. Install IPFS if not already installed
+4. Install Ceramic if not already installed
+5. Set up environment variables
+6. Start all services (IPFS, Ceramic, ComposeDB, API server, and sample app)
+
+When you're done, you can shut down all services with:
+
+```bash
+yarn shutdown
+# OR
+./shutdown.sh
+```
+
+### Option 2: Manual Setup
+
+If you prefer to set up each component individually:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/jhead12/web3db-fileconnector.git
+cd web3db-fileconnector
+
+# 2. Install dependencies for the main project
+yarn install
+
+# 3. Start local IPFS (in a separate terminal)
+npx ipfs daemon
+
+# 4. Start Ceramic with ComposeDB (in a separate terminal)
+npx ceramic-one daemon --network inmemory
+
+# 5. Setup and start the sample API app (in a separate terminal)
+cd server/ceramic-app/ceramic-app-app
+yarn install
+yarn generate         # Generates admin credentials and configuration
+yarn composites       # Deploys ComposeDB models
+yarn nextDev          # Starts the sample Next.js API app
+
+# 6. Start the main API server (in a separate terminal)
+cd /workspaces/web3db-connector  # Return to project root if needed
+yarn dev
+```
+
+**Your complete stack is now running:**
+- IPFS node: http://localhost:5001/webui
+- Ceramic node: http://localhost:7007
+- Sample API app: http://localhost:3000
+- Main API server: http://localhost:7008
+- GraphQL playground: http://localhost:7008/graphql
+
+**Key features available:**
+- Decentralized data storage with IPFS
+- Structured data with Ceramic and ComposeDB
+- GraphQL API with DID authentication
+- Next.js sample application
+
+For troubleshooting or advanced configuration, see the [Detailed Installation](#detailed-installation) section below.
+
 ## 🚀 Quick Start Guide
 
 Get up and running with web3.db-fileconnector in minutes:
@@ -23,11 +101,11 @@ git clone https://github.com/jhead12/web3db-fileconnector/orbisdb.git
 cd web3db-fileconnector
 
 # 2. Create and configure environment variables
-npm run create-env
+yarn create-env
 # Edit the .env file with your values
 
 # 3. Install dependencies
-npm install
+yarn install
 
 # 4. Start Ceramic network (in-memory mode for testing)
 npx ceramic-one daemon --network inmemory
@@ -56,7 +134,7 @@ git clone https://github.com/jhead12/web3db-fileconnector/orbisdb.git
 cd web3db-fileconnector
 
 # 2. Create and configure environment variables
-npm run create-env
+yarn create-env
 # Edit the .env file with your values
 
 # 3. Build and start all services
@@ -96,44 +174,44 @@ Your containerized application is now running:
 
 | Script               | Description                                  |
 | -------------------- | -------------------------------------------- |
-| `npm run dev`        | Start the development server                 |
-| `npm run build`      | Build the Next.js client application         |
-| `npm run start`      | Run the application in production mode       |
-| `npm run dev:docker` | Start with Docker and run development server |
-| `npm run dev:watch`  | Start with auto-restart on file changes      |
-| `npm run dev:debug`  | Start with debug logging enabled             |
+| `yarn dev`        | Start the development server                 |
+| `yarn build`      | Build the Next.js client application         |
+| `yarn start`      | Run the application in production mode       |
+| `yarn dev:docker` | Start with Docker and run development server |
+| `yarn dev:watch`  | Start with auto-restart on file changes      |
+| `yarn dev:debug`  | Start with debug logging enabled             |
 
 ### Setup & Maintenance
 
 | Script                  | Description                                          |
 | ----------------------- | ---------------------------------------------------- |
-| `npm run create-env`    | Create a `.env` file from template                   |
-| `npm run ceramic:build` | Set up and manage Ceramic DB (runs the wheel script) |
-| `npm run system:check`  | Verify server dependencies and configuration         |
-| `npm run clean`         | Remove build cache and dependencies                  |
-| `npm run clean:all`     | Remove all build artifacts for a fresh start         |
-| `npm run format`        | Format code using Prettier                           |
-| `npm run lint`          | Check code quality with ESLint                       |
+| `yarn create-env`    | Create a `.env` file from template                   |
+| `yarn ceramic:build` | Set up and manage Ceramic DB (runs the wheel script) |
+| `yarn system:check`  | Verify server dependencies and configuration         |
+| `yarn clean`         | Remove build cache and dependencies                  |
+| `yarn clean:all`     | Remove all build artifacts for a fresh start         |
+| `yarn format`        | Format code using Prettier                           |
+| `yarn lint`          | Check code quality with ESLint                       |
 
 ### Docker Management
 
 | Script                   | Description                  |
 | ------------------------ | ---------------------------- |
-| `npm run docker:build`   | Build the Docker image       |
-| `npm run docker:start`   | Start the Docker container   |
-| `npm run docker:stop`    | Stop the Docker container    |
-| `npm run docker:restart` | Restart the Docker container |
-| `npm run docker:remove`  | Remove the Docker container  |
-| `npm run docker:status`  | Show Docker container status |
+| `yarn docker:build`   | Build the Docker image       |
+| `yarn docker:start`   | Start the Docker container   |
+| `yarn docker:stop`    | Stop the Docker container    |
+| `yarn docker:restart` | Restart the Docker container |
+| `yarn docker:remove`  | Remove the Docker container  |
+| `yarn docker:status`  | Show Docker container status |
 
 ### Publishing
 
 | Script                   | Description                        |
 | ------------------------ | ---------------------------------- |
-| `npm run publish:npm`    | Publish to npm with public access  |
-| `npm run publish:docker` | Build and push Docker image        |
-| `npm run publish:github` | Publish to npm and Docker          |
-| `npm run publish`        | Build and restart Docker container |
+| `yarn publish:npm`    | Publish to npm with public access  |
+| `yarn publish:docker` | Build and push Docker image        |
+| `yarn publish:github` | Publish to npm and Docker          |
+| `yarn publish`        | Build and restart Docker container |
 
 ---
 
@@ -145,36 +223,36 @@ Choose the development mode that best suits your needs:
 
 ```bash
 # Standard development
-npm run dev
+yarn dev
 
 # Auto-restart on changes
-npm run dev:watch
+yarn dev:watch
 
 # Debug mode with detailed logging
-npm run dev:debug
+yarn dev:debug
 
 # Development with Docker
-npm run dev:docker
+yarn dev:docker
 ```
 
 ### Building for Production
 
 ```bash
 # Build the client application
-npm run build
+yarn build
 
 # Start in production mode
-npm run start
+yarn start
 ```
 
 ### Code Quality
 
 ```bash
 # Format code
-npm run format
+yarn format
 
 # Lint code
-npm run lint
+yarn lint
 ```
 
 ---
@@ -421,7 +499,7 @@ docker-compose up -d
 
 ```bash
 # Clear ports
-npm run clear-port
+yarn clear-port
 
 # Or manually kill the process using the port (e.g., for port 7008):
 lsof -i :7008

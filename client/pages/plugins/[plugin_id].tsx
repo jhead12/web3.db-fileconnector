@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useGlobal } from "../../contexts/Global";
 import {
@@ -37,20 +37,28 @@ export default function PluginDetails() {
   const router = useRouter();
   const { plugin_id } = router.query;
   const VALID_PLUGIN_IDS = ["plugin1", "plugin2", "plugin3"]; // Example allow-list
+  
+  // Helper function to normalize plugin_id (handle both string and array cases)
+  const getPluginId = () => Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
+  
   const existingPluginIndex = getPluginIndex();
 
   useEffect(() => {
-    if (plugin_id && VALID_PLUGIN_IDS.includes(plugin_id)) {
+    // Handle both string and array cases for plugin_id
+    const pluginIdValue = Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
+    
+    if (pluginIdValue && VALID_PLUGIN_IDS.includes(pluginIdValue)) {
       loadPluginDetails();
     } else {
-      console.log("Invalid plugin_id:", plugin_id);
+      console.log("Invalid plugin_id:", pluginIdValue);
       return;
     }
 
     async function loadPluginDetails() {
       /** Load plugin details */
       try {
-        let rawResponse = await fetch(`/api/plugins/${plugin_id}`, {
+        const pluginIdValue = Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
+        let rawResponse = await fetch(`/api/plugins/${pluginIdValue}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -82,9 +90,10 @@ export default function PluginDetails() {
 
   function getPluginIndex() {
     let _existingPluginIndex = -1;
+    const pluginIdValue = Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
     if (settings.plugins && settings.plugins.length > 0) {
       _existingPluginIndex = settings.plugins.findIndex(
-        (p) => p.plugin_id === plugin_id,
+        (p) => p.plugin_id === pluginIdValue,
       );
     }
     console.log("_existingPluginIndex:", _existingPluginIndex);
@@ -114,7 +123,7 @@ export default function PluginDetails() {
         },
         body: JSON.stringify({
           plugin: {
-            plugin_id: plugin_id,
+            plugin_id: Array.isArray(plugin_id) ? plugin_id[0] : plugin_id,
             variables: variableValues,
           },
         }),
@@ -172,7 +181,7 @@ export default function PluginDetails() {
             {/** Show overview tab content */}
             {nav == "Overview" && (
               <MarkdownRenderer
-                filePath={"/api/plugins/readme/" + plugin_id}
+                filePath={"/api/plugins/readme/" + (Array.isArray(plugin_id) ? plugin_id[0] : plugin_id)}
                 fallback={pluginDetails.description}
               />
             )}
@@ -190,7 +199,7 @@ export default function PluginDetails() {
                       {settings.plugins[existingPluginIndex].contexts?.map(
                         (context, index) => (
                           <OneContext
-                            plugin_id={plugin_id}
+                            plugin_id={Array.isArray(plugin_id) ? plugin_id[0] : plugin_id}
                             context={context}
                             key={index}
                             setSelectedContext={setSelectedContext}
@@ -308,7 +317,7 @@ export default function PluginDetails() {
       {assignContextModalVis && (
         <AssignContextModal
           hide={() => setAssignContextModalVis(false)}
-          plugin_id={plugin_id}
+          plugin_id={Array.isArray(plugin_id) ? plugin_id[0] : plugin_id}
           selectedContext={null}
         />
       )}
@@ -318,7 +327,7 @@ export default function PluginDetails() {
         <AssignContextModal
           hide={() => setSelectedContext(null)}
           selectedContext={selectedContext}
-          plugin_id={plugin_id}
+          plugin_id={Array.isArray(plugin_id) ? plugin_id[0] : plugin_id}
         />
       )}
     </div>
@@ -381,9 +390,8 @@ const OneContext = ({
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionJwt}`,
-        },
-        body: JSON.stringify({
-          plugin_id: plugin_id,
+        },          body: JSON.stringify({
+          plugin_id: Array.isArray(plugin_id) ? plugin_id[0] : plugin_id,
           uuid: context.uuid,
         }),
       });
@@ -468,17 +476,6 @@ const OneContext = ({
     } catch (e) {
       console.log("Error executing CSV upload");
     }
-
-    /*if (actionName === 'upload') {
-      // Trigger the action endpoint to open the file upload dialog
-      fetch(`/api/plugins/${context.uuid}/actions/upload`)
-        .then(response => response.text())
-        .then(script => {
-          // Execute the JavaScript received from the server
-          eval(script);
-        })
-        .catch(error => console.error('Error triggering upload:', error));
-    }*/
   };
 
   const openRouteInPopup = (routeUrl) => {
