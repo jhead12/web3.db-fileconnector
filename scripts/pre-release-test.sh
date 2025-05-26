@@ -162,7 +162,7 @@ fi
 
 # Test client build
 print_status "Building Next.js client..."
-if npm run build:client; then
+if npm run build; then
     print_success "Client build successful"
 else
     print_error "Client build failed"
