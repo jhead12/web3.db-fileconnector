@@ -172,14 +172,34 @@ fi
 # 7. Docker Tests
 print_header "7. DOCKER TESTS"
 
-# Check if Docker is available
+# Check if Docker is available and Dockerfile exists
 if ! command -v docker &> /dev/null; then
     print_warning "Docker not available, skipping Docker tests"
+elif [ ! -f "Dockerfile" ] && [ ! -f "client/Dockerfile" ]; then
+    print_warning "No Dockerfile found, skipping Docker build tests"
+    
+    # Check if docker-compose.yaml exists and is valid
+    if [ -f "docker-compose.yaml" ]; then
+        print_status "Validating docker-compose.yaml..."
+        if docker-compose config > /dev/null 2>&1; then
+            print_success "docker-compose.yaml is valid"
+        else
+            print_warning "docker-compose.yaml validation failed"
+        fi
+    fi
 else
     print_status "Testing Docker build..."
     
+    # Determine which Dockerfile to use
+    DOCKERFILE_PATH="."
+    if [ -f "Dockerfile" ]; then
+        DOCKERFILE_PATH="."
+    elif [ -f "client/Dockerfile" ]; then
+        DOCKERFILE_PATH="./client"
+    fi
+    
     # Build Docker image
-    if docker build -t web3db-connector-test:latest .; then
+    if docker build -t web3db-connector-test:latest $DOCKERFILE_PATH; then
         print_success "Docker build successful"
         
         # Test Docker run (quick test)
