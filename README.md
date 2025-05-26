@@ -1,7 +1,7 @@
 # web3.db-fileconnector
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-1.8.0-blue)
+![Version](https://img.shields.io/badge/Version-1.8.1-blue)
 ![npm](https://img.shields.io/npm/v/web3.db-fileconnector)
 ![Security](https://img.shields.io/badge/Security-Audited-green)
 
@@ -163,6 +163,31 @@ Get up and running with web3.db-fileconnector in minutes:
 - **npm**: v8.6.0 or later
 - **Docker**: v20.10 or later (optional, for containerized setup)
 
+### System Requirements & File Size Recommendations
+
+#### Disk Space Requirements
+- **Minimum**: 10GB free disk space for basic installation
+- **Recommended**: 30GB+ free disk space for development with build processes
+- **Production**: 50GB+ for optimal performance with full Docker stack
+
+#### File Upload Limits
+- **IPFS File Size**: Up to 100MB per file recommended for optimal performance
+- **Large Files**: Files >100MB may experience slower upload/retrieval times
+- **Batch Operations**: Recommended batch size of 50 files or 500MB total per operation
+- **Database Records**: No strict limits, but pagination recommended for >1000 records
+
+#### Performance Considerations
+- **Memory**: 4GB+ RAM recommended (8GB+ for heavy development workloads)
+- **Network**: Stable internet connection for IPFS and Ceramic network synchronization
+- **Storage**: SSD preferred for faster build times and database operations
+
+> ⚠️ **Important**: The project requires significant disk space due to:
+> - Node.js dependencies (~3-4GB in node_modules)
+> - Docker images and containers (~2-3GB)
+> - IPFS data storage and pinning
+> - Ceramic network data and indexing
+> - Build artifacts and logs
+
 ### Option 1: Quick Local Setup (Recommended for First-Time Users)
 
 ```bash
@@ -226,6 +251,7 @@ Your containerized application is now running:
 ## Table of Contents
 
 - [Available Scripts](#available-scripts)
+- [File Handling Best Practices](#file-handling-best-practices)
 - [Development Workflow](#development-workflow)
 - [Detailed Installation](#detailed-installation)
   - [Ceramic Setup](#ceramic-setup)
@@ -330,6 +356,156 @@ Your containerized application is now running:
 | `npm run branch:feature`     | Create new feature branch from develop      |
 | `npm run branch:hotfix`      | Create new hotfix branch from main          |
 | `npm run branch:cleanup`     | Delete merged branches                      |
+
+---
+
+## File Handling Best Practices
+
+### IPFS File Upload Guidelines
+
+#### Recommended File Sizes
+- **Small Files** (< 1MB): Optimal for metadata, configurations, and JSON documents
+- **Medium Files** (1MB - 25MB): Good for images, documents, and small media files
+- **Large Files** (25MB - 100MB): Acceptable but may experience slower upload times
+- **Very Large Files** (> 100MB): Not recommended, consider breaking into chunks
+
+#### Supported File Types
+```javascript
+// Recommended file types for optimal performance
+const recommendedTypes = {
+  documents: ['.json', '.txt', '.md', '.pdf'],
+  images: ['.jpg', '.jpeg', '.png', '.gif', '.webp'],
+  media: ['.mp3', '.mp4', '.webm'],
+  data: ['.csv', '.json', '.xml'],
+  archives: ['.zip', '.tar.gz'] // Use sparingly
+};
+
+// Example file upload with size validation
+async function uploadToIPFS(file) {
+  const maxSize = 100 * 1024 * 1024; // 100MB
+  
+  if (file.size > maxSize) {
+    throw new Error(`File too large: ${file.size} bytes. Maximum: ${maxSize} bytes`);
+  }
+  
+  const ipfs = await initIPFS();
+  const result = await ipfs.add(file);
+  return result.cid;
+}
+```
+
+#### Database Record Limits
+- **Single Query**: Limit to 1000 records per query
+- **Batch Operations**: Process in chunks of 100-500 records
+- **Pagination**: Always implement for user-facing lists
+- **Indexing**: Use appropriate indexes for large datasets
+
+#### Storage Optimization Tips
+```javascript
+// Compress large JSON before storage
+import { deflate, inflate } from 'pako';
+
+async function storeCompressedData(data) {
+  const compressed = deflate(JSON.stringify(data));
+  const ipfs = await initIPFS();
+  return await ipfs.add(compressed);
+}
+
+// Implement file chunking for large files
+async function uploadLargeFile(file) {
+  const chunkSize = 10 * 1024 * 1024; // 10MB chunks
+  const chunks = [];
+  
+  for (let i = 0; i < file.size; i += chunkSize) {
+    const chunk = file.slice(i, i + chunkSize);
+    const cid = await ipfs.add(chunk);
+    chunks.push(cid);
+  }
+  
+  // Store chunk manifest
+  const manifest = { chunks, originalSize: file.size };
+  return await ipfs.add(JSON.stringify(manifest));
+}
+```
+
+#### Performance Monitoring
+```javascript
+// Monitor upload performance
+async function monitoredUpload(file) {
+  const startTime = Date.now();
+  const maxTimeout = 60000; // 1 minute
+  
+  try {
+    const result = await Promise.race([
+      uploadToIPFS(file),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Upload timeout')), maxTimeout)
+      )
+    ]);
+    
+    const duration = Date.now() - startTime;
+    console.log(`Upload completed in ${duration}ms`);
+    return result;
+  } catch (error) {
+    console.error('Upload failed:', error.message);
+    throw error;
+  }
+}
+```
+
+#### Error Handling & Retry Logic
+```javascript
+async function robustUpload(file, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await uploadToIPFS(file);
+    } catch (error) {
+      console.warn(`Upload attempt ${attempt} failed:`, error.message);
+      
+      if (attempt === maxRetries) {
+        throw new Error(`Upload failed after ${maxRetries} attempts`);
+      }
+      
+      // Exponential backoff
+      await new Promise(resolve => 
+        setTimeout(resolve, Math.pow(2, attempt) * 1000)
+      );
+    }
+  }
+}
+```
+
+### File System Best Practices
+
+#### Project File Organization
+```
+recommended-project-structure/
+├── uploads/           # Temporary upload storage (< 1GB)
+├── cache/            # Build and runtime cache (< 2GB)
+├── logs/             # Application logs (rotate daily)
+├── data/             # Persistent data storage
+│   ├── ipfs/         # IPFS repository data
+│   ├── ceramic/      # Ceramic network data
+│   └── postgres/     # Database files (if local)
+└── backups/          # Regular data backups
+```
+
+#### Cleanup & Maintenance
+```bash
+# Regular cleanup script (add to cron)
+#!/bin/bash
+# Clean old logs (keep 7 days)
+find logs/ -name "*.log" -mtime +7 -delete
+
+# Clean upload cache (keep 1 day)
+find uploads/ -type f -mtime +1 -delete
+
+# Clean build cache periodically
+npm run clean
+
+# Monitor disk usage
+df -h . | awk 'NR==2 {print "Disk usage: " $5}'
+```
 
 ---
 
@@ -624,6 +800,76 @@ lsof -i :7008
 kill -9 <PID>
 ```
 
+#### File Size & Disk Space Issues
+
+**Problem**: "No space left on device" during build or upload  
+**Solution**:
+
+```bash
+# Check disk usage
+df -h
+
+# Clean up project dependencies
+npm run clean:all
+
+# Clear Docker cache
+docker system prune -a
+
+# Clean npm/pnpm cache
+npm cache clean --force
+pnpm store prune
+```
+
+**Problem**: File upload fails with "File too large" error  
+**Solution**:
+
+```javascript
+// Check file size before upload
+const maxSize = 100 * 1024 * 1024; // 100MB
+if (file.size > maxSize) {
+  console.error(`File size ${(file.size/1024/1024).toFixed(2)}MB exceeds limit of 100MB`);
+  // Consider file compression or chunking
+}
+```
+
+**Problem**: IPFS upload times out or is very slow  
+**Solution**:
+
+```bash
+# Check IPFS daemon status
+ipfs swarm peers | wc -l  # Should show connected peers
+
+# Restart IPFS with more aggressive settings
+ipfs shutdown
+ipfs daemon --enable-gc --routing=dhtclient
+```
+
+**Problem**: Build process consumes too much memory  
+**Solution**:
+
+```bash
+# Increase Node.js memory limit
+export NODE_OPTIONS="--max-old-space-size=8192"  # 8GB
+npm run build
+
+# Alternative: Use Docker for builds
+npm run docker:build
+```
+
+**Problem**: PostgreSQL connection errors due to disk space  
+**Solution**:
+
+```bash
+# Check PostgreSQL logs
+docker logs orbisdb-pgvector
+
+# Clean old PostgreSQL data (⚠️ Will lose data)
+docker volume rm web3db-connector_postgres_data
+
+# Or increase disk space and restart
+docker restart orbisdb-pgvector
+```
+
 ### Platform-Specific Issues
 
 #### Windows Troubleshooting
@@ -661,3 +907,69 @@ This project is licensed under the MIT License.
 
 **Bugs**:  
 [https://github.com/jhead12/web3db-fileconnector/orbisdb/issues](https://github.com/jhead12/web3db-fileconnector/orbisdb/issues)
+
+## ⚠️ CRITICAL: Database Permissions Setup
+
+**🔒 SECURITY NOTICE: Proper database permissions are ESSENTIAL for web3.db-fileconnector to function correctly and securely.**
+
+### Why Permissions Matter
+
+1. **Data Integrity**: Without proper permissions, the application cannot create, read, update, or delete data
+2. **Security**: Incorrect permissions can expose your database to unauthorized access
+3. **Functionality**: Many features will fail silently or throw cryptic errors without proper permissions
+4. **Ceramic Integration**: The Ceramic network requires specific database permissions to store and sync data
+
+### Required PostgreSQL Permissions
+
+Before running web3.db-fileconnector, you **MUST** configure PostgreSQL permissions:
+
+```sql
+-- Connect to PostgreSQL as superuser
+psql -U postgres
+
+-- Connect to the ceramic database
+\c ceramic
+
+-- Grant essential permissions to admin user
+GRANT USAGE ON SCHEMA public TO admin;
+GRANT CREATE ON SCHEMA public TO admin;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin;
+
+-- Apply to future tables (CRITICAL)
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO admin;
+
+-- Set database ownership (recommended)
+ALTER DATABASE ceramic OWNER TO admin;
+```
+
+### Quick Permission Setup
+
+We provide automated scripts for permission setup:
+
+```bash
+# Option 1: Use the SQL script
+psql -U postgres -d ceramic -f fix-postgres-permissions.sql
+
+# Option 2: Manual setup (see PostgreSQL-Permissions.md)
+cat PostgreSQL-Permissions.md
+```
+
+### Permission-Related Errors
+
+If you see these errors, check your database permissions:
+
+- `permission denied for schema public`
+- `must be owner of relation [table_name]`
+- `permission denied for database ceramic`
+- `role "admin" does not exist`
+- Ceramic network sync failures
+- Silent data corruption or missing records
+
+### 🚨 Common Permission Mistakes
+
+1. **Forgetting future table permissions**: Use `ALTER DEFAULT PRIVILEGES`
+2. **Wrong database context**: Ensure you're connected to the 'ceramic' database
+3. **Case sensitivity**: PostgreSQL role names are case-sensitive
+4. **Missing extensions**: Ensure vector extensions have proper permissions
+
+**📚 For detailed permission setup, see:** [`PostgreSQL-Permissions.md`](PostgreSQL-Permissions.md)

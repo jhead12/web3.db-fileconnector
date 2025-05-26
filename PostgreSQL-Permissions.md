@@ -1,5 +1,24 @@
 # PostgreSQL Permission Commands
 
+**⚠️ CRITICAL SETUP REQUIRED**: These permissions are **MANDATORY** for web3.db-fileconnector to function properly.
+
+## Why These Permissions Are Essential
+
+1. **Data Operations**: Create, read, update, delete operations on Ceramic data
+2. **Schema Management**: Dynamic table creation for new data models
+3. **Vector Extensions**: pgvector operations for similarity search
+4. **Ceramic Sync**: Proper synchronization with the Ceramic network
+5. **Security**: Controlled access while maintaining functionality
+
+## Quick Setup (Recommended)
+
+```bash
+# Run the automated permission script
+psql -U postgres -d ceramic -f fix-postgres-permissions.sql
+```
+
+## Manual Setup
+
 Run the following commands in your PostgreSQL terminal to grant the necessary permissions to the 'admin' user for the 'ceramic' database:
 
 ```sql
