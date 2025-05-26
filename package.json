@@ -57,6 +57,8 @@
     "publish": "npm run build && npm run docker:restart",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:security": "pnpm audit --prod || echo 'Security vulnerabilities found - please review'",
+    "test:pre-release": "chmod +x ./scripts/pre-release-test.sh && ./scripts/pre-release-test.sh",
+    "test:docker": "chmod +x ./scripts/docker-test.sh && ./scripts/docker-test.sh",
     "dev:docker": "npm run docker:start && node index.js",
     "dev:debug": "cross-env LOG_LEVEL=debug node index.js",
     "dev:watch": "nodemon --ignore '*.json' index.js",
