@@ -1,6 +1,6 @@
 {
   "name": "web3.db-fileconnector",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "GraphQL System Build B is an open database built on top of web3 technologies. It is a decentralized, open-source database that allows users to store and query data in a secure and efficient manner. The system is designed to be user-friendly and accessible to developers of all skill levels.",
   "keywords": [
     "web3",
@@ -59,6 +59,8 @@
     "test:security": "pnpm audit --prod || echo 'Security vulnerabilities found - please review'",
     "test:pre-release": "chmod +x ./scripts/pre-release-test.sh && ./scripts/pre-release-test.sh",
     "test:docker": "chmod +x ./scripts/docker-test.sh && ./scripts/docker-test.sh",
+    "validate:permissions": "chmod +x ./scripts/validate-permissions.sh && ./scripts/validate-permissions.sh",
+    "test:final": "chmod +x ./scripts/final-release-check.sh && ./scripts/final-release-check.sh",
     "dev:docker": "npm run docker:start && node index.js",
     "dev:debug": "cross-env LOG_LEVEL=debug node index.js",
     "dev:watch": "nodemon --ignore '*.json' index.js",
@@ -88,7 +90,8 @@
     "branch:cleanup": "git branch --merged | grep -v '\\*\\|master' | xargs -r git branch -d",
     "postversion": "npm run sync-versions",
     "install-all": "node scripts/install-all.js",
-    "permissions": "find . -type f -name '*.sh' -exec chmod +x {} \\;"
+    "permissions": "find . -type f -name '*.sh' -exec chmod +x {} \\; && chmod -R +x ./node_modules/.bin/",
+    "fix-permissions": "npm run permissions && chmod +x ./node_modules/.bin/eslint ./node_modules/.bin/conventional-changelog ./node_modules/.bin/prettier"
   },
   "main": "index.js",
   "type": "module",

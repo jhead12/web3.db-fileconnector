@@ -288,6 +288,14 @@ print_header "12. VALIDATION SUMMARY"
 print_success "All pre-release checks completed successfully!"
 print_status "Version: $PACKAGE_VERSION"
 print_status "Package: $(node -p "require('./package.json').name")"
+
+# Important reminders for users
+print_header "13. IMPORTANT USER REMINDERS"
+print_warning "🔒 CRITICAL: Database permissions must be configured before use!"
+print_status "Users must run: psql -U postgres -d ceramic -f fix-postgres-permissions.sql"
+print_status "See PostgreSQL-Permissions.md for detailed setup instructions"
+print_warning "⚠️  Without proper permissions, the application will fail silently"
+
 print_status "Ready for publishing to npm registry"
 
 echo -e "\n${GREEN}========================================${NC}"

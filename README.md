@@ -5,7 +5,7 @@
 ![npm](https://img.shields.io/npm/v/web3.db-fileconnector)
 ![Security](https://img.shields.io/badge/Security-Audited-green)
 
-OrbisDB connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies with Helia IPFS integration, offering secure, efficient storage and query capabilities for your data.
+Web3.db-fileconnector connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies with Helia IPFS integration, offering secure, efficient storage and query capabilities for your data.
 
 ## 📦 NPM Package Installation
 
@@ -661,3 +661,69 @@ This project is licensed under the MIT License.
 
 **Bugs**:  
 [https://github.com/jhead12/web3db-fileconnector/orbisdb/issues](https://github.com/jhead12/web3db-fileconnector/orbisdb/issues)
+
+## ⚠️ CRITICAL: Database Permissions Setup
+
+**🔒 SECURITY NOTICE: Proper database permissions are ESSENTIAL for web3.db-fileconnector to function correctly and securely.**
+
+### Why Permissions Matter
+
+1. **Data Integrity**: Without proper permissions, the application cannot create, read, update, or delete data
+2. **Security**: Incorrect permissions can expose your database to unauthorized access
+3. **Functionality**: Many features will fail silently or throw cryptic errors without proper permissions
+4. **Ceramic Integration**: The Ceramic network requires specific database permissions to store and sync data
+
+### Required PostgreSQL Permissions
+
+Before running web3.db-fileconnector, you **MUST** configure PostgreSQL permissions:
+
+```sql
+-- Connect to PostgreSQL as superuser
+psql -U postgres
+
+-- Connect to the ceramic database
+\c ceramic
+
+-- Grant essential permissions to admin user
+GRANT USAGE ON SCHEMA public TO admin;
+GRANT CREATE ON SCHEMA public TO admin;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin;
+
+-- Apply to future tables (CRITICAL)
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO admin;
+
+-- Set database ownership (recommended)
+ALTER DATABASE ceramic OWNER TO admin;
+```
+
+### Quick Permission Setup
+
+We provide automated scripts for permission setup:
+
+```bash
+# Option 1: Use the SQL script
+psql -U postgres -d ceramic -f fix-postgres-permissions.sql
+
+# Option 2: Manual setup (see PostgreSQL-Permissions.md)
+cat PostgreSQL-Permissions.md
+```
+
+### Permission-Related Errors
+
+If you see these errors, check your database permissions:
+
+- `permission denied for schema public`
+- `must be owner of relation [table_name]`
+- `permission denied for database ceramic`
+- `role "admin" does not exist`
+- Ceramic network sync failures
+- Silent data corruption or missing records
+
+### 🚨 Common Permission Mistakes
+
+1. **Forgetting future table permissions**: Use `ALTER DEFAULT PRIVILEGES`
+2. **Wrong database context**: Ensure you're connected to the 'ceramic' database
+3. **Case sensitivity**: PostgreSQL role names are case-sensitive
+4. **Missing extensions**: Ensure vector extensions have proper permissions
+
+**📚 For detailed permission setup, see:** [`PostgreSQL-Permissions.md`](PostgreSQL-Permissions.md)
