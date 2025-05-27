@@ -1,3 +1,24 @@
+# 1.8.4 (2025-05-27)
+
+### Feature Improvements
+
+* **docker:** Complete containerization with multi-platform builds (ARM64/AMD64)
+* **build:** Optimized Docker builds with proper layer caching and .next directory handling
+* **deployment:** Streamlined deployment with automated health checks and security improvements
+* **dependencies:** Updated to latest versions of Next.js, React, and other core dependencies
+* **security:** Enhanced security auditing and vulnerability management
+* **performance:** Faster builds and reduced container size
+* **merge:** Resolved conflicts with recent changes
+
+# 1.8.3 (2025-05-27)
+
+### Bug Fixes
+
+* **permissions:** Fixed executable permissions for shell scripts and binaries
+* **security:** Updated security audit script with improved messaging
+* **audit:** Added SECURITY-AUDIT.md with detailed vulnerability information
+* **eslint:** Fixed ESLint configuration and permissions
+
 # 1.8.1 (2025-05-26)
 
 ### Bug Fixes

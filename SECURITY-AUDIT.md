@@ -1,7 +1,7 @@
-# Security Audit Report - v1.8.1
+# Security Audit Report - v1.8.4
 
 ## Overview
-Security audit performed on web3.db-fileconnector v1.8.1 release preparation.
+Security audit performed on web3.db-fileconnector v1.8.4 release preparation.
 
 ## Vulnerability Summary
 **Total Vulnerabilities: 7**

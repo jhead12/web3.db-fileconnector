@@ -1,7 +1,7 @@
 # web3.db-fileconnector
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-2.0.0-blue)
+![Version](https://img.shields.io/badge/Version-1.8.4-blue)
 ![npm](https://img.shields.io/npm/v/web3.db-fileconnector)
 ![Security](https://img.shields.io/badge/Security-Audited-green)
 ![Docker](https://img.shields.io/badge/Docker-Supported-blue)
@@ -9,7 +9,7 @@
 
 Web3.db-fileconnector connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies with Helia IPFS integration, offering secure, efficient storage and query capabilities for your data.
 
-## 🆕 What's New in v2.0.0
+## 🆕 What's New in v1.8.4
 
 - **🐳 Enhanced Docker Support**: Complete containerization with multi-platform builds (ARM64/AMD64)
 - **🔧 Improved Build Process**: Optimized Docker builds with proper layer caching and .next directory handling
@@ -39,7 +39,7 @@ yarn add web3.db-fileconnector
 import { initIPFS } from 'web3.db-fileconnector/server/ipfs/config.js';
 import { GlobalContext } from 'web3.db-fileconnector/client/contexts/Global';
 
-// Initialize IPFS with Helia (enhanced in v2.0.0)
+// Initialize IPFS with Helia (enhanced in v1.8.4)
 const ipfs = await initIPFS();
 const cid = await ipfs.add("Hello from your app!");
 console.log('Content stored with CID:', cid);
@@ -130,7 +130,7 @@ async function createPost(data) {
 - **🔧 Utilities**: Helper functions for DID authentication, data syncing
 - **📱 Responsive**: Mobile-friendly components and layouts
 - **⚡ Production Ready**: Optimized for enterprise applications with security auditing
-- **🛡️ Security Focused**: v2.0.0 includes comprehensive security improvements and Docker optimization
+- **🛡️ Security Focused**: v1.8.4 includes comprehensive security improvements and Docker optimization
 - **🔄 Modern Dependencies**: Uses latest Helia, multiformats, and blockstore technologies
 - **🐳 Docker Native**: Full containerization support with multi-platform builds
 
@@ -355,7 +355,7 @@ docker-compose up -d
 docker-compose ps
 ```
 
-**New in v2.0.0**: Enhanced Docker support with:
+**New in v1.8.4**: Enhanced Docker support with:
 - ✅ Multi-platform builds (ARM64/AMD64)
 - ✅ Optimized build process with proper layer caching
 - ✅ Fixed .next directory handling in containers
@@ -485,7 +485,7 @@ curl http://localhost:3000/health
 
 ## Table of Contents
 
-- [🆕 What's New in v2.0.0](#-whats-new-in-v200)
+- [🆕 What's New in v1.8.4](#-whats-new-in-v184)
 - [📦 NPM Package Installation](#-npm-package-installation)
 - [⏱️ 5-Minute Local Development Setup](#️-5-minute-local-development-setup)
 - [🚀 Quick Start Guide](#-quick-start-guide)
@@ -564,7 +564,7 @@ curl http://localhost:3000/health
 | `npm run validate`        | Run security audit + linting                  |
 | `npm run permissions`     | Fix shell script permissions                  |
 
-> **🛡️ Security Note**: Version 2.0.0 includes major security improvements including comprehensive dependency updates, Docker security hardening with non-root users, and enhanced permission management.
+> **🛡️ Security Note**: Version 1.8.4 includes major security improvements including comprehensive dependency updates, Docker security hardening with non-root users, and enhanced permission management.
 
 ### Release Management
 
@@ -898,7 +898,7 @@ npm run docker:build
 npm run docker:start
 ```
 
-### Multi-Platform Build (New in v2.0.0)
+### Multi-Platform Build (New in v1.8.4)
 
 ```bash
 # Build for multiple architectures
@@ -1051,9 +1051,9 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
-**Problem**: `.next` directory not found in container (Fixed in v2.0.0)  
+**Problem**: `.next` directory not found in container (Fixed in v1.8.4)  
 **Solution**:
-This issue has been resolved in v2.0.0. The Docker build now properly handles the Next.js build output. If you're still experiencing issues:
+This issue has been resolved in v1.8.4. The Docker build now properly handles the Next.js build output. If you're still experiencing issues:
 
 ```bash
 # Ensure you're using the latest version
@@ -1074,7 +1074,7 @@ docker buildx build --platform linux/arm64,linux/amd64 -t web3db-connector:lates
 **Solution**:
 
 ```bash
-# Use Docker layer caching (automatically optimized in v2.0.0)
+# Use Docker layer caching (automatically optimized in v1.8.4)
 docker build --build-arg BUILDKIT_INLINE_CACHE=1 -t web3db-connector:latest .
 
 # Clean Docker cache if needed
@@ -1201,11 +1201,7 @@ This project is licensed under the MIT License.
 [https://github.com/jhead12/web3db-fileconnector](https://github.com/jhead12/web3db-fileconnector)
 
 **Bugs**:  
-<<<<<<< HEAD
-[https://github.com/jhead12/web3db-fileconnector/orbisdb/issues](https://github.com/jhead12/web3db-fileconnector/orbisdb/issues)
-=======
 [https://github.com/jhead12/web3db-fileconnector/issues](https://github.com/jhead12/web3db-fileconnector/issues)
->>>>>>> 940dd97e3e9db1452b5a7d8b56178c6eee27a71e
 
 ## ⚠️ CRITICAL: Database Permissions Setup
 
