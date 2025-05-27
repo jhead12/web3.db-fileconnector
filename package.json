@@ -74,6 +74,8 @@
     "docker:restart": "npm run docker:stop && npm run docker:start || npm run docker:start",
     "docker:remove": "docker rm orbisdb-pgvector || docker stop orbisdb-pgvector && docker rm orbisdb-pgvector",
     "docker:status": "docker ps",
+    "publish:docker:latest": "docker buildx build --platform linux/arm64,linux/amd64 -t jhead12/web3db-fileconnector:latest . && docker push jhead12/web3db-fileconnector:latest",
+    
     "validate": "npm run test:security && npm run lint",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "sync-versions": "node scripts/sync-versions.js",
