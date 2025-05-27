@@ -1,11 +1,22 @@
 # web3.db-fileconnector
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-1.8.0-blue)
+![Version](https://img.shields.io/badge/Version-2.0.0-blue)
 ![npm](https://img.shields.io/npm/v/web3.db-fileconnector)
 ![Security](https://img.shields.io/badge/Security-Audited-green)
+![Docker](https://img.shields.io/badge/Docker-Supported-blue)
+![Build](https://img.shields.io/badge/Build-Passing-green)
 
 Web3.db-fileconnector connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies with Helia IPFS integration, offering secure, efficient storage and query capabilities for your data.
+
+## 🆕 What's New in v2.0.0
+
+- **🐳 Enhanced Docker Support**: Complete containerization with multi-platform builds (ARM64/AMD64)
+- **🔧 Improved Build Process**: Optimized Docker builds with proper layer caching and .next directory handling
+- **🚀 Production Ready**: Streamlined deployment with automated health checks and security improvements
+- **📦 Updated Dependencies**: Latest versions of Next.js, React, and other core dependencies
+- **🛡️ Security Hardening**: Enhanced security auditing and vulnerability management
+- **⚡ Performance Optimizations**: Faster builds and reduced container size
 
 ## 📦 NPM Package Installation
 
@@ -28,7 +39,7 @@ yarn add web3.db-fileconnector
 import { initIPFS } from 'web3.db-fileconnector/server/ipfs/config.js';
 import { GlobalContext } from 'web3.db-fileconnector/client/contexts/Global';
 
-// Initialize IPFS with Helia (new in v1.8.0)
+// Initialize IPFS with Helia (enhanced in v2.0.0)
 const ipfs = await initIPFS();
 const cid = await ipfs.add("Hello from your app!");
 console.log('Content stored with CID:', cid);
@@ -40,18 +51,74 @@ const orbis = new OrbisDB({
   node: 'http://localhost:7008'
 });
 
+// Query data using GraphQL
+const query = `
+  query GetPosts($limit: Int) {
+    posts(limit: $limit) {
+      id
+      title
+      content
+      author
+      createdAt
+    }
+  }
+`;
+
+const result = await orbis.query(query, { limit: 10 });
+console.log('Posts:', result.data.posts);
+
 // Use in React components
 import { Button } from 'web3.db-fileconnector/client/components/Button';
+import { Header } from 'web3.db-fileconnector/client/components/Header';
 
 function MyApp() {
   return (
     <GlobalContext.Provider>
       <div>
+        <Header />
         <Button>My Web3 App</Button>
         {/* Your app content */}
       </div>
     </GlobalContext.Provider>
   );
+}
+```
+
+### Advanced Usage Examples
+
+```javascript
+// File upload with progress tracking
+import { uploadFile } from 'web3.db-fileconnector/sdk';
+
+async function handleFileUpload(file) {
+  try {
+    const result = await uploadFile(file, {
+      onProgress: (progress) => {
+        console.log(`Upload progress: ${progress}%`);
+      },
+      maxSize: 100 * 1024 * 1024, // 100MB
+      allowedTypes: ['image/*', 'application/pdf']
+    });
+    
+    console.log('File uploaded:', result.cid);
+    return result;
+  } catch (error) {
+    console.error('Upload failed:', error.message);
+  }
+}
+
+// Working with Ceramic streams
+import { createStream, updateStream } from 'web3.db-fileconnector/server/ceramic';
+
+async function createPost(data) {
+  const stream = await createStream('Post', {
+    title: data.title,
+    content: data.content,
+    author: data.author,
+    timestamp: new Date().toISOString()
+  });
+  
+  return stream.id;
 }
 ```
 
@@ -63,8 +130,9 @@ function MyApp() {
 - **🔧 Utilities**: Helper functions for DID authentication, data syncing
 - **📱 Responsive**: Mobile-friendly components and layouts
 - **⚡ Production Ready**: Optimized for enterprise applications with security auditing
-- **🛡️ Security Focused**: v1.8.0 removes eval() usage and updates vulnerable dependencies
+- **🛡️ Security Focused**: v2.0.0 includes comprehensive security improvements and Docker optimization
 - **🔄 Modern Dependencies**: Uses latest Helia, multiformats, and blockstore technologies
+- **🐳 Docker Native**: Full containerization support with multi-platform builds
 
 ## ⏱️ 5-Minute Local Development Setup
 
@@ -160,22 +228,49 @@ Get up and running with web3.db-fileconnector in minutes:
 ### Prerequisites
 
 - **Node.js**: v18.17.0 or later
-- **npm**: v8.6.0 or later
+- **npm**: v8.6.0 or later (or pnpm for faster installs)
 - **Docker**: v20.10 or later (optional, for containerized setup)
+
+### System Requirements & File Size Recommendations
+
+#### Disk Space Requirements
+- **Minimum**: 15GB free disk space for basic installation
+- **Recommended**: 35GB+ free disk space for development with build processes
+- **Production**: 60GB+ for optimal performance with full Docker stack
+
+#### File Upload Limits
+- **IPFS File Size**: Up to 100MB per file recommended for optimal performance
+- **Large Files**: Files >100MB may experience slower upload/retrieval times
+- **Batch Operations**: Recommended batch size of 50 files or 500MB total per operation
+- **Database Records**: No strict limits, but pagination recommended for >1000 records
+
+#### Performance Considerations
+- **Memory**: 8GB+ RAM recommended (16GB+ for heavy development workloads)
+- **Network**: Stable internet connection for IPFS and Ceramic network synchronization
+- **Storage**: SSD preferred for faster build times and database operations
+
+> ⚠️ **Important**: The project requires significant disk space due to:
+> - Node.js dependencies (~4-5GB in node_modules)
+> - Docker images and containers (~3-4GB)
+> - IPFS data storage and pinning
+> - Ceramic network data and indexing
+> - Build artifacts and logs
 
 ### Option 1: Quick Local Setup (Recommended for First-Time Users)
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/jhead12/web3db-fileconnector/orbisdb.git
+git clone https://github.com/jhead12/web3db-fileconnector.git
 cd web3db-fileconnector
 
 # 2. Create and configure environment variables
-yarn create-env
+npm run create-env
 # Edit the .env file with your values
 
-# 3. Install dependencies
-yarn install
+# 3. Install dependencies (use pnpm for faster installs)
+pnpm install
+# OR
+npm install
 
 # 4. Start Ceramic network (in-memory mode for testing)
 npx ceramic-one daemon --network inmemory
@@ -196,15 +291,61 @@ Your application is now running:
 - Server: [http://localhost:7008](http://localhost:7008)
 - GraphQL Playground: [http://localhost:7008/graphql](http://localhost:7008/graphql)
 
+## 📁 Project Structure
+
+The project is organized into several key directories:
+
+```
+web3db-connector/
+├── client/                 # Next.js frontend application
+│   ├── components/        # Reusable React components
+│   ├── pages/            # Next.js pages and API routes
+│   ├── styles/           # CSS and styling files
+│   ├── sdk/              # Client-side SDK for IPFS, GraphQL, etc.
+│   └── public/           # Static assets
+├── server/                # Backend API server
+│   ├── routes/           # API route handlers
+│   ├── ceramic/          # Ceramic network integration
+│   ├── ipfs/             # IPFS/Helia configuration
+│   ├── db/               # Database connections (PostgreSQL, Supabase)
+│   ├── indexing/         # Data indexing services
+│   └── utils/            # Server utilities
+├── scripts/               # Build and deployment scripts
+├── Dockerfile            # Production Docker configuration
+├── docker-compose.yaml   # Multi-service Docker setup
+└── package.json          # Project dependencies and scripts
+```
+
+### Key Components
+
+- **Client**: Next.js React application with Web3 components
+- **Server**: Fastify-based API server with GraphQL support
+- **Ceramic**: Decentralized data network integration
+- **IPFS**: Distributed file storage using Helia
+- **Database**: PostgreSQL with vector extensions for advanced queries
+
+## 🔧 Architecture Overview
+
+```mermaid
+graph TB
+    A[Client App] --> B[API Server]
+    B --> C[Ceramic Network]
+    B --> D[IPFS/Helia]
+    B --> E[PostgreSQL]
+    C --> F[ComposeDB]
+    D --> G[Distributed Storage]
+    E --> H[Vector Extensions]
+```
+
 ### Option 2: Docker Setup (Recommended for Production)
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/jhead12/web3db-fileconnector/orbisdb.git
+git clone https://github.com/jhead12/web3db-fileconnector.git
 cd web3db-fileconnector
 
 # 2. Create and configure environment variables
-yarn create-env
+npm run create-env
 # Edit the .env file with your values
 
 # 3. Build and start all services
@@ -213,6 +354,14 @@ docker-compose up -d
 # 4. Check that all services are running
 docker-compose ps
 ```
+
+**New in v2.0.0**: Enhanced Docker support with:
+- ✅ Multi-platform builds (ARM64/AMD64)
+- ✅ Optimized build process with proper layer caching
+- ✅ Fixed .next directory handling in containers
+- ✅ Reduced image size and faster builds
+- ✅ Production-ready health checks
+- ✅ Improved security with non-root user
 
 Your containerized application is now running:
 
@@ -223,9 +372,105 @@ Your containerized application is now running:
 
 ---
 
-## Table of Contents
+## 🚀 Production Deployment
+
+### Docker Production Build
+
+```bash
+# Build for production
+docker build -t web3db-connector:production .
+
+# Run in production mode
+docker run -d \
+  --name web3db-prod \
+  -p 3000:3000 \
+  -e NODE_ENV=production \
+  web3db-connector:production
+
+# Or use Docker Compose for full stack
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### Environment Configuration
+
+Create a production `.env` file:
+
+```bash
+# Production Environment Variables
+NODE_ENV=production
+PORT=3000
+
+# Ceramic Production Network
+CERAMIC_URL=https://ceramic-prod.3boxlabs.com
+CERAMIC_NETWORK=mainnet
+
+# IPFS Production Gateway
+IPFS_GATEWAY=https://ipfs.io/ipfs/
+IPFS_API_URL=https://ipfs.infura.io:5001/api/v0
+
+# Database Configuration
+DATABASE_URL=postgresql://user:password@localhost:5432/web3db_prod
+POSTGRES_HOST=your-postgres-host
+POSTGRES_PORT=5432
+POSTGRES_DB=web3db_prod
+POSTGRES_USER=web3db_user
+POSTGRES_PASSWORD=your-secure-password
+
+# Security
+JWT_SECRET=your-jwt-secret-key
+ADMIN_SECRET=your-admin-secret
+```
+
+### Performance Optimizations
+
+```javascript
+// Enable production optimizations in next.config.mjs
+const nextConfig = {
+  // ...existing code...
+  
+  // Production optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Enable compression
+  compress: true,
+  
+  // Optimize images
+  images: {
+    domains: ['ipfs.io', 'gateway.ipfs.io'],
+    formats: ['image/webp', 'image/avif'],
+  },
+  
+  // Enable SWC minification
+  swcMinify: true,
+};
+```
+
+### Health Checks and Monitoring
+
+The application includes built-in health checks:
+
+```bash
+# Check application health
+curl http://localhost:3000/health
+
+# Response format:
+{
+  "status": "healthy",
+  "timestamp": "2025-05-27T10:00:00Z",
+  "services": {
+    "database": "connected",
+    "ceramic": "connected",
+    "ipfs": "connected"
+  }
+}
+```
+
+---
 
 - [Available Scripts](#available-scripts)
+- [File Handling Best Practices](#file-handling-best-practices)
 - [Development Workflow](#development-workflow)
 - [Detailed Installation](#detailed-installation)
   - [Ceramic Setup](#ceramic-setup)
@@ -234,6 +479,30 @@ Your containerized application is now running:
 - [Environment Variables](#environment-variables)
 - [Integrating PostgreSQL with Airtable](#integrating-postgresql-with-airtable)
 - [Troubleshooting](#troubleshooting)
+- [License & Contact](#license--contact)
+
+---
+
+## Table of Contents
+
+- [🆕 What's New in v2.0.0](#-whats-new-in-v200)
+- [📦 NPM Package Installation](#-npm-package-installation)
+- [⏱️ 5-Minute Local Development Setup](#️-5-minute-local-development-setup)
+- [🚀 Quick Start Guide](#-quick-start-guide)
+- [📁 Project Structure](#-project-structure)
+- [🔧 Architecture Overview](#-architecture-overview)
+- [🚀 Production Deployment](#-production-deployment)
+- [Available Scripts](#available-scripts)
+- [File Handling Best Practices](#file-handling-best-practices)
+- [Development Workflow](#development-workflow)
+- [Detailed Installation](#detailed-installation)
+  - [Ceramic Setup](#ceramic-setup)
+  - [OrbisDB Configuration](#orbisdb-configuration)
+- [Docker Integration](#docker-integration)
+- [Environment Variables](#environment-variables)
+- [Integrating PostgreSQL with Airtable](#integrating-postgresql-with-airtable)
+- [Troubleshooting](#troubleshooting)
+- [⚠️ CRITICAL: Database Permissions Setup](#️-critical-database-permissions-setup)
 - [License & Contact](#license--contact)
 
 ---
@@ -295,7 +564,7 @@ Your containerized application is now running:
 | `npm run validate`        | Run security audit + linting                  |
 | `npm run permissions`     | Fix shell script permissions                  |
 
-> **🛡️ Security Note**: Version 1.8.0 includes major security improvements including removal of eval() usage and migration from deprecated ipfs-http-client to secure Helia implementation.
+> **🛡️ Security Note**: Version 2.0.0 includes major security improvements including comprehensive dependency updates, Docker security hardening with non-root users, and enhanced permission management.
 
 ### Release Management
 
@@ -330,6 +599,156 @@ Your containerized application is now running:
 | `npm run branch:feature`     | Create new feature branch from develop      |
 | `npm run branch:hotfix`      | Create new hotfix branch from main          |
 | `npm run branch:cleanup`     | Delete merged branches                      |
+
+---
+
+## File Handling Best Practices
+
+### IPFS File Upload Guidelines
+
+#### Recommended File Sizes
+- **Small Files** (< 1MB): Optimal for metadata, configurations, and JSON documents
+- **Medium Files** (1MB - 25MB): Good for images, documents, and small media files
+- **Large Files** (25MB - 100MB): Acceptable but may experience slower upload times
+- **Very Large Files** (> 100MB): Not recommended, consider breaking into chunks
+
+#### Supported File Types
+```javascript
+// Recommended file types for optimal performance
+const recommendedTypes = {
+  documents: ['.json', '.txt', '.md', '.pdf'],
+  images: ['.jpg', '.jpeg', '.png', '.gif', '.webp'],
+  media: ['.mp3', '.mp4', '.webm'],
+  data: ['.csv', '.json', '.xml'],
+  archives: ['.zip', '.tar.gz'] // Use sparingly
+};
+
+// Example file upload with size validation
+async function uploadToIPFS(file) {
+  const maxSize = 100 * 1024 * 1024; // 100MB
+  
+  if (file.size > maxSize) {
+    throw new Error(`File too large: ${file.size} bytes. Maximum: ${maxSize} bytes`);
+  }
+  
+  const ipfs = await initIPFS();
+  const result = await ipfs.add(file);
+  return result.cid;
+}
+```
+
+#### Database Record Limits
+- **Single Query**: Limit to 1000 records per query
+- **Batch Operations**: Process in chunks of 100-500 records
+- **Pagination**: Always implement for user-facing lists
+- **Indexing**: Use appropriate indexes for large datasets
+
+#### Storage Optimization Tips
+```javascript
+// Compress large JSON before storage
+import { deflate, inflate } from 'pako';
+
+async function storeCompressedData(data) {
+  const compressed = deflate(JSON.stringify(data));
+  const ipfs = await initIPFS();
+  return await ipfs.add(compressed);
+}
+
+// Implement file chunking for large files
+async function uploadLargeFile(file) {
+  const chunkSize = 10 * 1024 * 1024; // 10MB chunks
+  const chunks = [];
+  
+  for (let i = 0; i < file.size; i += chunkSize) {
+    const chunk = file.slice(i, i + chunkSize);
+    const cid = await ipfs.add(chunk);
+    chunks.push(cid);
+  }
+  
+  // Store chunk manifest
+  const manifest = { chunks, originalSize: file.size };
+  return await ipfs.add(JSON.stringify(manifest));
+}
+```
+
+#### Performance Monitoring
+```javascript
+// Monitor upload performance
+async function monitoredUpload(file) {
+  const startTime = Date.now();
+  const maxTimeout = 60000; // 1 minute
+  
+  try {
+    const result = await Promise.race([
+      uploadToIPFS(file),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Upload timeout')), maxTimeout)
+      )
+    ]);
+    
+    const duration = Date.now() - startTime;
+    console.log(`Upload completed in ${duration}ms`);
+    return result;
+  } catch (error) {
+    console.error('Upload failed:', error.message);
+    throw error;
+  }
+}
+```
+
+#### Error Handling & Retry Logic
+```javascript
+async function robustUpload(file, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await uploadToIPFS(file);
+    } catch (error) {
+      console.warn(`Upload attempt ${attempt} failed:`, error.message);
+      
+      if (attempt === maxRetries) {
+        throw new Error(`Upload failed after ${maxRetries} attempts`);
+      }
+      
+      // Exponential backoff
+      await new Promise(resolve => 
+        setTimeout(resolve, Math.pow(2, attempt) * 1000)
+      );
+    }
+  }
+}
+```
+
+### File System Best Practices
+
+#### Project File Organization
+```
+recommended-project-structure/
+├── uploads/           # Temporary upload storage (< 1GB)
+├── cache/            # Build and runtime cache (< 2GB)
+├── logs/             # Application logs (rotate daily)
+├── data/             # Persistent data storage
+│   ├── ipfs/         # IPFS repository data
+│   ├── ceramic/      # Ceramic network data
+│   └── postgres/     # Database files (if local)
+└── backups/          # Regular data backups
+```
+
+#### Cleanup & Maintenance
+```bash
+# Regular cleanup script (add to cron)
+#!/bin/bash
+# Clean old logs (keep 7 days)
+find logs/ -name "*.log" -mtime +7 -delete
+
+# Clean upload cache (keep 1 day)
+find uploads/ -type f -mtime +1 -delete
+
+# Clean build cache periodically
+npm run clean
+
+# Monitor disk usage
+df -h . | awk 'NR==2 {print "Disk usage: " $5}'
+```
 
 ---
 
@@ -466,6 +885,28 @@ pnpm run init --ceramic-id <ceramic-id>
 - Docker v20.10+
 - Docker Compose v1.29+
 - Windows users: WSL2 enabled with Docker Desktop
+
+### Quick Docker Start
+
+```bash
+# Build and run the application
+docker build -t web3db-connector:latest .
+docker run -p 3000:3000 web3db-connector:latest
+
+# Or use the NPM scripts
+npm run docker:build
+npm run docker:start
+```
+
+### Multi-Platform Build (New in v2.0.0)
+
+```bash
+# Build for multiple architectures
+docker buildx build --platform linux/arm64,linux/amd64 -t web3db-connector:latest .
+
+# Use the automated script for publishing
+npm run publish:docker:latest
+```
 
 ### Container Structure
 
@@ -610,6 +1051,36 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
+**Problem**: `.next` directory not found in container (Fixed in v2.0.0)  
+**Solution**:
+This issue has been resolved in v2.0.0. The Docker build now properly handles the Next.js build output. If you're still experiencing issues:
+
+```bash
+# Ensure you're using the latest version
+git pull origin main
+docker build --no-cache -t web3db-connector:latest .
+```
+
+**Problem**: Multi-platform build fails  
+**Solution**:
+
+```bash
+# Set up Docker buildx for multi-platform builds
+docker buildx create --use
+docker buildx build --platform linux/arm64,linux/amd64 -t web3db-connector:latest .
+```
+
+**Problem**: Container build takes too long  
+**Solution**:
+
+```bash
+# Use Docker layer caching (automatically optimized in v2.0.0)
+docker build --build-arg BUILDKIT_INLINE_CACHE=1 -t web3db-connector:latest .
+
+# Clean Docker cache if needed
+docker system prune -a
+```
+
 #### Port Conflicts
 
 **Problem**: Port already in use  
@@ -622,6 +1093,76 @@ yarn clear-port
 # Or manually kill the process using the port (e.g., for port 7008):
 lsof -i :7008
 kill -9 <PID>
+```
+
+#### File Size & Disk Space Issues
+
+**Problem**: "No space left on device" during build or upload  
+**Solution**:
+
+```bash
+# Check disk usage
+df -h
+
+# Clean up project dependencies
+npm run clean:all
+
+# Clear Docker cache
+docker system prune -a
+
+# Clean npm/pnpm cache
+npm cache clean --force
+pnpm store prune
+```
+
+**Problem**: File upload fails with "File too large" error  
+**Solution**:
+
+```javascript
+// Check file size before upload
+const maxSize = 100 * 1024 * 1024; // 100MB
+if (file.size > maxSize) {
+  console.error(`File size ${(file.size/1024/1024).toFixed(2)}MB exceeds limit of 100MB`);
+  // Consider file compression or chunking
+}
+```
+
+**Problem**: IPFS upload times out or is very slow  
+**Solution**:
+
+```bash
+# Check IPFS daemon status
+ipfs swarm peers | wc -l  # Should show connected peers
+
+# Restart IPFS with more aggressive settings
+ipfs shutdown
+ipfs daemon --enable-gc --routing=dhtclient
+```
+
+**Problem**: Build process consumes too much memory  
+**Solution**:
+
+```bash
+# Increase Node.js memory limit
+export NODE_OPTIONS="--max-old-space-size=8192"  # 8GB
+npm run build
+
+# Alternative: Use Docker for builds
+npm run docker:build
+```
+
+**Problem**: PostgreSQL connection errors due to disk space  
+**Solution**:
+
+```bash
+# Check PostgreSQL logs
+docker logs orbisdb-pgvector
+
+# Clean old PostgreSQL data (⚠️ Will lose data)
+docker volume rm web3db-connector_postgres_data
+
+# Or increase disk space and restart
+docker restart orbisdb-pgvector
 ```
 
 ### Platform-Specific Issues
@@ -657,10 +1198,14 @@ kill -9 <PID>
 This project is licensed under the MIT License.
 
 **Repository**:  
-[https://github.com/jhead12/web3db-fileconnector/orbisdb](https://github.com/jhead12/web3db-fileconnector/orbisdb)
+[https://github.com/jhead12/web3db-fileconnector](https://github.com/jhead12/web3db-fileconnector)
 
 **Bugs**:  
+<<<<<<< HEAD
 [https://github.com/jhead12/web3db-fileconnector/orbisdb/issues](https://github.com/jhead12/web3db-fileconnector/orbisdb/issues)
+=======
+[https://github.com/jhead12/web3db-fileconnector/issues](https://github.com/jhead12/web3db-fileconnector/issues)
+>>>>>>> 940dd97e3e9db1452b5a7d8b56178c6eee27a71e
 
 ## ⚠️ CRITICAL: Database Permissions Setup
 

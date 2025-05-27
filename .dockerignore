@@ -74,13 +74,13 @@ docker-compose*
 .dockerignore.bak*
 
 # 14. Exclude public uploads and build artifacts (if not needed in image)
-client/.next/
+# client/.next/  # Don't exclude .next as it's needed in production
 client/public/uploads/
 server/logs/
 server/wheel
 
 # 15. Exclude scripts not needed in image
-scripts/
+# scripts/  # Don't exclude scripts as they're needed by the app
 
 # 16. Exclude bin and backup scripts
 .bin/
