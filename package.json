@@ -1,6 +1,6 @@
 {
   "name": "web3.db-fileconnector",
-  "version": "1.8.2",
+  "version": "2.0.0",
   "description": "GraphQL System Build B is an open database built on top of web3 technologies. It is a decentralized, open-source database that allows users to store and query data in a secure and efficient manner. The system is designed to be user-friendly and accessible to developers of all skill levels.",
   "keywords": [
     "web3",
@@ -75,7 +75,6 @@
     "docker:remove": "docker rm orbisdb-pgvector || docker stop orbisdb-pgvector && docker rm orbisdb-pgvector",
     "docker:status": "docker ps",
     "publish:docker:latest": "docker buildx build --platform linux/arm64,linux/amd64 -t jhead12/web3db-fileconnector:latest . && docker push jhead12/web3db-fileconnector:latest",
-    
     "validate": "npm run test:security && npm run lint",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "sync-versions": "node scripts/sync-versions.js",
