@@ -1,12 +1,12 @@
 // eslint.config.js or eslint.config.mjs (mjs is preferred for clarity)
 
-import { defineConfig } from 'eslint/config';
+import js from '@eslint/js';
 import json from "@eslint/json";
 import tseslint from "typescript-eslint";
 import reactPlugin from "eslint-plugin-react";
 import nextPlugin from "@next/eslint-plugin-next";
 
-export default defineConfig([
+export default [
   // Base configuration for all JavaScript and TypeScript files
   {
     files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
@@ -137,4 +137,4 @@ export default defineConfig([
       "node_modules/**",
     ],
   },
-]);
+];
