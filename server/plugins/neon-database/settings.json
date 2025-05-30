@@ -1,0 +1,77 @@
+{
+  "id": "neon-database",
+  "name": "Neon PostgreSQL Database",
+  "logo": "/img/neon-logo.png",
+  "description": "Connect to a Neon serverless PostgreSQL database as a data source.",
+  "full_description": "This plugin allows you to connect to a remote Neon serverless PostgreSQL database and use it as a data source for your web3db-connector. Neon is a fully managed serverless PostgreSQL with a generous free tier and is compatible with the PostgreSQL ecosystem. Simply provide your connection details to start using your Neon database with web3db-connector.",
+  "hooks": ["connect", "query"],
+  "variables": [
+    {
+      "name": "Connection String",
+      "description": "The Neon database connection string (e.g., postgresql://user:password@ep-cool-rain-123456.us-east-2.aws.neon.tech/neondb)",
+      "id": "connection_string",
+      "per_context": true
+    },
+    {
+      "name": "Database Name",
+      "description": "The name of the database to connect to.",
+      "id": "database",
+      "per_context": true
+    },
+    {
+      "name": "SSL Mode",
+      "description": "SSL connection mode (require, prefer, disable).",
+      "id": "ssl_mode",
+      "type": "select",
+      "options": ["require", "prefer", "disable"],
+      "default": "require",
+      "per_context": true
+    },
+    {
+      "name": "Max Pool Size",
+      "description": "Maximum number of clients the pool should contain.",
+      "id": "max_pool_size",
+      "type": "number",
+      "default": 10,
+      "per_context": true
+    },
+    {
+      "name": "Idle Timeout (ms)",
+      "description": "Number of milliseconds a client must sit idle in the pool before it is disconnected.",
+      "id": "idle_timeout_millis",
+      "type": "number",
+      "default": 30000,
+      "per_context": true
+    },
+    {
+      "name": "Schema",
+      "description": "PostgreSQL schema to use.",
+      "id": "schema",
+      "default": "public",
+      "per_context": true
+    }
+  ],
+  "routes": [
+    "tables",
+    "query"
+  ],
+  "actions": [
+    {
+      "label": "Import Schema",
+      "type": "popup",
+      "route": "import-schema"
+    }
+  ],
+  "dynamic_variables": [
+    {
+      "name": "Connection Status",
+      "id": "connection_status",
+      "type": "badge"
+    },
+    {
+      "name": "Available Tables",
+      "id": "available_tables",
+      "type": "logs"
+    }
+  ]
+}
