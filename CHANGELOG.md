@@ -9,7 +9,9 @@
 
 ### Security
 
-* patched direct dependencies with security vulnerabilities: ws@8.17.1, axios@0.30.0, nanoid@5.0.9, @babel/runtime@7.26.10, parse-duration@2.1.3, secp256k1@4.0.4
+* patched direct dependencies with security vulnerabilities: ws@8.17.1, axios@0.30.0, nanoid@5.0.9, @babel/runtime@7.26.10, parse-duration@2.1.3, secp256k1@5.0.1
+* Added resolutions to package.json to handle transitive dependencies with vulnerabilities
+* Created automated scripts for security patching and release process
 * Note: Some transitive dependencies still contain vulnerabilities that need to be addressed in future releases
 
 
