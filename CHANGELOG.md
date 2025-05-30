@@ -4,6 +4,39 @@
 ### Bug Fixes
 
 * update prepare-release script and dependencies ([e7dcb72](https://github.com/jhead12/web3db-fileconnector/commit/e7dcb721b0a9c313f3c83a651cd3f9200b3f5b7a))
+* update prepare-release.sh with proper paths ([ae1cfa7](https://github.com/jhead12/web3db-fileconnector/commit/ae1cfa7b3d1172450049df325f32282dfcda1932))
+* update version from 2.0.0 to 1.8.4 and resolve merge conflict markers ([5deb909](https://github.com/jhead12/web3db-fileconnector/commit/5deb9090cccb87e3d1a965b7723a0715bd41c756))
+
+
+
+## [1.8.4](https://github.com/jhead12/web3db-fileconnector/compare/v2.0.0...v1.8.4) (2025-05-30)
+
+
+### Bug Fixes
+
+* update prepare-release script and dependencies ([e7dcb72](https://github.com/jhead12/web3db-fileconnector/commit/e7dcb721b0a9c313f3c83a651cd3f9200b3f5b7a))
+* update prepare-release.sh with proper paths ([ae1cfa7](https://github.com/jhead12/web3db-fileconnector/commit/ae1cfa7b3d1172450049df325f32282dfcda1932))
+* update version from 2.0.0 to 1.8.4 and resolve merge conflict markers ([5deb909](https://github.com/jhead12/web3db-fileconnector/commit/5deb9090cccb87e3d1a965b7723a0715bd41c756))
+
+
+
+## [1.8.4](https://github.com/jhead12/web3db-fileconnector/compare/v2.0.0...v1.8.4) (2025-05-30)
+
+
+### Bug Fixes
+
+* update prepare-release script and dependencies ([e7dcb72](https://github.com/jhead12/web3db-fileconnector/commit/e7dcb721b0a9c313f3c83a651cd3f9200b3f5b7a))
+* update prepare-release.sh with proper paths ([ae1cfa7](https://github.com/jhead12/web3db-fileconnector/commit/ae1cfa7b3d1172450049df325f32282dfcda1932))
+* update version from 2.0.0 to 1.8.4 and resolve merge conflict markers ([5deb909](https://github.com/jhead12/web3db-fileconnector/commit/5deb9090cccb87e3d1a965b7723a0715bd41c756))
+
+
+
+## [1.8.4](https://github.com/jhead12/web3db-fileconnector/compare/v2.0.0...v1.8.4) (2025-05-30)
+
+
+### Bug Fixes
+
+* update prepare-release script and dependencies ([e7dcb72](https://github.com/jhead12/web3db-fileconnector/commit/e7dcb721b0a9c313f3c83a651cd3f9200b3f5b7a))
 * update version from 2.0.0 to 1.8.4 and resolve merge conflict markers ([5deb909](https://github.com/jhead12/web3db-fileconnector/commit/5deb9090cccb87e3d1a965b7723a0715bd41c756))
 
 
