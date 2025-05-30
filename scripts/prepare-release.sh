@@ -17,31 +17,38 @@ if [ -n "$(git status --porcelain)" ]; then
     exit 1
 fi
 
+# Define project root directory
+PROJECT_ROOT="$SCRIPT_DIR/.."
+
 # Ensure node_modules exists and install dependencies if needed
-if [ ! -d "../node_modules" ]; then
+if [ ! -d "$PROJECT_ROOT/node_modules" ]; then
     echo "📦 Installing dependencies..."
-    cd .. && yarn install
+    cd "$PROJECT_ROOT" && yarn install
 fi
+
+# Go back to project root directory
+PROJECT_ROOT="$SCRIPT_DIR/.."
+cd "$PROJECT_ROOT"
 
 # Ensure local binaries are properly set up
 echo "🔧 Setting up local binaries..."
-cd .. && chmod +x setup-local-env.sh && ./setup-local-env.sh
+chmod +x ./setup-local-env.sh && ./setup-local-env.sh
 
 # Run security audit
 echo "🔒 Running security audit..."
-cd .. && yarn audit --level high || echo "⚠️  Security vulnerabilities found - continuing with release process"
+yarn audit --level high || echo "⚠️  Security vulnerabilities found - continuing with release process"
 
 # Run linting
 echo "🧹 Running linter..."
-cd .. && PATH=./.bin:$PATH yarn lint || echo "⚠️ Linting issues found - continuing with release process"
+PATH=./.bin:$PATH yarn lint || echo "⚠️ Linting issues found - continuing with release process"
 
 # Build the project
 echo "🔨 Building project..."
-cd .. && yarn build || echo "⚠️ Build encountered issues but continuing with release process"
+yarn build || echo "⚠️ Build encountered issues but continuing with release process"
 
 # Update changelog
 echo "📝 Updating changelog..."
-cd .. && yarn run changelog || echo "⚠️ Changelog generation encountered issues but continuing"
+yarn run changelog || echo "⚠️ Changelog generation encountered issues but continuing"
 
 # Display current version
 echo "📦 Current version: $CURRENT_VERSION"
