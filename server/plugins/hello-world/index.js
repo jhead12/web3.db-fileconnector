@@ -26,7 +26,7 @@ export default class HelloWorldPlugin {
     logger.debug(
       "Start subscription in HelloWorld plugin to generate a new stream every " +
         this.secs_interval +
-        " seconds",
+        " seconds"
     );
 
     // Perform first call
@@ -42,7 +42,7 @@ export default class HelloWorldPlugin {
         this.createStream();
       },
       // Make sure we don't exceed timeout interval
-      Math.min(this.secs_interval * 1000, 2147483647),
+      Math.min(this.secs_interval * 1000, 2147483647)
     );
   }
 
@@ -73,7 +73,7 @@ export default class HelloWorldPlugin {
     } catch (e) {
       logger.error(
         "Error creating stream with model:" + this.model_id + ":",
-        e,
+        e
       );
     }
   }

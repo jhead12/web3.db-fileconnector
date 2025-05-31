@@ -33,7 +33,7 @@ export default class ERC20Interface {
         "Symbol:",
         this.symbol,
         "Decimals:",
-        this.decimals,
+        this.decimals
       );
     } catch (error) {
       console.error("Error fetching token details:", error);

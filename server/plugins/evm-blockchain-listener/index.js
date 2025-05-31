@@ -84,7 +84,7 @@ export default class EthereumEventPlugin {
     this.contract_type = "custom";
     this.should_stop_indexing_past_events = false;
     console.log(
-      `Initializing plugin with ${this.contract_type} contract type.`,
+      `Initializing plugin with ${this.contract_type} contract type.`
     );
 
     this.addLog({
@@ -108,19 +108,19 @@ export default class EthereumEventPlugin {
       case "erc20":
         this.interface = new ERC20Interface(
           this.contract_address,
-          this.rpc_url,
+          this.rpc_url
         );
         break;
       case "erc721":
         this.interface = new ERC721Interface(
           this.contract_address,
-          this.rpc_url,
+          this.rpc_url
         );
         break;
       case "erc1155":
         this.interface = new ERC1155Interface(
           this.contract_address,
-          this.rpc_url,
+          this.rpc_url
         );
         break;
       case "custom":
@@ -169,7 +169,7 @@ export default class EthereumEventPlugin {
               "Error creating model for schema:",
               JSON.stringify(schema),
               cliColors.reset,
-              e,
+              e
             );
             this.addLog({
               color: "red",
@@ -183,7 +183,7 @@ export default class EthereumEventPlugin {
             this.contract_address,
             this.rpc_url,
             abi,
-            model?.id,
+            model?.id
           );
         } else {
           this.addLog({
@@ -196,7 +196,7 @@ export default class EthereumEventPlugin {
       default:
         this.interface = new ERC20Interface(
           this.contract_address,
-          this.rpc_url,
+          this.rpc_url
         );
         break;
     }
@@ -208,7 +208,7 @@ export default class EthereumEventPlugin {
     } else if (this.from_block == "custom") {
       from_block_number = getLatestBlockIndexed(
         parseInt(this.custom_block_number),
-        this.uuid,
+        this.uuid
       );
     }
 
@@ -226,7 +226,7 @@ export default class EthereumEventPlugin {
 
       try {
         console.log(
-          `Enter loop to make sure we index every blocks in batches.`,
+          `Enter loop to make sure we index every blocks in batches.`
         );
         while (fromBlock <= currentBlockNumber) {
           //console.log(`Current batch => fromBlock: ${fromBlock} and toBlock: ${toBlock}`);
@@ -243,7 +243,7 @@ export default class EthereumEventPlugin {
             {
               fromBlock: fromBlock,
               toBlock: toBlock,
-            },
+            }
           );
 
           // Check if the stop flag is set
@@ -301,7 +301,7 @@ export default class EthereumEventPlugin {
       this.subscription.on("error", console.error);
       logger.debug(
         "⭐️ Starting to listen to smart contract events:",
-        this.contract_type,
+        this.contract_type
       );
       this.addLog({
         color: "sky",
@@ -310,7 +310,7 @@ export default class EthereumEventPlugin {
     } catch (e) {
       logger.error(
         "Error subscribing to event fron this smart contract:",
-        this.contract_address,
+        this.contract_address
       );
       this.addLog({
         color: "red",
@@ -374,7 +374,7 @@ export default class EthereumEventPlugin {
           // Loop through all custom computings
           await this.customCompute(
             _event,
-            custom_computing[this.custom_computing_id],
+            custom_computing[this.custom_computing_id]
           );
         }
       }
@@ -405,7 +405,7 @@ export default class EthereumEventPlugin {
       } else {
         console.log(
           `Expected an array or an object from ${action.name}, got:`,
-          actionResults,
+          actionResults
         );
       }
     } catch (error) {
@@ -429,7 +429,7 @@ export default class EthereumEventPlugin {
         .run();
 
       console.log(
-        `Successfully inserted result with stream ID: ${stream.id} in ${modelId}`,
+        `Successfully inserted result with stream ID: ${stream.id} in ${modelId}`
       );
     } catch (error) {
       console.log("Error inserting custom result:", error);
@@ -498,7 +498,7 @@ export default class EthereumEventPlugin {
       if (fs.existsSync(blocksIndexedFilePath)) {
         const dataBlocksIndexed = fs.readFileSync(
           blocksIndexedFilePath,
-          "utf8",
+          "utf8"
         );
         blocksIndexed = JSON.parse(dataBlocksIndexed);
       }
@@ -514,7 +514,7 @@ export default class EthereumEventPlugin {
       fs.writeFileSync(
         blocksIndexedFilePath,
         JSON.stringify(blocksIndexed, null, 2),
-        "utf8",
+        "utf8"
       );
     } catch (err) {
       console.error("Error writing to block indexed settings file:", err);
@@ -638,7 +638,7 @@ export default class EthereumEventPlugin {
 
     let progress = await this.getIndexingProgress(
       from_block_number,
-      currentBlockNumber,
+      currentBlockNumber
     );
 
     // Return dynamic variables as an array

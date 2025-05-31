@@ -36,13 +36,13 @@ export async function loadPlugins() {
         plugins.push(settings);
       } else {
         logger.error(
-          `No settings.json found for plugin in folder "${folder}".`,
+          `No settings.json found for plugin in folder "${folder}".`
         );
       }
     } catch (error) {
       logger.error(
         `Failed to load settings for plugin in folder "${folder}":`,
-        error,
+        error
       );
     }
   }

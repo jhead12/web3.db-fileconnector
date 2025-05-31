@@ -128,7 +128,7 @@ const CreateModelInstance = ({
 const PropertiesInput = ({ fields, setFields }) => {
   const handleInputChange = (index, value) => {
     const updatedFields = fields.map((field, i) =>
-      i === index ? { ...field, value } : field,
+      i === index ? { ...field, value } : field
     );
     console.log("updatedFields", updatedFields);
     setFields(updatedFields);

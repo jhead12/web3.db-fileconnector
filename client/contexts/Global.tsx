@@ -118,10 +118,7 @@ export const GlobalProvider = ({ children }) => {
           setUser(result.user);
           console.log("Connected to OrbisDB SDK with did:", result.user.did);
         } catch (e) {
-          console.log(
-            "Error connecting to OrbisDB:",
-            e,
-          );
+          console.log("Error connecting to OrbisDB:", e);
         }
       } catch (e) {
         console.log("Error initiaiting OrbisDB object:", e);
@@ -146,7 +143,7 @@ export const GlobalProvider = ({ children }) => {
     } catch (e) {
       setAdminLoading(false);
       console.log(
-        "Error retrieving local settings, loading default one instead.",
+        "Error retrieving local settings, loading default one instead."
       );
     }
   }
@@ -159,9 +156,7 @@ export const GlobalProvider = ({ children }) => {
     if (adminSessionJwt) {
       setIsConnected(true);
       try {
-        let resAdminSession = await DIDSession.fromSession(
-          adminSessionJwt,
-        );
+        let resAdminSession = await DIDSession.fromSession(adminSessionJwt);
         let didId = resAdminSession.did.parent;
         setAdminSession(didId);
 

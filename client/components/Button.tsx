@@ -19,7 +19,8 @@ export default function Button({
           return (
             <button
               className={
-                "bg-[#4483FD] hover:bg-[#1e58f2] text-white cursor-pointer " + classes
+                "bg-[#4483FD] hover:bg-[#1e58f2] text-white cursor-pointer " +
+                classes
               }
               onClick={onClick}
             >
@@ -95,8 +96,7 @@ export default function Button({
           return (
             <button
               className={
-                "bg-slate-50 border border-[#4483FD] text-[#4483FD] " +
-                classes
+                "bg-slate-50 border border-[#4483FD] text-[#4483FD] " + classes
               }
             >
               <LoadingCircle />

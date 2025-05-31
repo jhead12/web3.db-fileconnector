@@ -51,10 +51,7 @@
       "per_context": true
     }
   ],
-  "routes": [
-    "tables",
-    "query"
-  ],
+  "routes": ["tables", "query"],
   "actions": [
     {
       "label": "Import Schema",

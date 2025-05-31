@@ -1,7 +1,8 @@
-// {{plugin_name}} Plugin for web3db-connector
+// TEMPLATE_VAR:plugin_name Plugin for web3db-connector
 import logger from "../../logger/index.js";
 
-export default class {{plugin_class_name}} {
+export default class PluginClassName {
+  // TEMPLATE_VAR:plugin_class_name
   constructor() {
     // Initialize plugin state
     this.connectionStatus = {}; // Track connection status for each context
@@ -12,12 +13,12 @@ export default class {{plugin_class_name}} {
    */
   async init() {
     return {
-      HOOKS: {{plugin_hooks_impl}},
-      ROUTES: {{plugin_routes_impl}}
+      HOOKS: {}, // TEMPLATE_VAR:plugin_hooks_impl
+      ROUTES: {}, // TEMPLATE_VAR:plugin_routes_impl
     };
   }
 
-  {{plugin_methods}}
+  // TEMPLATE_VAR:plugin_methods
 
   /**
    * Update the connection status for this plugin in the current context
@@ -28,7 +29,7 @@ export default class {{plugin_class_name}} {
     this.connectionStatus = {
       status,
       message,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
   }
 }

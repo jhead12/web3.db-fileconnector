@@ -65,7 +65,7 @@ export default class ChatGPTPlugin {
       } catch (e) {
         logger.error(
           "Error creating stream with model:" + this.model_id + ":",
-          e,
+          e
         );
       }
     } else {
@@ -118,14 +118,14 @@ export default class ChatGPTPlugin {
         case "query.results":
           try {
             let response = await global.indexingService.database.query(
-              this.query,
+              this.query
             );
             if (response && response.data) {
               replacement = JSON.stringify(response.data?.rows || "");
             }
           } catch (e) {
             logger.error(
-              "There was an error replacing query.results with the actual OrbisDB results.",
+              "There was an error replacing query.results with the actual OrbisDB results."
             );
           }
           break;
@@ -261,7 +261,7 @@ export default class ChatGPTPlugin {
     if (!response.ok) {
       logger.error(
         "Error with ChatGPTPlugin  " + response.statusText + ": ",
-        response.status,
+        response.status
       );
       return;
     }

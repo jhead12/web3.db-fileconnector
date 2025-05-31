@@ -36,7 +36,7 @@ export default async function (server, opts) {
           table,
           parseInt(page, 10),
           true,
-          context,
+          context
         );
 
         if (response && response.data) {
@@ -58,7 +58,7 @@ export default async function (server, opts) {
       } catch (error) {
         logger.error(error);
         return res.internalServerError(
-          `Internal server error while querying table ${table}.`,
+          `Internal server error while querying table ${table}.`
         );
       }
     });
@@ -100,7 +100,7 @@ export default async function (server, opts) {
       } catch (error) {
         logger.error(error);
         return res.internalServerError(
-          "Internal server error while querying table.",
+          "Internal server error while querying table."
         );
       }
     });
@@ -182,7 +182,7 @@ export default async function (server, opts) {
       } catch (error) {
         logger.error(error);
         return res.internalServerError(
-          "Internal server error while indexing model.",
+          "Internal server error while indexing model."
         );
       }
     });
@@ -237,7 +237,7 @@ export default async function (server, opts) {
         }
         refreshGraphQLSchema(
           database,
-          globalSettings.is_shared ? adminDid : "global",
+          globalSettings.is_shared ? adminDid : "global"
         );
 
         return { success: true, settings: settings };
@@ -289,7 +289,7 @@ export default async function (server, opts) {
         }
         refreshGraphQLSchema(
           database,
-          globalSettings.is_shared ? adminDid : "global",
+          globalSettings.is_shared ? adminDid : "global"
         );
 
         return { success: true, settings };

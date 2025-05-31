@@ -47,7 +47,7 @@ const AddContextSteps = ({ step, setStep, hide, parentContext }) => {
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [logoStatus, setLogoStatus] = useState(STATUS.ACTIVE);
   const [contextDetails, setContextDetails] = useState<any>({});
-  
+
   // Declare missing functions
   const createNewContext = () => {}; // Placeholder
   const saveInSettings = () => {}; // Placeholder
@@ -74,7 +74,7 @@ const AddContextSteps = ({ step, setStep, hide, parentContext }) => {
         alert("Error loading context details.");
         console.log(
           "Error loading context details and adding it to the settings file:",
-          "error",
+          "error"
         );
         setStatus(STATUS.ERROR);
         await sleep(500);

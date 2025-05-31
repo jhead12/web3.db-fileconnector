@@ -5,7 +5,7 @@ export default function CryptoLibCheck() {
 
   useEffect(
     () => setHasCrypto(typeof window.crypto.subtle !== "undefined"),
-    [],
+    []
   );
 
   if (hasCrypto) {

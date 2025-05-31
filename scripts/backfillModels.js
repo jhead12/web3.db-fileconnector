@@ -32,7 +32,7 @@ const main = async () => {
         databaseSettings.password,
         databaseSettings.host,
         databaseSettings.port,
-        slot,
+        slot
       );
     } catch (err) {
       console.log(`Failed to initialize database for slot: ${slot}`);
@@ -43,7 +43,7 @@ const main = async () => {
     const tables = indexedData.filter(
       (table) =>
         table.type === "TABLE" &&
-        table.table_name !== "kh4q0ozorrgaq2mezktnrmdwleo1d",
+        table.table_name !== "kh4q0ozorrgaq2mezktnrmdwleo1d"
     );
     const models = tables.map((table) => table.table_name);
     const mapped_names = slotSettings.models_mapping || {};
@@ -64,7 +64,7 @@ const main = async () => {
             content: model.schema,
             indexed_at: new Date(),
           });
-        })(),
+        })()
       );
     }
 
@@ -72,8 +72,8 @@ const main = async () => {
 
     await Promise.allSettled(
       inserts.map((data) =>
-        database.upsertRaw("kh4q0ozorrgaq2mezktnrmdwleo1d", data),
-      ),
+        database.upsertRaw("kh4q0ozorrgaq2mezktnrmdwleo1d", data)
+      )
     );
 
     console.log(`Done with slot: ${slot}`);

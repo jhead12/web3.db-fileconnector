@@ -32,7 +32,7 @@ export default async function (server, opts) {
       logger.debug(
         cliColors.text.cyan,
         "⚰️ Restarting indexing service...",
-        cliColors.reset,
+        cliColors.reset
       );
 
       // Stop the current indexing service
@@ -50,14 +50,14 @@ export default async function (server, opts) {
     server.put("/", async (req, res) => {
       if (!req.isNodeOwner) {
         return res.unauthorized(
-          "Only the node's owner can modify the entire settings file.",
+          "Only the node's owner can modify the entire settings file."
         );
       }
 
       const newSettings = req.body;
       if (!newSettings.configuration) {
         return res.badRequest(
-          `New settings are missing a required field: "configuration"`,
+          `New settings are missing a required field: "configuration"`
         );
       }
 
@@ -93,7 +93,7 @@ export default async function (server, opts) {
 
       if (slot && slot !== req.adminDid) {
         return res.unauthorized(
-          `You're not authorized to make changes to slot ${slot}.`,
+          `You're not authorized to make changes to slot ${slot}.`
         );
       }
 
@@ -115,8 +115,11 @@ export default async function (server, opts) {
         }
 
         // Ensure host doesn't have http:// prefix
-        if (configuration.db.host && configuration.db.host.startsWith('http')) {
-          configuration.db.host = configuration.db.host.replace(/^https?:\/\//, '');
+        if (configuration.db.host && configuration.db.host.startsWith("http")) {
+          configuration.db.host = configuration.db.host.replace(
+            /^https?:\/\//,
+            ""
+          );
           logger.debug("Removed http prefix from host:", configuration.db.host);
         }
 
@@ -142,7 +145,7 @@ export default async function (server, opts) {
         if (presets && presets.length > 0) {
           try {
             await Promise.all(
-              presets.map((preset) => enablePreset(preset, slot)),
+              presets.map((preset) => enablePreset(preset, slot))
             );
             logger.debug("Presets enabled:", presets);
           } catch (presetError) {
@@ -158,7 +161,9 @@ export default async function (server, opts) {
         };
       } catch (err) {
         logger.error("Failed to update settings:", err);
-        return res.internalServerError(`Failed to update settings: ${err.message}`);
+        return res.internalServerError(
+          `Failed to update settings: ${err.message}`
+        );
       }
     });
   });

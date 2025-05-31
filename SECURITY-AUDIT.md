@@ -10,23 +10,23 @@ This document contains the results of the security audit for web3db-connector an
 
 The following direct dependencies were patched to secure versions:
 
-* ws@8.17.1
-* axios@0.30.0
-* nanoid@5.0.9
-* @babel/runtime@7.26.10
-* parse-duration@2.1.3
-* secp256k1@5.0.1
+- ws@8.17.1
+- axios@0.30.0
+- nanoid@5.0.9
+- @babel/runtime@7.26.10
+- parse-duration@2.1.3
+- secp256k1@5.0.1
 
 ## Transitive Dependencies
 
 The following transitive dependencies were handled through yarn resolutions:
 
-* ws:8.17.1
-* secp256k1:5.0.1
-* parse-duration:2.1.3
-* axios:0.30.0
-* nanoid:5.0.9
-* @babel/runtime:7.26.10
+- ws:8.17.1
+- secp256k1:5.0.1
+- parse-duration:2.1.3
+- axios:0.30.0
+- nanoid:5.0.9
+- @babel/runtime:7.26.10
 
 ## Remaining Vulnerabilities
 

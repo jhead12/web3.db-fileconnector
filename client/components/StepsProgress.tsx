@@ -8,11 +8,7 @@ export default function StepsProgress({ steps = [], currentStep = 1 }) {
         >
           <div className="flex flex-col items-center">
             {currentStep == index + 1 && (
-              <span
-                className="text-sm text-[#4483FD] mb-2"
-              >
-                {step}
-              </span>
+              <span className="text-sm text-[#4483FD] mb-2">{step}</span>
             )}
             <div className="flex items-center">
               <span

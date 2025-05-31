@@ -92,7 +92,7 @@ export function getOrbisDBSettings(slot) {
   } catch (e) {
     console.log(
       "Error reading or parsing orbisdb-settings.json, returning empty settings:",
-      e,
+      e
     );
     orbisdbSettings = {}; // Set a default value or handle the error as per your requirement
   }
@@ -119,7 +119,7 @@ export function updateOrbisDBSettings(updatedSettings, slot) {
     settingsToSave = oldSettings;
     logger.debug(
       "Trying to update settings for " + slot + " with:",
-      settingsToSave,
+      settingsToSave
     );
   } else {
     settingsToSave = updatedSettings;
@@ -221,7 +221,7 @@ export const findContextById = (id, contexts) => {
 export const updateContext = (contexts, newContext) => {
   if (contexts && contexts.length > 0) {
     const index = contexts.findIndex(
-      (ctx) => ctx.stream_id === newContext.stream_id,
+      (ctx) => ctx.stream_id === newContext.stream_id
     );
     if (index !== -1) {
       // Context already exists, update it
@@ -244,7 +244,7 @@ export function updateOrAddPlugin(settings, newPlugin) {
   // Check if the plugin already exists
   if (settings.plugins && settings.plugins.length > 0) {
     const existingPluginIndex = settings?.plugins?.findIndex(
-      (p) => p.plugin_id === newPlugin.plugin_id,
+      (p) => p.plugin_id === newPlugin.plugin_id
     );
 
     if (existingPluginIndex && existingPluginIndex !== -1) {

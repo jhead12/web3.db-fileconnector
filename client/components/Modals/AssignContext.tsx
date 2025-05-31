@@ -15,11 +15,11 @@ export default function AssignContextModal({
 }) {
   const { setSettings, sessionJwt } = useGlobal() as any;
   const [status, setStatus] = useState(STATUS.ACTIVE);
-  const [pluginDetails, setPluginDetails] = useState<any>({variables: []});
+  const [pluginDetails, setPluginDetails] = useState<any>({ variables: [] });
   const [selectedContextIds, setSelectedContextIds] = useState([]);
   const [step, setStep] = useState(selectedContext ? 2 : 1);
   const [variableValues, setVariableValues] = useState(
-    selectedContext ? selectedContext.variables : null,
+    selectedContext ? selectedContext.variables : null
   );
 
   useEffect(() => {
@@ -179,17 +179,30 @@ export default function AssignContextModal({
           {/** Save button */}
           <div className="flex flex-row justify-center mt-4">
             {!selectedContextIds || selectedContextIds.length == 0 ? (
-              <Button title="Next" status={STATUS.DISABLED} onClick={() => {}} successTitle="Next" />
+              <Button
+                title="Next"
+                status={STATUS.DISABLED}
+                onClick={() => {}}
+                successTitle="Next"
+              />
             ) : (
               <>
                 {isContextUsed(plugin_id, getLastContext()) &&
                 status != STATUS.SUCCESS ? (
                   <>
                     {/**<Button title="Context already used" status={STATUS.DISABLED} />*/}
-                    <Button title="Next" onClick={() => nextStep()} successTitle="Next" />
+                    <Button
+                      title="Next"
+                      onClick={() => nextStep()}
+                      successTitle="Next"
+                    />
                   </>
                 ) : (
-                  <Button title="Next" onClick={() => nextStep()} successTitle="Next" />
+                  <Button
+                    title="Next"
+                    onClick={() => nextStep()}
+                    successTitle="Next"
+                  />
                 )}
               </>
             )}
@@ -220,9 +233,19 @@ export default function AssignContextModal({
           <div className="flex flex-row justify-center">
             {(selectedContextIds && selectedContextIds.length > 0) ||
             selectedContext.context ? (
-              <Button title="Save" status={status} successTitle="Saved" onClick={saveOrUpdateContext} />
+              <Button
+                title="Save"
+                status={status}
+                successTitle="Saved"
+                onClick={saveOrUpdateContext}
+              />
             ) : (
-              <Button title="Context already used" status={STATUS.DISABLED} onClick={() => {}} successTitle="Disabled" />
+              <Button
+                title="Context already used"
+                status={STATUS.DISABLED}
+                onClick={() => {}}
+                successTitle="Disabled"
+              />
             )}
           </div>
         </form>
@@ -247,7 +270,7 @@ export const ContextDropdown = ({
   const parentContextId = selectedContextIds[index];
   const parentContext = findContextById(
     settings.contexts,
-    selectedContextIds[index - 1],
+    selectedContextIds[index - 1]
   );
   const _contexts = parentContext?.contexts
     ? parentContext.contexts
@@ -387,7 +410,7 @@ export const SmContextDetails = ({ context }) => {
 function isContextUsed(plugin_id, targetContext) {
   const { settings } = useGlobal() as any;
   const pluginSettings = settings.plugins?.find(
-    (plugin) => plugin.plugin_id === plugin_id,
+    (plugin) => plugin.plugin_id === plugin_id
   );
   if (!pluginSettings) return false;
 

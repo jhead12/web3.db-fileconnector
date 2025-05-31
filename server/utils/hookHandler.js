@@ -94,12 +94,12 @@ export default class HookHandler {
         if (hookName == "generate") {
           result = this.safeExecute(
             contextualizedPlugin.handler,
-            JSON.parse(JSON.stringify(data)),
+            JSON.parse(JSON.stringify(data))
           );
         } else {
           result = await this.safeExecute(
             contextualizedPlugin.handler,
-            JSON.parse(JSON.stringify(data)),
+            JSON.parse(JSON.stringify(data))
           );
         }
       } catch (e) {
@@ -110,7 +110,7 @@ export default class HookHandler {
       if (result?.error) {
         logger.error(
           `[hook:${hookName}/${pluginId}] Handler error.`,
-          result.error,
+          result.error
         );
         continue;
       }
@@ -151,7 +151,7 @@ export default class HookHandler {
     pluginId,
     pluginUuid,
     contextId,
-    handler = () => {},
+    handler = () => {}
   ) {
     const isContextualized = this.registeredHooks[hookName]?.isContextualized;
     const sanitizedPluginId = this.sanitizePluginId(pluginId);

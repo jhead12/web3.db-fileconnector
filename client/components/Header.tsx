@@ -5,7 +5,8 @@ import { useGlobal } from "../contexts/Global";
 import { copyToClipboard, getAddress, shortAddress } from "../utils";
 
 export default function Header({ showItems }) {
-  const { sessionJwt, adminSession, isShared, isGlobalAdmin } = useGlobal() as any;
+  const { sessionJwt, adminSession, isShared, isGlobalAdmin } =
+    useGlobal() as any;
 
   // Define navigation items and their paths
   const navItems = [

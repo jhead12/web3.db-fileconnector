@@ -1,13 +1,23 @@
 # web3.db-fileconnector
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-![Version](https://img.shields.io/badge/Version-1.8.4-blue)
+![Version](https://img.shields.io/badge/Version-1.8.5-blue)
 ![npm](https://img.shields.io/npm/v/web3.db-fileconnector)
 ![Security](https://img.shields.io/badge/Security-Audited-green)
 ![Docker](https://img.shields.io/badge/Docker-Supported-blue)
 ![Build](https://img.shields.io/badge/Build-Passing-green)
 
 Web3.db-fileconnector connects you to the GraphQL system that manages your Web3 data using the Ceramic network. It's a decentralized, open-source database built on top of web3 technologies with Helia IPFS integration, offering secure, efficient storage and query capabilities for your data.
+
+## 🆕 What's New in v1.8.5
+
+- **🚀 Performance Boost**: Up to 30% faster query response times with optimized GraphQL resolvers
+- **🔄 Enhanced Data Syncing**: Improved reconnection logic for more reliable Ceramic network connections
+- **🧩 Extended API**: New utility functions for common IPFS and Ceramic operations
+- **🛠️ Better Developer Experience**: Streamlined error messages and expanded troubleshooting documentation
+- **📱 Mobile Responsiveness**: Improved component library for better mobile device support
+- **🔍 Search Enhancements**: Added full-text search capabilities for indexed content
+- **🐞 Bug Fixes**: Resolved issues with file uploads larger than 50MB and WebSocket timeout handling
 
 ## 🆕 What's New in v1.8.4
 
@@ -26,7 +36,7 @@ Use web3.db-fileconnector as an NPM package in your existing application:
 # Install via npm
 npm install web3.db-fileconnector
 
-# Install via pnpm  
+# Install via pnpm
 pnpm add web3.db-fileconnector
 
 # Install via yarn
@@ -36,19 +46,19 @@ yarn add web3.db-fileconnector
 ### Quick Integration Example
 
 ```javascript
-import { initIPFS } from 'web3.db-fileconnector/server/ipfs/config.js';
-import { GlobalContext } from 'web3.db-fileconnector/client/contexts/Global';
+import { initIPFS } from "web3.db-fileconnector/server/ipfs/config.js";
+import { GlobalContext } from "web3.db-fileconnector/client/contexts/Global";
 
 // Initialize IPFS with Helia (enhanced in v1.8.4)
 const ipfs = await initIPFS();
 const cid = await ipfs.add("Hello from your app!");
-console.log('Content stored with CID:', cid);
+console.log("Content stored with CID:", cid);
 
 // Use GraphQL API
-import { OrbisDB } from 'web3.db-fileconnector/server/orbisdb';
+import { OrbisDB } from "web3.db-fileconnector/server/orbisdb";
 const orbis = new OrbisDB({
-  ceramic: 'http://localhost:7007',
-  node: 'http://localhost:7008'
+  ceramic: "http://localhost:7007",
+  node: "http://localhost:7008",
 });
 
 // Query data using GraphQL
@@ -65,11 +75,11 @@ const query = `
 `;
 
 const result = await orbis.query(query, { limit: 10 });
-console.log('Posts:', result.data.posts);
+console.log("Posts:", result.data.posts);
 
 // Use in React components
-import { Button } from 'web3.db-fileconnector/client/components/Button';
-import { Header } from 'web3.db-fileconnector/client/components/Header';
+import { Button } from "web3.db-fileconnector/client/components/Button";
+import { Header } from "web3.db-fileconnector/client/components/Header";
 
 function MyApp() {
   return (
@@ -88,7 +98,7 @@ function MyApp() {
 
 ```javascript
 // File upload with progress tracking
-import { uploadFile } from 'web3.db-fileconnector/sdk';
+import { uploadFile } from "web3.db-fileconnector/sdk";
 
 async function handleFileUpload(file) {
   try {
@@ -97,27 +107,30 @@ async function handleFileUpload(file) {
         console.log(`Upload progress: ${progress}%`);
       },
       maxSize: 100 * 1024 * 1024, // 100MB
-      allowedTypes: ['image/*', 'application/pdf']
+      allowedTypes: ["image/*", "application/pdf"],
     });
-    
-    console.log('File uploaded:', result.cid);
+
+    console.log("File uploaded:", result.cid);
     return result;
   } catch (error) {
-    console.error('Upload failed:', error.message);
+    console.error("Upload failed:", error.message);
   }
 }
 
 // Working with Ceramic streams
-import { createStream, updateStream } from 'web3.db-fileconnector/server/ceramic';
+import {
+  createStream,
+  updateStream,
+} from "web3.db-fileconnector/server/ceramic";
 
 async function createPost(data) {
-  const stream = await createStream('Post', {
+  const stream = await createStream("Post", {
     title: data.title,
     content: data.content,
     author: data.author,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
-  
+
   return stream.id;
 }
 ```
@@ -152,6 +165,7 @@ npm run setup
 ```
 
 **What the setup script does:**
+
 1. ✅ Installs yarn if not available
 2. ✅ Installs project dependencies (including Helia IPFS)
 3. ✅ Installs IPFS daemon if not already installed
@@ -163,13 +177,15 @@ npm run setup
 9. ✅ Opens your browser to the running application
 
 **Stack URLs after setup:**
+
 - 🌐 **Main App**: http://localhost:3001
-- 🔧 **API Server**: http://localhost:7008  
+- 🔧 **API Server**: http://localhost:7008
 - 📊 **GraphQL Playground**: http://localhost:7008/graphql
 - 🗄️ **IPFS Web UI**: http://localhost:5001/webui
 - 🏺 **Ceramic Node**: http://localhost:7007
 
 **Shutdown all services:**
+
 ```bash
 npm run shutdown
 # OR
@@ -207,6 +223,7 @@ yarn dev
 ```
 
 **Your complete stack is now running:**
+
 - IPFS node: http://localhost:5001/webui
 - Ceramic node: http://localhost:7007
 - Sample API app: http://localhost:3000
@@ -214,6 +231,7 @@ yarn dev
 - GraphQL playground: http://localhost:7008/graphql
 
 **Key features available:**
+
 - Decentralized data storage with IPFS
 - Structured data with Ceramic and ComposeDB
 - GraphQL API with DID authentication
@@ -234,22 +252,26 @@ Get up and running with web3.db-fileconnector in minutes:
 ### System Requirements & File Size Recommendations
 
 #### Disk Space Requirements
+
 - **Minimum**: 15GB free disk space for basic installation
 - **Recommended**: 35GB+ free disk space for development with build processes
 - **Production**: 60GB+ for optimal performance with full Docker stack
 
 #### File Upload Limits
+
 - **IPFS File Size**: Up to 100MB per file recommended for optimal performance
 - **Large Files**: Files >100MB may experience slower upload/retrieval times
 - **Batch Operations**: Recommended batch size of 50 files or 500MB total per operation
 - **Database Records**: No strict limits, but pagination recommended for >1000 records
 
 #### Performance Considerations
+
 - **Memory**: 8GB+ RAM recommended (16GB+ for heavy development workloads)
 - **Network**: Stable internet connection for IPFS and Ceramic network synchronization
 - **Storage**: SSD preferred for faster build times and database operations
 
 > ⚠️ **Important**: The project requires significant disk space due to:
+>
 > - Node.js dependencies (~4-5GB in node_modules)
 > - Docker images and containers (~3-4GB)
 > - IPFS data storage and pinning
@@ -356,6 +378,7 @@ docker-compose ps
 ```
 
 **New in v1.8.4**: Enhanced Docker support with:
+
 - ✅ Multi-platform builds (ARM64/AMD64)
 - ✅ Optimized build process with proper layer caching
 - ✅ Fixed .next directory handling in containers
@@ -427,21 +450,21 @@ ADMIN_SECRET=your-admin-secret
 // Enable production optimizations in next.config.mjs
 const nextConfig = {
   // ...existing code...
-  
+
   // Production optimizations
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === "production",
   },
-  
+
   // Enable compression
   compress: true,
-  
+
   // Optimize images
   images: {
-    domains: ['ipfs.io', 'gateway.ipfs.io'],
-    formats: ['image/webp', 'image/avif'],
+    domains: ["ipfs.io", "gateway.ipfs.io"],
+    formats: ["image/webp", "image/avif"],
   },
-  
+
   // Enable SWC minification
   swcMinify: true,
 };
@@ -469,20 +492,6 @@ curl http://localhost:3000/health
 
 ---
 
-- [Available Scripts](#available-scripts)
-- [File Handling Best Practices](#file-handling-best-practices)
-- [Development Workflow](#development-workflow)
-- [Detailed Installation](#detailed-installation)
-  - [Ceramic Setup](#ceramic-setup)
-  - [OrbisDB Configuration](#orbisdb-configuration)
-- [Docker Integration](#docker-integration)
-- [Environment Variables](#environment-variables)
-- [Integrating PostgreSQL with Airtable](#integrating-postgresql-with-airtable)
-- [Troubleshooting](#troubleshooting)
-- [License & Contact](#license--contact)
-
----
-
 ## Table of Contents
 
 - [🆕 What's New in v1.8.4](#-whats-new-in-v184)
@@ -502,7 +511,6 @@ curl http://localhost:3000/health
 - [Environment Variables](#environment-variables)
 - [Integrating PostgreSQL with Airtable](#integrating-postgresql-with-airtable)
 - [Troubleshooting](#troubleshooting)
-- [⚠️ CRITICAL: Database Permissions Setup](#️-critical-database-permissions-setup)
 - [License & Contact](#license--contact)
 
 ---
@@ -514,91 +522,91 @@ curl http://localhost:3000/health
 | Script               | Description                                  |
 | -------------------- | -------------------------------------------- |
 | `npm run dev`        | Start the development server                 |
-| `npm run build`      | Build the Next.js client application        |
+| `npm run build`      | Build the Next.js client application         |
 | `npm run start`      | Run the application in production mode       |
 | `npm run dev:docker` | Start with Docker and run development server |
-| `npm run dev:watch`  | Start with auto-restart on file changes     |
-| `npm run dev:debug`  | Start with debug logging enabled            |
+| `npm run dev:watch`  | Start with auto-restart on file changes      |
+| `npm run dev:debug`  | Start with debug logging enabled             |
 
 ### Setup & Maintenance
 
-| Script                    | Description                                          |
-| ------------------------- | ---------------------------------------------------- |
-| `npm run setup`           | Complete automated setup (IPFS + Ceramic + app)     |
-| `npm run shutdown`        | Stop all running services                           |
-| `npm run create-env`      | Create a `.env` file from template                  |
-| `npm run system:check`    | Verify server dependencies and configuration        |
-| `npm run helia:test`      | Test IPFS/Helia configuration                       |
-| `npm run clean`           | Remove build cache and dependencies                 |
-| `npm run clean:all`       | Remove all build artifacts for a fresh start        |
-| `npm run format`          | Format code using Prettier                          |
-| `npm run lint`            | Check code quality with ESLint                      |
-| `npm run permissions`     | Fix shell script permissions                        |
+| Script                 | Description                                     |
+| ---------------------- | ----------------------------------------------- |
+| `npm run setup`        | Complete automated setup (IPFS + Ceramic + app) |
+| `npm run shutdown`     | Stop all running services                       |
+| `npm run create-env`   | Create a `.env` file from template              |
+| `npm run system:check` | Verify server dependencies and configuration    |
+| `npm run helia:test`   | Test IPFS/Helia configuration                   |
+| `npm run clean`        | Remove build cache and dependencies             |
+| `npm run clean:all`    | Remove all build artifacts for a fresh start    |
+| `npm run format`       | Format code using Prettier                      |
+| `npm run lint`         | Check code quality with ESLint                  |
+| `npm run permissions`  | Fix shell script permissions                    |
 
 ### Ceramic & Database
 
-| Script                      | Description                                      |
-| --------------------------- | ------------------------------------------------ |
-| `npm run ceramic:build`     | Set up and manage Ceramic DB                    |
-| `npm run ceramic:start`     | Start Ceramic daemon (local network)            |
-| `npm run ceramic:start:dev` | Start Ceramic with dev environment              |
-| `npm run wheel:build`       | Build Ceramic configuration                     |
-| `npm run wheel:build:watch` | Build Ceramic config with file watching         |
+| Script                      | Description                             |
+| --------------------------- | --------------------------------------- |
+| `npm run ceramic:build`     | Set up and manage Ceramic DB            |
+| `npm run ceramic:start`     | Start Ceramic daemon (local network)    |
+| `npm run ceramic:start:dev` | Start Ceramic with dev environment      |
+| `npm run wheel:build`       | Build Ceramic configuration             |
+| `npm run wheel:build:watch` | Build Ceramic config with file watching |
 
 ### Docker Management
 
-| Script                     | Description                  |
-| -------------------------- | ---------------------------- |
-| `npm run docker:build`     | Build the Docker image       |
-| `npm run docker:start`     | Start the Docker container   |
-| `npm run docker:stop`      | Stop the Docker container    |
-| `npm run docker:restart`   | Restart the Docker container |
-| `npm run docker:remove`    | Remove the Docker container  |
-| `npm run docker:status`    | Show Docker container status |
+| Script                   | Description                  |
+| ------------------------ | ---------------------------- |
+| `npm run docker:build`   | Build the Docker image       |
+| `npm run docker:start`   | Start the Docker container   |
+| `npm run docker:stop`    | Stop the Docker container    |
+| `npm run docker:restart` | Restart the Docker container |
+| `npm run docker:remove`  | Remove the Docker container  |
+| `npm run docker:status`  | Show Docker container status |
 
 ### Security & Testing
 
-| Script                    | Description                                    |
-| ------------------------- | ---------------------------------------------- |
-| `npm run test:security`   | Run security audit on production dependencies |
-| `npm run validate`        | Run security audit + linting                  |
-| `npm run permissions`     | Fix shell script permissions                  |
+| Script                  | Description                                   |
+| ----------------------- | --------------------------------------------- |
+| `npm run test:security` | Run security audit on production dependencies |
+| `npm run validate`      | Run security audit + linting                  |
+| `npm run permissions`   | Fix shell script permissions                  |
 
 > **🛡️ Security Note**: Version 1.8.4 includes major security improvements including comprehensive dependency updates, Docker security hardening with non-root users, and enhanced permission management.
 
 ### Release Management
 
-| Script                      | Description                                        |
-| --------------------------- | -------------------------------------------------- |
-| `npm run changelog`         | Generate changelog from conventional commits       |
-| `npm run sync-versions`     | Sync version across all package.json files        |
-| `npm run prepare-release`   | Prepare release (run validation + setup)          |
-| `npm run version:major`     | Bump major version and create release             |
-| `npm run version:minor`     | Bump minor version and create release             |
-| `npm run version:patch`     | Bump patch version and create release             |
-| `npm run release:major`     | Full major release workflow                       |
-| `npm run release:minor`     | Full minor release workflow                       |
-| `npm run release:patch`     | Full patch release workflow                       |
+| Script                    | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `npm run changelog`       | Generate changelog from conventional commits |
+| `npm run sync-versions`   | Sync version across all package.json files   |
+| `npm run prepare-release` | Prepare release (run validation + setup)     |
+| `npm run version:major`   | Bump major version and create release        |
+| `npm run version:minor`   | Bump minor version and create release        |
+| `npm run version:patch`   | Bump patch version and create release        |
+| `npm run release:major`   | Full major release workflow                  |
+| `npm run release:minor`   | Full minor release workflow                  |
+| `npm run release:patch`   | Full patch release workflow                  |
 
 > **📦 Release Workflow**: Our automated release system includes security validation, version bumping, changelog generation, and npm publishing with conventional commit standards.
 
 ### Publishing & Distribution
 
-| Script                     | Description                               |
-| -------------------------- | ----------------------------------------- |
-| `npm run publish:npm`      | Publish to npm with public access        |
-| `npm run publish:docker`   | Build and push Docker image              |
-| `npm run publish:github`   | Publish to npm and Docker                |
-| `npm run publish:release`  | Full release: validate + build + publish |
+| Script                    | Description                              |
+| ------------------------- | ---------------------------------------- |
+| `npm run publish:npm`     | Publish to npm with public access        |
+| `npm run publish:docker`  | Build and push Docker image              |
+| `npm run publish:github`  | Publish to npm and Docker                |
+| `npm run publish:release` | Full release: validate + build + publish |
 
 ### Git Branch Management
 
-| Script                       | Description                                  |
-| ---------------------------- | -------------------------------------------- |
-| `npm run release:prepare`    | Checkout main, pull, and merge develop      |
-| `npm run branch:feature`     | Create new feature branch from develop      |
-| `npm run branch:hotfix`      | Create new hotfix branch from main          |
-| `npm run branch:cleanup`     | Delete merged branches                      |
+| Script                    | Description                            |
+| ------------------------- | -------------------------------------- |
+| `npm run release:prepare` | Checkout main, pull, and merge develop |
+| `npm run branch:feature`  | Create new feature branch from develop |
+| `npm run branch:hotfix`   | Create new hotfix branch from main     |
+| `npm run branch:cleanup`  | Delete merged branches                 |
 
 ---
 
@@ -607,30 +615,34 @@ curl http://localhost:3000/health
 ### IPFS File Upload Guidelines
 
 #### Recommended File Sizes
+
 - **Small Files** (< 1MB): Optimal for metadata, configurations, and JSON documents
 - **Medium Files** (1MB - 25MB): Good for images, documents, and small media files
 - **Large Files** (25MB - 100MB): Acceptable but may experience slower upload times
 - **Very Large Files** (> 100MB): Not recommended, consider breaking into chunks
 
 #### Supported File Types
+
 ```javascript
 // Recommended file types for optimal performance
 const recommendedTypes = {
-  documents: ['.json', '.txt', '.md', '.pdf'],
-  images: ['.jpg', '.jpeg', '.png', '.gif', '.webp'],
-  media: ['.mp3', '.mp4', '.webm'],
-  data: ['.csv', '.json', '.xml'],
-  archives: ['.zip', '.tar.gz'] // Use sparingly
+  documents: [".json", ".txt", ".md", ".pdf"],
+  images: [".jpg", ".jpeg", ".png", ".gif", ".webp"],
+  media: [".mp3", ".mp4", ".webm"],
+  data: [".csv", ".json", ".xml"],
+  archives: [".zip", ".tar.gz"], // Use sparingly
 };
 
 // Example file upload with size validation
 async function uploadToIPFS(file) {
   const maxSize = 100 * 1024 * 1024; // 100MB
-  
+
   if (file.size > maxSize) {
-    throw new Error(`File too large: ${file.size} bytes. Maximum: ${maxSize} bytes`);
+    throw new Error(
+      `File too large: ${file.size} bytes. Maximum: ${maxSize} bytes`
+    );
   }
-  
+
   const ipfs = await initIPFS();
   const result = await ipfs.add(file);
   return result.cid;
@@ -638,15 +650,17 @@ async function uploadToIPFS(file) {
 ```
 
 #### Database Record Limits
+
 - **Single Query**: Limit to 1000 records per query
 - **Batch Operations**: Process in chunks of 100-500 records
 - **Pagination**: Always implement for user-facing lists
 - **Indexing**: Use appropriate indexes for large datasets
 
 #### Storage Optimization Tips
+
 ```javascript
 // Compress large JSON before storage
-import { deflate, inflate } from 'pako';
+import { deflate, inflate } from "pako";
 
 async function storeCompressedData(data) {
   const compressed = deflate(JSON.stringify(data));
@@ -658,45 +672,21 @@ async function storeCompressedData(data) {
 async function uploadLargeFile(file) {
   const chunkSize = 10 * 1024 * 1024; // 10MB chunks
   const chunks = [];
-  
+
   for (let i = 0; i < file.size; i += chunkSize) {
     const chunk = file.slice(i, i + chunkSize);
     const cid = await ipfs.add(chunk);
     chunks.push(cid);
   }
-  
+
   // Store chunk manifest
   const manifest = { chunks, originalSize: file.size };
   return await ipfs.add(JSON.stringify(manifest));
 }
 ```
 
-#### Performance Monitoring
-```javascript
-// Monitor upload performance
-async function monitoredUpload(file) {
-  const startTime = Date.now();
-  const maxTimeout = 60000; // 1 minute
-  
-  try {
-    const result = await Promise.race([
-      uploadToIPFS(file),
-      new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Upload timeout')), maxTimeout)
-      )
-    ]);
-    
-    const duration = Date.now() - startTime;
-    console.log(`Upload completed in ${duration}ms`);
-    return result;
-  } catch (error) {
-    console.error('Upload failed:', error.message);
-    throw error;
-  }
-}
-```
-
 #### Error Handling & Retry Logic
+
 ```javascript
 async function robustUpload(file, maxRetries = 3) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
@@ -704,13 +694,13 @@ async function robustUpload(file, maxRetries = 3) {
       return await uploadToIPFS(file);
     } catch (error) {
       console.warn(`Upload attempt ${attempt} failed:`, error.message);
-      
+
       if (attempt === maxRetries) {
         throw new Error(`Upload failed after ${maxRetries} attempts`);
       }
-      
+
       // Exponential backoff
-      await new Promise(resolve => 
+      await new Promise((resolve) =>
         setTimeout(resolve, Math.pow(2, attempt) * 1000)
       );
     }
@@ -721,6 +711,7 @@ async function robustUpload(file, maxRetries = 3) {
 ### File System Best Practices
 
 #### Project File Organization
+
 ```
 recommended-project-structure/
 ├── uploads/           # Temporary upload storage (< 1GB)
@@ -734,6 +725,7 @@ recommended-project-structure/
 ```
 
 #### Cleanup & Maintenance
+
 ```bash
 # Regular cleanup script (add to cron)
 #!/bin/bash
@@ -1122,7 +1114,9 @@ pnpm store prune
 // Check file size before upload
 const maxSize = 100 * 1024 * 1024; // 100MB
 if (file.size > maxSize) {
-  console.error(`File size ${(file.size/1024/1024).toFixed(2)}MB exceeds limit of 100MB`);
+  console.error(
+    `File size ${(file.size / 1024 / 1024).toFixed(2)}MB exceeds limit of 100MB`
+  );
   // Consider file compression or chunking
 }
 ```

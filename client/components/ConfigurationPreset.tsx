@@ -21,7 +21,7 @@ const ConfigurationPreset: React.FC<ConfigurationPresetProps> = ({
   function enablePreset(type: PresetType, enabled: boolean) {
     if (enabled) {
       setPresets((prevPresets) =>
-        prevPresets.includes(type) ? prevPresets : [...prevPresets, type],
+        prevPresets.includes(type) ? prevPresets : [...prevPresets, type]
       );
     } else {
       setPresets((prevPresets) => prevPresets.filter((p) => p !== type));

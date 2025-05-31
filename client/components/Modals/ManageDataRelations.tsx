@@ -43,7 +43,7 @@ const ManageDataRelations = ({
         setRelations(
           settings.relations[selectedTable.id]
             ? settings.relations[selectedTable.id]
-            : [],
+            : []
         );
       } else {
         setRelations([]);
@@ -175,7 +175,7 @@ const ManageDataRelations = ({
     setReferencedTable(relation.referencedTable);
     setSelectedReferencedColumn(relation.referencedColumn);
     setReferencedType(
-      relation.referencedType ? relation.referencedType : "single",
+      relation.referencedType ? relation.referencedType : "single"
     );
     setStep(2);
   };
@@ -192,7 +192,7 @@ const ManageDataRelations = ({
   if (!isOpen) {
     return null;
   }
-  
+
   return (
     <Modal
       hide={onClose}
@@ -355,14 +355,28 @@ const ManageDataRelations = ({
 
               {selectedRelationIndex !== null ? (
                 <Button
-                  status={!selectedTable || !selectedColumn || !referencedTable || !selectedReferencedColumn ? 4 : status}
+                  status={
+                    !selectedTable ||
+                    !selectedColumn ||
+                    !referencedTable ||
+                    !selectedReferencedColumn
+                      ? 4
+                      : status
+                  }
                   title="Update relation"
                   onClick={updateExistingForeignKey}
                   successTitle="Updated"
                 />
               ) : (
                 <Button
-                  status={!selectedTable || !selectedColumn || !referencedTable || !selectedReferencedColumn ? 4 : status}
+                  status={
+                    !selectedTable ||
+                    !selectedColumn ||
+                    !referencedTable ||
+                    !selectedReferencedColumn
+                      ? 4
+                      : status
+                  }
                   title="Add relation"
                   onClick={saveNewForeignKey}
                   successTitle="Added"
@@ -381,7 +395,7 @@ const ExistingRelation = ({ index, relation, handleEditRelation }) => {
   let cleanRelTableName = getCleanTableName(settings, relation.table);
   let cleanRelRefTableName = getCleanTableName(
     settings,
-    relation.referencedTable,
+    relation.referencedTable
   );
   console.log("relation:", relation);
   return (

@@ -53,7 +53,10 @@ const ExplorePage: NextPage = () => {
         });
       }
     });
-    posts.sort((a, b) => new Date(b.post.created).getTime() - new Date(a.post.created).getTime());
+    posts.sort(
+      (a, b) =>
+        new Date(b.post.created).getTime() - new Date(a.post.created).getTime()
+    );
     if (posts.length == 0) {
       if (!alerted) {
         alert(
@@ -70,7 +73,7 @@ const ExplorePage: NextPage = () => {
   }, []);
 
   return (
-    <div className='content'>
+    <div className="content">
       <div className={styles.postContainer}>
         <h1>Explore</h1>
         {posts?.map((post) => (

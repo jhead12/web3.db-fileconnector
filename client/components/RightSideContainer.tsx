@@ -149,8 +149,8 @@ const ContextDetails = () => {
       <div className="text-slate-600 text-xs">
         <p>
           Contexts allow you to organize your data across different applications
-          or projects. Within each context, you can create sub-contexts for a more
-          detailed and granular approach.
+          or projects. Within each context, you can create sub-contexts for a
+          more detailed and granular approach.
           <br /> <br />
           Plugins are enabled per context, allowing each context to have its own
           set of rules and automation.

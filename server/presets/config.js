@@ -9,17 +9,17 @@ export async function enablePreset(type, slot) {
   if (slot) {
     console.log(
       "global.indexingService.databases[slot]:",
-      global.indexingService.databases[slot],
+      global.indexingService.databases[slot]
     );
     db = global.indexingService.databases[slot];
   } else {
     console.log(
       "global.indexingService.database:",
-      global.indexingService.database,
+      global.indexingService.database
     );
     db = global.indexingService.database;
   }
-  
+
   // Check if db is defined before proceeding
   if (!db) {
     console.log("Database not found for slot:", slot);
@@ -29,14 +29,14 @@ export async function enablePreset(type, slot) {
   try {
     // Load the preset JSON file
     const presetFilePath = path.resolve(
-      `./server/presets/definitions/${type}.json`,
+      `./server/presets/definitions/${type}.json`
     );
-    
+
     if (!fs.existsSync(presetFilePath)) {
       console.log(`Preset file not found: ${presetFilePath}`);
       return;
     }
-    
+
     const presetData = JSON.parse(fs.readFileSync(presetFilePath, "utf-8"));
 
     // Execute preset models and views

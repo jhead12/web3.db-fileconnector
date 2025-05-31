@@ -108,7 +108,7 @@ export default class CSVUploaderPlugin {
     if (this.model_id && this.use_existing_model == "yes") {
       try {
         const model_details = await this.orbisdb.ceramic.getModel(
-          this.model_id,
+          this.model_id
         );
         logger.debug("model_details:", model_details);
         const properties = model_details.schema.schema.properties;
@@ -600,7 +600,7 @@ export default class CSVUploaderPlugin {
                 obj[key] = this.convertToTypedObject(
                   key,
                   value,
-                  jsonProperties,
+                  jsonProperties
                 ); // Convert and assign the value
                 console.log("obj[key]:", obj[key]);
                 return obj;

@@ -82,19 +82,29 @@ const UserProfile: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{profile !== undefined ? `${profile?.username}'s Profile` : "No profile"}</title>
+        <title>
+          {profile !== undefined
+            ? `${profile?.username}'s Profile`
+            : "No profile"}
+        </title>
       </Head>
       {profile !== undefined ? (
-        <div className='content'>
+        <div className="content">
           <div className={userStyles.details}>
             <div className={userStyles.user}>
               <div className={userStyles.emoji}>{profile.emoji}</div>
               <div>
-                <h2 className={userStyles.names} style={{ marginBottom: "5px" }}>
+                <h2
+                  className={userStyles.names}
+                  style={{ marginBottom: "5px" }}
+                >
                   {profile.name}
                 </h2>
                 &nbsp;&nbsp;
-                <div className={userStyles.names} style={{ color: "#eb4a27", marginBottom: "5px" }}>
+                <div
+                  className={userStyles.names}
+                  style={{ color: "#eb4a27", marginBottom: "5px" }}
+                >
                   @{profile.username}
                 </div>
                 <div>{profile.description}</div>
@@ -123,7 +133,7 @@ const UserProfile: NextPage = () => {
           )}
         </div>
       ) : (
-        <div className='content'></div>
+        <div className="content"></div>
       )}
     </>
   );

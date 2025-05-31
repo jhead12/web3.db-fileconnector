@@ -1,14 +1,31 @@
 {
-  "id": "{{plugin_id}}",
-  "name": "{{plugin_name}}",
-  "logo": "/img/{{plugin_id}}-logo.png",
-  "description": "{{plugin_description}}",
-  "full_description": "{{plugin_full_description}}",
-  "hooks": {{plugin_hooks}},
-  "variables": {{plugin_variables}},
-  "routes": {{plugin_routes}},
-  "actions": {{plugin_actions}},
+  "id": "plugin_id_placeholder",
+  "name": "Plugin Name Placeholder",
+  "logo": "/img/plugin_id_placeholder-logo.png",
+  "description": "Plugin description placeholder",
+  "full_description": "Extended plugin description placeholder with more details about functionality.",
+  "hooks": [],
+  "variables": {},
+  "routes": [],
+  "actions": {},
   "version": "1.0.0",
-  "author": "{{plugin_author}}",
-  "license": "MIT"
+  "author": "Author Name",
+  "license": "MIT",
+  "_template_info": {
+    "variables": {
+      "plugin_id": "Replace with actual plugin ID",
+      "plugin_name": "Replace with actual plugin name",
+      "plugin_description": "Replace with actual plugin description",
+      "plugin_full_description": "Replace with extended plugin description",
+      "plugin_hooks": "Replace with array of hooks",
+      "plugin_variables": "Replace with object of variables",
+      "plugin_routes": "Replace with array of routes",
+      "plugin_actions": "Replace with object of actions",
+      "plugin_author": "Replace with author name",
+      "plugin_images": {
+        "logo": "/img/plugin_id_placeholder-logo.png",
+        "icon": "/img/plugin_id_placeholder-icon.png"
+      }
+    }
+  }
 }

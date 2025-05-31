@@ -23,7 +23,7 @@ export default function Playground() {
   useEffect(() => {
     console.log(
       "settings.configuration.ceramic.node:",
-      settings.configuration.ceramic.node,
+      settings.configuration.ceramic.node
     );
     if (isShared) {
       orbisdb = new OrbisDB({

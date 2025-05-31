@@ -32,7 +32,7 @@ export default class TokenGatingPlugin {
     try {
       let stream = await global.indexingService.ceramic.orbisdb
         .insert(
-          "kjzl6hvfrbw6c643jhjfwa58rtre6x9zp3dl7bez7nvvocgwgua779euqovvidk",
+          "kjzl6hvfrbw6c643jhjfwa58rtre6x9zp3dl7bez7nvvocgwgua779euqovvidk"
         )
         .value({
           title: "hey title",
@@ -44,7 +44,7 @@ export default class TokenGatingPlugin {
     } catch (e) {
       logger.error(
         "Error creating stream with model:" + this.model_id + ":",
-        e,
+        e
       );
     }
   }
@@ -129,7 +129,7 @@ export default class TokenGatingPlugin {
       contract = new ethers.Contract(
         this.contract_address,
         contractAbi,
-        this.provider,
+        this.provider
       );
       isContractValid = true;
     } catch (e) {

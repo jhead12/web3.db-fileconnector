@@ -33,7 +33,10 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>OrbisDB Studio | Your Decentralized Database</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="OrbisDB is an advanced decentralized database built on the Ceramic Data Network. It comes with a set of plugins allowing unlimited customization options." />
+        <meta
+          name="description"
+          content="OrbisDB is an advanced decentralized database built on the Ceramic Data Network. It comes with a set of plugins allowing unlimited customization options."
+        />
       </Head>
       <CryptoLibCheck />
       <AppContent Component={Component} pageProps={pageProps} />
@@ -204,7 +207,8 @@ const LoopSlots = ({ slots }) => {
 };
 
 const ConfigurationSharedSetup = () => {
-  const { isShared, adminSession, sessionJwt, setSettings } = useGlobal() as any;
+  const { isShared, adminSession, sessionJwt, setSettings } =
+    useGlobal() as any;
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [presets, setPresets] = useState([]);
 

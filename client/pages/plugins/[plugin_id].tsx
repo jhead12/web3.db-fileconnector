@@ -30,23 +30,24 @@ export default function PluginDetails() {
   const [assignContextModalVis, setAssignContextModalVis] = useState(false);
   const [selectedContext, setSelectedContext] = useState(null);
   const [variableValues, setVariableValues] = useState(
-    selectedContext ? selectedContext.variables : null,
+    selectedContext ? selectedContext.variables : null
   );
 
   /** Use Next router to get conversation_id */
   const router = useRouter();
   const { plugin_id } = router.query;
   const VALID_PLUGIN_IDS = ["plugin1", "plugin2", "plugin3"]; // Example allow-list
-  
+
   // Helper function to normalize plugin_id (handle both string and array cases)
-  const getPluginId = () => Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
-  
+  const getPluginId = () =>
+    Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
+
   const existingPluginIndex = getPluginIndex();
 
   useEffect(() => {
     // Handle both string and array cases for plugin_id
     const pluginIdValue = Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
-    
+
     if (pluginIdValue && VALID_PLUGIN_IDS.includes(pluginIdValue)) {
       loadPluginDetails();
     } else {
@@ -57,7 +58,9 @@ export default function PluginDetails() {
     async function loadPluginDetails() {
       /** Load plugin details */
       try {
-        const pluginIdValue = Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
+        const pluginIdValue = Array.isArray(plugin_id)
+          ? plugin_id[0]
+          : plugin_id;
         let rawResponse = await fetch(`/api/plugins/${pluginIdValue}`, {
           method: "GET",
           headers: {
@@ -93,7 +96,7 @@ export default function PluginDetails() {
     const pluginIdValue = Array.isArray(plugin_id) ? plugin_id[0] : plugin_id;
     if (settings.plugins && settings.plugins.length > 0) {
       _existingPluginIndex = settings.plugins.findIndex(
-        (p) => p.plugin_id === pluginIdValue,
+        (p) => p.plugin_id === pluginIdValue
       );
     }
     console.log("_existingPluginIndex:", _existingPluginIndex);
@@ -181,7 +184,10 @@ export default function PluginDetails() {
             {/** Show overview tab content */}
             {nav == "Overview" && (
               <MarkdownRenderer
-                filePath={"/api/plugins/readme/" + (Array.isArray(plugin_id) ? plugin_id[0] : plugin_id)}
+                filePath={
+                  "/api/plugins/readme/" +
+                  (Array.isArray(plugin_id) ? plugin_id[0] : plugin_id)
+                }
                 fallback={pluginDetails.description}
               />
             )}
@@ -199,13 +205,17 @@ export default function PluginDetails() {
                       {settings.plugins[existingPluginIndex].contexts?.map(
                         (context, index) => (
                           <OneContext
-                            plugin_id={Array.isArray(plugin_id) ? plugin_id[0] : plugin_id}
+                            plugin_id={
+                              Array.isArray(plugin_id)
+                                ? plugin_id[0]
+                                : plugin_id
+                            }
                             context={context}
                             key={index}
                             setSelectedContext={setSelectedContext}
                             pluginDetails={pluginDetails}
                           />
-                        ),
+                        )
                       )}
                     </div>
                   </>
@@ -237,7 +247,12 @@ export default function PluginDetails() {
                     />
                   )}
                   <div className="flex flex-row justify-center">
-                    <Button title="Save" status={status} successTitle="Saved" onClick={savePlugin} />
+                    <Button
+                      title="Save"
+                      status={status}
+                      successTitle="Saved"
+                      onClick={savePlugin}
+                    />
                   </div>
                 </form>
               </div>
@@ -355,7 +370,7 @@ const OneContext = ({
               "Content-Type": "application/json",
               Authorization: `Bearer ${sessionJwt}`,
             },
-          },
+          }
         );
         const result = await rawResponse.json();
         console.log("Plugin dynamic variables:", result);
@@ -390,7 +405,8 @@ const OneContext = ({
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionJwt}`,
-        },          body: JSON.stringify({
+        },
+        body: JSON.stringify({
           plugin_id: Array.isArray(plugin_id) ? plugin_id[0] : plugin_id,
           uuid: context.uuid,
         }),
@@ -427,20 +443,20 @@ const OneContext = ({
           reader.onload = async (event) => {
             // Simple CSV parsing without PapaParse
             const text = event.target.result as string;
-            const lines = text.split('\n');
-            const headers = lines[0].split(',');
-            
+            const lines = text.split("\n");
+            const headers = lines[0].split(",");
+
             const csvData = [];
             for (let i = 1; i < lines.length; i++) {
-              if (lines[i].trim() === '') continue;
-              
-              const values = lines[i].split(',');
+              if (lines[i].trim() === "") continue;
+
+              const values = lines[i].split(",");
               const entry = {};
-              
+
               for (let j = 0; j < headers.length; j++) {
-                entry[headers[j].trim()] = values[j] ? values[j].trim() : '';
+                entry[headers[j].trim()] = values[j] ? values[j].trim() : "";
               }
-              
+
               csvData.push(entry);
             }
 
@@ -455,7 +471,7 @@ const OneContext = ({
                     data: csvData,
                     sessionId: context.uuid,
                   }),
-                },
+                }
               );
               const result = await response.json();
               console.log("Upload result:", result);
@@ -487,7 +503,7 @@ const OneContext = ({
     window.open(
       routeUrl,
       "_blank", // Target: open in a new window
-      `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars`,
+      `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars`
     );
   };
 
@@ -621,7 +637,7 @@ const OneContext = ({
                   <button
                     onClick={() =>
                       openRouteInPopup(
-                        `/api/plugins/${context.uuid}/routes/${action.route}`,
+                        `/api/plugins/${context.uuid}/routes/${action.route}`
                       )
                     }
                     className="bg-white border border-slate-200 hover:border-[#4483FD] rounded-md px-3 py-2 text-xs font-medium text-slate-800 space-x-1 flex flex-row items-center"
@@ -629,7 +645,7 @@ const OneContext = ({
                   >
                     <span>{action.label}</span>
                   </button>
-                ),
+                )
             )}
           </>
         </div>

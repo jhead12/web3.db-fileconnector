@@ -9,31 +9,32 @@ export default function ContextSettings({
   callback,
   parentContext,
 }) {
-  const { orbisdb, settings, setSettings, slot, sessionJwt } =
-    useContext(GlobalContext) as any;
+  const { orbisdb, settings, setSettings, slot, sessionJwt } = useContext(
+    GlobalContext
+  ) as any;
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [contextName, setContextName] = useState(
-    context?.name ? context.name : "",
+    context?.name ? context.name : ""
   );
   const [contextLogoImg, setContextLogoImg] = useState(
-    context?.logo ? context.logo : null,
+    context?.logo ? context.logo : null
   );
   const [contextDescription, setContextDescription] = useState(
-    context?.description ? context.description : "",
+    context?.description ? context.description : ""
   );
 
   /** Will update the context stream on Ceramic and save it locally */
   const uploadToServer = async () => {
     try {
       setStatus(STATUS.LOADING);
-      
+
       // Validate required fields
       if (!contextName || contextName.trim() === "") {
         alert("Context name is required");
         setStatus(STATUS.ERROR);
         return;
       }
-      
+
       /** Update Ceramic stream */
       let content = { ...(context || {}) };
       console.log("Previous context:", content);
@@ -49,7 +50,7 @@ export default function ContextSettings({
       if (context && context.stream_id) {
         delete content.stream_id;
         delete content.contexts;
-        
+
         try {
           res = await orbisdb.update(context.stream_id).replace(content).run();
         } catch (error) {
@@ -62,7 +63,7 @@ export default function ContextSettings({
         try {
           res = await orbisdb
             .insert(
-              "kjzl6hvfrbw6c6lqihb9i25vyr4hob667w8otxyzw7fohetbaqkjqrgjvll1h4b",
+              "kjzl6hvfrbw6c6lqihb9i25vyr4hob667w8otxyzw7fohetbaqkjqrgjvll1h4b"
             )
             .value(content)
             .run();
@@ -73,14 +74,14 @@ export default function ContextSettings({
           return;
         }
       }
-      
+
       if (!res || !res.id) {
         console.error("Invalid response from orbisdb:", res);
         setStatus(STATUS.ERROR);
         alert("There was an error with the database operation.");
         return;
       }
-      
+
       console.log("res:", res);
       content.stream_id = res.id;
       console.log("Updated content:", content);
@@ -151,7 +152,12 @@ export default function ContextSettings({
 
       {/** CTA to save updated context */}
       <div className="flex w-full justify-center mt-2">
-        <Button title="Save" successTitle="Saved" status={status} onClick={() => uploadToServer()} />
+        <Button
+          title="Save"
+          successTitle="Saved"
+          status={status}
+          onClick={() => uploadToServer()}
+        />
       </div>
     </div>
   );

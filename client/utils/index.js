@@ -181,7 +181,7 @@ export const findParentContextId = (contextId, contexts, parentId = null) => {
       const foundParentId = findParentContextId(
         contextId,
         context.contexts,
-        context.stream_id,
+        context.stream_id
       );
       if (foundParentId) {
         return foundParentId;
@@ -220,7 +220,7 @@ export async function setForeignKey(
   table,
   column,
   referencedTable,
-  referencedColumn,
+  referencedColumn
 ) {
   const response = await fetch("/api/db/foreign-key", {
     method: "POST",

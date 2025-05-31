@@ -122,7 +122,7 @@ const CreateModel = ({ modelId, setModelId, setModelDefinition, setStep }) => {
     // Check if DID or DateTime types are used
     const usesDID = fields.some((group) => group.selectValue === "did");
     const usesDateTime = fields.some(
-      (group) => group.selectValue === "datetime",
+      (group) => group.selectValue === "datetime"
     );
 
     // Build the $defs object
@@ -173,7 +173,7 @@ const CreateModel = ({ modelId, setModelId, setModelDefinition, setStep }) => {
         },
       },
       null,
-      2,
+      2
     );
 
     // Update the state or whatever is necessary with the new schema
@@ -347,7 +347,7 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
     // Check if the value matches the regex
     if (regex.test(value)) {
       const updatedInputGroups = inputGroups.map((group, i) =>
-        i === index ? { ...group, textValue: value } : group,
+        i === index ? { ...group, textValue: value } : group
       );
       setInputGroups(updatedInputGroups);
     } else {
@@ -358,7 +358,7 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
 
   const handleSelectChange = (index, value) => {
     const updatedInputGroups = inputGroups.map((group, i) =>
-      i === index ? { ...group, selectValue: value } : group,
+      i === index ? { ...group, selectValue: value } : group
     );
     setInputGroups(updatedInputGroups);
   };

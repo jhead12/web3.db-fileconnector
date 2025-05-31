@@ -4,15 +4,14 @@ import { useEffect, useState } from "react";
 import Post from "../../components/post.component";
 import { useCeramicContext } from "../../context";
 
-
 const PostDetails: NextPage = () => {
-  const router = useRouter()
-  const { id } = router.query
+  const router = useRouter();
+  const { id } = router.query;
 
-  const clients = useCeramicContext() 
-  const {ceramic, composeClient} = clients
+  const clients = useCeramicContext();
+  const { ceramic, composeClient } = clients;
 
-  const [postDetails, setPostDetails ] = useState({})
+  const [postDetails, setPostDetails] = useState({});
 
   const getPost = async () => {
     const postDetails = await composeClient.executeQuery(`
@@ -46,42 +45,37 @@ const PostDetails: NextPage = () => {
           }
         }
       }
-    `)
-    console.log(postDetails.data)
+    `);
+    console.log(postDetails.data);
 
     setPostDetails({
       author: {
         id: postDetails.data?.node.author.basicProfile.id,
         body: postDetails.data?.node.author.basicProfile.body,
-        created: postDetails.data?.node.author.basicProfile.created
+        created: postDetails.data?.node.author.basicProfile.created,
       },
       post: {
         id: postDetails.data?.node.id,
         body: postDetails.data?.node.body,
-        created: postDetails.data?.node.created
-      }
-    })
-  }
+        created: postDetails.data?.node.created,
+      },
+    });
+  };
 
   useEffect(() => {
-    getPost()
-  }, [])
+    getPost();
+  }, []);
 
   return (
-    <div className = "content">
-      {postDetails.id !== undefined
-      ?
-      <>
-        {postDetails.id}
-      </>
-        // <Post author = {postDetails.author} post = {postDetails.post} /> 
-      :
-      <>
-        n/a
-      </>
-    }
+    <div className="content">
+      {postDetails.id !== undefined ? (
+        <>{postDetails.id}</>
+      ) : (
+        // <Post author = {postDetails.author} post = {postDetails.post} />
+        <>n/a</>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default PostDetails
+export default PostDetails;

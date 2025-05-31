@@ -59,7 +59,7 @@ export default class SolanaCredentials {
 
     let result =
       await global.indexingService.ceramic.orbisdb.ceramic.createModel(
-        modelDefinition,
+        modelDefinition
       );
     logger.debug("result new model:", result);
   }
@@ -70,7 +70,7 @@ export default class SolanaCredentials {
 
     // Fetch the transaction signatures for the address
     const transactions = await this.connection.getSignaturesForAddress(
-      new PublicKey(address),
+      new PublicKey(address)
     );
     if (transactions) {
       logger.debug(address + " had " + transactions.length + " transactions.");
@@ -102,7 +102,7 @@ export default class SolanaCredentials {
         {
           commitment: "confirmed",
           maxSupportedTransactionVersion: 0,
-        },
+        }
       );
 
       if (!transactionDetails) {
@@ -142,7 +142,7 @@ export default class SolanaCredentials {
     // Filter for uniqueness
     const uniquePrograms = programsUsed.filter(
       (program, index, self) =>
-        index === self.findIndex((t) => t.id === program.id),
+        index === self.findIndex((t) => t.id === program.id)
     );
 
     // Return all programs used by this transaction
@@ -265,7 +265,7 @@ export default class SolanaCredentials {
     try {
       stream = global.indexingService.ceramic.orbisdb
         .insert(
-          "kjzl6hvfrbw6c88zjg5ep2zjj09vag9e3xtp48bo4jce2mvkef9117e0wbwxqp3",
+          "kjzl6hvfrbw6c88zjg5ep2zjj09vag9e3xtp48bo4jce2mvkef9117e0wbwxqp3"
         )
         .value({
           receiver: did,

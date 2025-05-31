@@ -31,7 +31,7 @@ const saveResults = (slot, results) => {
 
   fs.writeFileSync(
     resolve(__dirname, "./db.plugin_data"),
-    JSON.stringify(current),
+    JSON.stringify(current)
   );
 };
 
@@ -65,7 +65,7 @@ export default class DesciModelsPlugin {
       const contexts = plugin.contexts || [];
       if (
         contexts.find(
-          (context) => context.stream_id === CODEX_CONTEXT.stream_id,
+          (context) => context.stream_id === CODEX_CONTEXT.stream_id
         )
       ) {
         return plugin;
@@ -145,7 +145,7 @@ export default class DesciModelsPlugin {
     while (!researchData) {
       try {
         const response = await fetch(
-          "https://beta.dpid.org/api/v2/query/objects",
+          "https://beta.dpid.org/api/v2/query/objects"
         );
         const result = await response.json();
         researchData = Array.from(new Set(result.map((d) => d.id)));
@@ -184,8 +184,8 @@ export default class DesciModelsPlugin {
               this.slot,
             ]);
             return stream_id;
-          })(),
-        ),
+          })()
+        )
       );
 
       const indexedStreams = promises

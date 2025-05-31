@@ -1,5 +1,5 @@
 // Client-side adapter for the Neon PostgreSQL data source
-import axios from 'axios';
+import axios from "axios";
 
 /**
  * NeonDataSource class provides methods to interact with a Neon PostgreSQL database
@@ -17,7 +17,7 @@ export class NeonDataSource {
     this.jwt = options.jwt;
 
     if (!this.contextUuid) {
-      throw new Error('Context UUID is required for NeonDataSource');
+      throw new Error("Context UUID is required for NeonDataSource");
     }
   }
 
@@ -35,15 +35,18 @@ export class NeonDataSource {
    */
   async getTables() {
     try {
-      const response = await axios.get(`/api/plugins/${this.contextUuid}/routes/tables`, {
-        headers: {
-          Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined
+      const response = await axios.get(
+        `/api/plugins/${this.contextUuid}/routes/tables`,
+        {
+          headers: {
+            Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined,
+          },
         }
-      });
-      
+      );
+
       return response.data.tables || [];
     } catch (error) {
-      console.error('Error retrieving tables from Neon database:', error);
+      console.error("Error retrieving tables from Neon database:", error);
       throw error;
     }
   }
@@ -56,18 +59,22 @@ export class NeonDataSource {
    */
   async query(query, params = []) {
     try {
-      const response = await axios.post(`/api/plugins/${this.contextUuid}/routes/query`, {
-        query,
-        params
-      }, {
-        headers: {
-          Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined
+      const response = await axios.post(
+        `/api/plugins/${this.contextUuid}/routes/query`,
+        {
+          query,
+          params,
+        },
+        {
+          headers: {
+            Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined,
+          },
         }
-      });
-      
+      );
+
       return response.data;
     } catch (error) {
-      console.error('Error executing query on Neon database:', error);
+      console.error("Error executing query on Neon database:", error);
       throw error;
     }
   }
@@ -79,17 +86,21 @@ export class NeonDataSource {
    */
   async importTableSchema(tableName) {
     try {
-      const response = await axios.post(`/api/plugins/${this.contextUuid}/routes/import-schema`, {
-        tableName
-      }, {
-        headers: {
-          Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined
+      const response = await axios.post(
+        `/api/plugins/${this.contextUuid}/routes/import-schema`,
+        {
+          tableName,
+        },
+        {
+          headers: {
+            Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined,
+          },
         }
-      });
-      
+      );
+
       return response.data.schema;
     } catch (error) {
-      console.error('Error importing schema from Neon database:', error);
+      console.error("Error importing schema from Neon database:", error);
       throw error;
     }
   }
@@ -104,25 +115,29 @@ export class NeonDataSource {
     try {
       // First import the table schema
       const schema = await this.importTableSchema(tableName);
-      
+
       // If a custom model name is provided, use it
       if (modelName) {
         schema.name = modelName;
       }
-      
+
       // Create a model using the schema
       // This would typically interact with the web3db-connector model creation API
-      const response = await axios.post('/api/models', {
-        schema
-      }, {
-        headers: {
-          Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined
+      const response = await axios.post(
+        "/api/models",
+        {
+          schema,
+        },
+        {
+          headers: {
+            Authorization: this.jwt ? `Bearer ${this.jwt}` : undefined,
+          },
         }
-      });
-      
+      );
+
       return response.data;
     } catch (error) {
-      console.error('Error creating model from Neon table:', error);
+      console.error("Error creating model from Neon table:", error);
       throw error;
     }
   }
@@ -133,7 +148,7 @@ export class NeonDataSource {
    */
   async testConnection() {
     try {
-      await this.query('SELECT 1');
+      await this.query("SELECT 1");
       return true;
     } catch (error) {
       return false;

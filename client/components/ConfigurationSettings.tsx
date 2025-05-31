@@ -35,22 +35,22 @@ export function ConfigurationSetup({ showPresets }) {
   const [statusConnect, setStatusConnect] = useState(STATUS.ACTIVE);
   const [hasLocalNode, setHasLocalNode] = useState(false);
   const [ceramicNode, setCeramicNode] = useState(
-    settings?.configuration?.ceramic?.node,
+    settings?.configuration?.ceramic?.node
   );
   const [ceramicSeed, setCeramicSeed] = useState(
-    settings?.configuration?.ceramic?.seed,
+    settings?.configuration?.ceramic?.seed
   );
   const [dbUser, setDbUser] = useState(settings?.configuration?.db?.user);
   const [dbDatabase, setDbDatabase] = useState(
-    settings?.configuration?.db?.database,
+    settings?.configuration?.db?.database
   );
   const [dbPassword, setDbPassword] = useState(
-    settings?.configuration?.db?.password,
+    settings?.configuration?.db?.password
   );
   const [dbHost, setDbHost] = useState(settings?.configuration?.db?.host);
   const [dbPort, setDbPort] = useState(settings?.configuration?.db?.port);
   const [adminAccount, setAdminAccount] = useState(
-    settings?.configuration?.admins?.[0] || null,
+    settings?.configuration?.admins?.[0] || null
   );
   const [step, setStep] = useState(1);
   const [presets, setPresets] = useState([]);
@@ -163,7 +163,7 @@ export function ConfigurationSetup({ showPresets }) {
               user: dbUser,
               database: dbDatabase,
               password: dbPassword,
-              host: dbHost.replace(/^https?:\/\//, ''),
+              host: dbHost.replace(/^https?:\/\//, ""),
               port: parseInt(dbPort),
             },
           },
@@ -177,7 +177,7 @@ export function ConfigurationSetup({ showPresets }) {
       if (response.result) {
         console.log(
           "Success updating configutation with:",
-          response.updatedSettings,
+          response.updatedSettings
         );
         setStatus(STATUS.SUCCESS);
         setSettings(response.updatedSettings);
@@ -228,7 +228,7 @@ export function ConfigurationSetup({ showPresets }) {
       });
       localStorage.setItem(
         "orbisdb-admin-session",
-        result.auth.serializedSession,
+        result.auth.serializedSession
       );
       if (result?.user) {
         setAdminAccount(result.user.did);
@@ -280,7 +280,9 @@ export function ConfigurationSetup({ showPresets }) {
           </div>
 
           <div className="mt-4">
-            <label className="text-base font-medium mb-2 block">Ceramic Seed:</label>
+            <label className="text-base font-medium mb-2 block">
+              Ceramic Seed:
+            </label>
             <p className="text-sm mb-2 text-slate-500">
               This seed will be used to create streams from the OrbisDB UI as
               well as by plugins creating streams. You can also{" "}
@@ -302,7 +304,11 @@ export function ConfigurationSetup({ showPresets }) {
 
           {/** CTA to save updated context */}
           <div className="flex w-full justify-center mt-4">
-            <Button title="Next" successTitle="Next" onClick={() => goStep2()} />
+            <Button
+              title="Next"
+              successTitle="Next"
+              onClick={() => goStep2()}
+            />
           </div>
         </>
       )}
@@ -357,7 +363,12 @@ export function ConfigurationSetup({ showPresets }) {
 
           {/** CTA to save updated context */}
           <div className="flex w-full justify-center mt-4">
-            <Button title="Next" successTitle="Next" status={status} onClick={() => goStep3()} />
+            <Button
+              title="Next"
+              successTitle="Next"
+              status={status}
+              onClick={() => goStep3()}
+            />
           </div>
         </>
       )}
@@ -379,7 +390,12 @@ export function ConfigurationSetup({ showPresets }) {
 
           {/** CTA to save updated context */}
           <div className="flex w-full justify-center mt-4">
-            <Button title="Next" successTitle="Next" status={status} onClick={() => goStep4()} />
+            <Button
+              title="Next"
+              successTitle="Next"
+              status={status}
+              onClick={() => goStep4()}
+            />
           </div>
         </>
       )}

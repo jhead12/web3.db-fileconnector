@@ -45,7 +45,7 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
   const [status, setStatus] = useState(STATUS.ACTIVE);
   const [contextDetails, setContextDetails] = useState<any>();
   const { settings, setSettings } = useGlobal() as any;
-  
+
   // Implement ceramic client
   const orbis = {
     ceramic: {
@@ -53,12 +53,12 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
         try {
           // Attempt to fetch context from API
           const response = await fetch(`/api/contexts/${id}`, {
-            method: 'GET',
+            method: "GET",
             headers: {
-              'Content-Type': 'application/json'
-            }
+              "Content-Type": "application/json",
+            },
           });
-          
+
           if (response.ok) {
             return await response.json();
           } else {
@@ -69,15 +69,15 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
           console.error("Error loading context:", error);
           return {};
         }
-      }
-    }
+      },
+    },
   };
-  
+
   // Implement createNewContext function
   const createNewContext = () => {
     setStep(3);
   };
-  
+
   // Implement saveInSettings function
   const saveInSettings = async () => {
     setStatus(STATUS.LOADING);
@@ -85,16 +85,16 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
       // Add context to settings
       const updatedContexts = [...(settings.contexts || []), contextDetails];
       const updatedSettings = { ...settings, contexts: updatedContexts };
-      
+
       // Save to API
-      const response = await fetch('/api/settings', {
-        method: 'POST',
+      const response = await fetch("/api/settings", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ settings: updatedSettings })
+        body: JSON.stringify({ settings: updatedSettings }),
       });
-      
+
       if (response.ok) {
         setSettings(updatedSettings);
         setStatus(STATUS.SUCCESS);
@@ -136,7 +136,7 @@ const AddContextSteps = ({ step, setStep, hide, parentContext, callback }) => {
         alert("Error loading context details.");
         console.log(
           "Error loading context details and adding it to the settings file:",
-          "error",
+          "error"
         );
         setStatus(STATUS.ERROR);
         await sleep(500);

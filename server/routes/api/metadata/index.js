@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const packageJson = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, "../../../../package.json")),
+  fs.readFileSync(path.resolve(__dirname, "../../../../package.json"))
 );
 
 /** Prefixed with /plugins/metadata */

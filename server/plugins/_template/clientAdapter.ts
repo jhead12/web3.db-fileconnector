@@ -1,11 +1,13 @@
-// {{plugin_name}} client adapter
-import { BaseDataSource } from './baseDataSource';
-import type { Context } from '../../types';
+// Template plugin client adapter
+import { BaseDataSource } from "./baseDataSource";
+import type { Context } from "../../types";
 
-export class {{plugin_class_name}}DataSource extends BaseDataSource {
+// TEMPLATE:plugin_class_name
+export class TemplateDataSource extends BaseDataSource {
   constructor(context: Context) {
     super(context);
-    this.pluginId = '{{plugin_id}}';
+    // TEMPLATE:plugin_id
+    this.pluginId = "template_plugin_id";
   }
 
   /**
@@ -16,10 +18,11 @@ export class {{plugin_class_name}}DataSource extends BaseDataSource {
       // Plugin-specific initialization
       return true;
     } catch (error) {
-      console.error('Failed to initialize {{plugin_name}} data source:', error);
+      // TEMPLATE:plugin_name
+      console.error("Failed to initialize template data source:", error);
       return false;
     }
   }
 
-  {{client_methods}}
+  // TEMPLATE:client_methods
 }

@@ -35,7 +35,7 @@ export default async function buildNextApp() {
   worker.on("exit", (code) =>
     code === 0
       ? resolve(true)
-      : reject(output.length ? output.join(", ") : `Exit code: ${code}`),
+      : reject(output.length ? output.join(", ") : `Exit code: ${code}`)
   );
 
   return promise;

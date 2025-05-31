@@ -9,12 +9,14 @@ This directory contains scripts for automating security patching and release pro
 Automatically detects and fixes security vulnerabilities in both direct and transitive dependencies.
 
 **Features:**
+
 - Upgrades direct dependencies to secure versions
 - Adds resolutions in package.json for transitive dependencies
 - Updates SECURITY-AUDIT.md with current vulnerability status
 - Updates CHANGELOG.md with security notes
 
 **Usage:**
+
 ```bash
 # Run directly
 ./scripts/auto-security-patch.sh
@@ -28,6 +30,7 @@ yarn security:patch
 Automates the entire release process, including security fixes, version bumping, and changelog generation.
 
 **Features:**
+
 - Optional security patching (can be skipped if already done)
 - Proper version calculation and updating
 - Automatic changelog generation with correct version
@@ -35,6 +38,7 @@ Automates the entire release process, including security fixes, version bumping,
 - Support for major, minor, or patch releases
 
 **Usage:**
+
 ```bash
 # Major version release (v2.0.0)
 ./scripts/auto-release.sh --major
@@ -43,7 +47,7 @@ Automates the entire release process, including security fixes, version bumping,
 ./scripts/auto-release.sh --minor
 
 # Patch version release (default)
-./scripts/auto-release.sh --patch 
+./scripts/auto-release.sh --patch
 
 # Skip security patching if already done
 ./scripts/auto-release.sh --patch --skip-security
@@ -57,6 +61,7 @@ yarn auto:release
 This script is used by the auto-security-patch.sh script to fix both direct and transitive dependencies.
 
 **Features:**
+
 - Installs specific versions of vulnerable dependencies
 - Adds resolutions to package.json files
 
@@ -65,6 +70,7 @@ This script is used by the auto-security-patch.sh script to fix both direct and 
 For the most secure release process, follow these steps:
 
 1. Run security patching:
+
    ```bash
    yarn security:patch
    ```
@@ -72,6 +78,7 @@ For the most secure release process, follow these steps:
 2. Review the SECURITY-AUDIT.md file to understand remaining vulnerabilities
 
 3. Run automated release with appropriate version bump:
+
    ```bash
    # For a major version release:
    yarn auto:release --major --skip-security

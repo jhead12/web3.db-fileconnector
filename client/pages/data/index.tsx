@@ -292,7 +292,12 @@ export default function Data() {
       </div>
 
       {/** Will display the add context modal */}
-      {addModalVis && <AddViewModal hide={() => setAddModalVis(false)} parentContext="global" />}
+      {addModalVis && (
+        <AddViewModal
+          hide={() => setAddModalVis(false)}
+          parentContext="global"
+        />
+      )}
 
       {/** Will display the modal to add a new foreign key */}
       {isFKModalOpen && (
@@ -444,7 +449,7 @@ const TableCTAs = ({
                   onClick={() =>
                     viewDefinition(
                       selectedTable.id,
-                      selectedTable.view_definition,
+                      selectedTable.view_definition
                     )
                   }
                 >
@@ -493,7 +498,13 @@ const TableCTAs = ({
 };
 
 /** Top rows for SQL Editor */
-const SqlEditorCTAs = ({ runQuery, loading, type, setType, selectedTableName }) => {
+const SqlEditorCTAs = ({
+  runQuery,
+  loading,
+  type,
+  setType,
+  selectedTableName,
+}) => {
   return (
     <div className="w-full text-[12px] table-data -mt-px -ml-px font-mono px-2 p-2 justify-start flex flex-row space-x-2 items-center border-b border-slate-200">
       <Toggle type={type} setType={setType} />

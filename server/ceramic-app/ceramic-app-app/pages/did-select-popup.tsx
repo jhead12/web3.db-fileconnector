@@ -33,8 +33,8 @@ const AuthPrompt = () => {
   return (
     <div>
       {isVisible && (
-        <div className='popup'>
-          <div className='popup-content'>
+        <div className="popup">
+          <div className="popup-content">
             <h2>Authenticate</h2>
             <span>
               <button onClick={handleKeyDid}>Key DID</button>

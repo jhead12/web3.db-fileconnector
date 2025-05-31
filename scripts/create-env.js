@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-import { writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { writeFileSync, existsSync } from "fs";
+import { join } from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const rootDir = join(__dirname, '..');
+const rootDir = join(__dirname, "..");
 
 const envContent = `# Base configuration
 PORT=7008
@@ -36,15 +36,19 @@ CERAMIC_ENABLE_EXPERIMENTAL_COMPOSE_DB=true
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres
 `;
 
-const envPath = join(rootDir, '.env');
+const envPath = join(rootDir, ".env");
 
 if (existsSync(envPath)) {
-  console.log('⚠️  .env file already exists. Rename or delete it if you want to create a new one.');
+  console.log(
+    "⚠️  .env file already exists. Rename or delete it if you want to create a new one."
+  );
 } else {
   try {
     writeFileSync(envPath, envContent);
-    console.log('✅ .env file created successfully! Edit it with your custom values.');
+    console.log(
+      "✅ .env file created successfully! Edit it with your custom values."
+    );
   } catch (error) {
-    console.error('❌ Error creating .env file:', error);
+    console.error("❌ Error creating .env file:", error);
   }
 }

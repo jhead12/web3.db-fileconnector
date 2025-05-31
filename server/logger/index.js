@@ -77,7 +77,7 @@ export const _logger = winston.createLogger({
         label,
         timestamp,
       });
-    }),
+    })
   ),
   transports: [
     errorFileRotate,

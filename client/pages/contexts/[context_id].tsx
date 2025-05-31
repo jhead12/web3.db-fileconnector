@@ -48,7 +48,7 @@ export default function ContextDetails() {
       loadContextPlugins();
       let result = findParentContextId(
         context_id,
-        settings.contexts ? settings.contexts : null,
+        settings.contexts ? settings.contexts : null
       );
       setParentContext(result);
     }
@@ -328,7 +328,7 @@ const OnePlugin = ({
   const [pluginDetails, setPluginDetails] = useState<any>(null);
 
   const existingPluginIndex = settings.plugins.findIndex(
-    (p) => p.plugin_id === plugin.plugin_id,
+    (p) => p.plugin_id === plugin.plugin_id
   );
   const existingContextIndex = settings.plugins[
     existingPluginIndex
@@ -396,7 +396,7 @@ const OnePlugin = ({
                 <span className="font-bold text-slate-900">{key}:</span>{" "}
                 <span className="truncate">{String(value)}</span>
               </div>
-            ),
+            )
           )}
         </div>
       )}

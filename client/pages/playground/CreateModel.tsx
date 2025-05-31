@@ -42,7 +42,7 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
     // Check if DID or DateTime types are used
     const usesDID = fields.some((group) => group.selectValue === "did");
     const usesDateTime = fields.some(
-      (group) => group.selectValue === "datetime",
+      (group) => group.selectValue === "datetime"
     );
 
     // Build the $defs object
@@ -87,7 +87,7 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
         },
       },
       null,
-      2,
+      2
     );
 
     // Update the state or whatever is necessary with the new schema
@@ -102,7 +102,7 @@ const CreateModel = ({ setModelId, setModelDefinition, setStep, orbisdb }) => {
         console.log("orbisdb.session:", orbisdb.session);
 
         let model_stream = await orbisdb.ceramic.createModel(
-          JSON.parse(modelDemoDefinition),
+          JSON.parse(modelDemoDefinition)
         );
         console.log("model_stream:", model_stream);
 
@@ -206,14 +206,14 @@ function ModelFieldsInputGroups({ inputGroups, setInputGroups }) {
 
   const handleTextChange = (index, value) => {
     const updatedInputGroups = inputGroups.map((group, i) =>
-      i === index ? { ...group, textValue: value } : group,
+      i === index ? { ...group, textValue: value } : group
     );
     setInputGroups(updatedInputGroups);
   };
 
   const handleSelectChange = (index, value) => {
     const updatedInputGroups = inputGroups.map((group, i) =>
-      i === index ? { ...group, selectValue: value } : group,
+      i === index ? { ...group, selectValue: value } : group
     );
     setInputGroups(updatedInputGroups);
   };

@@ -93,14 +93,14 @@ export default class SocialPushNotificationPlugin {
       let stream = await ModelInstanceDocument.create(
         global.indexingService.ceramic.client,
         content,
-        metadata,
+        metadata
       );
       let stream_id = stream.id?.toString();
       logger.debug("stream_id:", stream_id);
     } catch (e) {
       logger.error(
         "Error creating stream with model:" + this.model_id + ":",
-        e,
+        e
       );
     }
   }
