@@ -27,3 +27,24 @@ function fromString(hexString, encoding) {
   }
   throw new Error(`Unsupported encoding: ${encoding}`);
 }
+
+export default async function handler(req, res) {
+  if (req.method === 'GET') {
+    try {
+      // Return default settings for now
+      res.status(200).json({
+        settings: {
+          // Add your default settings here
+          theme: 'light',
+          notifications: true,
+          language: 'en'
+        }
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  } else {
+    res.setHeader('Allow', ['GET']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
+  }
+}
