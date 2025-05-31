@@ -27,6 +27,17 @@
     "validate": "yarn typecheck && yarn run test:security; yarn run lint || echo 'Linting errors detected but continuing with release process'",
     "fix-permissions": "yarn permissions && chmod +x ./node_modules/.bin/eslint ./node_modules/.bin/conventional-changelog ./node_modules/.bin/prettier",
     "fix-dependencies": "chmod +x ./scripts/fix-dependencies.sh && ./scripts/fix-dependencies.sh"
+     "publish:npm": "yarn publish --access public",
+        "publish:github": "yarn run publish:npm && yarn run publish:docker",
+    "publish:github": "yarn run publish:npm && yarn run publish:docker",
+    "publish:docker": "docker build -t web3db-fileconnector:1.8.4 -t web3db-fileconnector:latest .",
+    "publish:docker:arm64": "docker buildx build --platform linux/arm64 --builder multiplatform-builder -t web3db-fileconnector:1.8.4-arm64 -t web3db-fileconnector:arm64 --load .",
+    "publish:docker:amd64": "docker buildx build --platform linux/amd64 --builder multiplatform-builder -t web3db-fileconnector:1.8.4-amd64 -t web3db-fileconnector:amd64 --load .",
+    "publish:docker:registry": "docker buildx build --platform linux/arm64,linux/amd64 --builder multiplatform-builder -t jhead12/web3db-fileconnector:1.8.4 -t jhead12/web3db-fileconnector:latest --push .",
+    "prepublishOnly": "yarn run validate && yarn run build",
+    "publish:release": "yarn run validate && yarn run build && yarn publish --access public && git push origin --tags",
+    "lint": "PATH=./.bin:$PATH eslint . || echo 'Linting errors found but continuing'",
+    
   },
   "keywords": [
     "web3",
