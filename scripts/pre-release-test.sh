@@ -44,7 +44,7 @@ PACKAGE_VERSION=$(node -p "require('./package.json').version")
 print_status "Package.json version: $PACKAGE_VERSION"
 
 # Check if CHANGELOG has the current version
-if grep -q "# $PACKAGE_VERSION" CHANGELOG.md; then
+if grep -q "## \[$PACKAGE_VERSION\]" CHANGELOG.md || grep -q "# $PACKAGE_VERSION" CHANGELOG.md; then
     print_success "CHANGELOG.md contains version $PACKAGE_VERSION"
 else
     print_error "CHANGELOG.md missing version $PACKAGE_VERSION"
